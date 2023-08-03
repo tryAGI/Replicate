@@ -12,24 +12,27 @@ public partial class ReplicateApi
 {
     private string ApiKey { get; } = string.Empty;
 
-    private Task PrepareRequestAsync(HttpClient client, HttpRequestMessage request, string url, CancellationToken cancellationToken)
+    private Task PrepareRequestAsync(HttpClient client, HttpRequestMessage request, string url,
+        CancellationToken cancellationToken)
     {
         if (!string.IsNullOrWhiteSpace(ApiKey))
         {
             request.Headers.Authorization = new AuthenticationHeaderValue(
-                scheme: "Bearer",
+                "Token",
                 parameter: ApiKey);
         }
-        
+
         return Task.CompletedTask;
     }
-    
-    private Task PrepareRequestAsync(HttpClient client, HttpRequestMessage request, StringBuilder builder, CancellationToken cancellationToken)
+
+    private Task PrepareRequestAsync(HttpClient client, HttpRequestMessage request, StringBuilder builder,
+        CancellationToken cancellationToken)
     {
         return Task.CompletedTask;
     }
-    
-    private Task ProcessResponseAsync(HttpClient client, HttpResponseMessage message, CancellationToken cancellationToken)
+
+    private Task ProcessResponseAsync(HttpClient client, HttpResponseMessage message,
+        CancellationToken cancellationToken)
     {
         return Task.CompletedTask;
     }
