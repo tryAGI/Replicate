@@ -30,7 +30,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="OpenApiGenerator" Version="0.8.4">
+    <PackageReference Include="OpenApiGenerator" Version="0.9.7">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
