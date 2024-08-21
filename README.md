@@ -5,8 +5,15 @@
 [![License: MIT](https://img.shields.io/github/license/tryAGI/Replicate)](https://github.com/tryAGI/Replicate/blob/main/LICENSE.txt)
 [![Discord](https://img.shields.io/discord/1115206893015662663?label=Discord&logo=discord&logoColor=white&color=d82679)](https://discord.gg/Ca2xhfBf3v)
 
-Generated C# SDK based on Replicate OpenAPI specification using NSwag.  
-Includes [tokenizer](https://github.com/tryAGI/Tiktoken) and some helper methods.
+## Features 🔥
+- Fully generated C# SDK based on [official Replicate OpenAPI specification](https://api.replicate.com/openapi.json) using [OpenApiGenerator](https://github.com/HavenDV/OpenApiGenerator)
+- Same day update to support new features
+- Updated and supported automatically if there are no breaking changes
+- All modern .NET features - nullability, trimming, NativeAOT, etc.
+- Support .Net Framework/.Net Standard 2.0
+
+## Documentation
+Examples and documentation can be found here: https://tryagi.github.io/Replicate/
 
 ### Usage
 ```csharp
