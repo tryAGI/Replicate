@@ -1,17 +1,11 @@
 namespace Replicate.IntegrationTests;
 
-[TestClass]
-public class GeneralTests
+public partial class Tests
 {
     [TestMethod]
     public async Task CreatePrediction()
     {
-        var apiKey =
-            Environment.GetEnvironmentVariable("REPLICATE_API_KEY") ??
-            throw new AssertInconclusiveException("REPLICATE_API_KEY environment variable is not found.");
-
-        using var api = new ReplicateApi();
-        api.AuthorizeUsingBearer(apiKey);
+        using var api = GetAuthorizedApi();
         
         await api.PredictionsCreateAsync(
             input: new VersionPredictionRequestInput

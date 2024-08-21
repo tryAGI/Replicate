@@ -19,24 +19,17 @@ Examples and documentation can be found here: https://tryagi.github.io/Replicate
 ```csharp
 using Replicate;
 
-using var client = new HttpClient();
-var api = new ReplicateApi(apiKey, client);
-var response = await api.GenerateTextAsync(
-    RecommendedModelIds.Gpt2,
-    new GenerateTextRequest
-    {
-        Inputs = "Hello",
-        Parameters = new GenerateTextRequestParameters
-        {
-            Max_new_tokens = 250,
-            Return_full_text = false,
-        },
-        Options = new GenerateTextRequestOptions
-        {
-            Use_cache = true,
-            Wait_for_model = false,
-        },
-    });
+var api = new ReplicateApi();
+api.AuthorizeUsingBearer(apiKey);
+var response = await api.AccountGetAsync();
+```
+```json
+{
+    "Type": "organization",
+    "Username": "acme",
+    "Name": "Acme Corp, Inc.",
+    "GithubUrl": "https://github.com/acme"
+}
 ```
 
 ## Support
