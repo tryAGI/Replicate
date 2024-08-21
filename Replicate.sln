@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 		docs\openapi.json = docs\openapi.json
 		.github\workflows\pull-request.yml = .github\workflows\pull-request.yml
+		.github\workflows\auto-update.yml = .github\workflows\auto-update.yml
+		.github\workflows\mkdocs.yml = .github\workflows\mkdocs.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{61E7E11E-4558-434C-ACE8-06316A3097B3}"
@@ -26,7 +28,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Replicate", "src\libs\Repli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Replicate.IntegrationTests", "src\tests\Replicate.IntegrationTests\Replicate.IntegrationTests.csproj", "{592ADBC9-C951-4AF7-A163-B6C63B970B19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Replicate.Models", "src\libs\Replicate.Models\Replicate.Models.csproj", "{B5C719C1-9F51-4874-9FBF-2D62CCCDBD1B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "helpers", "helpers", "{4A7E933D-CAA6-4A0E-A762-BE49BE291515}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FixOpenApiSpec", "src\helpers\FixOpenApiSpec\FixOpenApiSpec.csproj", "{51395B9A-1474-4263-AB97-CFBEED8BAD3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateDocs", "src\helpers\GenerateDocs\GenerateDocs.csproj", "{2E3D948F-EDC6-4B62-9ED1-0ABADABD4EAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrimmingHelper", "src\helpers\TrimmingHelper\TrimmingHelper.csproj", "{AF5820E5-E366-4DB2-B9D6-A7811637CE0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,10 +50,18 @@ Global
 		{592ADBC9-C951-4AF7-A163-B6C63B970B19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{592ADBC9-C951-4AF7-A163-B6C63B970B19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{592ADBC9-C951-4AF7-A163-B6C63B970B19}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B5C719C1-9F51-4874-9FBF-2D62CCCDBD1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B5C719C1-9F51-4874-9FBF-2D62CCCDBD1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B5C719C1-9F51-4874-9FBF-2D62CCCDBD1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B5C719C1-9F51-4874-9FBF-2D62CCCDBD1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51395B9A-1474-4263-AB97-CFBEED8BAD3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51395B9A-1474-4263-AB97-CFBEED8BAD3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51395B9A-1474-4263-AB97-CFBEED8BAD3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51395B9A-1474-4263-AB97-CFBEED8BAD3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E3D948F-EDC6-4B62-9ED1-0ABADABD4EAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E3D948F-EDC6-4B62-9ED1-0ABADABD4EAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E3D948F-EDC6-4B62-9ED1-0ABADABD4EAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E3D948F-EDC6-4B62-9ED1-0ABADABD4EAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF5820E5-E366-4DB2-B9D6-A7811637CE0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF5820E5-E366-4DB2-B9D6-A7811637CE0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF5820E5-E366-4DB2-B9D6-A7811637CE0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF5820E5-E366-4DB2-B9D6-A7811637CE0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,7 +69,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{0028BC85-0064-4CE8-A21A-C1F5E922BD59} = {61E7E11E-4558-434C-ACE8-06316A3097B3}
 		{592ADBC9-C951-4AF7-A163-B6C63B970B19} = {AAA11B78-2764-4520-A97E-46AA7089A588}
-		{B5C719C1-9F51-4874-9FBF-2D62CCCDBD1B} = {61E7E11E-4558-434C-ACE8-06316A3097B3}
+		{51395B9A-1474-4263-AB97-CFBEED8BAD3F} = {4A7E933D-CAA6-4A0E-A762-BE49BE291515}
+		{2E3D948F-EDC6-4B62-9ED1-0ABADABD4EAA} = {4A7E933D-CAA6-4A0E-A762-BE49BE291515}
+		{AF5820E5-E366-4DB2-B9D6-A7811637CE0B} = {4A7E933D-CAA6-4A0E-A762-BE49BE291515}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CED9A020-DBA5-4BE6-8096-75E528648EC1}

@@ -14,48 +14,25 @@
     <Description>Generated C# SDK based on Replicate OpenAPI specification.</Description>
     <PackageTags>api;client;sdk;dotnet;swagger;openapi;specification;replicate;generated;nswag</PackageTags>
   </PropertyGroup>
-
-  <PropertyGroup Label="OpenApiGenerator">
-    <OpenApiGenerator_Namespace>Replicate</OpenApiGenerator_Namespace>
-    <OpenApiGenerator_ClassName>ReplicateApi</OpenApiGenerator_ClassName>
-    <OpenApiGenerator_GenerateSdk>false</OpenApiGenerator_GenerateSdk>
-    <OpenApiGenerator_GenerateMethods>true</OpenApiGenerator_GenerateMethods>
-    <OpenApiGenerator_GenerateConstructors>true</OpenApiGenerator_GenerateConstructors>
-    <OpenApiGenerator_MethodNamingConvention>OperationIdWithDots</OpenApiGenerator_MethodNamingConvention>
-<!--    <OpenApiGenerator_JsonSerializerContext>Replicate.SourceGenerationContext</OpenApiGenerator_JsonSerializerContext>-->
-  </PropertyGroup>
-
-  <ItemGroup>
-    <AdditionalFiles Include="$(MSBuildThisFileDirectory)../../../docs/openapi.json" />
-  </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="OpenApiGenerator" Version="0.15.6">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="PolySharp" Version="1.14.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Tiktoken" Version="2.0.3" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net4.6.2'">
     <Reference Include="System.Net.Http" />
-    <PackageReference Include="System.Text.Json" Version="8.0.3" />
+    <PackageReference Include="System.Text.Json" Version="8.0.4" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="System.Text.Json" Version="8.0.3" />
+    <PackageReference Include="System.Text.Json" Version="8.0.4" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
-    <PackageReference Include="System.Text.Json" Version="8.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Replicate.Models\Replicate.Models.csproj" />
+    <PackageReference Include="System.Text.Json" Version="8.0.4" />
   </ItemGroup>
 
 </Project>
