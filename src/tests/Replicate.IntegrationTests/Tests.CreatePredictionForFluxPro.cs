@@ -34,6 +34,6 @@ public partial class Tests
         Console.WriteLine($@"Seed: {endResponse.Input?.Seed}.
 Image available at:\n{endResponse.Output}");
         
-        //// ![output](../../assets/output.webp)
+        //// ![output](https://github.com/tryAGI/Replicate/blob/dd1e5c2cbebc53e9b343f1372e5a660159e79ef3/assets/output.webp)
     }
 }
