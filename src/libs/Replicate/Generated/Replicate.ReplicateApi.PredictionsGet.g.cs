@@ -16,6 +16,11 @@ namespace Replicate
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
+        partial void ProcessPredictionsGetResponseContent(
+            global::System.Net.Http.HttpClient httpClient,
+            global::System.Net.Http.HttpResponseMessage httpResponseMessage,
+            ref string content);
+
         /// <summary>
         /// Get a prediction<br/>
         /// Get the current state of a prediction.<br/>
@@ -67,7 +72,7 @@ namespace Replicate
         /// <param name="predictionId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task PredictionsGetAsync(
+        public async global::System.Threading.Tasks.Task<global::Replicate.PredictionResponse> PredictionsGetAsync(
             string predictionId,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -100,7 +105,30 @@ namespace Replicate
             ProcessPredictionsGetResponse(
                 httpClient: _httpClient,
                 httpResponseMessage: response);
-            response.EnsureSuccessStatusCode();
+
+            var __content = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+
+            ProcessResponseContent(
+                client: _httpClient,
+                response: response,
+                content: ref __content);
+            ProcessPredictionsGetResponseContent(
+                httpClient: _httpClient,
+                httpResponseMessage: response,
+                content: ref __content);
+
+            try
+            {
+                response.EnsureSuccessStatusCode();
+            }
+            catch (global::System.Net.Http.HttpRequestException ex)
+            {
+                throw new global::System.InvalidOperationException(__content, ex);
+            }
+
+            return
+                global::System.Text.Json.JsonSerializer.Deserialize(__content, global::Replicate.SourceGenerationContext.Default.PredictionResponse) ??
+                throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
         }
     }
 }

@@ -3,19 +3,35 @@ namespace Replicate.IntegrationTests;
 public partial class Tests
 {
     [TestMethod]
-    public async Task CreatePrediction()
+    public async Task CreatePredictionForFluxPro()
     {
         using var api = GetAuthorizedApi();
         
-        await api.PredictionsCreateAsync(
-            input: new VersionPredictionRequestInput
+        var response = await api.ModelsPredictionsCreateAsync(
+            input: new PredictionRequestInput
             {
                 AdditionalProperties = new Dictionary<string, object>
                 {
-                    ["prompt"] = "I forgot how to kill a process in Linux, can you help?",
-                    ["assistant"] = "Sure! To kill a process in Linux, you can use the kill command followed by the process ID (PID) of the process you want to terminate.",
+                    ["seed"] = Random.Shared.Next(0, 1000000),
+                    ["steps"] = 25,
+                    ["prompt"] = "a female, european, young adult, fit body, wavy acid orange hair, wearing open swimsuit, sea in the background.",
+                    ["guidance"] = 3.5,
+                    ["interval"] = 3,
+                    ["aspect_ratio"] = "16:9",
+                    ["safety_tolerance"] = 5,
                 },
             },
-            version: "b063023ee937f28e922982abdbf97b041ffe34ad3b35a53d33e1d74bb19b36c4");
+            modelOwner: "black-forest-labs",
+            modelName: "flux-pro",
+            stream: false,
+            webhook: "https://hook.eu2.make.com/h6tawmpxsmxb7ut4edfmje4g3xw8y8rf",
+            webhookEventsFilter: null);
+        response.Should().NotBeNull();
+        response.Id.Should().NotBeNull();
+        
+        var endResponse = await response.WaitUntilSuccessfulAsync(api);
+        
+        Console.WriteLine($@"Seed: {endResponse.Input?.Seed}.
+Image available at:\n{endResponse.Output}");
     }
 }

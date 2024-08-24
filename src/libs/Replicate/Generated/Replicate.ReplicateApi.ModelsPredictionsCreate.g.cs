@@ -20,6 +20,11 @@ namespace Replicate
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
+        partial void ProcessModelsPredictionsCreateResponseContent(
+            global::System.Net.Http.HttpClient httpClient,
+            global::System.Net.Http.HttpResponseMessage httpResponseMessage,
+            ref string content);
+
         /// <summary>
         /// Create a prediction using an official model<br/>
         /// Start a new prediction for an official model using the inputs you provide.<br/>
@@ -67,7 +72,7 @@ namespace Replicate
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task ModelsPredictionsCreateAsync(
+        public async global::System.Threading.Tasks.Task<global::Replicate.PredictionResponse> ModelsPredictionsCreateAsync(
             string modelOwner,
             string modelName,
             global::Replicate.PredictionRequest request,
@@ -114,7 +119,30 @@ namespace Replicate
             ProcessModelsPredictionsCreateResponse(
                 httpClient: _httpClient,
                 httpResponseMessage: response);
-            response.EnsureSuccessStatusCode();
+
+            var __content = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+
+            ProcessResponseContent(
+                client: _httpClient,
+                response: response,
+                content: ref __content);
+            ProcessModelsPredictionsCreateResponseContent(
+                httpClient: _httpClient,
+                httpResponseMessage: response,
+                content: ref __content);
+
+            try
+            {
+                response.EnsureSuccessStatusCode();
+            }
+            catch (global::System.Net.Http.HttpRequestException ex)
+            {
+                throw new global::System.InvalidOperationException(__content, ex);
+            }
+
+            return
+                global::System.Text.Json.JsonSerializer.Deserialize(__content, global::Replicate.SourceGenerationContext.Default.PredictionResponse) ??
+                throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
         }
 
         /// <summary>
@@ -201,7 +229,7 @@ namespace Replicate
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task ModelsPredictionsCreateAsync(
+        public async global::System.Threading.Tasks.Task<global::Replicate.PredictionResponse> ModelsPredictionsCreateAsync(
             string modelOwner,
             string modelName,
             global::Replicate.PredictionRequestInput input,
@@ -218,7 +246,7 @@ namespace Replicate
                 WebhookEventsFilter = webhookEventsFilter,
             };
 
-            await ModelsPredictionsCreateAsync(
+            return await ModelsPredictionsCreateAsync(
                 modelOwner: modelOwner,
                 modelName: modelName,
                 request: request,

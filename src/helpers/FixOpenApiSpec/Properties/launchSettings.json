@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Localizer": {
+      "commandName": "Project",
+      "commandLineArgs": "../../../../../../src/libs/Replicate/openapi.yaml"
+    }
+  }
+}
