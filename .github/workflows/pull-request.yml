@@ -1,11 +1,11 @@
-﻿name: Build and test
+﻿name: Test
 on:
   pull_request:
     branches:
       - main
 
 jobs:
-  build-test:
+  test:
     name: Build abd test
     uses: HavenDV/workflows/.github/workflows/dotnet_build-test-publish.yml@main
     with:

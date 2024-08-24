@@ -9,7 +9,7 @@
 
   <ItemGroup Label="CLSCompliant">
     <AssemblyAttribute Include="System.CLSCompliantAttribute">
-      <_Parameter1>false</_Parameter1>
+      <_Parameter1>true</_Parameter1>
     </AssemblyAttribute>
   </ItemGroup>
   
@@ -46,12 +46,12 @@
     <AnalysisMode>All</AnalysisMode>
   </PropertyGroup>
 
-<!--  <PropertyGroup Label="Trimmable" Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net6.0'))">-->
-<!--    <IsAotCompatible>true</IsAotCompatible>-->
-<!--    <EnableTrimAnalyzer>true</EnableTrimAnalyzer>-->
-<!--    <IsTrimmable>true</IsTrimmable>-->
-<!--    <SuppressTrimAnalysisWarnings>false</SuppressTrimAnalysisWarnings>-->
-<!--    <TrimmerSingleWarn>false</TrimmerSingleWarn>-->
-<!--  </PropertyGroup>-->
+  <PropertyGroup Label="Trimmable" Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net6.0'))">
+    <IsAotCompatible>true</IsAotCompatible>
+    <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+    <IsTrimmable>true</IsTrimmable>
+    <SuppressTrimAnalysisWarnings>false</SuppressTrimAnalysisWarnings>
+    <TrimmerSingleWarn>false</TrimmerSingleWarn>
+  </PropertyGroup>
 
 </Project>
