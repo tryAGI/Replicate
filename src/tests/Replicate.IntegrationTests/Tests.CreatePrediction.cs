@@ -33,5 +33,7 @@ public partial class Tests
         
         Console.WriteLine($@"Seed: {endResponse.Input?.Seed}.
 Image available at:\n{endResponse.Output}");
+        
+        //// ![output](../../assets/output.webp)
     }
 }

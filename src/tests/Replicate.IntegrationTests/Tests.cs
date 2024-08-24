@@ -9,8 +9,7 @@ public partial class Tests
             Environment.GetEnvironmentVariable("REPLICATE_API_KEY") ??
             throw new AssertInconclusiveException("REPLICATE_API_KEY environment variable is not found.");
 
-        var api = new ReplicateApi();
-        api.AuthorizeUsingBearer(apiKey);
+        var api = new ReplicateApi(apiKey);
         
         return api;
     }
