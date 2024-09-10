@@ -22,7 +22,7 @@ namespace Replicate
         /// Example cURL request:<br/>
         /// ```console<br/>
         /// curl -s -X POST \<br/>
-        ///   -H "Authorization: Bearer &lt;paste-your-token-here&gt;" \<br/>
+        ///   -H "Authorization: Bearer $REPLICATE_API_TOKEN" \<br/>
         ///   -H 'Content-Type: application/json' \<br/>
         ///   -d '{"owner": "alice", "name": "my-model", "description": "An example model", "visibility": "public", "hardware": "cpu"}' \<br/>
         ///   https://api.replicate.com/v1/models<br/>
@@ -99,7 +99,7 @@ namespace Replicate
         /// Example cURL request:<br/>
         /// ```console<br/>
         /// curl -s -X POST \<br/>
-        ///   -H "Authorization: Bearer &lt;paste-your-token-here&gt;" \<br/>
+        ///   -H "Authorization: Bearer $REPLICATE_API_TOKEN" \<br/>
         ///   -H 'Content-Type: application/json' \<br/>
         ///   -d '{"owner": "alice", "name": "my-model", "description": "An example model", "visibility": "public", "hardware": "cpu"}' \<br/>
         ///   https://api.replicate.com/v1/models<br/>
