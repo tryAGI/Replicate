@@ -40,7 +40,7 @@ namespace Replicate
         /// ```console<br/>
         /// curl -s -X POST \<br/>
         ///   -d '{"input": {"prompt": "Write a short poem about the weather."}}' \<br/>
-        ///   -H "Authorization: Bearer &lt;paste-your-token-here&gt;" \<br/>
+        ///   -H "Authorization: Bearer $REPLICATE_API_TOKEN" \<br/>
         ///   -H 'Content-Type: application/json' \<br/>
         ///   https://api.replicate.com/v1/models/meta/meta-llama-3-70b-instruct/predictions<br/>
         /// ```<br/>
@@ -160,7 +160,7 @@ namespace Replicate
         /// ```console<br/>
         /// curl -s -X POST \<br/>
         ///   -d '{"input": {"prompt": "Write a short poem about the weather."}}' \<br/>
-        ///   -H "Authorization: Bearer &lt;paste-your-token-here&gt;" \<br/>
+        ///   -H "Authorization: Bearer $REPLICATE_API_TOKEN" \<br/>
         ///   -H 'Content-Type: application/json' \<br/>
         ///   https://api.replicate.com/v1/models/meta/meta-llama-3-70b-instruct/predictions<br/>
         /// ```<br/>

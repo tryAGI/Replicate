@@ -28,7 +28,7 @@ namespace Replicate
         /// ```console<br/>
         /// curl -s \<br/>
         ///   -X POST \<br/>
-        ///   -H "Authorization: Bearer &lt;paste-your-token-here&gt;" \<br/>
+        ///   -H "Authorization: Bearer $REPLICATE_API_TOKEN" \<br/>
         ///   -H "Content-Type: application/json" \<br/>
         ///   -d '{<br/>
         ///         "name": "my-app-image-generator",<br/>
@@ -142,7 +142,7 @@ namespace Replicate
         /// ```console<br/>
         /// curl -s \<br/>
         ///   -X POST \<br/>
-        ///   -H "Authorization: Bearer &lt;paste-your-token-here&gt;" \<br/>
+        ///   -H "Authorization: Bearer $REPLICATE_API_TOKEN" \<br/>
         ///   -H "Content-Type: application/json" \<br/>
         ///   -d '{<br/>
         ///         "name": "my-app-image-generator",<br/>

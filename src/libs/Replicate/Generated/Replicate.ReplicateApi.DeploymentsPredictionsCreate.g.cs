@@ -35,7 +35,7 @@ namespace Replicate
         /// ```console<br/>
         /// curl -s -X POST \<br/>
         ///   -d '{"input": {"text": "Alice"}}' \<br/>
-        ///   -H "Authorization: Bearer &lt;paste-your-token-here&gt;" \<br/>
+        ///   -H "Authorization: Bearer $REPLICATE_API_TOKEN" \<br/>
         ///   -H 'Content-Type: application/json' \<br/>
         ///   "https://api.replicate.com/v1/deployments/replicate/hello-world/predictions"<br/>
         /// ```<br/>
@@ -132,7 +132,7 @@ namespace Replicate
         /// ```console<br/>
         /// curl -s -X POST \<br/>
         ///   -d '{"input": {"text": "Alice"}}' \<br/>
-        ///   -H "Authorization: Bearer &lt;paste-your-token-here&gt;" \<br/>
+        ///   -H "Authorization: Bearer $REPLICATE_API_TOKEN" \<br/>
         ///   -H 'Content-Type: application/json' \<br/>
         ///   "https://api.replicate.com/v1/deployments/replicate/hello-world/predictions"<br/>
         /// ```<br/>
