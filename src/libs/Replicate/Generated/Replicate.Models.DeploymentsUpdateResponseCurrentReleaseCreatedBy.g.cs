@@ -24,7 +24,7 @@ namespace Replicate
         /// The account type of the creator. Can be a user or an organization.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::OpenApiGenerator.JsonConverters.DeploymentsUpdateResponseCurrentReleaseCreatedByTypeJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Replicate.JsonConverters.DeploymentsUpdateResponseCurrentReleaseCreatedByTypeJsonConverter))]
         public global::Replicate.DeploymentsUpdateResponseCurrentReleaseCreatedByType? Type { get; set; }
 
         /// <summary>

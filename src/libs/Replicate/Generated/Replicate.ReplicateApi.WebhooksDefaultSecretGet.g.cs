@@ -89,7 +89,7 @@ namespace Replicate
             }
 
             return
-                global::System.Text.Json.JsonSerializer.Deserialize(__content, global::Replicate.SourceGenerationContext.Default.WebhooksDefaultSecretGetResponse) ??
+                global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::Replicate.WebhooksDefaultSecretGetResponse), JsonSerializerContext) as global::Replicate.WebhooksDefaultSecretGetResponse ??
                 throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
         }
     }

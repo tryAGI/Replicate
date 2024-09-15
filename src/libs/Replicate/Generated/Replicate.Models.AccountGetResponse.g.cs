@@ -24,7 +24,7 @@ namespace Replicate
         /// The account type. Can be a user or an organization.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::OpenApiGenerator.JsonConverters.AccountGetResponseTypeJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Replicate.JsonConverters.AccountGetResponseTypeJsonConverter))]
         public global::Replicate.AccountGetResponseType? Type { get; set; }
 
         /// <summary>

@@ -1,6 +1,6 @@
 #nullable enable
 
-namespace OpenApiGenerator.JsonConverters
+namespace Replicate.JsonConverters
 {
     /// <inheritdoc />
     public sealed class TrainingRequestWebhookEventsFilterItemNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Replicate.TrainingRequestWebhookEventsFilterItem?>

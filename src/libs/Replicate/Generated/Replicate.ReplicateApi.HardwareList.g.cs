@@ -91,7 +91,7 @@ namespace Replicate
             }
 
             return
-                global::System.Text.Json.JsonSerializer.Deserialize(__content, global::Replicate.SourceGenerationContext.Default.IListHardwareListResponseItem) ??
+                global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::System.Collections.Generic.IList<global::Replicate.HardwareListResponseItem>), JsonSerializerContext) as global::System.Collections.Generic.IList<global::Replicate.HardwareListResponseItem> ??
                 throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
         }
     }
