@@ -198,7 +198,7 @@ namespace Replicate
         public async global::System.Threading.Tasks.Task PredictionsCreateAsync(
             global::Replicate.VersionPredictionRequestInput input,
             string version,
-            bool stream = default,
+            bool? stream = default,
             string? webhook = default,
             global::System.Collections.Generic.IList<global::Replicate.VersionPredictionRequestWebhookEventsFilterItem>? webhookEventsFilter = default,
             global::System.Threading.CancellationToken cancellationToken = default)
