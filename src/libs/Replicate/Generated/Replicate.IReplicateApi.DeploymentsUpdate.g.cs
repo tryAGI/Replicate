@@ -111,8 +111,8 @@ namespace Replicate
             string deploymentOwner,
             string deploymentName,
             string? hardware = default,
-            int maxInstances = default,
-            int minInstances = default,
+            int? maxInstances = default,
+            int? minInstances = default,
             string? version = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

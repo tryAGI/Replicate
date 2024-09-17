@@ -18,7 +18,7 @@ namespace Replicate
         /// The time the release was created.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
-        public global::System.DateTime CreatedAt { get; set; }
+        public global::System.DateTime? CreatedAt { get; set; }
 
         /// <summary>
         /// 
@@ -36,7 +36,7 @@ namespace Replicate
         /// The release number. This is an auto-incrementing integer that starts at 1, and is set automatically when a deployment is created.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("number")]
-        public int Number { get; set; }
+        public int? Number { get; set; }
 
         /// <summary>
         /// The ID of the model version used in the release.

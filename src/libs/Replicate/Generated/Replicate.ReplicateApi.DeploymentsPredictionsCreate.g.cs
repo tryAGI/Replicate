@@ -205,7 +205,7 @@ namespace Replicate
             string deploymentOwner,
             string deploymentName,
             global::Replicate.PredictionRequestInput input,
-            bool stream = default,
+            bool? stream = default,
             string? webhook = default,
             global::System.Collections.Generic.IList<global::Replicate.PredictionRequestWebhookEventsFilterItem>? webhookEventsFilter = default,
             global::System.Threading.CancellationToken cancellationToken = default)
