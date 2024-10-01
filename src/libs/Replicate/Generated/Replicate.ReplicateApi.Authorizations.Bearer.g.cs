@@ -14,11 +14,14 @@ namespace Replicate
         {
             apiKey = apiKey ?? throw new global::System.ArgumentNullException(nameof(apiKey));
 
-            _authorization = new global::Replicate.EndPointAuthorization
+            _authorizations.Clear();
+            _authorizations.Add(new global::Replicate.EndPointAuthorization
             {
+                Type = "Http",
+                Location = "Header",
                 Name = "Bearer",
                 Value = apiKey,
-            };
+            });
         }
     }
 }
