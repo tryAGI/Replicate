@@ -9,12 +9,14 @@ namespace Replicate
             global::System.Net.Http.HttpClient httpClient,
             ref string modelOwner,
             ref string modelName,
+            ref string? prefer,
             global::Replicate.PredictionRequest request);
         partial void PrepareModelsPredictionsCreateRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string modelOwner,
             string modelName,
+            string? prefer,
             global::Replicate.PredictionRequest request);
         partial void ProcessModelsPredictionsCreateResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -27,48 +29,21 @@ namespace Replicate
 
         /// <summary>
         /// Create a prediction using an official model<br/>
-        /// Start a new prediction for an official model using the inputs you provide.<br/>
-        /// Example request body:<br/>
-        /// ```json<br/>
-        /// {<br/>
-        ///   "input": {<br/>
-        ///     "prompt": "Write a short poem about the weather."<br/>
-        ///   }<br/>
-        /// }<br/>
-        /// ```<br/>
+        /// Create a prediction for the deployment and inputs you provide.<br/>
         /// Example cURL request:<br/>
         /// ```console<br/>
-        /// curl -s -X POST \<br/>
+        /// curl -s -X POST -H 'Prefer: wait' \<br/>
         ///   -d '{"input": {"prompt": "Write a short poem about the weather."}}' \<br/>
         ///   -H "Authorization: Bearer $REPLICATE_API_TOKEN" \<br/>
         ///   -H 'Content-Type: application/json' \<br/>
         ///   https://api.replicate.com/v1/models/meta/meta-llama-3-70b-instruct/predictions<br/>
         /// ```<br/>
-        /// The response will be the prediction object:<br/>
-        /// ```json<br/>
-        /// {<br/>
-        ///   "id": "25s2s4n7rdrgg0cf1httb3myk0",<br/>
-        ///   "model": "replicate-internal/llama3-70b-chat-vllm-unquantized",<br/>
-        ///   "version": "dp-cf04fe09351e25db628e8b6181276547",<br/>
-        ///   "input": {<br/>
-        ///     "prompt": "Write a short poem about the weather."<br/>
-        ///   },<br/>
-        ///   "logs": "",<br/>
-        ///   "error": null,<br/>
-        ///   "status": "starting",<br/>
-        ///   "created_at": "2024-04-23T19:36:28.355Z",<br/>
-        ///   "urls": {<br/>
-        ///     "cancel": "https://api.replicate.com/v1/predictions/25s2s4n7rdrgg0cf1httb3myk0/cancel",<br/>
-        ///     "get": "https://api.replicate.com/v1/predictions/25s2s4n7rdrgg0cf1httb3myk0"<br/>
-        ///   }<br/>
-        /// }<br/>
-        /// ```<br/>
-        /// As models can take several seconds or more to run, the output will not be available immediately. To get the final result of the prediction you should either provide a `webhook` HTTPS URL for us to call when the results are ready, or poll the [get a prediction](#predictions.get) endpoint until it has finished.<br/>
-        /// All input parameters, output values, and logs are automatically removed after an hour, by default, for predictions created through the API.<br/>
-        /// Output files are served by `replicate.delivery` and its subdomains. If you use an allow list of external domains for your assets, add `replicate.delivery` and `*.replicate.delivery` to it.
+        /// The request will wait up to 60 seconds for the model to run. If this time is exceeded the prediction will be returned in a `"starting"` state and need to be retrieved using the `predictions.get` endpiont.<br/>
+        /// For a complete overview of the `deployments.predictions.create` API check out our documentation on [creating a prediction](https://replicate.com/docs/topics/predictions/create-a-prediction) which covers a variety of use cases.
         /// </summary>
         /// <param name="modelOwner"></param>
         /// <param name="modelName"></param>
+        /// <param name="prefer"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -76,6 +51,7 @@ namespace Replicate
             string modelOwner,
             string modelName,
             global::Replicate.PredictionRequest request,
+            string? prefer = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -86,6 +62,7 @@ namespace Replicate
                 httpClient: _httpClient,
                 modelOwner: ref modelOwner,
                 modelName: ref modelName,
+                prefer: ref prefer,
                 request: request);
 
             var __pathBuilder = new PathBuilder(
@@ -111,6 +88,12 @@ namespace Replicate
                     httpRequest.Headers.Add(_authorization.Name, _authorization.Value);
                 }
             }
+
+            if (prefer != default)
+            {
+                httpRequest.Headers.TryAddWithoutValidation("Prefer", prefer.ToString());
+            }
+
             var __httpRequestContentBody = global::System.Text.Json.JsonSerializer.Serialize(request, request.GetType(), JsonSerializerContext);
             var __httpRequestContent = new global::System.Net.Http.StringContent(
                 content: __httpRequestContentBody,
@@ -126,6 +109,7 @@ namespace Replicate
                 httpRequestMessage: httpRequest,
                 modelOwner: modelOwner,
                 modelName: modelName,
+                prefer: prefer,
                 request: request);
 
             using var response = await _httpClient.SendAsync(
@@ -167,48 +151,21 @@ namespace Replicate
 
         /// <summary>
         /// Create a prediction using an official model<br/>
-        /// Start a new prediction for an official model using the inputs you provide.<br/>
-        /// Example request body:<br/>
-        /// ```json<br/>
-        /// {<br/>
-        ///   "input": {<br/>
-        ///     "prompt": "Write a short poem about the weather."<br/>
-        ///   }<br/>
-        /// }<br/>
-        /// ```<br/>
+        /// Create a prediction for the deployment and inputs you provide.<br/>
         /// Example cURL request:<br/>
         /// ```console<br/>
-        /// curl -s -X POST \<br/>
+        /// curl -s -X POST -H 'Prefer: wait' \<br/>
         ///   -d '{"input": {"prompt": "Write a short poem about the weather."}}' \<br/>
         ///   -H "Authorization: Bearer $REPLICATE_API_TOKEN" \<br/>
         ///   -H 'Content-Type: application/json' \<br/>
         ///   https://api.replicate.com/v1/models/meta/meta-llama-3-70b-instruct/predictions<br/>
         /// ```<br/>
-        /// The response will be the prediction object:<br/>
-        /// ```json<br/>
-        /// {<br/>
-        ///   "id": "25s2s4n7rdrgg0cf1httb3myk0",<br/>
-        ///   "model": "replicate-internal/llama3-70b-chat-vllm-unquantized",<br/>
-        ///   "version": "dp-cf04fe09351e25db628e8b6181276547",<br/>
-        ///   "input": {<br/>
-        ///     "prompt": "Write a short poem about the weather."<br/>
-        ///   },<br/>
-        ///   "logs": "",<br/>
-        ///   "error": null,<br/>
-        ///   "status": "starting",<br/>
-        ///   "created_at": "2024-04-23T19:36:28.355Z",<br/>
-        ///   "urls": {<br/>
-        ///     "cancel": "https://api.replicate.com/v1/predictions/25s2s4n7rdrgg0cf1httb3myk0/cancel",<br/>
-        ///     "get": "https://api.replicate.com/v1/predictions/25s2s4n7rdrgg0cf1httb3myk0"<br/>
-        ///   }<br/>
-        /// }<br/>
-        /// ```<br/>
-        /// As models can take several seconds or more to run, the output will not be available immediately. To get the final result of the prediction you should either provide a `webhook` HTTPS URL for us to call when the results are ready, or poll the [get a prediction](#predictions.get) endpoint until it has finished.<br/>
-        /// All input parameters, output values, and logs are automatically removed after an hour, by default, for predictions created through the API.<br/>
-        /// Output files are served by `replicate.delivery` and its subdomains. If you use an allow list of external domains for your assets, add `replicate.delivery` and `*.replicate.delivery` to it.
+        /// The request will wait up to 60 seconds for the model to run. If this time is exceeded the prediction will be returned in a `"starting"` state and need to be retrieved using the `predictions.get` endpiont.<br/>
+        /// For a complete overview of the `deployments.predictions.create` API check out our documentation on [creating a prediction](https://replicate.com/docs/topics/predictions/create-a-prediction) which covers a variety of use cases.
         /// </summary>
         /// <param name="modelOwner"></param>
         /// <param name="modelName"></param>
+        /// <param name="prefer"></param>
         /// <param name="input">
         /// The model's input as a JSON object. The input schema depends on what model you are running. To see the available inputs, click the "API" tab on the model you are running or [get the model version](#models.versions.get) and look at its `openapi_schema` property. For example, [stability-ai/sdxl](https://replicate.com/stability-ai/sdxl) takes `prompt` as an input.<br/>
         /// Files should be passed as HTTP URLs or data URLs.<br/>
@@ -253,6 +210,7 @@ namespace Replicate
             string modelOwner,
             string modelName,
             global::Replicate.PredictionRequestInput input,
+            string? prefer = default,
             bool? stream = default,
             string? webhook = default,
             global::System.Collections.Generic.IList<global::Replicate.PredictionRequestWebhookEventsFilterItem>? webhookEventsFilter = default,
@@ -269,6 +227,7 @@ namespace Replicate
             return await ModelsPredictionsCreateAsync(
                 modelOwner: modelOwner,
                 modelName: modelName,
+                prefer: prefer,
                 request: request,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
         }

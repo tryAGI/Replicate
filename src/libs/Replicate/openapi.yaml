@@ -444,7 +444,7 @@ paths:
   '/deployments/{deployment_owner}/{deployment_name}/predictions':
     post:
       summary: Create a prediction using a deployment
-      description: "Start a new prediction for a deployment of a model using inputs you provide.\n\nExample request body:\n\n```json\n{\n  \"input\": {\n    \"text\": \"Alice\"\n  }\n}\n```\n\nExample cURL request:\n\n```console\ncurl -s -X POST \\\n  -d '{\"input\": {\"text\": \"Alice\"}}' \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  -H 'Content-Type: application/json' \\\n  \"https://api.replicate.com/v1/deployments/replicate/hello-world/predictions\"\n```\n\nThe response will be the prediction object:\n\n```json\n{\n  \"id\": \"86b6trbv99rgp0cf1h886f69ew\",\n  \"model\": \"replicate/hello-world\",\n  \"version\": \"dp-8e43d61c333b5ddc7a921130bc3ab3ea\",\n  \"input\": {\n    \"text\": \"Alice\"\n  },\n  \"logs\": \"\",\n  \"error\": null,\n  \"status\": \"starting\",\n  \"created_at\": \"2024-04-23T18:55:52.138Z\",\n  \"urls\": {\n    \"cancel\": \"https://api.replicate.com/v1/predictions/86b6trbv99rgp0cf1h886f69ew/cancel\",\n    \"get\": \"https://api.replicate.com/v1/predictions/86b6trbv99rgp0cf1h886f69ew\"\n  }\n}\n```\n\nAs models can take several seconds or more to run, the output will not be available immediately. To get the final result of the prediction you should either provide a `webhook` HTTPS URL for us to call when the results are ready, or poll the [get a prediction](#predictions.get) endpoint until it has finished.\n\nInput and output (including any files) will be automatically deleted after an hour, so you must save a copy of any files in the output if you'd like to continue using them.\n\nOutput files are served by `replicate.delivery` and its subdomains. If you use an allow list of external domains for your assets, add `replicate.delivery` and `*.replicate.delivery` to it.\n"
+      description: "Create a prediction for the deployment and inputs you provide.\n\nExample cURL request:\n\n```console\ncurl -s -X POST -H 'Prefer: wait' \\\n  -d '{\"input\": {\"prompt\": \"A photo of a bear riding a bicycle over the moon\"}}' \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  -H 'Content-Type: application/json' \\\n  https://api.replicate.com/v1/deployments/acme/my-app-image-generator/predictions\n```\n\nThe request will wait up to 60 seconds for the model to run. If this time is exceeded the prediction will be returned in a `\"starting\"` state and need to be retrieved using the `predictions.get` endpiont.\n\nFor a complete overview of the `deployments.predictions.create` API check out our documentation on [creating a prediction](https://replicate.com/docs/topics/predictions/create-a-prediction) which covers a variety of use cases.\n"
       operationId: deployments.predictions.create
       parameters:
         - name: deployment_owner
@@ -459,14 +459,17 @@ paths:
           required: true
           schema:
             type: string
+        - $ref: '#/components/parameters/prefer_header'
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/prediction_request'
       responses:
-        '200':
-          description: Success
+        '201':
+          description: 'Prediction has been created. If the `Prefer: wait` header is provided it will contain the final output.'
+        '202':
+          description: Prediction has been created but does not yet have all outputs
   /hardware:
     get:
       summary: List available hardware for models
@@ -589,7 +592,7 @@ paths:
   '/models/{model_owner}/{model_name}/predictions':
     post:
       summary: Create a prediction using an official model
-      description: "Start a new prediction for an official model using the inputs you provide.\n\nExample request body:\n\n```json\n{\n  \"input\": {\n    \"prompt\": \"Write a short poem about the weather.\"\n  }\n}\n```\n\nExample cURL request:\n\n```console\ncurl -s -X POST \\\n  -d '{\"input\": {\"prompt\": \"Write a short poem about the weather.\"}}' \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  -H 'Content-Type: application/json' \\\n  https://api.replicate.com/v1/models/meta/meta-llama-3-70b-instruct/predictions\n```\n\nThe response will be the prediction object:\n\n```json\n{\n  \"id\": \"25s2s4n7rdrgg0cf1httb3myk0\",\n  \"model\": \"replicate-internal/llama3-70b-chat-vllm-unquantized\",\n  \"version\": \"dp-cf04fe09351e25db628e8b6181276547\",\n  \"input\": {\n    \"prompt\": \"Write a short poem about the weather.\"\n  },\n  \"logs\": \"\",\n  \"error\": null,\n  \"status\": \"starting\",\n  \"created_at\": \"2024-04-23T19:36:28.355Z\",\n  \"urls\": {\n    \"cancel\": \"https://api.replicate.com/v1/predictions/25s2s4n7rdrgg0cf1httb3myk0/cancel\",\n    \"get\": \"https://api.replicate.com/v1/predictions/25s2s4n7rdrgg0cf1httb3myk0\"\n  }\n}\n```\n\nAs models can take several seconds or more to run, the output will not be available immediately. To get the final result of the prediction you should either provide a `webhook` HTTPS URL for us to call when the results are ready, or poll the [get a prediction](#predictions.get) endpoint until it has finished.\n\nAll input parameters, output values, and logs are automatically removed after an hour, by default, for predictions created through the API.\n\nOutput files are served by `replicate.delivery` and its subdomains. If you use an allow list of external domains for your assets, add `replicate.delivery` and `*.replicate.delivery` to it.\n"
+      description: "Create a prediction for the deployment and inputs you provide.\n\nExample cURL request:\n\n```console\ncurl -s -X POST -H 'Prefer: wait' \\\n  -d '{\"input\": {\"prompt\": \"Write a short poem about the weather.\"}}' \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  -H 'Content-Type: application/json' \\\n  https://api.replicate.com/v1/models/meta/meta-llama-3-70b-instruct/predictions\n```\n\nThe request will wait up to 60 seconds for the model to run. If this time is exceeded the prediction will be returned in a `\"starting\"` state and need to be retrieved using the `predictions.get` endpiont.\n\nFor a complete overview of the `deployments.predictions.create` API check out our documentation on [creating a prediction](https://replicate.com/docs/topics/predictions/create-a-prediction) which covers a variety of use cases.\n"
       operationId: models.predictions.create
       parameters:
         - name: model_owner
@@ -604,12 +607,17 @@ paths:
           required: true
           schema:
             type: string
+        - $ref: '#/components/parameters/prefer_header'
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/prediction_request'
       responses:
+        '201':
+          description: 'Prediction has been created. If the `Prefer: wait` header is provided it will contain the final output.'
+        '202':
+          description: Prediction has been created but does not yet have all outputs
         '200':
           description: Successful
           content:
@@ -732,16 +740,20 @@ paths:
           description: Success
     post:
       summary: Create a prediction
-      description: "Start a new prediction for the model version and inputs you provide.\n\nExample request body:\n\n```json\n{\n  \"version\": \"5c7d5dc6dd8bf75c1acaa8565735e7986bc5b66206b55cca93cb72c9bf15ccaa\",\n  \"input\": {\n    \"text\": \"Alice\"\n  }\n}\n```\n\nExample cURL request:\n\n```console\ncurl -s -X POST \\\n  -d '{\"version\": \"5c7d5dc6dd8bf75c1acaa8565735e7986bc5b66206b55cca93cb72c9bf15ccaa\", \"input\": {\"text\": \"Alice\"}}' \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  -H 'Content-Type: application/json' \\\n  https://api.replicate.com/v1/predictions\n```\n\nThe response will be the prediction object:\n\n```json\n{\n  \"id\": \"gm3qorzdhgbfurvjtvhg6dckhu\",\n  \"model\": \"replicate/hello-world\",\n  \"version\": \"5c7d5dc6dd8bf75c1acaa8565735e7986bc5b66206b55cca93cb72c9bf15ccaa\",\n  \"input\": {\n    \"text\": \"Alice\"\n  },\n  \"output\": null,\n  \"logs\": \"\",\n  \"error\": null,\n  \"status\": \"starting\",\n  \"created_at\": \"2023-09-08T16:19:34.765994657Z\",\n  \"urls\": {\n    \"cancel\": \"https://api.replicate.com/v1/predictions/gm3qorzdhgbfurvjtvhg6dckhu/cancel\",\n    \"get\": \"https://api.replicate.com/v1/predictions/gm3qorzdhgbfurvjtvhg6dckhu\"\n  }\n}\n```\n\nAs models can take several seconds or more to run, the output will not be available immediately. To get the final result of the prediction you should either provide a `webhook` HTTPS URL for us to call when the results are ready, or poll the [get a prediction](#predictions.get) endpoint until it has finished.\n\nInput and output (including any files) will be automatically deleted after an hour, so you must save a copy of any files in the output if you'd like to continue using them.\n\nOutput files are served by `replicate.delivery` and its subdomains. If you use an allow list of external domains for your assets, add `replicate.delivery` and `*.replicate.delivery` to it.\n"
+      description: "Create a prediction for the model version and inputs you provide.\n\nExample cURL request:\n\n```console\ncurl -s -X POST -H 'Prefer: wait' \\\n  -d '{\"version\": \"5c7d5dc6dd8bf75c1acaa8565735e7986bc5b66206b55cca93cb72c9bf15ccaa\", \"input\": {\"text\": \"Alice\"}}' \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  -H 'Content-Type: application/json' \\\n  https://api.replicate.com/v1/predictions\n```\n\nThe request will wait up to 60 seconds for the model to run. If this time is exceeded the prediction will be returned in a `\"starting\"` state and need to be retrieved using the `predictions.get` endpiont.\n\nFor a complete overview of the `predictions.create` API check out our documentation on [creating a prediction](https://replicate.com/docs/topics/predictions/create-a-prediction) which covers a variety of use cases.\n"
       operationId: predictions.create
+      parameters:
+        - $ref: '#/components/parameters/prefer_header'
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/version_prediction_request'
       responses:
-        '200':
-          description: Success
+        '201':
+          description: 'Prediction has been created. If the `Prefer: wait` header is provided it will contain the final output.'
+        '202':
+          description: Prediction has been created but does not yet have all outputs
   '/predictions/{prediction_id}':
     get:
       summary: Get a prediction
@@ -985,6 +997,13 @@ components:
         version:
           type: string
           format: string
+  parameters:
+    prefer_header:
+      name: Prefer
+      in: header
+      description: "When you provide the `Prefer: wait` header, the request will block and wait up to 60 seconds for the model to finish generating output. The output will be included in the `output` field of the prediction response, so you don't need to use webhooks or polling to retrieve it.\n\nYou can specify a shorter timeout duration if needed. For example, `Prefer: wait=5` will wait for 5 seconds instead of the default 60 seconds.\n\nIf the model doesn't finish within the specified duration, the request will return the incomplete prediction object with status set to `starting` or `processing`. You can then fetch the prediction again via the URL provided in the `Location` header, or the `urls.get` field in the JSON response. Even if the timeout is exceeded, the prediction will continue processing in the background.\n\nThe `Prefer` header is not enabled by default. If you don't include this header in your request, the response will immediately return the prediction in a `starting` state.\n"
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http
