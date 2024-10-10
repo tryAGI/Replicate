@@ -1001,9 +1001,11 @@ components:
     prefer_header:
       name: Prefer
       in: header
-      description: "When you provide the `Prefer: wait` header, the request will block and wait up to 60 seconds for the model to finish generating output. The output will be included in the `output` field of the prediction response, so you don't need to use webhooks or polling to retrieve it.\n\nYou can specify a shorter timeout duration if needed. For example, `Prefer: wait=5` will wait for 5 seconds instead of the default 60 seconds.\n\nIf the model doesn't finish within the specified duration, the request will return the incomplete prediction object with status set to `starting` or `processing`. You can then fetch the prediction again via the URL provided in the `Location` header, or the `urls.get` field in the JSON response. Even if the timeout is exceeded, the prediction will continue processing in the background.\n\nThe `Prefer` header is not enabled by default. If you don't include this header in your request, the response will immediately return the prediction in a `starting` state.\n"
+      description: "Leave the request open and wait for the model to finish generating output. Set to `wait=n` where n is a number of seconds between 1 and 60.\n\nSee https://replicate.com/docs/topics/predictions/create-a-prediction#sync-mode for more information."
       schema:
+        pattern: '^wait(=([1-9]|[1-9][0-9]|60))?$'
         type: string
+        example: wait=5
   securitySchemes:
     bearerAuth:
       type: http
