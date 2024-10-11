@@ -95,7 +95,7 @@ namespace Replicate
         global::System.Threading.Tasks.Task DeploymentsPredictionsCreateAsync(
             string deploymentOwner,
             string deploymentName,
-            global::Replicate.PredictionRequestInput input,
+            object input,
             string? prefer = default,
             bool? stream = default,
             string? webhook = default,

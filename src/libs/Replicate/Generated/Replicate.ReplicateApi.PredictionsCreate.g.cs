@@ -173,7 +173,7 @@ namespace Replicate
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task PredictionsCreateAsync(
-            global::Replicate.VersionPredictionRequestInput input,
+            object input,
             string version,
             string? prefer = default,
             bool? stream = default,
