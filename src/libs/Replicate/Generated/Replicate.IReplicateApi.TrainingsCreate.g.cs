@@ -143,7 +143,7 @@ namespace Replicate
             string modelName,
             string versionId,
             string destination,
-            global::Replicate.TrainingRequestInput input,
+            object input,
             string? webhook = default,
             global::System.Collections.Generic.IList<global::Replicate.TrainingRequestWebhookEventsFilterItem>? webhookEventsFilter = default,
             global::System.Threading.CancellationToken cancellationToken = default);

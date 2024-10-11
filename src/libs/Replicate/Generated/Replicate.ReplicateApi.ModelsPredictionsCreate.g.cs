@@ -213,7 +213,7 @@ namespace Replicate
         public async global::System.Threading.Tasks.Task<global::Replicate.PredictionResponse> ModelsPredictionsCreateAsync(
             string modelOwner,
             string modelName,
-            global::Replicate.PredictionRequestInput input,
+            object input,
             string? prefer = default,
             bool? stream = default,
             string? webhook = default,

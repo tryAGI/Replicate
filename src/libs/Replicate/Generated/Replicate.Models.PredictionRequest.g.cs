@@ -22,7 +22,7 @@ namespace Replicate
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Replicate.PredictionRequestInput Input { get; set; }
+        public required object Input { get; set; }
 
         /// <summary>
         /// **This field is deprecated.**<br/>
