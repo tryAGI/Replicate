@@ -112,7 +112,7 @@ namespace Replicate
             }
 
             return
-                global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::Replicate.AccountGetResponse), JsonSerializerContext) as global::Replicate.AccountGetResponse ??
+                global::Replicate.AccountGetResponse.FromJson(__content, JsonSerializerContext) ??
                 throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
         }
     }

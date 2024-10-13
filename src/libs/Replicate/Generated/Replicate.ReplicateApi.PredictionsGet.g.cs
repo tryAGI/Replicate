@@ -147,7 +147,7 @@ namespace Replicate
             }
 
             return
-                global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::Replicate.PredictionResponse), JsonSerializerContext) as global::Replicate.PredictionResponse ??
+                global::Replicate.PredictionResponse.FromJson(__content, JsonSerializerContext) ??
                 throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
         }
     }
