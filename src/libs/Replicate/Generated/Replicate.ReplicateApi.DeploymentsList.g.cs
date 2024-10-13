@@ -133,7 +133,7 @@ namespace Replicate
             }
 
             return
-                global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::Replicate.DeploymentsListResponse), JsonSerializerContext) as global::Replicate.DeploymentsListResponse ??
+                global::Replicate.DeploymentsListResponse.FromJson(__content, JsonSerializerContext) ??
                 throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
         }
     }
