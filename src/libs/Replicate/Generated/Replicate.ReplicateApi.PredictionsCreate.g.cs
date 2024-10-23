@@ -46,39 +46,39 @@ namespace Replicate
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
 
             PrepareArguments(
-                client: _httpClient);
+                client: HttpClient);
             PreparePredictionsCreateArguments(
-                httpClient: _httpClient,
+                httpClient: HttpClient,
                 prefer: ref prefer,
                 request: request);
 
             var __pathBuilder = new PathBuilder(
                 path: "/predictions",
-                baseUri: _httpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
-            using var httpRequest = new global::System.Net.Http.HttpRequestMessage(
+            using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
                 requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 
-            foreach (var _authorization in _authorizations)
+            foreach (var __authorization in Authorizations)
             {
-                if (_authorization.Type == "Http" ||
-                    _authorization.Type == "OAuth2")
+                if (__authorization.Type == "Http" ||
+                    __authorization.Type == "OAuth2")
                 {
-                    httpRequest.Headers.Authorization = new global::System.Net.Http.Headers.AuthenticationHeaderValue(
-                        scheme: _authorization.Name,
-                        parameter: _authorization.Value);
+                    __httpRequest.Headers.Authorization = new global::System.Net.Http.Headers.AuthenticationHeaderValue(
+                        scheme: __authorization.Name,
+                        parameter: __authorization.Value);
                 }
-                else if (_authorization.Type == "ApiKey" &&
-                         _authorization.Location == "Header")
+                else if (__authorization.Type == "ApiKey" &&
+                         __authorization.Location == "Header")
                 {
-                    httpRequest.Headers.Add(_authorization.Name, _authorization.Value);
+                    __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 }
             }
 
             if (prefer != default)
             {
-                httpRequest.Headers.TryAddWithoutValidation("Prefer", prefer.ToString());
+                __httpRequest.Headers.TryAddWithoutValidation("Prefer", prefer.ToString());
             }
 
             var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
@@ -86,29 +86,29 @@ namespace Replicate
                 content: __httpRequestContentBody,
                 encoding: global::System.Text.Encoding.UTF8,
                 mediaType: "application/json");
-            httpRequest.Content = __httpRequestContent;
+            __httpRequest.Content = __httpRequestContent;
 
             PrepareRequest(
-                client: _httpClient,
-                request: httpRequest);
+                client: HttpClient,
+                request: __httpRequest);
             PreparePredictionsCreateRequest(
-                httpClient: _httpClient,
-                httpRequestMessage: httpRequest,
+                httpClient: HttpClient,
+                httpRequestMessage: __httpRequest,
                 prefer: prefer,
                 request: request);
 
-            using var response = await _httpClient.SendAsync(
-                request: httpRequest,
+            using var __response = await HttpClient.SendAsync(
+                request: __httpRequest,
                 completionOption: global::System.Net.Http.HttpCompletionOption.ResponseContentRead,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
 
             ProcessResponse(
-                client: _httpClient,
-                response: response);
+                client: HttpClient,
+                response: __response);
             ProcessPredictionsCreateResponse(
-                httpClient: _httpClient,
-                httpResponseMessage: response);
-            response.EnsureSuccessStatusCode();
+                httpClient: HttpClient,
+                httpResponseMessage: __response);
+            __response.EnsureSuccessStatusCode();
         }
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace Replicate
             global::System.Collections.Generic.IList<global::Replicate.VersionPredictionRequestWebhookEventsFilterItem>? webhookEventsFilter = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var request = new global::Replicate.VersionPredictionRequest
+            var __request = new global::Replicate.VersionPredictionRequest
             {
                 Input = input,
                 Stream = stream,
@@ -192,7 +192,7 @@ namespace Replicate
 
             await PredictionsCreateAsync(
                 prefer: prefer,
-                request: request,
+                request: __request,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
