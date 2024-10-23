@@ -14,8 +14,8 @@ namespace Replicate
         {
             apiKey = apiKey ?? throw new global::System.ArgumentNullException(nameof(apiKey));
 
-            _authorizations.Clear();
-            _authorizations.Add(new global::Replicate.EndPointAuthorization
+            Authorizations.Clear();
+            Authorizations.Add(new global::Replicate.EndPointAuthorization
             {
                 Type = "Http",
                 Location = "Header",
