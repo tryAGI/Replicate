@@ -36,7 +36,7 @@ namespace Replicate
         /// </summary>
         /// <param name="collectionSlug"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
+        /// <exception cref="global::Replicate.ApiException"></exception>
         public async global::System.Threading.Tasks.Task CollectionsGetAsync(
             string collectionSlug,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -90,7 +90,23 @@ namespace Replicate
             ProcessCollectionsGetResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
-            __response.EnsureSuccessStatusCode();
+            try
+            {
+                __response.EnsureSuccessStatusCode();
+            }
+            catch (global::System.Net.Http.HttpRequestException __ex)
+            {
+                throw new global::Replicate.ApiException(
+                    message: __response.ReasonPhrase ?? string.Empty,
+                    innerException: __ex,
+                    statusCode: __response.StatusCode)
+                {
+                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                        __response.Headers,
+                        h => h.Key,
+                        h => h.Value),
+                };
+            }
         }
     }
 }

@@ -73,91 +73,64 @@ namespace Replicate
         [global::System.Text.Json.Serialization.JsonExtensionData]
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
-
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
+        /// Initializes a new instance of the <see cref="ModelsCreateRequest" /> class.
         /// </summary>
-        public string ToJson(
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
+        /// <param name="coverImageUrl">
+        /// A URL for the model's cover image. This should be an image file.
+        /// </param>
+        /// <param name="description">
+        /// A description of the model.
+        /// </param>
+        /// <param name="githubUrl">
+        /// A URL for the model's source code on GitHub.
+        /// </param>
+        /// <param name="hardware">
+        /// The SKU for the hardware used to run the model. Possible values can be retrieved from the `hardware.list` endpoint.
+        /// </param>
+        /// <param name="licenseUrl">
+        /// A URL for the model's license.
+        /// </param>
+        /// <param name="name">
+        /// The name of the model. This must be unique among all models owned by the user or organization.
+        /// </param>
+        /// <param name="owner">
+        /// The name of the user or organization that will own the model. This must be the same as the user or organization that is making the API request. In other words, the API token used in the request must belong to this user or organization.
+        /// </param>
+        /// <param name="paperUrl">
+        /// A URL for the model's paper.
+        /// </param>
+        /// <param name="visibility">
+        /// Whether the model should be public or private. A public model can be viewed and run by anyone, whereas a private model can be viewed and run only by the user or organization members that own the model.
+        /// </param>
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+        public ModelsCreateRequest(
+            string hardware,
+            string name,
+            string owner,
+            global::Replicate.ModelsCreateRequestVisibility visibility,
+            string? coverImageUrl,
+            string? description,
+            string? githubUrl,
+            string? licenseUrl,
+            string? paperUrl)
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                this.GetType(),
-                jsonSerializerContext);
+            this.Hardware = hardware ?? throw new global::System.ArgumentNullException(nameof(hardware));
+            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+            this.Owner = owner ?? throw new global::System.ArgumentNullException(nameof(owner));
+            this.Visibility = visibility;
+            this.CoverImageUrl = coverImageUrl;
+            this.Description = description;
+            this.GithubUrl = githubUrl;
+            this.LicenseUrl = licenseUrl;
+            this.PaperUrl = paperUrl;
         }
 
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerOptions.
+        /// Initializes a new instance of the <see cref="ModelsCreateRequest" /> class.
         /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public string ToJson(
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
+        public ModelsCreateRequest()
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                jsonSerializerOptions);
         }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerContext.
-        /// </summary>
-        public static global::Replicate.ModelsCreateRequest? FromJson(
-            string json,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize(
-                json,
-                typeof(global::Replicate.ModelsCreateRequest),
-                jsonSerializerContext) as global::Replicate.ModelsCreateRequest;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::Replicate.ModelsCreateRequest? FromJson(
-            string json,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Replicate.ModelsCreateRequest>(
-                json,
-                jsonSerializerOptions);
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerContext.
-        /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Replicate.ModelsCreateRequest?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
-                jsonStream,
-                typeof(global::Replicate.ModelsCreateRequest),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Replicate.ModelsCreateRequest;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::System.Threading.Tasks.ValueTask<global::Replicate.ModelsCreateRequest?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Replicate.ModelsCreateRequest?>(
-                jsonStream,
-                jsonSerializerOptions);
-        }
-
     }
 }
