@@ -146,12 +146,10 @@ namespace Replicate
                     };
                 }
 
-                using var __responseStream = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-
-                var __responseValue = await global::System.Text.Json.JsonSerializer.DeserializeAsync(__responseStream, typeof(global::System.Collections.Generic.IList<global::Replicate.HardwareListResponseItem>), JsonSerializerContext).ConfigureAwait(false) as global::System.Collections.Generic.IList<global::Replicate.HardwareListResponseItem>;
+                using var __content = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
 
                 return
-                    __responseValue ??
+                    await global::System.Text.Json.JsonSerializer.DeserializeAsync(__content, typeof(global::System.Collections.Generic.IList<global::Replicate.HardwareListResponseItem>), JsonSerializerContext).ConfigureAwait(false) as global::System.Collections.Generic.IList<global::Replicate.HardwareListResponseItem> ??
                     throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }
