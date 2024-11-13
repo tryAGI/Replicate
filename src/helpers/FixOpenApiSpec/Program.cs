@@ -1,16 +1,18 @@
 using System.Diagnostics.CodeAnalysis;
+using AutoSDK.Helpers;
 using Microsoft.OpenApi;
 using Microsoft.OpenApi.Extensions;using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Readers;
 
 var path = args[0];
-var text = await File.ReadAllTextAsync(path);
+var jsonOrYaml = await File.ReadAllTextAsync(path);
 
-text = text
-        .Replace("\"openapi\":\"3.1.0\"", "\"openapi\":\"3.0.1\"")
-    ;
+if (OpenApi31Support.IsOpenApi31(jsonOrYaml))
+{
+    jsonOrYaml = OpenApi31Support.ConvertToOpenApi30(jsonOrYaml);
+}
 
-var openApiDocument = new OpenApiStringReader().Read(text, out var diagnostics);
+var openApiDocument = new OpenApiStringReader().Read(jsonOrYaml, out var diagnostics);
 
 openApiDocument.Components.Schemas["prediction_response"] = FromJson(
     /* language=json */
@@ -85,8 +87,8 @@ openApiDocument.Paths["/predictions/{prediction_id}"]
     },
 };
 
-text = openApiDocument.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0);
-_ = new OpenApiStringReader().Read(text, out diagnostics);
+jsonOrYaml = openApiDocument.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0);
+_ = new OpenApiStringReader().Read(jsonOrYaml, out diagnostics);
 
 if (diagnostics.Errors.Count > 0)
 {
@@ -99,7 +101,7 @@ if (diagnostics.Errors.Count > 0)
     Environment.Exit(1);
 }
 
-await File.WriteAllTextAsync(path, text);
+await File.WriteAllTextAsync(path, jsonOrYaml);
 
 static OpenApiSchema FromJson([StringSyntax(StringSyntaxAttribute.Json)] string json)
 {
