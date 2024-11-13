@@ -34,6 +34,11 @@ jobs:
 
       - name: Install dependencies
         run: pip install mkdocs-material
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
         
       - name: Generate docs
         run: dotnet run --project src/helpers/GenerateDocs/GenerateDocs.csproj .
