@@ -6,7 +6,8 @@ namespace Replicate
     {
         /// <summary>
         /// List trainings<br/>
-        /// Get a paginated list of trainings that you've created. This will include trainings created from the API and the website. It will return 100 records per page.<br/>
+        /// Get a paginated list of all trainings created by the user or organization associated with the provided API token.<br/>
+        /// This will include trainings created from the API and the website. It will return 100 records per page.<br/>
         /// Example cURL request:<br/>
         /// ```console<br/>
         /// curl -s \<br/>
