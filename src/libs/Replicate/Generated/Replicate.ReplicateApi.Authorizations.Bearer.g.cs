@@ -5,10 +5,7 @@ namespace Replicate
 {
     public sealed partial class ReplicateApi
     {
-        /// <summary>
-        /// Authorize using bearer authentication.
-        /// </summary>
-        /// <param name="apiKey"></param>
+        /// <inheritdoc/>
         public void AuthorizeUsingBearer(
             string apiKey)
         {
