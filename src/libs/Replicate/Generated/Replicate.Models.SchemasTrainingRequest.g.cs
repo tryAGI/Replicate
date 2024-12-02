@@ -6,7 +6,7 @@ namespace Replicate
     /// <summary>
     /// 
     /// </summary>
-    public sealed partial class TrainingRequest
+    public sealed partial class SchemasTrainingRequest
     {
         /// <summary>
         /// A string representing the desired model to push to in the format `{destination_model_owner}/{destination_model_name}`. This should be an existing model owned by the user or organization making the API request. If the destination is invalid, the server will return an appropriate 4XX response.
@@ -48,7 +48,7 @@ namespace Replicate
         /// Requests for event types `output` and `logs` will be sent at most once every 500ms. If you request `start` and `completed` webhooks, then they'll always be sent regardless of throttling.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("webhook_events_filter")]
-        public global::System.Collections.Generic.IList<global::Replicate.TrainingRequestWebhookEventsFilterItem>? WebhookEventsFilter { get; set; }
+        public global::System.Collections.Generic.IList<global::Replicate.SchemasTrainingRequestWebhookEventsFilterItem>? WebhookEventsFilter { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -57,7 +57,7 @@ namespace Replicate
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TrainingRequest" /> class.
+        /// Initializes a new instance of the <see cref="SchemasTrainingRequest" /> class.
         /// </summary>
         /// <param name="destination">
         /// A string representing the desired model to push to in the format `{destination_model_owner}/{destination_model_name}`. This should be an existing model owned by the user or organization making the API request. If the destination is invalid, the server will return an appropriate 4XX response.
@@ -88,11 +88,11 @@ namespace Replicate
         /// Requests for event types `output` and `logs` will be sent at most once every 500ms. If you request `start` and `completed` webhooks, then they'll always be sent regardless of throttling.
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
-        public TrainingRequest(
+        public SchemasTrainingRequest(
             string destination,
             object input,
             string? webhook,
-            global::System.Collections.Generic.IList<global::Replicate.TrainingRequestWebhookEventsFilterItem>? webhookEventsFilter)
+            global::System.Collections.Generic.IList<global::Replicate.SchemasTrainingRequestWebhookEventsFilterItem>? webhookEventsFilter)
         {
             this.Destination = destination ?? throw new global::System.ArgumentNullException(nameof(destination));
             this.Input = input ?? throw new global::System.ArgumentNullException(nameof(input));
@@ -101,9 +101,9 @@ namespace Replicate
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TrainingRequest" /> class.
+        /// Initializes a new instance of the <see cref="SchemasTrainingRequest" /> class.
         /// </summary>
-        public TrainingRequest()
+        public SchemasTrainingRequest()
         {
         }
     }

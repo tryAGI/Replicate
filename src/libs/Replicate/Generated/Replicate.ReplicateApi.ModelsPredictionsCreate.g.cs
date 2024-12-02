@@ -10,14 +10,14 @@ namespace Replicate
             ref string modelOwner,
             ref string modelName,
             ref string? prefer,
-            global::Replicate.PredictionRequest request);
+            global::Replicate.SchemasPredictionRequest request);
         partial void PrepareModelsPredictionsCreateRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string modelOwner,
             string modelName,
             string? prefer,
-            global::Replicate.PredictionRequest request);
+            global::Replicate.SchemasPredictionRequest request);
         partial void ProcessModelsPredictionsCreateResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -52,7 +52,7 @@ namespace Replicate
         public async global::System.Threading.Tasks.Task<global::Replicate.PredictionResponse> ModelsPredictionsCreateAsync(
             string modelOwner,
             string modelName,
-            global::Replicate.PredictionRequest request,
+            global::Replicate.SchemasPredictionRequest request,
             string? prefer = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -260,10 +260,10 @@ namespace Replicate
             string? prefer = default,
             bool? stream = default,
             string? webhook = default,
-            global::System.Collections.Generic.IList<global::Replicate.PredictionRequestWebhookEventsFilterItem>? webhookEventsFilter = default,
+            global::System.Collections.Generic.IList<global::Replicate.SchemasPredictionRequestWebhookEventsFilterItem>? webhookEventsFilter = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Replicate.PredictionRequest
+            var __request = new global::Replicate.SchemasPredictionRequest
             {
                 Input = input,
                 Stream = stream,

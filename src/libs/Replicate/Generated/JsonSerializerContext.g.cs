@@ -13,12 +13,12 @@ namespace Replicate
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
         Converters = new global::System.Type[] 
         { 
-            typeof(global::Replicate.JsonConverters.PredictionRequestWebhookEventsFilterItemJsonConverter),
-            typeof(global::Replicate.JsonConverters.PredictionRequestWebhookEventsFilterItemNullableJsonConverter),
-            typeof(global::Replicate.JsonConverters.TrainingRequestWebhookEventsFilterItemJsonConverter),
-            typeof(global::Replicate.JsonConverters.TrainingRequestWebhookEventsFilterItemNullableJsonConverter),
-            typeof(global::Replicate.JsonConverters.VersionPredictionRequestWebhookEventsFilterItemJsonConverter),
-            typeof(global::Replicate.JsonConverters.VersionPredictionRequestWebhookEventsFilterItemNullableJsonConverter),
+            typeof(global::Replicate.JsonConverters.SchemasPredictionRequestWebhookEventsFilterItemJsonConverter),
+            typeof(global::Replicate.JsonConverters.SchemasPredictionRequestWebhookEventsFilterItemNullableJsonConverter),
+            typeof(global::Replicate.JsonConverters.SchemasTrainingRequestWebhookEventsFilterItemJsonConverter),
+            typeof(global::Replicate.JsonConverters.SchemasTrainingRequestWebhookEventsFilterItemNullableJsonConverter),
+            typeof(global::Replicate.JsonConverters.SchemasVersionPredictionRequestWebhookEventsFilterItemJsonConverter),
+            typeof(global::Replicate.JsonConverters.SchemasVersionPredictionRequestWebhookEventsFilterItemNullableJsonConverter),
             typeof(global::Replicate.JsonConverters.ModelsCreateRequestVisibilityJsonConverter),
             typeof(global::Replicate.JsonConverters.ModelsCreateRequestVisibilityNullableJsonConverter),
             typeof(global::Replicate.JsonConverters.AccountGetResponseTypeJsonConverter),
