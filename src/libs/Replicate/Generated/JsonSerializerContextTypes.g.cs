@@ -18,7 +18,7 @@ namespace Replicate
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.PredictionRequest? Type0 { get; set; }
+        public global::Replicate.SchemasPredictionRequest? Type0 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -34,35 +34,35 @@ namespace Replicate
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Replicate.PredictionRequestWebhookEventsFilterItem>? Type4 { get; set; }
+        public global::System.Collections.Generic.IList<global::Replicate.SchemasPredictionRequestWebhookEventsFilterItem>? Type4 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.PredictionRequestWebhookEventsFilterItem? Type5 { get; set; }
+        public global::Replicate.SchemasPredictionRequestWebhookEventsFilterItem? Type5 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.TrainingRequest? Type6 { get; set; }
+        public global::Replicate.SchemasTrainingRequest? Type6 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Replicate.TrainingRequestWebhookEventsFilterItem>? Type7 { get; set; }
+        public global::System.Collections.Generic.IList<global::Replicate.SchemasTrainingRequestWebhookEventsFilterItem>? Type7 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.TrainingRequestWebhookEventsFilterItem? Type8 { get; set; }
+        public global::Replicate.SchemasTrainingRequestWebhookEventsFilterItem? Type8 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.VersionPredictionRequest? Type9 { get; set; }
+        public global::Replicate.SchemasVersionPredictionRequest? Type9 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Replicate.VersionPredictionRequestWebhookEventsFilterItem>? Type10 { get; set; }
+        public global::System.Collections.Generic.IList<global::Replicate.SchemasVersionPredictionRequestWebhookEventsFilterItem>? Type10 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.VersionPredictionRequestWebhookEventsFilterItem? Type11 { get; set; }
+        public global::Replicate.SchemasVersionPredictionRequestWebhookEventsFilterItem? Type11 { get; set; }
         /// <summary>
         /// 
         /// </summary>

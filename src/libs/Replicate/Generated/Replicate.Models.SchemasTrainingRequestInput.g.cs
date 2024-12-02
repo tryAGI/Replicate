@@ -6,7 +6,7 @@ namespace Replicate
     /// <summary>
     /// An object containing inputs to the Cog model's `train()` function.
     /// </summary>
-    public sealed partial class TrainingRequestInput
+    public sealed partial class SchemasTrainingRequestInput
     {
 
         /// <summary>
@@ -16,10 +16,10 @@ namespace Replicate
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TrainingRequestInput" /> class.
+        /// Initializes a new instance of the <see cref="SchemasTrainingRequestInput" /> class.
         /// </summary>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
-        public TrainingRequestInput(
+        public SchemasTrainingRequestInput(
  )
         {
         }

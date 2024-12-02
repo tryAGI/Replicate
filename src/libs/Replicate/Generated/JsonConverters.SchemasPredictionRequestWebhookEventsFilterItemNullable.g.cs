@@ -3,10 +3,10 @@
 namespace Replicate.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class TrainingRequestWebhookEventsFilterItemNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Replicate.TrainingRequestWebhookEventsFilterItem?>
+    public sealed class SchemasPredictionRequestWebhookEventsFilterItemNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Replicate.SchemasPredictionRequestWebhookEventsFilterItem?>
     {
         /// <inheritdoc />
-        public override global::Replicate.TrainingRequestWebhookEventsFilterItem? Read(
+        public override global::Replicate.SchemasPredictionRequestWebhookEventsFilterItem? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Replicate.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Replicate.TrainingRequestWebhookEventsFilterItemExtensions.ToEnum(stringValue);
+                        return global::Replicate.SchemasPredictionRequestWebhookEventsFilterItemExtensions.ToEnum(stringValue);
                     }
                     
                     break;
@@ -26,7 +26,7 @@ namespace Replicate.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Replicate.TrainingRequestWebhookEventsFilterItem)numValue;
+                    return (global::Replicate.SchemasPredictionRequestWebhookEventsFilterItem)numValue;
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -38,7 +38,7 @@ namespace Replicate.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Replicate.TrainingRequestWebhookEventsFilterItem? value,
+            global::Replicate.SchemasPredictionRequestWebhookEventsFilterItem? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
@@ -49,7 +49,7 @@ namespace Replicate.JsonConverters
             }
             else
             {
-                writer.WriteStringValue(global::Replicate.TrainingRequestWebhookEventsFilterItemExtensions.ToValueString(value.Value));
+                writer.WriteStringValue(global::Replicate.SchemasPredictionRequestWebhookEventsFilterItemExtensions.ToValueString(value.Value));
             }
         }
     }
