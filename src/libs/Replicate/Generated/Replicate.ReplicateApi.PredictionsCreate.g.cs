@@ -8,12 +8,12 @@ namespace Replicate
         partial void PreparePredictionsCreateArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string? prefer,
-            global::Replicate.VersionPredictionRequest request);
+            global::Replicate.SchemasVersionPredictionRequest request);
         partial void PreparePredictionsCreateRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string? prefer,
-            global::Replicate.VersionPredictionRequest request);
+            global::Replicate.SchemasVersionPredictionRequest request);
         partial void ProcessPredictionsCreateResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -39,7 +39,7 @@ namespace Replicate
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
         public async global::System.Threading.Tasks.Task PredictionsCreateAsync(
-            global::Replicate.VersionPredictionRequest request,
+            global::Replicate.SchemasVersionPredictionRequest request,
             string? prefer = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -198,10 +198,10 @@ namespace Replicate
             string? prefer = default,
             bool? stream = default,
             string? webhook = default,
-            global::System.Collections.Generic.IList<global::Replicate.VersionPredictionRequestWebhookEventsFilterItem>? webhookEventsFilter = default,
+            global::System.Collections.Generic.IList<global::Replicate.SchemasVersionPredictionRequestWebhookEventsFilterItem>? webhookEventsFilter = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Replicate.VersionPredictionRequest
+            var __request = new global::Replicate.SchemasVersionPredictionRequest
             {
                 Input = input,
                 Stream = stream,

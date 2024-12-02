@@ -58,7 +58,7 @@ namespace Replicate
             string modelOwner,
             string modelName,
             string versionId,
-            global::Replicate.TrainingRequest request,
+            global::Replicate.SchemasTrainingRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace Replicate
             string destination,
             object input,
             string? webhook = default,
-            global::System.Collections.Generic.IList<global::Replicate.TrainingRequestWebhookEventsFilterItem>? webhookEventsFilter = default,
+            global::System.Collections.Generic.IList<global::Replicate.SchemasTrainingRequestWebhookEventsFilterItem>? webhookEventsFilter = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

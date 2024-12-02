@@ -15,7 +15,7 @@ namespace Replicate
     /// - you don't want to upload and host the file somewhere<br/>
     /// - you don't need to use the file again (Replicate will not store it)
     /// </summary>
-    public sealed partial class PredictionRequestInput
+    public sealed partial class SchemasVersionPredictionRequestInput
     {
 
         /// <summary>
@@ -25,10 +25,10 @@ namespace Replicate
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PredictionRequestInput" /> class.
+        /// Initializes a new instance of the <see cref="SchemasVersionPredictionRequestInput" /> class.
         /// </summary>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
-        public PredictionRequestInput(
+        public SchemasVersionPredictionRequestInput(
  )
         {
         }

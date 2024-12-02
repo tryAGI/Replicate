@@ -25,7 +25,7 @@ namespace Replicate
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
         global::System.Threading.Tasks.Task PredictionsCreateAsync(
-            global::Replicate.VersionPredictionRequest request,
+            global::Replicate.SchemasVersionPredictionRequest request,
             string? prefer = default,
             global::System.Threading.CancellationToken cancellationToken = default);
 
@@ -96,7 +96,7 @@ namespace Replicate
             string? prefer = default,
             bool? stream = default,
             string? webhook = default,
-            global::System.Collections.Generic.IList<global::Replicate.VersionPredictionRequestWebhookEventsFilterItem>? webhookEventsFilter = default,
+            global::System.Collections.Generic.IList<global::Replicate.SchemasVersionPredictionRequestWebhookEventsFilterItem>? webhookEventsFilter = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
