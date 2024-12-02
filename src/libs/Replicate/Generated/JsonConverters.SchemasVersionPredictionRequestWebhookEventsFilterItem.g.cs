@@ -3,10 +3,10 @@
 namespace Replicate.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class VersionPredictionRequestWebhookEventsFilterItemNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Replicate.VersionPredictionRequestWebhookEventsFilterItem?>
+    public sealed class SchemasVersionPredictionRequestWebhookEventsFilterItemJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Replicate.SchemasVersionPredictionRequestWebhookEventsFilterItem>
     {
         /// <inheritdoc />
-        public override global::Replicate.VersionPredictionRequestWebhookEventsFilterItem? Read(
+        public override global::Replicate.SchemasVersionPredictionRequestWebhookEventsFilterItem Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Replicate.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Replicate.VersionPredictionRequestWebhookEventsFilterItemExtensions.ToEnum(stringValue);
+                        return global::Replicate.SchemasVersionPredictionRequestWebhookEventsFilterItemExtensions.ToEnum(stringValue) ?? default;
                     }
                     
                     break;
@@ -26,7 +26,7 @@ namespace Replicate.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Replicate.VersionPredictionRequestWebhookEventsFilterItem)numValue;
+                    return (global::Replicate.SchemasVersionPredictionRequestWebhookEventsFilterItem)numValue;
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -38,19 +38,12 @@ namespace Replicate.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Replicate.VersionPredictionRequestWebhookEventsFilterItem? value,
+            global::Replicate.SchemasVersionPredictionRequestWebhookEventsFilterItem value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            if (value == null)
-            {
-                writer.WriteNullValue();
-            }
-            else
-            {
-                writer.WriteStringValue(global::Replicate.VersionPredictionRequestWebhookEventsFilterItemExtensions.ToValueString(value.Value));
-            }
+            writer.WriteStringValue(global::Replicate.SchemasVersionPredictionRequestWebhookEventsFilterItemExtensions.ToValueString(value));
         }
     }
 }
