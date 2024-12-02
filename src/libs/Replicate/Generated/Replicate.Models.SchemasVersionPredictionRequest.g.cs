@@ -6,7 +6,7 @@ namespace Replicate
     /// <summary>
     /// 
     /// </summary>
-    public sealed partial class PredictionRequest
+    public sealed partial class SchemasVersionPredictionRequest
     {
         /// <summary>
         /// The model's input as a JSON object. The input schema depends on what model you are running. To see the available inputs, click the "API" tab on the model you are running or [get the model version](#models.versions.get) and look at its `openapi_schema` property. For example, [stability-ai/sdxl](https://replicate.com/stability-ai/sdxl) takes `prompt` as an input.<br/>
@@ -33,6 +33,13 @@ namespace Replicate
         public bool? Stream { get; set; }
 
         /// <summary>
+        /// The ID of the model version that you want to run.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("version")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Version { get; set; }
+
+        /// <summary>
         /// An HTTPS URL for receiving a webhook when the prediction has new output. The webhook will be a POST request where the request body is the same as the response body of the [get prediction](#predictions.get) operation. If there are network problems, we will retry the webhook a few times, so make sure it can be safely called more than once. Replicate will not follow redirects when sending webhook requests to your service, so be sure to specify a URL that will resolve without redirecting.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("webhook")]
@@ -47,6 +54,7 @@ namespace Replicate
         /// For example, if you only wanted requests to be sent at the start and end of the prediction, you would provide:<br/>
         /// ```json<br/>
         /// {<br/>
+        ///   "version": "5c7d5dc6dd8bf75c1acaa8565735e7986bc5b66206b55cca93cb72c9bf15ccaa",<br/>
         ///   "input": {<br/>
         ///     "text": "Alice"<br/>
         ///   },<br/>
@@ -57,7 +65,7 @@ namespace Replicate
         /// Requests for event types `output` and `logs` will be sent at most once every 500ms. If you request `start` and `completed` webhooks, then they'll always be sent regardless of throttling.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("webhook_events_filter")]
-        public global::System.Collections.Generic.IList<global::Replicate.PredictionRequestWebhookEventsFilterItem>? WebhookEventsFilter { get; set; }
+        public global::System.Collections.Generic.IList<global::Replicate.SchemasVersionPredictionRequestWebhookEventsFilterItem>? WebhookEventsFilter { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -66,7 +74,7 @@ namespace Replicate
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PredictionRequest" /> class.
+        /// Initializes a new instance of the <see cref="SchemasVersionPredictionRequest" /> class.
         /// </summary>
         /// <param name="input">
         /// The model's input as a JSON object. The input schema depends on what model you are running. To see the available inputs, click the "API" tab on the model you are running or [get the model version](#models.versions.get) and look at its `openapi_schema` property. For example, [stability-ai/sdxl](https://replicate.com/stability-ai/sdxl) takes `prompt` as an input.<br/>
@@ -85,6 +93,9 @@ namespace Replicate
         /// Request a URL to receive streaming output using [server-sent events (SSE)](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events).<br/>
         /// This field is no longer needed as the returned prediction will always have a `stream` entry in its `url` property if the model supports streaming.
         /// </param>
+        /// <param name="version">
+        /// The ID of the model version that you want to run.
+        /// </param>
         /// <param name="webhook">
         /// An HTTPS URL for receiving a webhook when the prediction has new output. The webhook will be a POST request where the request body is the same as the response body of the [get prediction](#predictions.get) operation. If there are network problems, we will retry the webhook a few times, so make sure it can be safely called more than once. Replicate will not follow redirects when sending webhook requests to your service, so be sure to specify a URL that will resolve without redirecting.
         /// </param>
@@ -97,6 +108,7 @@ namespace Replicate
         /// For example, if you only wanted requests to be sent at the start and end of the prediction, you would provide:<br/>
         /// ```json<br/>
         /// {<br/>
+        ///   "version": "5c7d5dc6dd8bf75c1acaa8565735e7986bc5b66206b55cca93cb72c9bf15ccaa",<br/>
         ///   "input": {<br/>
         ///     "text": "Alice"<br/>
         ///   },<br/>
@@ -107,22 +119,24 @@ namespace Replicate
         /// Requests for event types `output` and `logs` will be sent at most once every 500ms. If you request `start` and `completed` webhooks, then they'll always be sent regardless of throttling.
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
-        public PredictionRequest(
+        public SchemasVersionPredictionRequest(
             object input,
+            string version,
             bool? stream,
             string? webhook,
-            global::System.Collections.Generic.IList<global::Replicate.PredictionRequestWebhookEventsFilterItem>? webhookEventsFilter)
+            global::System.Collections.Generic.IList<global::Replicate.SchemasVersionPredictionRequestWebhookEventsFilterItem>? webhookEventsFilter)
         {
             this.Input = input ?? throw new global::System.ArgumentNullException(nameof(input));
+            this.Version = version ?? throw new global::System.ArgumentNullException(nameof(version));
             this.Stream = stream;
             this.Webhook = webhook;
             this.WebhookEventsFilter = webhookEventsFilter;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PredictionRequest" /> class.
+        /// Initializes a new instance of the <see cref="SchemasVersionPredictionRequest" /> class.
         /// </summary>
-        public PredictionRequest()
+        public SchemasVersionPredictionRequest()
         {
         }
     }

@@ -10,14 +10,14 @@ namespace Replicate
             ref string deploymentOwner,
             ref string deploymentName,
             ref string? prefer,
-            global::Replicate.PredictionRequest request);
+            global::Replicate.SchemasPredictionRequest request);
         partial void PrepareDeploymentsPredictionsCreateRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string deploymentOwner,
             string deploymentName,
             string? prefer,
-            global::Replicate.PredictionRequest request);
+            global::Replicate.SchemasPredictionRequest request);
         partial void ProcessDeploymentsPredictionsCreateResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -47,7 +47,7 @@ namespace Replicate
         public async global::System.Threading.Tasks.Task DeploymentsPredictionsCreateAsync(
             string deploymentOwner,
             string deploymentName,
-            global::Replicate.PredictionRequest request,
+            global::Replicate.SchemasPredictionRequest request,
             string? prefer = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -209,10 +209,10 @@ namespace Replicate
             string? prefer = default,
             bool? stream = default,
             string? webhook = default,
-            global::System.Collections.Generic.IList<global::Replicate.PredictionRequestWebhookEventsFilterItem>? webhookEventsFilter = default,
+            global::System.Collections.Generic.IList<global::Replicate.SchemasPredictionRequestWebhookEventsFilterItem>? webhookEventsFilter = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Replicate.PredictionRequest
+            var __request = new global::Replicate.SchemasPredictionRequest
             {
                 Input = input,
                 Stream = stream,

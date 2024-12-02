@@ -29,7 +29,7 @@ namespace Replicate
         global::System.Threading.Tasks.Task DeploymentsPredictionsCreateAsync(
             string deploymentOwner,
             string deploymentName,
-            global::Replicate.PredictionRequest request,
+            global::Replicate.SchemasPredictionRequest request,
             string? prefer = default,
             global::System.Threading.CancellationToken cancellationToken = default);
 
@@ -99,7 +99,7 @@ namespace Replicate
             string? prefer = default,
             bool? stream = default,
             string? webhook = default,
-            global::System.Collections.Generic.IList<global::Replicate.PredictionRequestWebhookEventsFilterItem>? webhookEventsFilter = default,
+            global::System.Collections.Generic.IList<global::Replicate.SchemasPredictionRequestWebhookEventsFilterItem>? webhookEventsFilter = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

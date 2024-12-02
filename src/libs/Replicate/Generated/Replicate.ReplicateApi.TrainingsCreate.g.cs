@@ -10,14 +10,14 @@ namespace Replicate
             ref string modelOwner,
             ref string modelName,
             ref string versionId,
-            global::Replicate.TrainingRequest request);
+            global::Replicate.SchemasTrainingRequest request);
         partial void PrepareTrainingsCreateRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string modelOwner,
             string modelName,
             string versionId,
-            global::Replicate.TrainingRequest request);
+            global::Replicate.SchemasTrainingRequest request);
         partial void ProcessTrainingsCreateResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -76,7 +76,7 @@ namespace Replicate
             string modelOwner,
             string modelName,
             string versionId,
-            global::Replicate.TrainingRequest request,
+            global::Replicate.SchemasTrainingRequest request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -249,10 +249,10 @@ namespace Replicate
             string destination,
             object input,
             string? webhook = default,
-            global::System.Collections.Generic.IList<global::Replicate.TrainingRequestWebhookEventsFilterItem>? webhookEventsFilter = default,
+            global::System.Collections.Generic.IList<global::Replicate.SchemasTrainingRequestWebhookEventsFilterItem>? webhookEventsFilter = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Replicate.TrainingRequest
+            var __request = new global::Replicate.SchemasTrainingRequest
             {
                 Destination = destination,
                 Input = input,

@@ -2,7 +2,7 @@
 
 namespace Replicate
 {
-    public sealed partial class PredictionRequestInput
+    public sealed partial class SchemasPredictionRequest
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -34,14 +34,14 @@ namespace Replicate
         /// <summary>
         /// Deserializes a JSON string using the provided JsonSerializerContext.
         /// </summary>
-        public static global::Replicate.PredictionRequestInput? FromJson(
+        public static global::Replicate.SchemasPredictionRequest? FromJson(
             string json,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
-                typeof(global::Replicate.PredictionRequestInput),
-                jsonSerializerContext) as global::Replicate.PredictionRequestInput;
+                typeof(global::Replicate.SchemasPredictionRequest),
+                jsonSerializerContext) as global::Replicate.SchemasPredictionRequest;
         }
 
         /// <summary>
@@ -51,11 +51,11 @@ namespace Replicate
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::Replicate.PredictionRequestInput? FromJson(
+        public static global::Replicate.SchemasPredictionRequest? FromJson(
             string json,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Replicate.PredictionRequestInput>(
+            return global::System.Text.Json.JsonSerializer.Deserialize<global::Replicate.SchemasPredictionRequest>(
                 json,
                 jsonSerializerOptions);
         }
@@ -63,14 +63,14 @@ namespace Replicate
         /// <summary>
         /// Deserializes a JSON stream using the provided JsonSerializerContext.
         /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Replicate.PredictionRequestInput?> FromJsonStreamAsync(
+        public static async global::System.Threading.Tasks.ValueTask<global::Replicate.SchemasPredictionRequest?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
-                typeof(global::Replicate.PredictionRequestInput),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Replicate.PredictionRequestInput;
+                typeof(global::Replicate.SchemasPredictionRequest),
+                jsonSerializerContext).ConfigureAwait(false)) as global::Replicate.SchemasPredictionRequest;
         }
 
         /// <summary>
@@ -80,11 +80,11 @@ namespace Replicate
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::System.Threading.Tasks.ValueTask<global::Replicate.PredictionRequestInput?> FromJsonStreamAsync(
+        public static global::System.Threading.Tasks.ValueTask<global::Replicate.SchemasPredictionRequest?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Replicate.PredictionRequestInput?>(
+            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Replicate.SchemasPredictionRequest?>(
                 jsonStream,
                 jsonSerializerOptions);
         }
