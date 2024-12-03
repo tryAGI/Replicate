@@ -8,18 +8,15 @@ public partial class Tests
         using var api = GetAuthorizedApi();
         
         var response = await api.ModelsPredictionsCreateAsync(
-            input: new PredictionRequestInput
+            input: new Dictionary<string, object>
             {
-                AdditionalProperties = new Dictionary<string, object>
-                {
-                    ["seed"] = Random.Shared.Next(0, 1000000),
-                    ["steps"] = 25,
-                    ["prompt"] = "a female, european, young adult, fit body, wavy acid orange hair, wearing open swimsuit, sea in the background.",
-                    ["guidance"] = 3.5,
-                    ["interval"] = 3,
-                    ["aspect_ratio"] = "16:9",
-                    ["safety_tolerance"] = 5,
-                },
+                ["seed"] = Random.Shared.Next(0, 1000000),
+                ["steps"] = 25,
+                ["prompt"] = "a female, european, young adult, fit body, wavy acid orange hair, wearing open swimsuit, sea in the background.",
+                ["guidance"] = 3.5,
+                ["interval"] = 3,
+                ["aspect_ratio"] = "16:9",
+                ["safety_tolerance"] = 5,
             },
             modelOwner: "black-forest-labs",
             modelName: "flux-pro",
@@ -31,8 +28,9 @@ public partial class Tests
         
         var endResponse = await response.WaitUntilSuccessfulAsync(api);
         
-        Console.WriteLine($@"Seed: {endResponse.Input?.Seed}.
-Image available at:\n{endResponse.Output}");
+        Console.WriteLine($"Seed: {endResponse.Input?.Seed}.");
+        Console.WriteLine("Image available at:");
+        Console.WriteLine(endResponse.Output);
         
         //// ![output](https://raw.githubusercontent.com/tryAGI/Replicate/dd1e5c2cbebc53e9b343f1372e5a660159e79ef3/assets/output.webp)
     }
