@@ -114,35 +114,35 @@ namespace Replicate
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.AccountGetResponse? Type22 { get; set; }
+        public global::System.DateTime? Type22 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.AccountGetResponseType? Type23 { get; set; }
+        public global::Replicate.AccountGetResponse? Type23 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.DeploymentsListResponse? Type24 { get; set; }
+        public global::Replicate.AccountGetResponseType? Type24 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Replicate.DeploymentsListResponseResult>? Type25 { get; set; }
+        public global::Replicate.DeploymentsListResponse? Type25 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.DeploymentsListResponseResult? Type26 { get; set; }
+        public global::System.Collections.Generic.IList<global::Replicate.DeploymentsListResponseResult>? Type26 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.DeploymentsListResponseResultCurrentRelease? Type27 { get; set; }
+        public global::Replicate.DeploymentsListResponseResult? Type27 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.DeploymentsListResponseResultCurrentReleaseConfiguration? Type28 { get; set; }
+        public global::Replicate.DeploymentsListResponseResultCurrentRelease? Type28 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.DateTime? Type29 { get; set; }
+        public global::Replicate.DeploymentsListResponseResultCurrentReleaseConfiguration? Type29 { get; set; }
         /// <summary>
         /// 
         /// </summary>

@@ -54,9 +54,13 @@ namespace Replicate
         /// `version` will be the unique ID of model version used to create the prediction.<br/>
         /// `data_removed` will be `true` if the input and output data has been deleted.
         /// </summary>
+        /// <param name="createdAfter"></param>
+        /// <param name="createdBefore"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
         global::System.Threading.Tasks.Task PredictionsListAsync(
+            global::System.DateTime? createdAfter = default,
+            global::System.DateTime? createdBefore = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
