@@ -6,10 +6,14 @@ namespace Replicate
     public partial class ReplicateApi
     {
         partial void PreparePredictionsListArguments(
-            global::System.Net.Http.HttpClient httpClient);
+            global::System.Net.Http.HttpClient httpClient,
+            ref global::System.DateTime? createdAfter,
+            ref global::System.DateTime? createdBefore);
         partial void PreparePredictionsListRequest(
             global::System.Net.Http.HttpClient httpClient,
-            global::System.Net.Http.HttpRequestMessage httpRequestMessage);
+            global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            global::System.DateTime? createdAfter,
+            global::System.DateTime? createdBefore);
         partial void ProcessPredictionsListResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -64,19 +68,29 @@ namespace Replicate
         /// `version` will be the unique ID of model version used to create the prediction.<br/>
         /// `data_removed` will be `true` if the input and output data has been deleted.
         /// </summary>
+        /// <param name="createdAfter"></param>
+        /// <param name="createdBefore"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
         public async global::System.Threading.Tasks.Task PredictionsListAsync(
+            global::System.DateTime? createdAfter = default,
+            global::System.DateTime? createdBefore = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
             PreparePredictionsListArguments(
-                httpClient: HttpClient);
+                httpClient: HttpClient,
+                createdAfter: ref createdAfter,
+                createdBefore: ref createdBefore);
 
             var __pathBuilder = new PathBuilder(
                 path: "/predictions",
                 baseUri: HttpClient.BaseAddress); 
+            __pathBuilder 
+                .AddOptionalParameter("created_after", createdAfter?.ToString("yyyy-MM-ddTHH:mm:ssZ")) 
+                .AddOptionalParameter("created_before", createdBefore?.ToString("yyyy-MM-ddTHH:mm:ssZ")) 
+                ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -107,7 +121,9 @@ namespace Replicate
                 request: __httpRequest);
             PreparePredictionsListRequest(
                 httpClient: HttpClient,
-                httpRequestMessage: __httpRequest);
+                httpRequestMessage: __httpRequest,
+                createdAfter: createdAfter,
+                createdBefore: createdBefore);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
