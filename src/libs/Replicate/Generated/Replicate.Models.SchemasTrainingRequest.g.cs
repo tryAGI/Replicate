@@ -87,7 +87,9 @@ namespace Replicate
         /// ```<br/>
         /// Requests for event types `output` and `logs` will be sent at most once every 500ms. If you request `start` and `completed` webhooks, then they'll always be sent regardless of throttling.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public SchemasTrainingRequest(
             string destination,
             object input,

@@ -67,7 +67,9 @@ namespace Replicate
         /// <param name="version">
         /// The ID of the model version used in the release.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public DeploymentsGetResponseCurrentRelease(
             global::Replicate.DeploymentsGetResponseCurrentReleaseConfiguration? configuration,
             global::System.DateTime? createdAt,

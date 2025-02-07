@@ -35,7 +35,9 @@ namespace Replicate
         /// <param name="sku">
         /// The SKU of the hardware.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public HardwareListResponseItem(
             string? name,
             string? sku)

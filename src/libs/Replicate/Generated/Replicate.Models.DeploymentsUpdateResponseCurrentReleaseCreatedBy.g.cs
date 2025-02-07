@@ -54,7 +54,9 @@ namespace Replicate
         /// <param name="username">
         /// The username of the account that created the release.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public DeploymentsUpdateResponseCurrentReleaseCreatedBy(
             string? githubUrl,
             string? name,

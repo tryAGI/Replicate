@@ -108,7 +108,9 @@ namespace Replicate
         /// <param name="status"></param>
         /// <param name="urls"></param>
         /// <param name="version"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public PredictionResponse(
             string? completedAt,
             string? createdAt,

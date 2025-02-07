@@ -44,7 +44,9 @@ namespace Replicate
         /// <param name="results">
         /// An array containing a page of deployment objects
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public DeploymentsListResponse(
             string? next,
             string? previous,

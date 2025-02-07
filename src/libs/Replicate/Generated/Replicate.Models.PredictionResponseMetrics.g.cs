@@ -38,7 +38,9 @@ namespace Replicate
         /// <param name="imageCount"></param>
         /// <param name="predictTime"></param>
         /// <param name="totalTime"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public PredictionResponseMetrics(
             double? imageCount,
             double? predictTime,
