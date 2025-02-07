@@ -26,7 +26,9 @@ namespace Replicate
         /// <param name="key">
         /// The signing secret.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public WebhooksDefaultSecretGetResponse(
             string? key)
         {

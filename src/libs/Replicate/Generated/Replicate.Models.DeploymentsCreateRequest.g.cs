@@ -77,7 +77,9 @@ namespace Replicate
         /// <param name="version">
         /// The 64-character string ID of the model version that you want to deploy.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public DeploymentsCreateRequest(
             string hardware,
             int maxInstances,

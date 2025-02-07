@@ -66,7 +66,9 @@ namespace Replicate
         /// <param name="interval"></param>
         /// <param name="aspectRatio"></param>
         /// <param name="safetyTolerance"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public PredictionResponseInput(
             double? seed,
             double? steps,

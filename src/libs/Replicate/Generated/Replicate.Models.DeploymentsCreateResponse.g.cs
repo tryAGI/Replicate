@@ -42,7 +42,9 @@ namespace Replicate
         /// <param name="owner">
         /// The owner of the deployment.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public DeploymentsCreateResponse(
             global::Replicate.DeploymentsCreateResponseCurrentRelease? currentRelease,
             string? name,
