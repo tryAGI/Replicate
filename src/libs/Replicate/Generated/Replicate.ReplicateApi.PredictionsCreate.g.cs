@@ -21,6 +21,7 @@ namespace Replicate
         /// <summary>
         /// Create a prediction<br/>
         /// Create a prediction for the model version and inputs you provide.<br/>
+        /// If you're running an [official model](https://replicate.com/collections/official), use the [`models.predictions.create`](#models.predictions.create) operation instead.<br/>
         /// Example cURL request:<br/>
         /// ```console<br/>
         /// curl -s -X POST -H 'Prefer: wait' \<br/>
@@ -134,6 +135,7 @@ namespace Replicate
         /// <summary>
         /// Create a prediction<br/>
         /// Create a prediction for the model version and inputs you provide.<br/>
+        /// If you're running an [official model](https://replicate.com/collections/official), use the [`models.predictions.create`](#models.predictions.create) operation instead.<br/>
         /// Example cURL request:<br/>
         /// ```console<br/>
         /// curl -s -X POST -H 'Prefer: wait' \<br/>
