@@ -43,6 +43,32 @@ namespace Replicate
         ///   "latest_version": {...},<br/>
         /// }<br/>
         /// ```<br/>
+        /// The model object includes the [input and output schema](https://replicate.com/docs/reference/openapi#model-schemas) for the latest version of the model.<br/>
+        /// Here's an example showing how to fetch the model with cURL and display its input schema with [jq](https://stedolan.github.io/jq/):<br/>
+        /// ```console<br/>
+        /// curl -s \<br/>
+        ///     -H "Authorization: Bearer $REPLICATE_API_TOKEN" \<br/>
+        ///     https://api.replicate.com/v1/models/replicate/hello-world \<br/>
+        ///     | jq ".latest_version.openapi_schema.components.schemas.Input"<br/>
+        /// ```<br/>
+        /// This will return the following JSON object:<br/>
+        /// ```json<br/>
+        /// {<br/>
+        ///   "type": "object",<br/>
+        ///   "title": "Input",<br/>
+        ///   "required": [<br/>
+        ///     "text"<br/>
+        ///   ],<br/>
+        ///   "properties": {<br/>
+        ///     "text": {<br/>
+        ///       "type": "string",<br/>
+        ///       "title": "Text",<br/>
+        ///       "x-order": 0,<br/>
+        ///       "description": "Text to prefix with 'hello '"<br/>
+        ///     }<br/>
+        ///   }<br/>
+        /// }<br/>
+        /// ``` <br/>
         /// The `cover_image_url` string is an HTTPS URL for an image file. This can be:<br/>
         /// - An image uploaded by the model author.<br/>
         /// - The output file of the example prediction, if the model author has not set a cover image.<br/>

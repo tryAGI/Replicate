@@ -6,7 +6,8 @@ namespace Replicate
     {
         /// <summary>
         /// Create a prediction using an official model<br/>
-        /// Create a prediction for the deployment and inputs you provide.<br/>
+        /// Create a prediction using an [official model](https://replicate.com/changelog/2025-01-29-official-models).<br/>
+        /// If you're _not_ running an official model, use the [`predictions.create`](#predictions.create) operation instead.<br/>
         /// Example cURL request:<br/>
         /// ```console<br/>
         /// curl -s -X POST -H 'Prefer: wait' \<br/>
@@ -35,7 +36,8 @@ namespace Replicate
 
         /// <summary>
         /// Create a prediction using an official model<br/>
-        /// Create a prediction for the deployment and inputs you provide.<br/>
+        /// Create a prediction using an [official model](https://replicate.com/changelog/2025-01-29-official-models).<br/>
+        /// If you're _not_ running an official model, use the [`predictions.create`](#predictions.create) operation instead.<br/>
         /// Example cURL request:<br/>
         /// ```console<br/>
         /// curl -s -X POST -H 'Prefer: wait' \<br/>
