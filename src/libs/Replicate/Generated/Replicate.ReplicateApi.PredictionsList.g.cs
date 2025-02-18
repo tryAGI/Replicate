@@ -18,6 +18,11 @@ namespace Replicate
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
+        partial void ProcessPredictionsListResponseContent(
+            global::System.Net.Http.HttpClient httpClient,
+            global::System.Net.Http.HttpResponseMessage httpResponseMessage,
+            ref string content);
+
         /// <summary>
         /// List predictions<br/>
         /// Get a paginated list of all predictions created by the user or organization associated with the provided API token.<br/>
@@ -72,7 +77,7 @@ namespace Replicate
         /// <param name="createdBefore"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task PredictionsListAsync(
+        public async global::System.Threading.Tasks.Task<global::Replicate.PredictionsListResponse> PredictionsListAsync(
             global::System.DateTime? createdAfter = default,
             global::System.DateTime? createdBefore = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -136,22 +141,76 @@ namespace Replicate
             ProcessPredictionsListResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
-            try
+
+            if (ReadResponseAsString)
             {
-                __response.EnsureSuccessStatusCode();
-            }
-            catch (global::System.Net.Http.HttpRequestException __ex)
-            {
-                throw new global::Replicate.ApiException(
-                    message: __response.ReasonPhrase ?? string.Empty,
-                    innerException: __ex,
-                    statusCode: __response.StatusCode)
+                var __content = await __response.Content.ReadAsStringAsync(
+#if NET5_0_OR_GREATER
+                    cancellationToken
+#endif
+                ).ConfigureAwait(false);
+
+                ProcessResponseContent(
+                    client: HttpClient,
+                    response: __response,
+                    content: ref __content);
+                ProcessPredictionsListResponseContent(
+                    httpClient: HttpClient,
+                    httpResponseMessage: __response,
+                    content: ref __content);
+
+                try
                 {
-                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
-                        __response.Headers,
-                        h => h.Key,
-                        h => h.Value),
-                };
+                    __response.EnsureSuccessStatusCode();
+                }
+                catch (global::System.Net.Http.HttpRequestException __ex)
+                {
+                    throw new global::Replicate.ApiException(
+                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                        innerException: __ex,
+                        statusCode: __response.StatusCode)
+                    {
+                        ResponseBody = __content,
+                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                            __response.Headers,
+                            h => h.Key,
+                            h => h.Value),
+                    };
+                }
+
+                return
+                    global::Replicate.PredictionsListResponse.FromJson(__content, JsonSerializerContext) ??
+                    throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+            }
+            else
+            {
+                try
+                {
+                    __response.EnsureSuccessStatusCode();
+                }
+                catch (global::System.Net.Http.HttpRequestException __ex)
+                {
+                    throw new global::Replicate.ApiException(
+                        message: __response.ReasonPhrase ?? string.Empty,
+                        innerException: __ex,
+                        statusCode: __response.StatusCode)
+                    {
+                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                            __response.Headers,
+                            h => h.Key,
+                            h => h.Value),
+                    };
+                }
+
+                using var __content = await __response.Content.ReadAsStreamAsync(
+#if NET5_0_OR_GREATER
+                    cancellationToken
+#endif
+                ).ConfigureAwait(false);
+
+                return
+                    await global::Replicate.PredictionsListResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }
     }

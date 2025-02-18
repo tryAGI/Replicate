@@ -50,7 +50,7 @@ namespace Replicate
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Replicate.PredictionResponse> ModelsPredictionsCreateAsync(
+        public async global::System.Threading.Tasks.Task<global::Replicate.SchemasPredictionResponse> ModelsPredictionsCreateAsync(
             string modelOwner,
             string modelName,
             global::Replicate.SchemasPredictionRequest request,
@@ -168,7 +168,7 @@ namespace Replicate
                 }
 
                 return
-                    global::Replicate.PredictionResponse.FromJson(__content, JsonSerializerContext) ??
+                    global::Replicate.SchemasPredictionResponse.FromJson(__content, JsonSerializerContext) ??
                     throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
@@ -198,7 +198,7 @@ namespace Replicate
                 ).ConfigureAwait(false);
 
                 return
-                    await global::Replicate.PredictionResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    await global::Replicate.SchemasPredictionResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                     throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }
@@ -263,7 +263,7 @@ namespace Replicate
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Replicate.PredictionResponse> ModelsPredictionsCreateAsync(
+        public async global::System.Threading.Tasks.Task<global::Replicate.SchemasPredictionResponse> ModelsPredictionsCreateAsync(
             string modelOwner,
             string modelName,
             object input,

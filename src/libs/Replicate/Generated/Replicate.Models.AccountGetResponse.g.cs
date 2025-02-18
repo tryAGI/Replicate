@@ -9,6 +9,12 @@ namespace Replicate
     public sealed partial class AccountGetResponse
     {
         /// <summary>
+        /// The avatar URL for the account.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("avatar_url")]
+        public string? AvatarUrl { get; set; }
+
+        /// <summary>
         /// The GitHub URL of the account.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("github_url")]
@@ -25,13 +31,15 @@ namespace Replicate
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Replicate.JsonConverters.AccountGetResponseTypeJsonConverter))]
-        public global::Replicate.AccountGetResponseType? Type { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Replicate.AccountGetResponseType Type { get; set; }
 
         /// <summary>
         /// The username of the account.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("username")]
-        public string? Username { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Username { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -42,6 +50,9 @@ namespace Replicate
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountGetResponse" /> class.
         /// </summary>
+        /// <param name="avatarUrl">
+        /// The avatar URL for the account.
+        /// </param>
         /// <param name="githubUrl">
         /// The GitHub URL of the account.
         /// </param>
@@ -58,15 +69,17 @@ namespace Replicate
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AccountGetResponse(
+            global::Replicate.AccountGetResponseType type,
+            string username,
+            string? avatarUrl,
             string? githubUrl,
-            string? name,
-            global::Replicate.AccountGetResponseType? type,
-            string? username)
+            string? name)
         {
+            this.Type = type;
+            this.Username = username ?? throw new global::System.ArgumentNullException(nameof(username));
+            this.AvatarUrl = avatarUrl;
             this.GithubUrl = githubUrl;
             this.Name = name;
-            this.Type = type;
-            this.Username = username;
         }
 
         /// <summary>

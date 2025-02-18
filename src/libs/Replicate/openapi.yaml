@@ -20,8 +20,15 @@ paths:
           content:
             application/json:
               schema:
+                required:
+                  - type
+                  - username
                 type: object
                 properties:
+                  avatar_url:
+                    type: string
+                    description: The avatar URL for the account.
+                    format: uri
                   github_url:
                     type: string
                     description: The GitHub URL of the account.
@@ -64,7 +71,7 @@ paths:
   /deployments:
     get:
       summary: List deployments
-      description: "Get a list of deployments associated with the current account, including the latest release configuration for each deployment.\n\nExample cURL request:\n\n```console\ncurl -s \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  https://api.replicate.com/v1/deployments\n```\n\nThe response will be a paginated JSON array of deployment objects, sorted with the most recent deployment first:\n\n```json\n{\n  \"next\": \"http://api.replicate.com/v1/deployments?cursor=cD0yMDIzLTA2LTA2KzIzJTNBNDAlM0EwOC45NjMwMDAlMkIwMCUzQTAw\",\n  \"previous\": null,\n  \"results\": [\n    {\n      \"owner\": \"replicate\",\n      \"name\": \"my-app-image-generator\",\n      \"current_release\": {\n        \"number\": 1,\n        \"model\": \"stability-ai/sdxl\",\n        \"version\": \"da77bc59ee60423279fd632efb4795ab731d9e3ca9705ef3341091fb989b7eaf\",\n        \"created_at\": \"2024-02-15T16:32:57.018467Z\",\n        \"created_by\": {\n          \"type\": \"organization\",\n          \"username\": \"acme\",\n          \"name\": \"Acme Corp, Inc.\",\n          \"github_url\": \"https://github.com/acme\",\n        },\n        \"configuration\": {\n          \"hardware\": \"gpu-t4\",\n          \"min_instances\": 1,\n          \"max_instances\": 5\n        }\n      }\n    }\n  ]\n}\n```\n"
+      description: "Get a list of deployments associated with the current account, including the latest release configuration for each deployment.\n\nExample cURL request:\n\n```console\ncurl -s \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  https://api.replicate.com/v1/deployments\n```\n\nThe response will be a paginated JSON array of deployment objects, sorted with the most recent deployment first:\n\n```json\n{\n  \"next\": \"http://api.replicate.com/v1/deployments?cursor=cD0yMDIzLTA2LTA2KzIzJTNBNDAlM0EwOC45NjMwMDAlMkIwMCUzQTAw\",\n  \"previous\": null,\n  \"results\": [\n    {\n      \"owner\": \"replicate\",\n      \"name\": \"my-app-image-generator\",\n      \"current_release\": {\n        \"number\": 1,\n        \"model\": \"stability-ai/sdxl\",\n        \"version\": \"da77bc59ee60423279fd632efb4795ab731d9e3ca9705ef3341091fb989b7eaf\",\n        \"created_at\": \"2024-02-15T16:32:57.018467Z\",\n        \"created_by\": {\n          \"type\": \"organization\",\n          \"username\": \"acme\",\n          \"name\": \"Acme Corp, Inc.\",\n          \"avatar_url\": \"https://cdn.replicate.com/avatars/acme.png\",\n          \"github_url\": \"https://github.com/acme\"\n        },\n        \"configuration\": {\n          \"hardware\": \"gpu-t4\",\n          \"min_instances\": 1,\n          \"max_instances\": 5\n        }\n      }\n    }\n  ]\n}\n```\n"
       operationId: deployments.list
       responses:
         '200':
@@ -107,8 +114,15 @@ paths:
                               description: The time the release was created.
                               format: date-time
                             created_by:
+                              required:
+                                - type
+                                - username
                               type: object
                               properties:
+                                avatar_url:
+                                  type: string
+                                  description: The avatar URL for the account that created the release.
+                                  format: uri
                                 github_url:
                                   type: string
                                   description: The GitHub URL of the account that created the release.
@@ -143,7 +157,7 @@ paths:
                     description: An array containing a page of deployment objects
     post:
       summary: Create a deployment
-      description: "Create a new deployment:\n\nExample cURL request:\n\n```console\ncurl -s \\\n  -X POST \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n        \"name\": \"my-app-image-generator\",\n        \"model\": \"stability-ai/sdxl\",\n        \"version\": \"da77bc59ee60423279fd632efb4795ab731d9e3ca9705ef3341091fb989b7eaf\",\n        \"hardware\": \"gpu-t4\",\n        \"min_instances\": 0,\n        \"max_instances\": 3\n      }' \\\n  https://api.replicate.com/v1/deployments\n```\n\nThe response will be a JSON object describing the deployment:\n\n```json\n{\n  \"owner\": \"acme\",\n  \"name\": \"my-app-image-generator\",\n  \"current_release\": {\n    \"number\": 1,\n    \"model\": \"stability-ai/sdxl\",\n    \"version\": \"da77bc59ee60423279fd632efb4795ab731d9e3ca9705ef3341091fb989b7eaf\",\n    \"created_at\": \"2024-02-15T16:32:57.018467Z\",\n    \"created_by\": {\n      \"type\": \"organization\",\n      \"username\": \"acme\",\n      \"name\": \"Acme Corp, Inc.\",\n      \"github_url\": \"https://github.com/acme\",\n    },\n    \"configuration\": {\n      \"hardware\": \"gpu-t4\",\n      \"min_instances\": 1,\n      \"max_instances\": 5\n    }\n  }\n}\n```\n"
+      description: "Create a new deployment:\n\nExample cURL request:\n\n```console\ncurl -s \\\n  -X POST \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n        \"name\": \"my-app-image-generator\",\n        \"model\": \"stability-ai/sdxl\",\n        \"version\": \"da77bc59ee60423279fd632efb4795ab731d9e3ca9705ef3341091fb989b7eaf\",\n        \"hardware\": \"gpu-t4\",\n        \"min_instances\": 0,\n        \"max_instances\": 3\n      }' \\\n  https://api.replicate.com/v1/deployments\n```\n\nThe response will be a JSON object describing the deployment:\n\n```json\n{\n  \"owner\": \"acme\",\n  \"name\": \"my-app-image-generator\",\n  \"current_release\": {\n    \"number\": 1,\n    \"model\": \"stability-ai/sdxl\",\n    \"version\": \"da77bc59ee60423279fd632efb4795ab731d9e3ca9705ef3341091fb989b7eaf\",\n    \"created_at\": \"2024-02-15T16:32:57.018467Z\",\n    \"created_by\": {\n      \"type\": \"organization\",\n      \"username\": \"acme\",\n      \"name\": \"Acme Corp, Inc.\",\n      \"avatar_url\": \"https://cdn.replicate.com/avatars/acme.png\",\n      \"github_url\": \"https://github.com/acme\"\n    },\n    \"configuration\": {\n      \"hardware\": \"gpu-t4\",\n      \"min_instances\": 1,\n      \"max_instances\": 5\n    }\n  }\n}\n```\n"
       operationId: deployments.create
       requestBody:
         content:
@@ -209,8 +223,15 @@ paths:
                         description: The time the release was created.
                         format: date-time
                       created_by:
+                        required:
+                          - type
+                          - username
                         type: object
                         properties:
+                          avatar_url:
+                            type: string
+                            description: The avatar URL for the account that created the release.
+                            format: uri
                           github_url:
                             type: string
                             description: The GitHub URL of the account that created the release.
@@ -265,7 +286,7 @@ paths:
           description: Success
     get:
       summary: Get a deployment
-      description: "Get information about a deployment by name including the current release.\n\nExample cURL request:\n\n```console\ncurl -s \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  https://api.replicate.com/v1/deployments/replicate/my-app-image-generator\n```\n\nThe response will be a JSON object describing the deployment:\n\n```json\n{\n  \"owner\": \"acme\",\n  \"name\": \"my-app-image-generator\",\n  \"current_release\": {\n    \"number\": 1,\n    \"model\": \"stability-ai/sdxl\",\n    \"version\": \"da77bc59ee60423279fd632efb4795ab731d9e3ca9705ef3341091fb989b7eaf\",\n    \"created_at\": \"2024-02-15T16:32:57.018467Z\",\n    \"created_by\": {\n      \"type\": \"organization\",\n      \"username\": \"acme\",\n      \"name\": \"Acme Corp, Inc.\",\n      \"github_url\": \"https://github.com/acme\",\n    },\n    \"configuration\": {\n      \"hardware\": \"gpu-t4\",\n      \"min_instances\": 1,\n      \"max_instances\": 5\n    }\n  }\n}\n```\n"
+      description: "Get information about a deployment by name including the current release.\n\nExample cURL request:\n\n```console\ncurl -s \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  https://api.replicate.com/v1/deployments/replicate/my-app-image-generator\n```\n\nThe response will be a JSON object describing the deployment:\n\n```json\n{\n  \"owner\": \"acme\",\n  \"name\": \"my-app-image-generator\",\n  \"current_release\": {\n    \"number\": 1,\n    \"model\": \"stability-ai/sdxl\",\n    \"version\": \"da77bc59ee60423279fd632efb4795ab731d9e3ca9705ef3341091fb989b7eaf\",\n    \"created_at\": \"2024-02-15T16:32:57.018467Z\",\n    \"created_by\": {\n      \"type\": \"organization\",\n      \"username\": \"acme\",\n      \"name\": \"Acme Corp, Inc.\",\n      \"avatar_url\": \"https://cdn.replicate.com/avatars/acme.png\",\n      \"github_url\": \"https://github.com/acme\"\n    },\n    \"configuration\": {\n      \"hardware\": \"gpu-t4\",\n      \"min_instances\": 1,\n      \"max_instances\": 5\n    }\n  }\n}\n```\n"
       operationId: deployments.get
       parameters:
         - name: deployment_owner
@@ -308,8 +329,15 @@ paths:
                         description: The time the release was created.
                         format: date-time
                       created_by:
+                        required:
+                          - type
+                          - username
                         type: object
                         properties:
+                          avatar_url:
+                            type: string
+                            description: The avatar URL for the account that created the release.
+                            format: uri
                           github_url:
                             type: string
                             description: The GitHub URL of the account that created the release.
@@ -343,7 +371,7 @@ paths:
                     description: The owner of the deployment.
     patch:
       summary: Update a deployment
-      description: "Update properties of an existing deployment, including hardware, min/max instances, and the deployment's underlying model [version](https://replicate.com/docs/how-does-replicate-work#versions).\n\nExample cURL request:\n\n```console\ncurl -s \\\n  -X PATCH \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"min_instances\": 3, \"max_instances\": 10}' \\\n  https://api.replicate.com/v1/deployments/acme/my-app-image-generator\n```\n\nThe response will be a JSON object describing the deployment:\n\n```json\n{\n  \"owner\": \"acme\",\n  \"name\": \"my-app-image-generator\",\n  \"current_release\": {\n    \"number\": 2,\n    \"model\": \"stability-ai/sdxl\",\n    \"version\": \"da77bc59ee60423279fd632efb4795ab731d9e3ca9705ef3341091fb989b7eaf\",\n    \"created_at\": \"2024-02-15T16:32:57.018467Z\",\n    \"created_by\": {\n      \"type\": \"organization\",\n      \"username\": \"acme\",\n      \"name\": \"Acme Corp, Inc.\",\n      \"github_url\": \"https://github.com/acme\",\n    },\n    \"configuration\": {\n      \"hardware\": \"gpu-t4\",\n      \"min_instances\": 3,\n      \"max_instances\": 10\n    }\n  }\n}\n```\n\nUpdating any deployment properties will increment the `number` field of the `current_release`.\n"
+      description: "Update properties of an existing deployment, including hardware, min/max instances, and the deployment's underlying model [version](https://replicate.com/docs/how-does-replicate-work#versions).\n\nExample cURL request:\n\n```console\ncurl -s \\\n  -X PATCH \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"min_instances\": 3, \"max_instances\": 10}' \\\n  https://api.replicate.com/v1/deployments/acme/my-app-image-generator\n```\n\nThe response will be a JSON object describing the deployment:\n\n```json\n{\n  \"owner\": \"acme\",\n  \"name\": \"my-app-image-generator\",\n  \"current_release\": {\n    \"number\": 2,\n    \"model\": \"stability-ai/sdxl\",\n    \"version\": \"da77bc59ee60423279fd632efb4795ab731d9e3ca9705ef3341091fb989b7eaf\",\n    \"created_at\": \"2024-02-15T16:32:57.018467Z\",\n    \"created_by\": {\n      \"type\": \"organization\",\n      \"username\": \"acme\",\n      \"name\": \"Acme Corp, Inc.\",\n      \"avatar_url\": \"https://cdn.replicate.com/avatars/acme.png\",\n      \"github_url\": \"https://github.com/acme\"\n    },\n    \"configuration\": {\n      \"hardware\": \"gpu-t4\",\n      \"min_instances\": 3,\n      \"max_instances\": 10\n    }\n  }\n}\n```\n\nUpdating any deployment properties will increment the `number` field of the `current_release`.\n"
       operationId: deployments.update
       parameters:
         - name: deployment_owner
@@ -408,8 +436,15 @@ paths:
                         description: The time the release was created.
                         format: date-time
                       created_by:
+                        required:
+                          - type
+                          - username
                         type: object
                         properties:
+                          avatar_url:
+                            type: string
+                            description: The avatar URL for the account that created the release.
+                            format: uri
                           github_url:
                             type: string
                             description: The GitHub URL of the account that created the release.
@@ -468,8 +503,16 @@ paths:
       responses:
         '201':
           description: 'Prediction has been created. If the `Prefer: wait` header is provided it will contain the final output.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas_prediction_response'
         '202':
           description: Prediction has been created but does not yet have all outputs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas_prediction_response'
   /hardware:
     get:
       summary: List available hardware for models
@@ -616,8 +659,16 @@ paths:
       responses:
         '201':
           description: 'Prediction has been created. If the `Prefer: wait` header is provided it will contain the final output.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas_prediction_response'
         '202':
           description: Prediction has been created but does not yet have all outputs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas_prediction_response'
         '200':
           description: Successful
           content:
@@ -753,6 +804,23 @@ paths:
       responses:
         '200':
           description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  next:
+                    type: string
+                    format: uri
+                    nullable: true
+                  previous:
+                    type: string
+                    format: uri
+                    nullable: true
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/schemas_prediction_response'
     post:
       summary: Create a prediction
       description: "Create a prediction for the model version and inputs you provide.\n\nIf you're running an [official model](https://replicate.com/collections/official), use the [`models.predictions.create`](#models.predictions.create) operation instead.\n\nExample cURL request:\n\n```console\ncurl -s -X POST -H 'Prefer: wait' \\\n  -d '{\"version\": \"5c7d5dc6dd8bf75c1acaa8565735e7986bc5b66206b55cca93cb72c9bf15ccaa\", \"input\": {\"text\": \"Alice\"}}' \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  -H 'Content-Type: application/json' \\\n  https://api.replicate.com/v1/predictions\n```\n\nThe request will wait up to 60 seconds for the model to run. If this time is exceeded the prediction will be returned in a `\"starting\"` state and need to be retrieved using the `predictions.get` endpiont.\n\nFor a complete overview of the `predictions.create` API check out our documentation on [creating a prediction](https://replicate.com/docs/topics/predictions/create-a-prediction) which covers a variety of use cases.\n"
@@ -767,8 +835,16 @@ paths:
       responses:
         '201':
           description: 'Prediction has been created. If the `Prefer: wait` header is provided it will contain the final output.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas_prediction_response'
         '202':
           description: Prediction has been created but does not yet have all outputs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas_prediction_response'
   '/predictions/{prediction_id}':
     get:
       summary: Get a prediction
@@ -882,6 +958,107 @@ components:
             type: string
           description: "By default, we will send requests to your webhook URL whenever there are new outputs or the prediction has finished. You can change which events trigger webhook requests by specifying `webhook_events_filter` in the prediction request:\n\n- `start`: immediately on prediction start\n- `output`: each time a prediction generates an output (note that predictions can generate multiple outputs)\n- `logs`: each time log output is generated by a prediction\n- `completed`: when the prediction reaches a terminal state (succeeded/canceled/failed)\n\nFor example, if you only wanted requests to be sent at the start and end of the prediction, you would provide:\n\n```json\n{\n  \"input\": {\n    \"text\": \"Alice\"\n  },\n  \"webhook\": \"https://example.com/my-webhook\",\n  \"webhook_events_filter\": [\"start\", \"completed\"]\n}\n```\n\nRequests for event types `output` and `logs` will be sent at most once every 500ms. If you request `start` and `completed` webhooks, then they'll always be sent regardless of throttling.\n"
       additionalProperties: false
+    schemas_prediction_response:
+      required:
+        - id
+        - model
+        - version
+        - input
+        - output
+        - data_removed
+        - error
+        - status
+        - created_at
+        - urls
+      type: object
+      properties:
+        completed_at:
+          type: string
+          description: The time that the model completed the prediction and all outputs were uploaded
+          format: date-time
+        created_at:
+          type: string
+          description: The time that the prediction was created
+          format: date-time
+        data_removed:
+          type: boolean
+          description: Whether the prediction output has been deleted
+        deployment:
+          type: string
+          description: The name of the deployment that created the prediction
+        error:
+          type: string
+          description: An error string if the model status is `"failed"`
+          nullable: true
+        id:
+          type: string
+        input:
+          type: object
+          description: The prediction input
+        logs:
+          type: string
+          description: The log output from the model
+        metrics:
+          type: object
+          description: Additional metrics associated with the prediction
+        model:
+          type: string
+          description: The name of the model that created the prediction
+        output:
+          oneOf:
+            - type: object
+              nullable: true
+            - type: array
+              items:
+                type: object
+              nullable: true
+            - type: string
+              nullable: true
+            - type: integer
+              nullable: true
+            - type: number
+              nullable: true
+            - type: boolean
+              nullable: true
+        started_at:
+          type: string
+          description: The time that the model began the prediction
+          format: date-time
+        status:
+          enum:
+            - starting
+            - processing
+            - succeeded
+            - failed
+            - canceled
+          type: string
+        urls:
+          required:
+            - get
+            - cancel
+          type: object
+          properties:
+            cancel:
+              type: string
+              description: Cancel the prediction
+              format: uri
+            get:
+              type: string
+              description: Retrieve the latest state of the prediction
+              format: uri
+            stream:
+              type: string
+              description: An event source to stream the output of the prediction
+              format: uri
+          description: API endpoints for working with the prediction
+        version:
+          oneOf:
+            - type: string
+              description: The ID of the model version that created the prediction
+            - enum:
+                - hidden
+              type: string
+              description: 'The model does not support versions, used by official models.'
     schemas_training_request:
       required:
         - destination

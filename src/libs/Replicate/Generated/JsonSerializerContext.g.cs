@@ -15,6 +15,10 @@ namespace Replicate
         { 
             typeof(global::Replicate.JsonConverters.SchemasPredictionRequestWebhookEventsFilterItemJsonConverter),
             typeof(global::Replicate.JsonConverters.SchemasPredictionRequestWebhookEventsFilterItemNullableJsonConverter),
+            typeof(global::Replicate.JsonConverters.SchemasPredictionResponseStatusJsonConverter),
+            typeof(global::Replicate.JsonConverters.SchemasPredictionResponseStatusNullableJsonConverter),
+            typeof(global::Replicate.JsonConverters.SchemasPredictionResponseVersionJsonConverter),
+            typeof(global::Replicate.JsonConverters.SchemasPredictionResponseVersionNullableJsonConverter),
             typeof(global::Replicate.JsonConverters.SchemasTrainingRequestWebhookEventsFilterItemJsonConverter),
             typeof(global::Replicate.JsonConverters.SchemasTrainingRequestWebhookEventsFilterItemNullableJsonConverter),
             typeof(global::Replicate.JsonConverters.SchemasVersionPredictionRequestWebhookEventsFilterItemJsonConverter),
@@ -31,6 +35,8 @@ namespace Replicate
             typeof(global::Replicate.JsonConverters.DeploymentsGetResponseCurrentReleaseCreatedByTypeNullableJsonConverter),
             typeof(global::Replicate.JsonConverters.DeploymentsUpdateResponseCurrentReleaseCreatedByTypeJsonConverter),
             typeof(global::Replicate.JsonConverters.DeploymentsUpdateResponseCurrentReleaseCreatedByTypeNullableJsonConverter),
+            typeof(global::Replicate.JsonConverters.OneOfJsonConverter<object, global::System.Collections.Generic.IList<object>, string, int?, double?, bool?>),
+            typeof(global::Replicate.JsonConverters.OneOfJsonConverter<string, global::Replicate.SchemasPredictionResponseVersion?>),
             typeof(global::Replicate.JsonConverters.UnixTimestampJsonConverter),
         })]
 
