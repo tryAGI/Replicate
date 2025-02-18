@@ -10,6 +10,6 @@ public partial class Tests
         var response = await api.AccountGetAsync();
         
         response.Should().NotBeNull();
-        response.Type.HasValue.Should().BeTrue();
+        response.Type.Should().Be(AccountGetResponseType.User);
     }
 }

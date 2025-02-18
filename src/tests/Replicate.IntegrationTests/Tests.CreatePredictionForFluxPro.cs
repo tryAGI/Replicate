@@ -28,9 +28,9 @@ public partial class Tests
         
         var endResponse = await response.WaitUntilSuccessfulAsync(api);
         
-        Console.WriteLine($"Seed: {endResponse.Input?.Seed}.");
+        Console.WriteLine($"Seed: {endResponse?.Input?.Seed}.");
         Console.WriteLine("Image available at:");
-        Console.WriteLine(endResponse.Output);
+        Console.WriteLine(endResponse?.Output);
         
         //// ![output](https://raw.githubusercontent.com/tryAGI/Replicate/dd1e5c2cbebc53e9b343f1372e5a660159e79ef3/assets/output.webp)
     }
