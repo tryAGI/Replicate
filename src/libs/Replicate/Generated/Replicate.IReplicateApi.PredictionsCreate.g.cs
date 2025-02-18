@@ -25,7 +25,7 @@ namespace Replicate
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
-        global::System.Threading.Tasks.Task PredictionsCreateAsync(
+        global::System.Threading.Tasks.Task<global::Replicate.SchemasPredictionResponse> PredictionsCreateAsync(
             global::Replicate.SchemasVersionPredictionRequest request,
             string? prefer = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -92,7 +92,7 @@ namespace Replicate
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task PredictionsCreateAsync(
+        global::System.Threading.Tasks.Task<global::Replicate.SchemasPredictionResponse> PredictionsCreateAsync(
             object input,
             string version,
             string? prefer = default,

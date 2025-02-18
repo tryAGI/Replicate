@@ -30,7 +30,8 @@ namespace Replicate
         ///       "type": "organization",<br/>
         ///       "username": "acme",<br/>
         ///       "name": "Acme Corp, Inc.",<br/>
-        ///       "github_url": "https://github.com/acme",<br/>
+        ///       "avatar_url": "https://cdn.replicate.com/avatars/acme.png",<br/>
+        ///       "github_url": "https://github.com/acme"<br/>
         ///     },<br/>
         ///     "configuration": {<br/>
         ///       "hardware": "gpu-t4",<br/>
@@ -79,7 +80,8 @@ namespace Replicate
         ///       "type": "organization",<br/>
         ///       "username": "acme",<br/>
         ///       "name": "Acme Corp, Inc.",<br/>
-        ///       "github_url": "https://github.com/acme",<br/>
+        ///       "avatar_url": "https://cdn.replicate.com/avatars/acme.png",<br/>
+        ///       "github_url": "https://github.com/acme"<br/>
         ///     },<br/>
         ///     "configuration": {<br/>
         ///       "hardware": "gpu-t4",<br/>
