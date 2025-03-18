@@ -537,7 +537,7 @@ paths:
   /models:
     get:
       summary: List public models
-      description: "Get a paginated list of public models.\n\nExample cURL request:\n\n```console\ncurl -s \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  https://api.replicate.com/v1/models\n```\n\nThe response will be a paginated JSON array of model objects.\n\nSee the [`models.get`](#models.get) docs for more details about the model object.\n"
+      description: "Get a paginated list of public models.\n\nExample cURL request:\n\n```console\ncurl -s \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  https://api.replicate.com/v1/models\n```\n\nThe response will be a pagination object containing a list of model objects.\n\nSee the [`models.get`](#models.get) docs for more details about the model object.\n"
       operationId: models.list
       responses:
         '200':
