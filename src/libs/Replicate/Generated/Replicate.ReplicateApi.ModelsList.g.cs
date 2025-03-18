@@ -23,7 +23,7 @@ namespace Replicate
         ///   -H "Authorization: Bearer $REPLICATE_API_TOKEN" \<br/>
         ///   https://api.replicate.com/v1/models<br/>
         /// ```<br/>
-        /// The response will be a paginated JSON array of model objects.<br/>
+        /// The response will be a pagination object containing a list of model objects.<br/>
         /// See the [`models.get`](#models.get) docs for more details about the model object.
         /// </summary>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
