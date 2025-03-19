@@ -632,6 +632,27 @@ paths:
       responses:
         '200':
           description: Success
+  '/models/{model_owner}/{model_name}/examples':
+    get:
+      summary: List examples for a model
+      description: "List [example predictions](https://replicate.com/docs/topics/models/publish-a-model#what-are-examples) made using the model.\nThese are predictions that were saved by the model author as illustrative examples of the model's capabilities.\n\nIf you want all the examples for a model, use this operation.\n\nIf you just want the model's default example, you can use the [`models.get`](#models.get) operation instead, which includes a `default_example` object.\n\nExample cURL request:\n\n```console\ncurl -s \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  https://api.replicate.com/v1/models/replicate/hello-world/examples\n```\n\nThe response will be a pagination object containing a list of example predictions:\n\n```json\n{\n  \"next\": \"https://api.replicate.com/v1/models/replicate/hello-world/examples?cursor=...\",\n  \"previous\": \"https://api.replicate.com/v1/models/replicate/hello-world/examples?cursor=...\",\n  \"results\": [...]\n}\n```\n\nEach item in the `results` list is a [prediction object](#predictions.get).\n"
+      operationId: models.examples.list
+      parameters:
+        - name: model_owner
+          in: path
+          description: "The name of the user or organization that owns the model.\n"
+          required: true
+          schema:
+            type: string
+        - name: model_name
+          in: path
+          description: "The name of the model.\n"
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
   '/models/{model_owner}/{model_name}/predictions':
     post:
       summary: Create a prediction using an official model
@@ -675,6 +696,34 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/prediction_response'
+  '/models/{model_owner}/{model_name}/readme':
+    get:
+      summary: Get a model's README
+      description: "Get the README content for a model.\n\nExample cURL request:\n\n```console\ncurl -s \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  https://api.replicate.com/v1/models/replicate/hello-world/readme\n```\n\nThe response will be the README content as plain text in Markdown format:\n\n```\n# Hello World Model\n\nThis is an example model that...\n```\n"
+      operationId: models.readme.get
+      parameters:
+        - name: model_owner
+          in: path
+          description: "The name of the user or organization that owns the model.\n"
+          required: true
+          schema:
+            type: string
+        - name: model_name
+          in: path
+          description: "The name of the model.\n"
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: string
+                description: The README content in Markdown format
+        '404':
+          description: README not found
   '/models/{model_owner}/{model_name}/versions':
     get:
       summary: List model versions
