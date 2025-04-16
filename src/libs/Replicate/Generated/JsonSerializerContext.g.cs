@@ -13,6 +13,8 @@ namespace Replicate
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
         Converters = new global::System.Type[] 
         { 
+            typeof(global::Replicate.JsonConverters.SchemasModelResponseVisibilityJsonConverter),
+            typeof(global::Replicate.JsonConverters.SchemasModelResponseVisibilityNullableJsonConverter),
             typeof(global::Replicate.JsonConverters.SchemasPredictionRequestWebhookEventsFilterItemJsonConverter),
             typeof(global::Replicate.JsonConverters.SchemasPredictionRequestWebhookEventsFilterItemNullableJsonConverter),
             typeof(global::Replicate.JsonConverters.SchemasPredictionResponseStatusJsonConverter),
