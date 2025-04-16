@@ -14,6 +14,11 @@ namespace Replicate
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
+        partial void ProcessModelsListResponseContent(
+            global::System.Net.Http.HttpClient httpClient,
+            global::System.Net.Http.HttpResponseMessage httpResponseMessage,
+            ref string content);
+
         /// <summary>
         /// List public models<br/>
         /// Get a paginated list of public models.<br/>
@@ -28,7 +33,7 @@ namespace Replicate
         /// </summary>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task ModelsListAsync(
+        public async global::System.Threading.Tasks.Task<global::Replicate.ModelsListResponse> ModelsListAsync(
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
@@ -95,6 +100,10 @@ namespace Replicate
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
+                ProcessModelsListResponseContent(
+                    httpClient: HttpClient,
+                    httpResponseMessage: __response,
+                    content: ref __content);
 
                 try
                 {
@@ -115,6 +124,9 @@ namespace Replicate
                     };
                 }
 
+                return
+                    global::Replicate.ModelsListResponse.FromJson(__content, JsonSerializerContext) ??
+                    throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
             {
@@ -142,6 +154,9 @@ namespace Replicate
 #endif
                 ).ConfigureAwait(false);
 
+                return
+                    await global::Replicate.ModelsListResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }
     }
