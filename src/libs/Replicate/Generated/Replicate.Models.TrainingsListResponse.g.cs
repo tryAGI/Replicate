@@ -6,25 +6,25 @@ namespace Replicate
     /// <summary>
     /// 
     /// </summary>
-    public sealed partial class DeploymentsListResponse
+    public sealed partial class TrainingsListResponse
     {
         /// <summary>
-        /// A URL pointing to the next page of deployment objects if any
+        /// URL to the next page of results
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("next")]
         public string? Next { get; set; }
 
         /// <summary>
-        /// A URL pointing to the previous page of deployment objects if any
+        /// URL to the previous page of results
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("previous")]
         public string? Previous { get; set; }
 
         /// <summary>
-        /// An array containing a page of deployment objects
+        /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("results")]
-        public global::System.Collections.Generic.IList<global::Replicate.SchemasDeploymentResponse>? Results { get; set; }
+        public global::System.Collections.Generic.IList<global::Replicate.SchemasTrainingResponse>? Results { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -33,24 +33,22 @@ namespace Replicate
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DeploymentsListResponse" /> class.
+        /// Initializes a new instance of the <see cref="TrainingsListResponse" /> class.
         /// </summary>
         /// <param name="next">
-        /// A URL pointing to the next page of deployment objects if any
+        /// URL to the next page of results
         /// </param>
         /// <param name="previous">
-        /// A URL pointing to the previous page of deployment objects if any
+        /// URL to the previous page of results
         /// </param>
-        /// <param name="results">
-        /// An array containing a page of deployment objects
-        /// </param>
+        /// <param name="results"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public DeploymentsListResponse(
+        public TrainingsListResponse(
             string? next,
             string? previous,
-            global::System.Collections.Generic.IList<global::Replicate.SchemasDeploymentResponse>? results)
+            global::System.Collections.Generic.IList<global::Replicate.SchemasTrainingResponse>? results)
         {
             this.Next = next;
             this.Previous = previous;
@@ -58,9 +56,9 @@ namespace Replicate
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DeploymentsListResponse" /> class.
+        /// Initializes a new instance of the <see cref="TrainingsListResponse" /> class.
         /// </summary>
-        public DeploymentsListResponse()
+        public TrainingsListResponse()
         {
         }
     }

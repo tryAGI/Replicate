@@ -52,7 +52,7 @@ namespace Replicate
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::Replicate.DeploymentsCreateResponse> DeploymentsCreateAsync(
+        global::System.Threading.Tasks.Task<global::Replicate.SchemasDeploymentResponse> DeploymentsCreateAsync(
             global::Replicate.DeploymentsCreateRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
 
@@ -121,7 +121,7 @@ namespace Replicate
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Replicate.DeploymentsCreateResponse> DeploymentsCreateAsync(
+        global::System.Threading.Tasks.Task<global::Replicate.SchemasDeploymentResponse> DeploymentsCreateAsync(
             string hardware,
             int maxInstances,
             int minInstances,

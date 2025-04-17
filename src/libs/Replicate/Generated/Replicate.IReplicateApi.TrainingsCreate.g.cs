@@ -54,7 +54,7 @@ namespace Replicate
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
-        global::System.Threading.Tasks.Task TrainingsCreateAsync(
+        global::System.Threading.Tasks.Task<global::Replicate.SchemasTrainingResponse> TrainingsCreateAsync(
             string modelOwner,
             string modelName,
             string versionId,
@@ -138,7 +138,7 @@ namespace Replicate
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task TrainingsCreateAsync(
+        global::System.Threading.Tasks.Task<global::Replicate.SchemasTrainingResponse> TrainingsCreateAsync(
             string modelOwner,
             string modelName,
             string versionId,

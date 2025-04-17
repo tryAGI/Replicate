@@ -56,7 +56,7 @@ namespace Replicate
         /// </summary>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
-        global::System.Threading.Tasks.Task TrainingsListAsync(
+        global::System.Threading.Tasks.Task<global::Replicate.TrainingsListResponse> TrainingsListAsync(
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

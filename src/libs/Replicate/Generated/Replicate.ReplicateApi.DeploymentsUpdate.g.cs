@@ -69,7 +69,7 @@ namespace Replicate
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Replicate.DeploymentsUpdateResponse> DeploymentsUpdateAsync(
+        public async global::System.Threading.Tasks.Task<global::Replicate.SchemasDeploymentResponse> DeploymentsUpdateAsync(
             string deploymentOwner,
             string deploymentName,
             global::Replicate.DeploymentsUpdateRequest request,
@@ -178,7 +178,7 @@ namespace Replicate
                 }
 
                 return
-                    global::Replicate.DeploymentsUpdateResponse.FromJson(__content, JsonSerializerContext) ??
+                    global::Replicate.SchemasDeploymentResponse.FromJson(__content, JsonSerializerContext) ??
                     throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
@@ -208,7 +208,7 @@ namespace Replicate
                 ).ConfigureAwait(false);
 
                 return
-                    await global::Replicate.DeploymentsUpdateResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    await global::Replicate.SchemasDeploymentResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                     throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }
@@ -268,7 +268,7 @@ namespace Replicate
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Replicate.DeploymentsUpdateResponse> DeploymentsUpdateAsync(
+        public async global::System.Threading.Tasks.Task<global::Replicate.SchemasDeploymentResponse> DeploymentsUpdateAsync(
             string deploymentOwner,
             string deploymentName,
             string? hardware = default,

@@ -14,6 +14,11 @@ namespace Replicate
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
+        partial void ProcessTrainingsListResponseContent(
+            global::System.Net.Http.HttpClient httpClient,
+            global::System.Net.Http.HttpResponseMessage httpResponseMessage,
+            ref string content);
+
         /// <summary>
         /// List trainings<br/>
         /// Get a paginated list of all trainings created by the user or organization associated with the provided API token.<br/>
@@ -66,7 +71,7 @@ namespace Replicate
         /// </summary>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task TrainingsListAsync(
+        public async global::System.Threading.Tasks.Task<global::Replicate.TrainingsListResponse> TrainingsListAsync(
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
@@ -133,6 +138,10 @@ namespace Replicate
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
+                ProcessTrainingsListResponseContent(
+                    httpClient: HttpClient,
+                    httpResponseMessage: __response,
+                    content: ref __content);
 
                 try
                 {
@@ -153,6 +162,9 @@ namespace Replicate
                     };
                 }
 
+                return
+                    global::Replicate.TrainingsListResponse.FromJson(__content, JsonSerializerContext) ??
+                    throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
             {
@@ -180,6 +192,9 @@ namespace Replicate
 #endif
                 ).ConfigureAwait(false);
 
+                return
+                    await global::Replicate.TrainingsListResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }
     }
