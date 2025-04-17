@@ -43,7 +43,7 @@ namespace Replicate
         /// <param name="deploymentName"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::Replicate.DeploymentsGetResponse> DeploymentsGetAsync(
+        global::System.Threading.Tasks.Task<global::Replicate.SchemasDeploymentResponse> DeploymentsGetAsync(
             string deploymentOwner,
             string deploymentName,
             global::System.Threading.CancellationToken cancellationToken = default);

@@ -92,68 +92,7 @@ paths:
                   results:
                     type: array
                     items:
-                      type: object
-                      properties:
-                        current_release:
-                          type: object
-                          properties:
-                            configuration:
-                              type: object
-                              properties:
-                                hardware:
-                                  type: string
-                                  description: The SKU for the hardware used to run the model.
-                                max_instances:
-                                  type: integer
-                                  description: The maximum number of instances for scaling.
-                                min_instances:
-                                  type: integer
-                                  description: The minimum number of instances for scaling.
-                            created_at:
-                              type: string
-                              description: The time the release was created.
-                              format: date-time
-                            created_by:
-                              required:
-                                - type
-                                - username
-                              type: object
-                              properties:
-                                avatar_url:
-                                  type: string
-                                  description: The avatar URL for the account that created the release.
-                                  format: uri
-                                github_url:
-                                  type: string
-                                  description: The GitHub URL of the account that created the release.
-                                  format: uri
-                                name:
-                                  type: string
-                                  description: The name of the account that created the release.
-                                type:
-                                  enum:
-                                    - organization
-                                    - user
-                                  type: string
-                                  description: The account type of the creator. Can be a user or an organization.
-                                username:
-                                  type: string
-                                  description: The username of the account that created the release.
-                            model:
-                              type: string
-                              description: 'The model identifier string in the format of `{model_owner}/{model_name}`.'
-                            number:
-                              type: integer
-                              description: 'The release number. This is an auto-incrementing integer that starts at 1, and is set automatically when a deployment is created.'
-                            version:
-                              type: string
-                              description: The ID of the model version used in the release.
-                        name:
-                          type: string
-                          description: The name of the deployment.
-                        owner:
-                          type: string
-                          description: The owner of the deployment.
+                      $ref: '#/components/schemas/schemas_deployment_response'
                     description: An array containing a page of deployment objects
     post:
       summary: Create a deployment
@@ -201,68 +140,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  current_release:
-                    type: object
-                    properties:
-                      configuration:
-                        type: object
-                        properties:
-                          hardware:
-                            type: string
-                            description: The SKU for the hardware used to run the model.
-                          max_instances:
-                            type: integer
-                            description: The maximum number of instances for scaling.
-                          min_instances:
-                            type: integer
-                            description: The minimum number of instances for scaling.
-                      created_at:
-                        type: string
-                        description: The time the release was created.
-                        format: date-time
-                      created_by:
-                        required:
-                          - type
-                          - username
-                        type: object
-                        properties:
-                          avatar_url:
-                            type: string
-                            description: The avatar URL for the account that created the release.
-                            format: uri
-                          github_url:
-                            type: string
-                            description: The GitHub URL of the account that created the release.
-                            format: uri
-                          name:
-                            type: string
-                            description: The name of the account that created the release.
-                          type:
-                            enum:
-                              - organization
-                              - user
-                            type: string
-                            description: The account type of the creator. Can be a user or an organization.
-                          username:
-                            type: string
-                            description: The username of the account that created the release.
-                      model:
-                        type: string
-                        description: 'The model identifier string in the format of `{model_owner}/{model_name}`.'
-                      number:
-                        type: integer
-                        description: The release number.
-                      version:
-                        type: string
-                        description: The ID of the model version used in the release.
-                  name:
-                    type: string
-                    description: The name of the deployment.
-                  owner:
-                    type: string
-                    description: The owner of the deployment.
+                $ref: '#/components/schemas/schemas_deployment_response'
   '/deployments/{deployment_owner}/{deployment_name}':
     delete:
       summary: Delete a deployment
@@ -307,68 +185,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  current_release:
-                    type: object
-                    properties:
-                      configuration:
-                        type: object
-                        properties:
-                          hardware:
-                            type: string
-                            description: The SKU for the hardware used to run the model.
-                          max_instances:
-                            type: integer
-                            description: The maximum number of instances for scaling.
-                          min_instances:
-                            type: integer
-                            description: The minimum number of instances for scaling.
-                      created_at:
-                        type: string
-                        description: The time the release was created.
-                        format: date-time
-                      created_by:
-                        required:
-                          - type
-                          - username
-                        type: object
-                        properties:
-                          avatar_url:
-                            type: string
-                            description: The avatar URL for the account that created the release.
-                            format: uri
-                          github_url:
-                            type: string
-                            description: The GitHub URL of the account that created the release.
-                            format: uri
-                          name:
-                            type: string
-                            description: The name of the account that created the release.
-                          type:
-                            enum:
-                              - organization
-                              - user
-                            type: string
-                            description: The account type of the creator. Can be a user or an organization.
-                          username:
-                            type: string
-                            description: The username of the account that created the release.
-                      model:
-                        type: string
-                        description: 'The model identifier string in the format of `{model_owner}/{model_name}`.'
-                      number:
-                        type: integer
-                        description: The release number.
-                      version:
-                        type: string
-                        description: The ID of the model version used in the release.
-                  name:
-                    type: string
-                    description: The name of the deployment.
-                  owner:
-                    type: string
-                    description: The owner of the deployment.
+                $ref: '#/components/schemas/schemas_deployment_response'
     patch:
       summary: Update a deployment
       description: "Update properties of an existing deployment, including hardware, min/max instances, and the deployment's underlying model [version](https://replicate.com/docs/how-does-replicate-work#versions).\n\nExample cURL request:\n\n```console\ncurl -s \\\n  -X PATCH \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"min_instances\": 3, \"max_instances\": 10}' \\\n  https://api.replicate.com/v1/deployments/acme/my-app-image-generator\n```\n\nThe response will be a JSON object describing the deployment:\n\n```json\n{\n  \"owner\": \"acme\",\n  \"name\": \"my-app-image-generator\",\n  \"current_release\": {\n    \"number\": 2,\n    \"model\": \"stability-ai/sdxl\",\n    \"version\": \"da77bc59ee60423279fd632efb4795ab731d9e3ca9705ef3341091fb989b7eaf\",\n    \"created_at\": \"2024-02-15T16:32:57.018467Z\",\n    \"created_by\": {\n      \"type\": \"organization\",\n      \"username\": \"acme\",\n      \"name\": \"Acme Corp, Inc.\",\n      \"avatar_url\": \"https://cdn.replicate.com/avatars/acme.png\",\n      \"github_url\": \"https://github.com/acme\"\n    },\n    \"configuration\": {\n      \"hardware\": \"gpu-t4\",\n      \"min_instances\": 3,\n      \"max_instances\": 10\n    }\n  }\n}\n```\n\nUpdating any deployment properties will increment the `number` field of the `current_release`.\n"
@@ -414,68 +231,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  current_release:
-                    type: object
-                    properties:
-                      configuration:
-                        type: object
-                        properties:
-                          hardware:
-                            type: string
-                            description: The SKU for the hardware used to run the model.
-                          max_instances:
-                            type: integer
-                            description: The maximum number of instances for scaling.
-                          min_instances:
-                            type: integer
-                            description: The minimum number of instances for scaling.
-                      created_at:
-                        type: string
-                        description: The time the release was created.
-                        format: date-time
-                      created_by:
-                        required:
-                          - type
-                          - username
-                        type: object
-                        properties:
-                          avatar_url:
-                            type: string
-                            description: The avatar URL for the account that created the release.
-                            format: uri
-                          github_url:
-                            type: string
-                            description: The GitHub URL of the account that created the release.
-                            format: uri
-                          name:
-                            type: string
-                            description: The name of the account that created the release.
-                          type:
-                            enum:
-                              - organization
-                              - user
-                            type: string
-                            description: The account type of the creator. Can be a user or an organization.
-                          username:
-                            type: string
-                            description: The username of the account that created the release.
-                      model:
-                        type: string
-                        description: 'The model identifier string in the format of `{model_owner}/{model_name}`.'
-                      number:
-                        type: integer
-                        description: The release number.
-                      version:
-                        type: string
-                        description: The ID of the model version used in the release.
-                  name:
-                    type: string
-                    description: The name of the deployment.
-                  owner:
-                    type: string
-                    description: The owner of the deployment.
+                $ref: '#/components/schemas/schemas_deployment_response'
   '/deployments/{deployment_owner}/{deployment_name}/predictions':
     post:
       summary: Create a prediction using a deployment
@@ -848,6 +604,10 @@ paths:
       responses:
         '201':
           description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas_training_response'
   /predictions:
     get:
       summary: List predictions
@@ -953,6 +713,23 @@ paths:
       responses:
         '200':
           description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  next:
+                    type: string
+                    description: URL to the next page of results
+                    nullable: true
+                  previous:
+                    type: string
+                    description: URL to the previous page of results
+                    nullable: true
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/schemas_training_response'
   '/trainings/{training_id}':
     get:
       summary: Get a training
@@ -968,6 +745,10 @@ paths:
       responses:
         '200':
           description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas_training_response'
   '/trainings/{training_id}/cancel':
     post:
       summary: Cancel a training
@@ -982,6 +763,10 @@ paths:
       responses:
         '200':
           description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas_training_response'
   /webhooks/default/secret:
     get:
       summary: Get the signing secret for the default webhook
@@ -1000,6 +785,69 @@ paths:
                     description: The signing secret.
 components:
   schemas:
+    schemas_deployment_response:
+      type: object
+      properties:
+        current_release:
+          type: object
+          properties:
+            configuration:
+              type: object
+              properties:
+                hardware:
+                  type: string
+                  description: The SKU for the hardware used to run the model.
+                max_instances:
+                  type: integer
+                  description: The maximum number of instances for scaling.
+                min_instances:
+                  type: integer
+                  description: The minimum number of instances for scaling.
+            created_at:
+              type: string
+              description: The time the release was created.
+              format: date-time
+            created_by:
+              required:
+                - type
+                - username
+              type: object
+              properties:
+                avatar_url:
+                  type: string
+                  description: The avatar URL for the account that created the release.
+                  format: uri
+                github_url:
+                  type: string
+                  description: The GitHub URL of the account that created the release.
+                  format: uri
+                name:
+                  type: string
+                  description: The name of the account that created the release.
+                type:
+                  enum:
+                    - organization
+                    - user
+                  type: string
+                  description: The account type of the creator. Can be a user or an organization.
+                username:
+                  type: string
+                  description: The username of the account that created the release.
+            model:
+              type: string
+              description: 'The model identifier string in the format of `{model_owner}/{model_name}`.'
+            number:
+              type: integer
+              description: The release number.
+            version:
+              type: string
+              description: The ID of the model version used in the release.
+        name:
+          type: string
+          description: The name of the deployment.
+        owner:
+          type: string
+          description: The owner of the deployment.
     schemas_model_response:
       type: object
       properties:
@@ -1204,6 +1052,84 @@ components:
               - completed
             type: string
           description: "By default, we will send requests to your webhook URL whenever there are new outputs or the training has finished. You can change which events trigger webhook requests by specifying `webhook_events_filter` in the training request:\n\n- `start`: immediately on training start\n- `output`: each time a training generates an output (note that trainings can generate multiple outputs)\n- `logs`: each time log output is generated by a training\n- `completed`: when the training reaches a terminal state (succeeded/canceled/failed)\n\nFor example, if you only wanted requests to be sent at the start and end of the training, you would provide:\n\n```json\n{\n  \"destination\": \"my-organization/my-model\",\n  \"input\": {\n    \"text\": \"Alice\"\n  },\n  \"webhook\": \"https://example.com/my-webhook\",\n  \"webhook_events_filter\": [\"start\", \"completed\"]\n}\n```\n\nRequests for event types `output` and `logs` will be sent at most once every 500ms. If you request `start` and `completed` webhooks, then they'll always be sent regardless of throttling.\n"
+    schemas_training_response:
+      type: object
+      properties:
+        completed_at:
+          type: string
+          description: The time when the training completed
+          format: date-time
+        created_at:
+          type: string
+          description: The time when the training was created
+          format: date-time
+        error:
+          type: string
+          description: Error message if the training failed
+          nullable: true
+        id:
+          type: string
+          description: The unique ID of the training
+        input:
+          type: object
+          description: The input parameters used for the training
+        logs:
+          type: string
+          description: The logs from the training process
+        metrics:
+          type: object
+          properties:
+            predict_time:
+              type: number
+              description: 'The amount of CPU or GPU time, in seconds, that the training used while running'
+          description: Metrics about the training process
+        model:
+          type: string
+          description: The name of the model in the format owner/name
+        output:
+          type: object
+          properties:
+            version:
+              type: string
+              description: The version of the model created by the training
+            weights:
+              type: string
+              description: The weights of the trained model
+          description: The output of the training process
+        source:
+          enum:
+            - web
+            - api
+          type: string
+          description: How the training was created
+        started_at:
+          type: string
+          description: The time when the training started
+          format: date-time
+        status:
+          enum:
+            - starting
+            - processing
+            - succeeded
+            - failed
+            - canceled
+          type: string
+          description: The current status of the training
+        urls:
+          type: object
+          properties:
+            cancel:
+              type: string
+              description: URL to cancel the training
+              format: uri
+            get:
+              type: string
+              description: URL to get the training details
+              format: uri
+          description: URLs for interacting with the training
+        version:
+          type: string
+          description: The ID of the model version used for training
     schemas_version_prediction_request:
       required:
         - version

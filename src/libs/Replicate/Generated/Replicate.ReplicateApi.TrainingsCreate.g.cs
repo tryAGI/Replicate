@@ -22,6 +22,11 @@ namespace Replicate
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
+        partial void ProcessTrainingsCreateResponseContent(
+            global::System.Net.Http.HttpClient httpClient,
+            global::System.Net.Http.HttpResponseMessage httpResponseMessage,
+            ref string content);
+
         /// <summary>
         /// Create a training<br/>
         /// Start a new training of the model version you specify.<br/>
@@ -72,7 +77,7 @@ namespace Replicate
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task TrainingsCreateAsync(
+        public async global::System.Threading.Tasks.Task<global::Replicate.SchemasTrainingResponse> TrainingsCreateAsync(
             string modelOwner,
             string modelName,
             string versionId,
@@ -159,6 +164,10 @@ namespace Replicate
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
+                ProcessTrainingsCreateResponseContent(
+                    httpClient: HttpClient,
+                    httpResponseMessage: __response,
+                    content: ref __content);
 
                 try
                 {
@@ -179,6 +188,9 @@ namespace Replicate
                     };
                 }
 
+                return
+                    global::Replicate.SchemasTrainingResponse.FromJson(__content, JsonSerializerContext) ??
+                    throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
             {
@@ -206,6 +218,9 @@ namespace Replicate
 #endif
                 ).ConfigureAwait(false);
 
+                return
+                    await global::Replicate.SchemasTrainingResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }
 
@@ -286,7 +301,7 @@ namespace Replicate
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task TrainingsCreateAsync(
+        public async global::System.Threading.Tasks.Task<global::Replicate.SchemasTrainingResponse> TrainingsCreateAsync(
             string modelOwner,
             string modelName,
             string versionId,
@@ -304,7 +319,7 @@ namespace Replicate
                 WebhookEventsFilter = webhookEventsFilter,
             };
 
-            await TrainingsCreateAsync(
+            return await TrainingsCreateAsync(
                 modelOwner: modelOwner,
                 modelName: modelName,
                 versionId: versionId,

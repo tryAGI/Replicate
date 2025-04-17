@@ -62,7 +62,7 @@ namespace Replicate
         /// <param name="deploymentName"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Replicate.DeploymentsGetResponse> DeploymentsGetAsync(
+        public async global::System.Threading.Tasks.Task<global::Replicate.SchemasDeploymentResponse> DeploymentsGetAsync(
             string deploymentOwner,
             string deploymentName,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -160,7 +160,7 @@ namespace Replicate
                 }
 
                 return
-                    global::Replicate.DeploymentsGetResponse.FromJson(__content, JsonSerializerContext) ??
+                    global::Replicate.SchemasDeploymentResponse.FromJson(__content, JsonSerializerContext) ??
                     throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
@@ -190,7 +190,7 @@ namespace Replicate
                 ).ConfigureAwait(false);
 
                 return
-                    await global::Replicate.DeploymentsGetResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    await global::Replicate.SchemasDeploymentResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                     throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }

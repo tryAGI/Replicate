@@ -16,13 +16,18 @@ namespace Replicate
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
+        partial void ProcessTrainingsCancelResponseContent(
+            global::System.Net.Http.HttpClient httpClient,
+            global::System.Net.Http.HttpResponseMessage httpResponseMessage,
+            ref string content);
+
         /// <summary>
         /// Cancel a training
         /// </summary>
         /// <param name="trainingId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task TrainingsCancelAsync(
+        public async global::System.Threading.Tasks.Task<global::Replicate.SchemasTrainingResponse> TrainingsCancelAsync(
             string trainingId,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -92,6 +97,10 @@ namespace Replicate
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
+                ProcessTrainingsCancelResponseContent(
+                    httpClient: HttpClient,
+                    httpResponseMessage: __response,
+                    content: ref __content);
 
                 try
                 {
@@ -112,6 +121,9 @@ namespace Replicate
                     };
                 }
 
+                return
+                    global::Replicate.SchemasTrainingResponse.FromJson(__content, JsonSerializerContext) ??
+                    throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
             {
@@ -139,6 +151,9 @@ namespace Replicate
 #endif
                 ).ConfigureAwait(false);
 
+                return
+                    await global::Replicate.SchemasTrainingResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }
     }
