@@ -230,22 +230,26 @@ namespace Replicate
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.PredictionsListResponse? Type51 { get; set; }
+        public global::Replicate.ModelsCreateResponse? Type51 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Replicate.SchemasPredictionResponse>? Type52 { get; set; }
+        public global::Replicate.PredictionsListResponse? Type52 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.TrainingsListResponse? Type53 { get; set; }
+        public global::System.Collections.Generic.IList<global::Replicate.SchemasPredictionResponse>? Type53 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Replicate.SchemasTrainingResponse>? Type54 { get; set; }
+        public global::Replicate.TrainingsListResponse? Type54 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.WebhooksDefaultSecretGetResponse? Type55 { get; set; }
+        public global::System.Collections.Generic.IList<global::Replicate.SchemasTrainingResponse>? Type55 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Replicate.WebhooksDefaultSecretGetResponse? Type56 { get; set; }
     }
 }

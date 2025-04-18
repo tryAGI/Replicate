@@ -16,6 +16,11 @@ namespace Replicate
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
+        partial void ProcessModelsCreateResponseContent(
+            global::System.Net.Http.HttpClient httpClient,
+            global::System.Net.Http.HttpResponseMessage httpResponseMessage,
+            ref string content);
+
         /// <summary>
         /// Create a model<br/>
         /// Create a model.<br/>
@@ -49,7 +54,7 @@ namespace Replicate
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task ModelsCreateAsync(
+        public async global::System.Threading.Tasks.Task<global::Replicate.ModelsCreateResponse> ModelsCreateAsync(
             global::Replicate.ModelsCreateRequest request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -127,6 +132,10 @@ namespace Replicate
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
+                ProcessModelsCreateResponseContent(
+                    httpClient: HttpClient,
+                    httpResponseMessage: __response,
+                    content: ref __content);
 
                 try
                 {
@@ -147,6 +156,9 @@ namespace Replicate
                     };
                 }
 
+                return
+                    global::Replicate.ModelsCreateResponse.FromJson(__content, JsonSerializerContext) ??
+                    throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
             {
@@ -174,6 +186,9 @@ namespace Replicate
 #endif
                 ).ConfigureAwait(false);
 
+                return
+                    await global::Replicate.ModelsCreateResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }
 
@@ -236,7 +251,7 @@ namespace Replicate
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task ModelsCreateAsync(
+        public async global::System.Threading.Tasks.Task<global::Replicate.ModelsCreateResponse> ModelsCreateAsync(
             string hardware,
             string name,
             string owner,
@@ -261,7 +276,7 @@ namespace Replicate
                 Visibility = visibility,
             };
 
-            await ModelsCreateAsync(
+            return await ModelsCreateAsync(
                 request: __request,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
         }

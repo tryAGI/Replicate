@@ -365,6 +365,41 @@ paths:
       responses:
         '201':
           description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  url:
+                    type: string
+                    format: string
+                  owner:
+                    type: string
+                    format: string
+                  name:
+                    type: string
+                    format: string
+                  description:
+                    type: string
+                    format: string
+                  visibility:
+                    type: string
+                    format: string
+                  github_url:
+                    type: 'null'
+                  paper_url:
+                    type: 'null'
+                  license_url:
+                    type: 'null'
+                  run_count:
+                    type: number
+                    format: int64
+                  cover_image_url:
+                    type: 'null'
+                  default_example:
+                    type: 'null'
+                  latest_version:
+                    type: 'null'
   '/models/{model_owner}/{model_name}':
     delete:
       summary: Delete a model
