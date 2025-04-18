@@ -7,13 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		src\Directory.Build.props = src\Directory.Build.props
-		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 		LICENSE = LICENSE
 		README.md = README.md
-		.github\workflows\pull-request.yml = .github\workflows\pull-request.yml
-		.github\workflows\auto-update.yml = .github\workflows\auto-update.yml
-		.github\workflows\mkdocs.yml = .github\workflows\mkdocs.yml
-		.github\workflows\auto-merge.yml = .github\workflows\auto-merge.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{61E7E11E-4558-434C-ACE8-06316A3097B3}"
@@ -34,6 +29,17 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateDocs", "src\helpers\GenerateDocs\GenerateDocs.csproj", "{2E3D948F-EDC6-4B62-9ED1-0ABADABD4EAA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrimmingHelper", "src\helpers\TrimmingHelper\TrimmingHelper.csproj", "{AF5820E5-E366-4DB2-B9D6-A7811637CE0B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{6DA3F4DB-69F5-44CE-A8CE-628118EB6B9B}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\auto-merge.yml = .github\workflows\auto-merge.yml
+		.github\workflows\auto-update.yml = .github\workflows\auto-update.yml
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
+		.github\workflows\mkdocs.yml = .github\workflows\mkdocs.yml
+		.github\workflows\pull-request.yml = .github\workflows\pull-request.yml
+		.github\workflows\comment-to-commit-using-aider.yml = .github\workflows\comment-to-commit-using-aider.yml
+		.github\workflows\issue-to-pr.yml = .github\workflows\issue-to-pr.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +77,7 @@ Global
 		{51395B9A-1474-4263-AB97-CFBEED8BAD3F} = {4A7E933D-CAA6-4A0E-A762-BE49BE291515}
 		{2E3D948F-EDC6-4B62-9ED1-0ABADABD4EAA} = {4A7E933D-CAA6-4A0E-A762-BE49BE291515}
 		{AF5820E5-E366-4DB2-B9D6-A7811637CE0B} = {4A7E933D-CAA6-4A0E-A762-BE49BE291515}
+		{6DA3F4DB-69F5-44CE-A8CE-628118EB6B9B} = {E793AF18-4371-4EBD-96FC-195EB1798855}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CED9A020-DBA5-4BE6-8096-75E528648EC1}
