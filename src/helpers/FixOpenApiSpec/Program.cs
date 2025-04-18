@@ -87,6 +87,36 @@ openApiDocument.Paths["/predictions/{prediction_id}"]
     },
 };
 
+openApiDocument.Paths["/models"].Operations[OperationType.Post].Responses["201"] = new OpenApiResponse
+{
+    Description = "Success",
+    Content = new Dictionary<string, OpenApiMediaType>
+    {
+        ["application/json"] = new()
+        {
+            Schema = FromJson(
+                /* language=json */
+                """
+                {
+                  "url": "https://replicate.com/alice/my-model",
+                  "owner": "alice",
+                  "name": "my-model",
+                  "description": "An example model",
+                  "visibility": "public",
+                  "github_url": null,
+                  "paper_url": null,
+                  "license_url": null,
+                  "run_count": 0,
+                  "cover_image_url": null,
+                  "default_example": null,
+                  "latest_version": null
+                }
+                """
+            )
+        },
+    },
+};
+
 jsonOrYaml = openApiDocument.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0);
 _ = new OpenApiStringReader().Read(jsonOrYaml, out diagnostics);
 
