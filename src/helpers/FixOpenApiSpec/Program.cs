@@ -80,7 +80,7 @@ openApiDocument.Paths["/predictions/{prediction_id}"]
                 Reference = new OpenApiReference
                 {
                     Type = ReferenceType.Schema,
-                    Id = "prediction_response",
+                    Id = "schemas_prediction_response",
                 },
             },
         },
@@ -94,25 +94,14 @@ openApiDocument.Paths["/models"].Operations[OperationType.Post].Responses["201"]
     {
         ["application/json"] = new()
         {
-            Schema = FromJson(
-                /* language=json */
-                """
+            Schema = new OpenApiSchema
+            {
+                Reference = new OpenApiReference
                 {
-                  "url": "https://replicate.com/alice/my-model",
-                  "owner": "alice",
-                  "name": "my-model",
-                  "description": "An example model",
-                  "visibility": "public",
-                  "github_url": null,
-                  "paper_url": null,
-                  "license_url": null,
-                  "run_count": 0,
-                  "cover_image_url": null,
-                  "default_example": null,
-                  "latest_version": null
-                }
-                """
-            )
+                    Type = ReferenceType.Schema,
+                    Id = "schemas_model_response",
+                },
+            },
         },
     },
 };
@@ -166,3 +155,61 @@ static OpenApiSchema FromJson([StringSyntax(StringSyntaxAttribute.Json)] string 
     
     return schema;
 }
+// Add response schema for deployments create/update
+openApiDocument.Paths["/deployments"].Operations[OperationType.Post].Responses["200"] = new OpenApiResponse
+{
+    Description = "Success",
+    Content = new Dictionary<string, OpenApiMediaType>
+    {
+        ["application/json"] = new()
+        {
+            Schema = new OpenApiSchema
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.Schema, 
+                    Id = "schemas_deployment_response",
+                },
+            },
+        },
+    },
+};
+
+openApiDocument.Paths["/deployments/{deployment_owner}/{deployment_name}"].Operations[OperationType.Patch].Responses["200"] = new OpenApiResponse
+{
+    Description = "Success",
+    Content = new Dictionary<string, OpenApiMediaType>
+    {
+        ["application/json"] = new()
+        {
+            Schema = new OpenApiSchema
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.Schema,
+                    Id = "schemas_deployment_response",
+                },
+            },
+        },
+    },
+};
+
+// Add response schema for trainings create
+openApiDocument.Paths["/models/{model_owner}/{model_name}/versions/{version_id}/trainings"].Operations[OperationType.Post].Responses["201"] = new OpenApiResponse
+{
+    Description = "Success",
+    Content = new Dictionary<string, OpenApiMediaType>
+    {
+        ["application/json"] = new()
+        {
+            Schema = new OpenApiSchema
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.Schema,
+                    Id = "schemas_training_response",
+                },
+            },
+        },
+    },
+};
