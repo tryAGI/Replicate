@@ -155,6 +155,65 @@ static OpenApiSchema FromJson([StringSyntax(StringSyntaxAttribute.Json)] string 
     
     return schema;
 }
+
+// Add response schema for deployments create/update
+openApiDocument.Paths["/deployments"].Operations[OperationType.Post].Responses["200"] = new OpenApiResponse
+{
+    Description = "Success",
+    Content = new Dictionary<string, OpenApiMediaType>
+    {
+        ["application/json"] = new()
+        {
+            Schema = new OpenApiSchema
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.Schema, 
+                    Id = "schemas_deployment_response",
+                },
+            },
+        },
+    },
+};
+
+openApiDocument.Paths["/deployments/{deployment_owner}/{deployment_name}"].Operations[OperationType.Patch].Responses["200"] = new OpenApiResponse
+{
+    Description = "Success",
+    Content = new Dictionary<string, OpenApiMediaType>
+    {
+        ["application/json"] = new()
+        {
+            Schema = new OpenApiSchema
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.Schema,
+                    Id = "schemas_deployment_response",
+                },
+            },
+        },
+    },
+};
+
+// Add response schema for trainings create
+openApiDocument.Paths["/models/{model_owner}/{model_name}/versions/{version_id}/trainings"].Operations[OperationType.Post].Responses["201"] = new OpenApiResponse
+{
+    Description = "Success",
+    Content = new Dictionary<string, OpenApiMediaType>
+    {
+        ["application/json"] = new()
+        {
+            Schema = new OpenApiSchema
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.Schema,
+                    Id = "schemas_training_response",
+                },
+            },
+        },
+    },
+};
 // Add response schema for deployments create/update
 openApiDocument.Paths["/deployments"].Operations[OperationType.Post].Responses["200"] = new OpenApiResponse
 {
