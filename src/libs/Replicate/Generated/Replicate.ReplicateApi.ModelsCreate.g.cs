@@ -54,7 +54,7 @@ namespace Replicate
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Replicate.ModelsCreateResponse> ModelsCreateAsync(
+        public async global::System.Threading.Tasks.Task<global::Replicate.SchemasModelResponse> ModelsCreateAsync(
             global::Replicate.ModelsCreateRequest request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -157,7 +157,7 @@ namespace Replicate
                 }
 
                 return
-                    global::Replicate.ModelsCreateResponse.FromJson(__content, JsonSerializerContext) ??
+                    global::Replicate.SchemasModelResponse.FromJson(__content, JsonSerializerContext) ??
                     throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
@@ -187,7 +187,7 @@ namespace Replicate
                 ).ConfigureAwait(false);
 
                 return
-                    await global::Replicate.ModelsCreateResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    await global::Replicate.SchemasModelResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                     throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }
@@ -251,7 +251,7 @@ namespace Replicate
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Replicate.ModelsCreateResponse> ModelsCreateAsync(
+        public async global::System.Threading.Tasks.Task<global::Replicate.SchemasModelResponse> ModelsCreateAsync(
             string hardware,
             string name,
             string owner,

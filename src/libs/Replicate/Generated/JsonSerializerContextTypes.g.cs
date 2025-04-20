@@ -166,90 +166,70 @@ namespace Replicate
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.PredictionResponse? Type35 { get; set; }
+        public global::Replicate.DeploymentsCreateRequest? Type35 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.PredictionResponseInput? Type36 { get; set; }
+        public global::Replicate.DeploymentsUpdateRequest? Type36 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.PredictionResponseMetrics? Type37 { get; set; }
+        public global::Replicate.ModelsCreateRequest? Type37 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.PredictionResponseUrls? Type38 { get; set; }
+        public global::Replicate.ModelsCreateRequestVisibility? Type38 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.DeploymentsCreateRequest? Type39 { get; set; }
+        public global::Replicate.AccountGetResponse? Type39 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.DeploymentsUpdateRequest? Type40 { get; set; }
+        public global::Replicate.AccountGetResponseType? Type40 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.ModelsCreateRequest? Type41 { get; set; }
+        public global::Replicate.DeploymentsListResponse? Type41 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.ModelsCreateRequestVisibility? Type42 { get; set; }
+        public global::System.Collections.Generic.IList<global::Replicate.SchemasDeploymentResponse>? Type42 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.AccountGetResponse? Type43 { get; set; }
+        public global::System.Collections.Generic.IList<global::Replicate.HardwareListResponseItem>? Type43 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.AccountGetResponseType? Type44 { get; set; }
+        public global::Replicate.HardwareListResponseItem? Type44 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.DeploymentsListResponse? Type45 { get; set; }
+        public global::Replicate.ModelsListResponse? Type45 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Replicate.SchemasDeploymentResponse>? Type46 { get; set; }
+        public global::System.Collections.Generic.IList<global::Replicate.SchemasModelResponse>? Type46 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Replicate.HardwareListResponseItem>? Type47 { get; set; }
+        public global::Replicate.PredictionsListResponse? Type47 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.HardwareListResponseItem? Type48 { get; set; }
+        public global::System.Collections.Generic.IList<global::Replicate.SchemasPredictionResponse>? Type48 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.ModelsListResponse? Type49 { get; set; }
+        public global::Replicate.TrainingsListResponse? Type49 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Replicate.SchemasModelResponse>? Type50 { get; set; }
+        public global::System.Collections.Generic.IList<global::Replicate.SchemasTrainingResponse>? Type50 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.ModelsCreateResponse? Type51 { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public global::Replicate.PredictionsListResponse? Type52 { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public global::System.Collections.Generic.IList<global::Replicate.SchemasPredictionResponse>? Type53 { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public global::Replicate.TrainingsListResponse? Type54 { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public global::System.Collections.Generic.IList<global::Replicate.SchemasTrainingResponse>? Type55 { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public global::Replicate.WebhooksDefaultSecretGetResponse? Type56 { get; set; }
+        public global::Replicate.WebhooksDefaultSecretGetResponse? Type51 { get; set; }
     }
 }
