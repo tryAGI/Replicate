@@ -1,0 +1,18 @@
+name: Auto-labeling issue
+on:
+  issues:
+    types:
+      - opened
+
+permissions:
+  issues: write
+
+jobs:
+  auto-labeling:
+    uses: oscoreio/ai-workflows/.github/workflows/auto-labeling.yml@main
+    with:
+      issue-number: ${{ github.event.issue.number }}
+    secrets:
+      openrouter-api-key: ${{ secrets.OPENROUTER_API_KEY_FOR_PRS }}
+      model: free-fast
+      provider: openrouter
