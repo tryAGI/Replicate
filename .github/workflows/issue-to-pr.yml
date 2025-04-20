@@ -17,6 +17,7 @@ jobs:
       default-branch: ${{ github.event.repository.default_branch }}
       test-command: "dotnet build"
     secrets:
+      personal-access-token: ${{ secrets.PERSONAL_TOKEN }}
       openrouter-api-key: ${{ secrets.OPENROUTER_API_KEY_FOR_PRS }}
       openai-api-key: ${{ secrets.OPENAI_API_KEY_FOR_PRS }}
       anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY_FOR_PRS }}
