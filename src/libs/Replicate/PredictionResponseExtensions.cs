@@ -11,14 +11,14 @@ public static class PredictionResponseExtensions
     /// <param name="response"></param>
     /// <returns></returns>
     /// <exception cref="ArgumentNullException"></exception>
-    public static bool IsCompleted(this SchemasPredictionResponse response)
+    public static bool IsCompleted(this PredictionResponse response)
     {
         response = response ?? throw new ArgumentNullException(nameof(response));
         
         return response.Status is 
-            SchemasPredictionResponseStatus.Succeeded or
-            SchemasPredictionResponseStatus.Canceled or
-            SchemasPredictionResponseStatus.Failed;
+            SchemasPredictionResponseStatus.Succeeded.ToValueString() or
+            SchemasPredictionResponseStatus.Canceled.ToValueString() or
+            SchemasPredictionResponseStatus.Failed.ToValueString();
     }
     
     /// <summary>
@@ -31,7 +31,7 @@ public static class PredictionResponseExtensions
     /// <exception cref="ArgumentNullException"></exception>
     /// <exception cref="ArgumentException"></exception>
     public static async Task<PredictionResponse?> WaitUntilSuccessfulAsync(
-        this SchemasPredictionResponse response,
+        this PredictionResponse response,
         ReplicateApi api,
         CancellationToken cancellationToken = default)
     {
@@ -39,8 +39,8 @@ public static class PredictionResponseExtensions
         api = api ?? throw new ArgumentNullException(nameof(api));
         var id = response.Id ?? throw new ArgumentException(nameof(response.Id));
         
-        PredictionResponse? predictionResponse = null;
-        while (!response.IsCompleted())
+        var predictionResponse = response;
+        while (!predictionResponse.IsCompleted())
         {
             await Task.Delay(1000, cancellationToken).ConfigureAwait(false);
             
