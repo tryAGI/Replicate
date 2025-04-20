@@ -15,4 +15,5 @@ jobs:
       model: free-fast
       provider: openrouter
     secrets:
+      personal-access-token: ${{ secrets.PERSONAL_TOKEN }}
       openrouter-api-key: ${{ secrets.OPENROUTER_API_KEY_FOR_PRS }}
