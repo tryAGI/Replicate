@@ -34,6 +34,7 @@ var response = await api.ModelsPredictionsCreateAsync(
             ["safety_tolerance"] = 5,
         },
     },
+    prefer: "wait=60",
     modelOwner: "black-forest-labs",
     modelName: "flux-pro");
         

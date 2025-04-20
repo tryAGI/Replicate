@@ -30,7 +30,7 @@ public static class PredictionResponseExtensions
     /// <returns></returns>
     /// <exception cref="ArgumentNullException"></exception>
     /// <exception cref="ArgumentException"></exception>
-    public static async Task<PredictionResponse?> WaitUntilSuccessfulAsync(
+    public static async Task<SchemasPredictionResponse?> WaitUntilSuccessfulAsync(
         this SchemasPredictionResponse response,
         ReplicateApi api,
         CancellationToken cancellationToken = default)
@@ -39,7 +39,7 @@ public static class PredictionResponseExtensions
         api = api ?? throw new ArgumentNullException(nameof(api));
         var id = response.Id ?? throw new ArgumentException(nameof(response.Id));
         
-        PredictionResponse? predictionResponse = null;
+        SchemasPredictionResponse? predictionResponse = null;
         while (!response.IsCompleted())
         {
             await Task.Delay(1000, cancellationToken).ConfigureAwait(false);

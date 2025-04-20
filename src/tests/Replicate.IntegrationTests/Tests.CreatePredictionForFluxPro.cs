@@ -6,11 +6,12 @@ public partial class Tests
     public async Task CreatePredictionForFluxPro()
     {
         using var api = GetAuthorizedApi();
-        
-        var response = await api.ModelsPredictionsCreateAsync(
+
+        var seed = Random.Shared.Next(0, 1000000);
+        var endResponse = await api.ModelsPredictionsCreateAsync(
             input: new Dictionary<string, object>
             {
-                ["seed"] = Random.Shared.Next(0, 1000000),
+                ["seed"] = seed,
                 ["steps"] = 25,
                 ["prompt"] = "a female, european, young adult, fit body, wavy acid orange hair, wearing open swimsuit, sea in the background.",
                 ["guidance"] = 3.5,
@@ -21,14 +22,13 @@ public partial class Tests
             modelOwner: "black-forest-labs",
             modelName: "flux-pro",
             stream: false,
+            prefer: "wait=60",
             webhook: "https://hook.eu2.make.com/h6tawmpxsmxb7ut4edfmje4g3xw8y8rf",
             webhookEventsFilter: null);
-        response.Should().NotBeNull();
-        response.Id.Should().NotBeNull();
+        endResponse.Should().NotBeNull();
+        endResponse.Id.Should().NotBeNull();
         
-        var endResponse = await response.WaitUntilSuccessfulAsync(api);
-        
-        Console.WriteLine($"Seed: {endResponse?.Input?.Seed}.");
+        Console.WriteLine($"Seed: {seed}.");
         Console.WriteLine("Image available at:");
         Console.WriteLine(endResponse?.Output);
         
