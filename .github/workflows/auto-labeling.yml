@@ -12,7 +12,7 @@ jobs:
     uses: oscoreio/ai-workflows/.github/workflows/auto-labeling.yml@main
     with:
       issue-number: ${{ github.event.issue.number }}
-      model: free-fast
+      model: google/gemini-2.5-pro-preview-03-25
       provider: openrouter
     secrets:
       personal-access-token: ${{ secrets.PERSONAL_TOKEN }}
