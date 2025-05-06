@@ -77,12 +77,11 @@ namespace Replicate
         public required string Model { get; set; }
 
         /// <summary>
-        /// 
+        /// The prediction output, which can be any JSON-serializable value, depending on the model
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("output")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Replicate.JsonConverters.OneOfJsonConverter<object, global::System.Collections.Generic.IList<object>, string, int?, double?, bool?>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Replicate.OneOf<object, global::System.Collections.Generic.IList<object>, string, int?, double?, bool?> Output { get; set; }
+        public required object Output { get; set; }
 
         /// <summary>
         /// The time that the model began the prediction
@@ -150,7 +149,9 @@ namespace Replicate
         /// <param name="model">
         /// The name of the model that created the prediction
         /// </param>
-        /// <param name="output"></param>
+        /// <param name="output">
+        /// The prediction output, which can be any JSON-serializable value, depending on the model
+        /// </param>
         /// <param name="startedAt">
         /// The time that the model began the prediction
         /// </param>
@@ -169,7 +170,7 @@ namespace Replicate
             string id,
             object input,
             string model,
-            global::Replicate.OneOf<object, global::System.Collections.Generic.IList<object>, string, int?, double?, bool?> output,
+            object output,
             global::Replicate.SchemasPredictionResponseStatus status,
             global::Replicate.SchemasPredictionResponseUrls urls,
             global::Replicate.OneOf<string, global::Replicate.SchemasPredictionResponseVersion?> version,
@@ -185,7 +186,7 @@ namespace Replicate
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Input = input ?? throw new global::System.ArgumentNullException(nameof(input));
             this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
-            this.Output = output;
+            this.Output = output ?? throw new global::System.ArgumentNullException(nameof(output));
             this.Status = status;
             this.Urls = urls ?? throw new global::System.ArgumentNullException(nameof(urls));
             this.Version = version;
