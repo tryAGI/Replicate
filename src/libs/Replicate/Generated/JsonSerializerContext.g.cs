@@ -35,7 +35,6 @@ namespace Replicate
             typeof(global::Replicate.JsonConverters.ModelsCreateRequestVisibilityNullableJsonConverter),
             typeof(global::Replicate.JsonConverters.AccountGetResponseTypeJsonConverter),
             typeof(global::Replicate.JsonConverters.AccountGetResponseTypeNullableJsonConverter),
-            typeof(global::Replicate.JsonConverters.OneOfJsonConverter<object, global::System.Collections.Generic.IList<object>, string, int?, double?, bool?>),
             typeof(global::Replicate.JsonConverters.OneOfJsonConverter<string, global::Replicate.SchemasPredictionResponseVersion?>),
             typeof(global::Replicate.JsonConverters.UnixTimestampJsonConverter),
         })]

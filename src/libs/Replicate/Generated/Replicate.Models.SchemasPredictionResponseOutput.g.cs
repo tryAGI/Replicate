@@ -4,7 +4,7 @@
 namespace Replicate
 {
     /// <summary>
-    /// 
+    /// The prediction output, which can be any JSON-serializable value, depending on the model
     /// </summary>
     public sealed partial class SchemasPredictionResponseOutput
     {
