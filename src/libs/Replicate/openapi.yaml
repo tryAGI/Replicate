@@ -269,6 +269,183 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/schemas_prediction_response'
+  /files:
+    get:
+      summary: List files
+      description: "Get a paginated list of all files created by the user or organization associated with the provided API token.\n\nExample cURL request:\n\n```console\ncurl -s \\\n  -H \"Authorization: Token $REPLICATE_API_TOKEN\" \\\n  https://api.replicate.com/v1/files\n```\n\nThe response will be a paginated JSON array of file objects, sorted with the most recent file first.\n"
+      operationId: files.list
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  next:
+                    type: string
+                    format: uri
+                    nullable: true
+                  previous:
+                    type: string
+                    format: uri
+                    nullable: true
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/schemas_file_response'
+      x-feature-flag: show-files-api-docs
+    post:
+      summary: Create a file
+      description: "Create a file by uploading its content and optional metadata.\n\nExample cURL request:\n\n```console\ncurl -X POST https://api.replicate.com/v1/files \\\n  -H \"Authorization: Token $REPLICATE_API_TOKEN\" \\\n  -H 'Content-Type: multipart/form-data' \\\n  -F 'content=@/path/to/archive.zip;type=application/zip;filename=example.zip' \\\n  -F 'metadata={\"customer_reference_id\": 123};type=application/json'\n```\n\nThe request must include:\n- `content`: The file content (required)\n- `type`: The content / MIME type for the file (defaults to `application/octet-stream`)\n- `filename`: The filename (required, ≤ 255 bytes, valid UTF-8)\n- `metadata`: User-provided metadata associated with the file (defaults to `{}`, must be valid JSON)\n"
+      operationId: files.create
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+                - content
+                - filename
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: The file content
+                  format: binary
+                filename:
+                  maxLength: 255
+                  type: string
+                  description: The filename
+                metadata:
+                  type: object
+                  description: User-provided metadata associated with the file
+                type:
+                  type: string
+                  description: The content / MIME type for the file
+                  default: application/octet-stream
+      responses:
+        '201':
+          description: File has been created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas_file_response'
+        '413':
+          description: Content Too Large
+          content:
+            application/problem+json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: Files must be less than 100MB in size
+      x-feature-flag: show-files-api-docs
+  '/files/{file_id}':
+    delete:
+      summary: Delete a file
+      description: "Delete a file. Once a file has been deleted, subsequent requests to the file resource return 404 Not found.\n\nExample cURL request:\n\n```console\ncurl -X DELETE \\\n  -H \"Authorization: Token $REPLICATE_API_TOKEN\" \\\n  https://api.replicate.com/v1/files/cneqzikepnug6xezperrr4z55o\n```\n"
+      operationId: files.delete
+      parameters:
+        - name: file_id
+          in: path
+          description: The ID of the file to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: File has been deleted
+        '404':
+          description: File not found
+          content:
+            application/problem+json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: File not found
+      x-feature-flag: show-files-api-docs
+    get:
+      summary: Get a file
+      description: "Get the details of a file.\n\nExample cURL request:\n\n```console\ncurl -s \\\n  -H \"Authorization: Token $REPLICATE_API_TOKEN\" \\\n  https://api.replicate.com/v1/files/cneqzikepnug6xezperrr4z55o\n```\n"
+      operationId: files.get
+      parameters:
+        - name: file_id
+          in: path
+          description: The ID of the file to get
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas_file_response'
+        '404':
+          description: File not found
+          content:
+            application/problem+json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: File not found
+      x-feature-flag: show-files-api-docs
+  '/files/{file_id}/download':
+    get:
+      summary: Download a file
+      description: "Download a file by providing the file owner, access expiry, and a valid signature.\n\nExample cURL request:\n\n```console\ncurl -X GET \"https://api.replicate.com/v1/files/cneqzikepnug6xezperrr4z55o/download?expiry=1708515345&owner=mattt&signature=zuoghqlrcnw8YHywkpaXQlHsVhWen%2FDZ4aal76dLiOo%3D\"\n```\n"
+      operationId: files.download
+      parameters:
+        - name: file_id
+          in: path
+          description: The ID of the file to download
+          required: true
+          schema:
+            type: string
+        - name: owner
+          in: query
+          description: The username of the user or organization that uploaded the file
+          required: true
+          schema:
+            type: string
+        - name: expiry
+          in: query
+          description: A Unix timestamp with expiration date of this download URL
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: signature
+          in: query
+          description: 'A base64-encoded HMAC-SHA256 checksum of the string ''{owner} {id} {expiry}'' generated with the Files API signing secret'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: File not found
+          content:
+            application/problem+json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: File not found
+      x-feature-flag: show-files-api-docs
   /hardware:
     get:
       summary: List available hardware for models
@@ -852,6 +1029,63 @@ components:
         owner:
           type: string
           description: The owner of the deployment.
+    schemas_file_response:
+      required:
+        - id
+        - urls
+        - content_type
+        - size
+        - checksums
+        - metadata
+        - created_at
+        - expires_at
+      type: object
+      properties:
+        checksums:
+          type: object
+          properties:
+            sha256:
+              type: string
+              description: SHA256 checksum of the file
+              example: f047f8e745f9996c6e386064e06cb2007b8e6bc0a968a334fc0d2b2d64012066
+          description: A dictionary of checksums for the file keyed by the algorithm name
+        content_type:
+          type: string
+          description: The content / MIME type of the file
+          example: application/zip
+        created_at:
+          type: string
+          description: When the file was created
+          format: date-time
+          example: '2024-02-21T12:54:18.5787610+00:00'
+        expires_at:
+          type: string
+          description: When the file expires
+          format: date-time
+          example: '2024-02-21T13:54:18.5787610+00:00'
+        id:
+          type: string
+          description: 'A unique, randomly-generated identifier for the file resource'
+          example: cneqzikepnug6xezperrr4z55o
+        metadata:
+          type: object
+          description: Metadata provided by user when the file was created
+          example:
+            customer_reference_id: 123
+        size:
+          type: integer
+          description: The length of the file in bytes
+          example: 69420
+        urls:
+          type: object
+          properties:
+            get:
+              type: string
+              description: A URL to the file resource
+              format: uri
+              example: https://api.replicate.com/v1/files/cneqzikepnug6xezperrr4z55o
+          description: A dictionary of URLs associated with the file resource
+      description: A file resource
     schemas_model_response:
       type: object
       properties:
