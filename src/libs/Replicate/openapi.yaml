@@ -875,6 +875,7 @@ paths:
   '/predictions/{prediction_id}/cancel':
     post:
       summary: Cancel a prediction
+      description: "Cancel a prediction that is currently running.\n\nExample cURL request that creates a prediction and then cancels it:\n\n```console\n# First, create a prediction\nPREDICTION_ID=$(curl -s -X POST \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"input\": {\n      \"prompt\": \"a video that may take a while to generate\"\n    }\n  }' \\\n  https://api.replicate.com/v1/models/minimax/video-01/predictions | jq -r '.id')\n\n# Echo the prediction ID\necho \"Created prediction with ID: $PREDICTION_ID\"\n\n# Cancel the prediction\ncurl -s -X POST \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  https://api.replicate.com/v1/predictions/$PREDICTION_ID/cancel\n```\n"
       operationId: predictions.cancel
       parameters:
         - name: prediction_id
@@ -886,6 +887,10 @@ paths:
       responses:
         '200':
           description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas_prediction_response'
   /trainings:
     get:
       summary: List trainings
