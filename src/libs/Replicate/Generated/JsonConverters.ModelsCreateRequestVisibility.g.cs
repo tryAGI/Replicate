@@ -28,6 +28,10 @@ namespace Replicate.JsonConverters
                     var numValue = reader.GetInt32();
                     return (global::Replicate.ModelsCreateRequestVisibility)numValue;
                 }
+                case global::System.Text.Json.JsonTokenType.Null:
+                {
+                    return default(global::Replicate.ModelsCreateRequestVisibility);
+                }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
             }
