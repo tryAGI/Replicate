@@ -26,8 +26,7 @@ namespace Replicate
         /// The filename
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("filename")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Filename { get; set; }
+        public string? Filename { get; set; }
 
         /// <summary>
         /// User-provided metadata associated with the file
@@ -73,13 +72,13 @@ namespace Replicate
         public FilesCreateRequest(
             byte[] content,
             string contentname,
-            string filename,
+            string? filename,
             object? metadata,
             string? type)
         {
             this.Content = content ?? throw new global::System.ArgumentNullException(nameof(content));
             this.Contentname = contentname ?? throw new global::System.ArgumentNullException(nameof(contentname));
-            this.Filename = filename ?? throw new global::System.ArgumentNullException(nameof(filename));
+            this.Filename = filename;
             this.Metadata = metadata;
             this.Type = type;
         }

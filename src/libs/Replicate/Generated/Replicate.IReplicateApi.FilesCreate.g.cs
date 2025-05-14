@@ -66,7 +66,7 @@ namespace Replicate
         global::System.Threading.Tasks.Task<global::Replicate.SchemasFileResponse> FilesCreateAsync(
             byte[] content,
             string contentname,
-            string filename,
+            string? filename = default,
             object? metadata = default,
             string? type = default,
             global::System.Threading.CancellationToken cancellationToken = default);

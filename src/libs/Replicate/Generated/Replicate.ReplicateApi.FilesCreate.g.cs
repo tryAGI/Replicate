@@ -85,9 +85,12 @@ namespace Replicate
                 content: new global::System.Net.Http.ByteArrayContent(request.Content ?? global::System.Array.Empty<byte>()),
                 name: "content",
                 fileName: request.Contentname ?? string.Empty);
-            __httpRequestContent.Add(
-                content: new global::System.Net.Http.StringContent($"{request.Filename}"),
-                name: "filename");
+            if (request.Filename != default)
+            {
+                __httpRequestContent.Add(
+                    content: new global::System.Net.Http.StringContent($"{request.Filename}"),
+                    name: "filename");
+            } 
             if (request.Metadata != default)
             {
                 __httpRequestContent.Add(
@@ -260,7 +263,7 @@ namespace Replicate
         public async global::System.Threading.Tasks.Task<global::Replicate.SchemasFileResponse> FilesCreateAsync(
             byte[] content,
             string contentname,
-            string filename,
+            string? filename = default,
             object? metadata = default,
             string? type = default,
             global::System.Threading.CancellationToken cancellationToken = default)
