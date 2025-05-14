@@ -494,7 +494,7 @@ paths:
                     description: An array of model objects
     post:
       summary: Create a model
-      description: "Create a model.\n\nExample cURL request:\n\n```console\ncurl -s -X POST \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"owner\": \"alice\", \"name\": \"my-model\", \"description\": \"An example model\", \"visibility\": \"public\", \"hardware\": \"cpu\"}' \\\n  https://api.replicate.com/v1/models\n```\n\nThe response will be a model object in the following format:\n\n```json\n{\n  \"url\": \"https://replicate.com/alice/my-model\",\n  \"owner\": \"alice\",\n  \"name\": \"my-model\",\n  \"description\": \"An example model\",\n  \"visibility\": \"public\",\n  \"github_url\": null,\n  \"paper_url\": null,\n  \"license_url\": null,\n  \"run_count\": 0,\n  \"cover_image_url\": null,\n  \"default_example\": null,\n  \"latest_version\": null,\n}\n```\n\nNote that there is a limit of 1,000 models per account. For most purposes, we recommend using a single model and pushing new [versions](https://replicate.com/docs/how-does-replicate-work#versions) of the model as you make changes to it.\n"
+      description: "Create a model.\n\nExample cURL request:\n\n```console\ncurl -s -X POST \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"owner\": \"alice\", \"name\": \"hot-dog-detector\", \"description\": \"Detect hot dogs in images\", \"visibility\": \"public\", \"hardware\": \"cpu\"}' \\\n  https://api.replicate.com/v1/models\n```\n\nThe response will be a model object in the following format:\n\n```json\n{\n  \"url\": \"https://replicate.com/alice/hot-dog-detector\",\n  \"owner\": \"alice\",\n  \"name\": \"hot-dog-detector\",\n  \"description\": \"Detect hot dogs in images\",\n  \"visibility\": \"public\",\n  \"github_url\": null,\n  \"paper_url\": null,\n  \"license_url\": null,\n  \"run_count\": 0,\n  \"cover_image_url\": null,\n  \"default_example\": null,\n  \"latest_version\": null,\n}\n```\n\nNote that there is a limit of 1,000 models per account. For most purposes, we recommend using a single model and pushing new [versions](https://replicate.com/docs/how-does-replicate-work#versions) of the model as you make changes to it.\n"
       operationId: models.create
       requestBody:
         content:
@@ -513,30 +513,37 @@ paths:
                 description:
                   type: string
                   description: A description of the model.
+                  example: Detect hot dogs in images
                 github_url:
                   type: string
                   description: A URL for the model's source code on GitHub.
+                  example: https://github.com/alice/hot-dog-detector
                 hardware:
                   type: string
                   description: The SKU for the hardware used to run the model. Possible values can be retrieved from the `hardware.list` endpoint.
+                  example: cpu
                 license_url:
                   type: string
                   description: A URL for the model's license.
                 name:
                   type: string
                   description: The name of the model. This must be unique among all models owned by the user or organization.
+                  example: hot-dog-detector
                 owner:
                   type: string
                   description: 'The name of the user or organization that will own the model. This must be the same as the user or organization that is making the API request. In other words, the API token used in the request must belong to this user or organization.'
+                  example: alice
                 paper_url:
                   type: string
                   description: A URL for the model's paper.
+                  example: https://arxiv.org/abs/2504.17639
                 visibility:
                   enum:
                     - public
                     - private
                   type: string
                   description: 'Whether the model should be public or private. A public model can be viewed and run by anyone, whereas a private model can be viewed and run only by the user or organization members that own the model.'
+                  example: public
         required: true
       responses:
         '201':
