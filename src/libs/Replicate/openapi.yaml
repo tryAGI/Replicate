@@ -305,7 +305,6 @@ paths:
             schema:
               required:
                 - content
-                - filename
               type: object
               properties:
                 content:
