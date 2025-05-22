@@ -98,7 +98,7 @@ namespace Replicate
         public required global::Replicate.SchemasPredictionResponseStatus Status { get; set; }
 
         /// <summary>
-        /// API endpoints for working with the prediction
+        /// URLs for working with the prediction
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("urls")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -157,7 +157,7 @@ namespace Replicate
         /// </param>
         /// <param name="status"></param>
         /// <param name="urls">
-        /// API endpoints for working with the prediction
+        /// URLs for working with the prediction
         /// </param>
         /// <param name="version"></param>
 #if NET7_0_OR_GREATER

@@ -39,6 +39,7 @@ namespace Replicate
         ///       "source": "api",<br/>
         ///       "status": "succeeded",<br/>
         ///       "urls": {<br/>
+        ///         "web": "https://replicate.com/p/zz4ibbonubfz7carwiefibzgga",<br/>
         ///         "get": "https://api.replicate.com/v1/trainings/zz4ibbonubfz7carwiefibzgga",<br/>
         ///         "cancel": "https://api.replicate.com/v1/trainings/zz4ibbonubfz7carwiefibzgga/cancel"<br/>
         ///       },<br/>

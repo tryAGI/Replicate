@@ -51,6 +51,7 @@ namespace Replicate
         ///   "started_at": "2023-09-08T16:32:57.112647Z",<br/>
         ///   "status": "succeeded",<br/>
         ///   "urls": {<br/>
+        ///     "web": "https://replicate.com/p/zz4ibbonubfz7carwiefibzgga",<br/>
         ///     "get": "https://api.replicate.com/v1/trainings/zz4ibbonubfz7carwiefibzgga",<br/>
         ///     "cancel": "https://api.replicate.com/v1/trainings/zz4ibbonubfz7carwiefibzgga/cancel"<br/>
         ///   },<br/>
