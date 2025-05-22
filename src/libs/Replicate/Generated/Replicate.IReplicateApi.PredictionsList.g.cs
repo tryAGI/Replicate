@@ -37,6 +37,7 @@ namespace Replicate
         ///       "source": "api",<br/>
         ///       "status": "succeeded",<br/>
         ///       "urls": {<br/>
+        ///         "web": "https://replicate.com/p/gm3qorzdhgbfurvjtvhg6dckhu",<br/>
         ///         "get": "https://api.replicate.com/v1/predictions/gm3qorzdhgbfurvjtvhg6dckhu",<br/>
         ///         "cancel": "https://api.replicate.com/v1/predictions/gm3qorzdhgbfurvjtvhg6dckhu/cancel"<br/>
         ///       },<br/>

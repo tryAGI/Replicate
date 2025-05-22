@@ -62,8 +62,9 @@ namespace Replicate
         ///   "status": "starting",<br/>
         ///   "created_at": "2023-09-08T16:32:56.990893084Z",<br/>
         ///   "urls": {<br/>
-        ///     "cancel": "https://api.replicate.com/v1/predictions/zz4ibbonubfz7carwiefibzgga/cancel",<br/>
-        ///     "get": "https://api.replicate.com/v1/predictions/zz4ibbonubfz7carwiefibzgga"<br/>
+        ///     "web": "https://replicate.com/p/zz4ibbonubfz7carwiefibzgga",<br/>
+        ///      "get": "https://api.replicate.com/v1/predictions/zz4ibbonubfz7carwiefibzgga",<br/>
+        ///      "cancel": "https://api.replicate.com/v1/predictions/zz4ibbonubfz7carwiefibzgga/cancel"<br/>
         ///   }<br/>
         /// }<br/>
         /// ```<br/>
@@ -259,8 +260,9 @@ namespace Replicate
         ///   "status": "starting",<br/>
         ///   "created_at": "2023-09-08T16:32:56.990893084Z",<br/>
         ///   "urls": {<br/>
-        ///     "cancel": "https://api.replicate.com/v1/predictions/zz4ibbonubfz7carwiefibzgga/cancel",<br/>
-        ///     "get": "https://api.replicate.com/v1/predictions/zz4ibbonubfz7carwiefibzgga"<br/>
+        ///     "web": "https://replicate.com/p/zz4ibbonubfz7carwiefibzgga",<br/>
+        ///      "get": "https://api.replicate.com/v1/predictions/zz4ibbonubfz7carwiefibzgga",<br/>
+        ///      "cancel": "https://api.replicate.com/v1/predictions/zz4ibbonubfz7carwiefibzgga/cancel"<br/>
         ///   }<br/>
         /// }<br/>
         /// ```<br/>

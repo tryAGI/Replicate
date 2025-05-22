@@ -34,8 +34,9 @@ namespace Replicate
         ///     "predict_time": 0.012683<br/>
         ///   },<br/>
         ///   "urls": {<br/>
-        ///     "cancel": "https://api.replicate.com/v1/predictions/gm3qorzdhgbfurvjtvhg6dckhu/cancel",<br/>
-        ///     "get": "https://api.replicate.com/v1/predictions/gm3qorzdhgbfurvjtvhg6dckhu"<br/>
+        ///     "web": "https://replicate.com/p/gm3qorzdhgbfurvjtvhg6dckhu",<br/>
+        ///     "get": "https://api.replicate.com/v1/predictions/gm3qorzdhgbfurvjtvhg6dckhu",<br/>
+        ///     "cancel": "https://api.replicate.com/v1/predictions/gm3qorzdhgbfurvjtvhg6dckhu/cancel"<br/>
         ///   }<br/>
         /// }<br/>
         /// ```<br/>
