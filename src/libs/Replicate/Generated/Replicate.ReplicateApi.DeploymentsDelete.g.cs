@@ -47,7 +47,7 @@ namespace Replicate
                 deploymentOwner: ref deploymentOwner,
                 deploymentName: ref deploymentName);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Replicate.PathBuilder(
                 path: $"/deployments/{deploymentOwner}/{deploymentName}",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
