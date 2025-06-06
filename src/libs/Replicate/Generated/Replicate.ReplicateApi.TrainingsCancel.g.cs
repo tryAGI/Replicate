@@ -37,7 +37,7 @@ namespace Replicate
                 httpClient: HttpClient,
                 trainingId: ref trainingId);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Replicate.PathBuilder(
                 path: $"/trainings/{trainingId}/cancel",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

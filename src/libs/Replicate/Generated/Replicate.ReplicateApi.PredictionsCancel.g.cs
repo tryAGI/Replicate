@@ -57,7 +57,7 @@ namespace Replicate
                 httpClient: HttpClient,
                 predictionId: ref predictionId);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Replicate.PathBuilder(
                 path: $"/predictions/{predictionId}/cancel",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

@@ -90,7 +90,7 @@ namespace Replicate
                 createdAfter: ref createdAfter,
                 createdBefore: ref createdBefore);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Replicate.PathBuilder(
                 path: "/predictions",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 
