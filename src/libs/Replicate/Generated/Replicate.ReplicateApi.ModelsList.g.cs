@@ -41,7 +41,7 @@ namespace Replicate
             PrepareModelsListArguments(
                 httpClient: HttpClient);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Replicate.PathBuilder(
                 path: "/models",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

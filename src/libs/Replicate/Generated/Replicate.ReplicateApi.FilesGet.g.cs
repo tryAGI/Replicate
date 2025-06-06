@@ -44,7 +44,7 @@ namespace Replicate
                 httpClient: HttpClient,
                 fileId: ref fileId);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Replicate.PathBuilder(
                 path: $"/files/{fileId}",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

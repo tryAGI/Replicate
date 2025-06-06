@@ -47,7 +47,7 @@ namespace Replicate
                 httpClient: HttpClient,
                 collectionSlug: ref collectionSlug);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Replicate.PathBuilder(
                 path: $"/collections/{collectionSlug}",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

@@ -57,7 +57,7 @@ namespace Replicate
                 expiry: ref expiry,
                 signature: ref signature);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Replicate.PathBuilder(
                 path: $"/files/{fileId}/download",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 
