@@ -128,20 +128,29 @@ namespace Replicate
             if ((int)__response.StatusCode == 413)
             {
                 string? __content_413 = null;
+                global::System.Exception? __exception_413 = null;
                 global::Replicate.FilesCreateResponse? __value_413 = null;
-                if (ReadResponseAsString)
+                try
                 {
-                    __content_413 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                    __value_413 = global::Replicate.FilesCreateResponse.FromJson(__content_413, JsonSerializerContext);
+                    if (ReadResponseAsString)
+                    {
+                        __content_413 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                        __value_413 = global::Replicate.FilesCreateResponse.FromJson(__content_413, JsonSerializerContext);
+                    }
+                    else
+                    {
+                        var __contentStream_413 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                        __value_413 = await global::Replicate.FilesCreateResponse.FromJsonStreamAsync(__contentStream_413, JsonSerializerContext).ConfigureAwait(false);
+                    }
                 }
-                else
+                catch (global::System.Exception __ex)
                 {
-                    var __contentStream_413 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                    __value_413 = await global::Replicate.FilesCreateResponse.FromJsonStreamAsync(__contentStream_413, JsonSerializerContext).ConfigureAwait(false);
+                    __exception_413 = __ex;
                 }
 
                 throw new global::Replicate.ApiException<global::Replicate.FilesCreateResponse>(
                     message: __content_413 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_413,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_413,
@@ -173,8 +182,12 @@ namespace Replicate
                 try
                 {
                     __response.EnsureSuccessStatusCode();
+
+                    return
+                        global::Replicate.SchemasFileResponse.FromJson(__content, JsonSerializerContext) ??
+                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
-                catch (global::System.Net.Http.HttpRequestException __ex)
+                catch (global::System.Exception __ex)
                 {
                     throw new global::Replicate.ApiException(
                         message: __content ?? __response.ReasonPhrase ?? string.Empty,
@@ -188,18 +201,24 @@ namespace Replicate
                             h => h.Value),
                     };
                 }
-
-                return
-                    global::Replicate.SchemasFileResponse.FromJson(__content, JsonSerializerContext) ??
-                    throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
             {
                 try
                 {
                     __response.EnsureSuccessStatusCode();
+
+                    using var __content = await __response.Content.ReadAsStreamAsync(
+#if NET5_0_OR_GREATER
+                        cancellationToken
+#endif
+                    ).ConfigureAwait(false);
+
+                    return
+                        await global::Replicate.SchemasFileResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
-                catch (global::System.Net.Http.HttpRequestException __ex)
+                catch (global::System.Exception __ex)
                 {
                     throw new global::Replicate.ApiException(
                         message: __response.ReasonPhrase ?? string.Empty,
@@ -212,16 +231,6 @@ namespace Replicate
                             h => h.Value),
                     };
                 }
-
-                using var __content = await __response.Content.ReadAsStreamAsync(
-#if NET5_0_OR_GREATER
-                    cancellationToken
-#endif
-                ).ConfigureAwait(false);
-
-                return
-                    await global::Replicate.SchemasFileResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
-                    throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }
 
