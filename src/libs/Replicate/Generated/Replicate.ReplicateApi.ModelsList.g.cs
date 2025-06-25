@@ -33,7 +33,7 @@ namespace Replicate
         /// </summary>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Replicate.ModelsListResponse> ModelsListAsync(
+        public async global::System.Threading.Tasks.Task<global::Replicate.SchemasPaginatedModelResponse> ModelsListAsync(
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
@@ -110,7 +110,7 @@ namespace Replicate
                     __response.EnsureSuccessStatusCode();
 
                     return
-                        global::Replicate.ModelsListResponse.FromJson(__content, JsonSerializerContext) ??
+                        global::Replicate.SchemasPaginatedModelResponse.FromJson(__content, JsonSerializerContext) ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
                 catch (global::System.Exception __ex)
@@ -141,7 +141,7 @@ namespace Replicate
                     ).ConfigureAwait(false);
 
                     return
-                        await global::Replicate.ModelsListResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        await global::Replicate.SchemasPaginatedModelResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
                 catch (global::System.Exception __ex)

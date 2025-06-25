@@ -67,7 +67,7 @@ namespace Replicate
         /// <param name="modelName"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
-        global::System.Threading.Tasks.Task ModelsGetAsync(
+        global::System.Threading.Tasks.Task<global::Replicate.SchemasModelResponse> ModelsGetAsync(
             string modelOwner,
             string modelName,
             global::System.Threading.CancellationToken cancellationToken = default);

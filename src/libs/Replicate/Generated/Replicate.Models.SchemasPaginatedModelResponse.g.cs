@@ -6,7 +6,7 @@ namespace Replicate
     /// <summary>
     /// 
     /// </summary>
-    public sealed partial class ModelsListResponse
+    public sealed partial class SchemasPaginatedModelResponse
     {
         /// <summary>
         /// A URL pointing to the next page of model objects, if any
@@ -33,7 +33,7 @@ namespace Replicate
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ModelsListResponse" /> class.
+        /// Initializes a new instance of the <see cref="SchemasPaginatedModelResponse" /> class.
         /// </summary>
         /// <param name="next">
         /// A URL pointing to the next page of model objects, if any
@@ -47,7 +47,7 @@ namespace Replicate
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public ModelsListResponse(
+        public SchemasPaginatedModelResponse(
             string? next,
             string? previous,
             global::System.Collections.Generic.IList<global::Replicate.SchemasModelResponse>? results)
@@ -58,9 +58,9 @@ namespace Replicate
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ModelsListResponse" /> class.
+        /// Initializes a new instance of the <see cref="SchemasPaginatedModelResponse" /> class.
         /// </summary>
-        public ModelsListResponse()
+        public SchemasPaginatedModelResponse()
         {
         }
     }
