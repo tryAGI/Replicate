@@ -477,21 +477,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  next:
-                    type: string
-                    description: 'A URL pointing to the next page of model objects, if any'
-                    nullable: true
-                  previous:
-                    type: string
-                    description: 'A URL pointing to the previous page of model objects, if any'
-                    nullable: true
-                  results:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/schemas_model_response'
-                    description: An array of model objects
+                $ref: '#/components/schemas/schemas_paginated_model_response'
     post:
       summary: Create a model
       description: "Create a model.\n\nExample cURL request:\n\n```console\ncurl -s -X POST \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"owner\": \"alice\", \"name\": \"hot-dog-detector\", \"description\": \"Detect hot dogs in images\", \"visibility\": \"public\", \"hardware\": \"cpu\"}' \\\n  https://api.replicate.com/v1/models\n```\n\nThe response will be a model object in the following format:\n\n```json\n{\n  \"url\": \"https://replicate.com/alice/hot-dog-detector\",\n  \"owner\": \"alice\",\n  \"name\": \"hot-dog-detector\",\n  \"description\": \"Detect hot dogs in images\",\n  \"visibility\": \"public\",\n  \"github_url\": null,\n  \"paper_url\": null,\n  \"license_url\": null,\n  \"run_count\": 0,\n  \"cover_image_url\": null,\n  \"default_example\": null,\n  \"latest_version\": null,\n}\n```\n\nNote that there is a limit of 1,000 models per account. For most purposes, we recommend using a single model and pushing new [versions](https://replicate.com/docs/how-does-replicate-work#versions) of the model as you make changes to it.\n"
@@ -593,6 +579,10 @@ paths:
       responses:
         '200':
           description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas_model_response'
   '/models/{model_owner}/{model_name}/examples':
     get:
       summary: List examples for a model
@@ -1150,6 +1140,22 @@ components:
             - private
           type: string
           description: Whether the model is public or private
+    schemas_paginated_model_response:
+      type: object
+      properties:
+        next:
+          type: string
+          description: 'A URL pointing to the next page of model objects, if any'
+          nullable: true
+        previous:
+          type: string
+          description: 'A URL pointing to the previous page of model objects, if any'
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas_model_response'
+          description: An array of model objects
     schemas_prediction_request:
       required:
         - input
