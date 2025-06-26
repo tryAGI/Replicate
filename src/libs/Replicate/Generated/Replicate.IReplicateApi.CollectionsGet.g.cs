@@ -25,7 +25,7 @@ namespace Replicate
         /// <param name="collectionSlug"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
-        global::System.Threading.Tasks.Task CollectionsGetAsync(
+        global::System.Threading.Tasks.Task<global::Replicate.SchemasCollectionResponse> CollectionsGetAsync(
             string collectionSlug,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

@@ -16,6 +16,11 @@ namespace Replicate
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
+        partial void ProcessCollectionsGetResponseContent(
+            global::System.Net.Http.HttpClient httpClient,
+            global::System.Net.Http.HttpResponseMessage httpResponseMessage,
+            ref string content);
+
         /// <summary>
         /// Get a collection of models<br/>
         /// Example cURL request:<br/>
@@ -37,7 +42,7 @@ namespace Replicate
         /// <param name="collectionSlug"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task CollectionsGetAsync(
+        public async global::System.Threading.Tasks.Task<global::Replicate.SchemasCollectionResponse> CollectionsGetAsync(
             string collectionSlug,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -107,11 +112,18 @@ namespace Replicate
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
+                ProcessCollectionsGetResponseContent(
+                    httpClient: HttpClient,
+                    httpResponseMessage: __response,
+                    content: ref __content);
 
                 try
                 {
                     __response.EnsureSuccessStatusCode();
 
+                    return
+                        global::Replicate.SchemasCollectionResponse.FromJson(__content, JsonSerializerContext) ??
+                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
                 catch (global::System.Exception __ex)
                 {
@@ -140,6 +152,9 @@ namespace Replicate
 #endif
                     ).ConfigureAwait(false);
 
+                    return
+                        await global::Replicate.SchemasCollectionResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
                 catch (global::System.Exception __ex)
                 {

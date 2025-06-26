@@ -53,6 +53,10 @@ paths:
       responses:
         '200':
           description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas_paginated_collection_response'
   '/collections/{collection_slug}':
     get:
       summary: Get a collection of models
@@ -68,6 +72,10 @@ paths:
       responses:
         '200':
           description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas_collection_response'
   /deployments:
     get:
       summary: List deployments
@@ -604,6 +612,10 @@ paths:
       responses:
         '200':
           description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas_paginated_prediction_response'
   '/models/{model_owner}/{model_name}/predictions':
     post:
       summary: Create a prediction using an official model
@@ -696,6 +708,10 @@ paths:
       responses:
         '200':
           description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas_paginated_version_response'
   '/models/{model_owner}/{model_name}/versions/{version_id}':
     delete:
       summary: Delete a model version
@@ -749,6 +765,10 @@ paths:
       responses:
         '200':
           description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas_version_response'
   '/models/{model_owner}/{model_name}/versions/{version_id}/trainings':
     post:
       summary: Create a training
@@ -967,6 +987,44 @@ paths:
                     description: The signing secret.
 components:
   schemas:
+    schemas_collection_list_item:
+      required:
+        - name
+        - slug
+        - description
+      type: object
+      properties:
+        description:
+          type: string
+          description: A description of the collection
+        name:
+          type: string
+          description: The name of the collection
+        slug:
+          type: string
+          description: The slug of the collection (lowercase with dashes)
+    schemas_collection_response:
+      required:
+        - name
+        - slug
+        - description
+        - models
+      type: object
+      properties:
+        description:
+          type: string
+          description: A description of the collection
+        models:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas_model_response'
+          description: The models in this collection
+        name:
+          type: string
+          description: The name of the collection
+        slug:
+          type: string
+          description: The slug of the collection (lowercase with dashes)
     schemas_deployment_response:
       type: object
       properties:
@@ -1140,6 +1198,22 @@ components:
             - private
           type: string
           description: Whether the model is public or private
+    schemas_paginated_collection_response:
+      type: object
+      properties:
+        next:
+          type: string
+          description: 'A URL pointing to the next page of collection objects, if any'
+          nullable: true
+        previous:
+          type: string
+          description: 'A URL pointing to the previous page of collection objects, if any'
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas_collection_list_item'
+          description: An array of collection objects
     schemas_paginated_model_response:
       type: object
       properties:
@@ -1156,6 +1230,38 @@ components:
           items:
             $ref: '#/components/schemas/schemas_model_response'
           description: An array of model objects
+    schemas_paginated_prediction_response:
+      type: object
+      properties:
+        next:
+          type: string
+          description: 'A URL pointing to the next page of prediction objects, if any'
+          nullable: true
+        previous:
+          type: string
+          description: 'A URL pointing to the previous page of prediction objects, if any'
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas_prediction_response'
+          description: An array of prediction objects
+    schemas_paginated_version_response:
+      type: object
+      properties:
+        next:
+          type: string
+          description: 'A URL pointing to the next page of version objects, if any'
+          nullable: true
+        previous:
+          type: string
+          description: 'A URL pointing to the previous page of version objects, if any'
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas_version_response'
+          description: An array of version objects
     schemas_prediction_request:
       required:
         - input
@@ -1419,6 +1525,24 @@ components:
             - start
             - completed
       additionalProperties: false
+    schemas_version_response:
+      type: object
+      properties:
+        cog_version:
+          type: string
+          description: The version of Cog used to create this version
+          nullable: true
+        created_at:
+          type: string
+          description: The date and time the version was created
+          format: date-time
+        id:
+          type: string
+          description: The ID of the version
+        openapi_schema:
+          type: object
+          description: The OpenAPI schema for the model's inputs and outputs
+          nullable: true
   parameters:
     parameters_prefer_header:
       name: Prefer
