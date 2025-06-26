@@ -18,6 +18,11 @@ namespace Replicate
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
+        partial void ProcessModelsVersionsListResponseContent(
+            global::System.Net.Http.HttpClient httpClient,
+            global::System.Net.Http.HttpResponseMessage httpResponseMessage,
+            ref string content);
+
         /// <summary>
         /// List model versions<br/>
         /// Example cURL request:<br/>
@@ -46,7 +51,7 @@ namespace Replicate
         /// <param name="modelName"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task ModelsVersionsListAsync(
+        public async global::System.Threading.Tasks.Task<global::Replicate.SchemasPaginatedVersionResponse> ModelsVersionsListAsync(
             string modelOwner,
             string modelName,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -119,11 +124,18 @@ namespace Replicate
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
+                ProcessModelsVersionsListResponseContent(
+                    httpClient: HttpClient,
+                    httpResponseMessage: __response,
+                    content: ref __content);
 
                 try
                 {
                     __response.EnsureSuccessStatusCode();
 
+                    return
+                        global::Replicate.SchemasPaginatedVersionResponse.FromJson(__content, JsonSerializerContext) ??
+                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
                 catch (global::System.Exception __ex)
                 {
@@ -152,6 +164,9 @@ namespace Replicate
 #endif
                     ).ConfigureAwait(false);
 
+                    return
+                        await global::Replicate.SchemasPaginatedVersionResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
                 catch (global::System.Exception __ex)
                 {
