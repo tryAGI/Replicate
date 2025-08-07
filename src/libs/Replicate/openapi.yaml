@@ -1160,6 +1160,7 @@ components:
         description:
           type: string
           description: A description of the model
+          nullable: true
         github_url:
           type: string
           description: A URL for the model's source code on GitHub
