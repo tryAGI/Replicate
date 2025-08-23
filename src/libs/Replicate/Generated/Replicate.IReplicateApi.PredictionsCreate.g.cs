@@ -15,7 +15,7 @@ namespace Replicate
         ///   -H 'Content-Type: application/json' \<br/>
         ///   https://api.replicate.com/v1/predictions<br/>
         /// ```<br/>
-        /// The request will wait up to 60 seconds for the model to run. If this time is exceeded the prediction will be returned in a `"starting"` state and need to be retrieved using the `predictions.get` endpiont.<br/>
+        /// The request will wait up to 60 seconds for the model to run. If this time is exceeded the prediction will be returned in a `"starting"` state and need to be retrieved using the `predictions.get` endpoint.<br/>
         /// For a complete overview of the `predictions.create` API check out our documentation on [creating a prediction](https://replicate.com/docs/topics/predictions/create-a-prediction) which covers a variety of use cases.
         /// </summary>
         /// <param name="prefer">
@@ -40,7 +40,7 @@ namespace Replicate
         ///   -H 'Content-Type: application/json' \<br/>
         ///   https://api.replicate.com/v1/predictions<br/>
         /// ```<br/>
-        /// The request will wait up to 60 seconds for the model to run. If this time is exceeded the prediction will be returned in a `"starting"` state and need to be retrieved using the `predictions.get` endpiont.<br/>
+        /// The request will wait up to 60 seconds for the model to run. If this time is exceeded the prediction will be returned in a `"starting"` state and need to be retrieved using the `predictions.get` endpoint.<br/>
         /// For a complete overview of the `predictions.create` API check out our documentation on [creating a prediction](https://replicate.com/docs/topics/predictions/create-a-prediction) which covers a variety of use cases.
         /// </summary>
         /// <param name="prefer">
