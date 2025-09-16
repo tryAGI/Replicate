@@ -907,6 +907,92 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/schemas_prediction_response'
+  /search:
+    get:
+      summary: 'Search models, collections, and docs (beta)'
+      description: "Search for public models, collections, and docs using a text query.\n\nFor models, the response includes all model data, plus a new `metadata` object with the following fields:\n\n- `generated_description`: A longer and more detailed AI-generated description of the model\n- `tags`: An array of tags for the model\n- `score`: A score for the model's relevance to the search query\n\nExample cURL request:\n\n```console\ncurl -s \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  \"https://api.replicate.com/v1/search?query=nano+banana\"\n```\n\nNote: This search API is currently in beta and may change in future versions.\n"
+      operationId: search
+      parameters:
+        - name: query
+          in: query
+          description: The search query string
+          required: true
+          schema:
+            type: string
+            example: nano banana
+        - name: limit
+          in: query
+          description: 'Maximum number of model results to return (1-50, defaults to 20)'
+          schema:
+            maximum: 50
+            minimum: 1
+            type: integer
+            default: 20
+            example: 10
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas_search_response'
+              example:
+                collections:
+                  - description: Models for editing and manipulating images
+                    models:
+                      - google/nano-banana
+                      - stability-ai/stable-diffusion
+                    name: Image Editing
+                    slug: image-editing
+                models:
+                  - metadata:
+                      generated_description: 'Generate and edit images from text prompts and one or more input images. Combine multiple references via multi-image fusion to insert objects into new scenes, restyle environments, or blend visual styles. Apply natural-language edits such as object removal, background blur, pose changes, colorization, and style transfer, while maintaining character, object, and style consistency across a series. Support conversational, iterative workflows that follow multi-step instructions. Embed invisible SynthID watermarking for provenance on all generated or edited images.'
+                      score: 1.3847375700706976
+                      tags:
+                        - text-to-image
+                        - image-to-image
+                        - image-editing
+                    model:
+                      cover_image_url: https://tjzk.replicate.delivery/models_models_featured_image/ed879e99-71b5-4689-bed3-e7305e35a28a/this.png
+                      default_example: 
+                      description: Google's latest image editing model in Gemini 2.5
+                      github_url: 
+                      latest_version:
+                        cog_version: 0.16.7
+                        created_at: '2025-09-12T16:36:33.8847790+00:00'
+                        id: 56b8f5f774804fda8ffe63f01d3e2900f97609bd7ae976f50e595854110de200
+                        openapi_schema: { }
+                      license_url: 
+                      name: nano-banana
+                      owner: google
+                      paper_url: 
+                      run_count: 4304274
+                      url: https://replicate.com/google/nano-banana
+                      visibility: public
+                pages:
+                  - href: /docs/guides/image-editing
+                    name: Getting started with image editing
+                query: nano banana
+        '400':
+          description: Bad Request - Missing or invalid query parameter
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: Query parameter "query" is required
+        '500':
+          description: Internal Server Error - Search service error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: Search service error
   /trainings:
     get:
       summary: List trainings
@@ -1166,6 +1252,9 @@ components:
           description: A URL for the model's source code on GitHub
           format: uri
           nullable: true
+        is_official:
+          type: boolean
+          description: 'Boolean indicating whether the model is officially maintained by Replicate. Official models are always on, have stable API interfaces, and predictable pricing.'
         latest_version:
           type: object
           description: The model's latest version
@@ -1199,6 +1288,18 @@ components:
             - private
           type: string
           description: Whether the model is public or private
+    schemas_page_response:
+      required:
+        - name
+        - href
+      type: object
+      properties:
+        href:
+          type: string
+          description: URL path to the page
+        name:
+          type: string
+          description: Title of the page
     schemas_paginated_collection_response:
       type: object
       properties:
@@ -1387,6 +1488,79 @@ components:
                 - hidden
               type: string
               description: 'The model does not support versions, used by official models.'
+    schemas_search_collection_response:
+      required:
+        - name
+        - slug
+        - description
+      type: object
+      properties:
+        description:
+          type: string
+          description: A description of the collection
+        models:
+          type: array
+          items:
+            type: string
+            description: Model name in owner/name format
+          description: Array of model names in the collection
+          nullable: true
+        name:
+          type: string
+          description: The name of the collection
+        slug:
+          type: string
+          description: The slug of the collection (lowercase with dashes)
+    schemas_search_model_metadata_response:
+      type: object
+      properties:
+        generated_description:
+          type: string
+          description: AI-generated detailed description of the model
+          nullable: true
+        score:
+          type: number
+          description: Search relevance score
+          nullable: true
+        tags:
+          type: array
+          items:
+            type: string
+          description: Array of descriptive tags for the model
+    schemas_search_response:
+      required:
+        - query
+        - models
+        - collections
+        - pages
+      type: object
+      properties:
+        collections:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas_search_collection_response'
+          description: Array of collections that match the search query
+        models:
+          type: array
+          items:
+            required:
+              - model
+              - metadata
+            type: object
+            properties:
+              metadata:
+                $ref: '#/components/schemas/schemas_search_model_metadata_response'
+              model:
+                $ref: '#/components/schemas/schemas_model_response'
+          description: 'Array of models that match the search query, each containing model data and extra metadata'
+        pages:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas_page_response'
+          description: Array of Replicate documentation pages that match the search query
+        query:
+          type: string
+          description: The search term that was evaluated
     schemas_training_request:
       required:
         - destination
