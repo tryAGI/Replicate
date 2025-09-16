@@ -33,6 +33,12 @@ namespace Replicate
         public string? GithubUrl { get; set; }
 
         /// <summary>
+        /// Boolean indicating whether the model is officially maintained by Replicate. Official models are always on, have stable API interfaces, and predictable pricing.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("is_official")]
+        public bool? IsOfficial { get; set; }
+
+        /// <summary>
         /// The model's latest version
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("latest_version")]
@@ -102,6 +108,9 @@ namespace Replicate
         /// <param name="githubUrl">
         /// A URL for the model's source code on GitHub
         /// </param>
+        /// <param name="isOfficial">
+        /// Boolean indicating whether the model is officially maintained by Replicate. Official models are always on, have stable API interfaces, and predictable pricing.
+        /// </param>
         /// <param name="latestVersion">
         /// The model's latest version
         /// </param>
@@ -134,6 +143,7 @@ namespace Replicate
             object? defaultExample,
             string? description,
             string? githubUrl,
+            bool? isOfficial,
             object? latestVersion,
             string? licenseUrl,
             string? name,
@@ -147,6 +157,7 @@ namespace Replicate
             this.DefaultExample = defaultExample;
             this.Description = description;
             this.GithubUrl = githubUrl;
+            this.IsOfficial = isOfficial;
             this.LatestVersion = latestVersion;
             this.LicenseUrl = licenseUrl;
             this.Name = name;
