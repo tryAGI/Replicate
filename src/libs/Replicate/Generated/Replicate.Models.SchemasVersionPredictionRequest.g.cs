@@ -27,7 +27,7 @@ namespace Replicate
         /// <summary>
         /// **This field is deprecated.**<br/>
         /// Request a URL to receive streaming output using [server-sent events (SSE)](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events).<br/>
-        /// This field is no longer needed as the returned prediction will always have a `stream` entry in its `url` property if the model supports streaming.
+        /// This field is no longer needed as the returned prediction will always have a `stream` entry in its `urls` property if the model supports streaming.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stream")]
         public bool? Stream { get; set; }
@@ -100,7 +100,7 @@ namespace Replicate
         /// <param name="stream">
         /// **This field is deprecated.**<br/>
         /// Request a URL to receive streaming output using [server-sent events (SSE)](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events).<br/>
-        /// This field is no longer needed as the returned prediction will always have a `stream` entry in its `url` property if the model supports streaming.
+        /// This field is no longer needed as the returned prediction will always have a `stream` entry in its `urls` property if the model supports streaming.
         /// </param>
         /// <param name="version">
         /// The identifier for the model or model version that you want to run. This can be specified in a few different formats:<br/>
