@@ -67,7 +67,7 @@ namespace Replicate
         /// - `canceled`: the training was canceled by its creator.<br/>
         /// In the case of success, `output` will be an object containing the output of the model. Any files will be represented as HTTPS URLs. You'll need to pass the `Authorization` header to request them.<br/>
         /// In the case of failure, `error` will contain the error encountered during the training.<br/>
-        /// Terminated trainings (with a status of `succeeded`, `failed`, or `canceled`) will include a `metrics` object with a `predict_time` property showing the amount of CPU or GPU time, in seconds, that the training used while running. It won't include time waiting for the training to start.
+        /// Terminated trainings (with a status of `succeeded`, `failed`, or `canceled`) will include a `metrics` object with a `predict_time` property showing the amount of CPU or GPU time, in seconds, that the training used while running. It won't include time waiting for the training to start. The `metrics` object will also include a `total_time` property showing the total time, in seconds, that the training took to complete.
         /// </summary>
         /// <param name="trainingId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

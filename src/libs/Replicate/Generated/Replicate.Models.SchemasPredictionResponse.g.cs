@@ -67,7 +67,7 @@ namespace Replicate
         /// Additional metrics associated with the prediction
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("metrics")]
-        public object? Metrics { get; set; }
+        public global::Replicate.SchemasPredictionResponseMetrics? Metrics { get; set; }
 
         /// <summary>
         /// The name of the model that created the prediction
@@ -177,7 +177,7 @@ namespace Replicate
             global::System.DateTime? completedAt,
             string? deployment,
             string? logs,
-            object? metrics,
+            global::Replicate.SchemasPredictionResponseMetrics? metrics,
             global::System.DateTime? startedAt)
         {
             this.CreatedAt = createdAt;
