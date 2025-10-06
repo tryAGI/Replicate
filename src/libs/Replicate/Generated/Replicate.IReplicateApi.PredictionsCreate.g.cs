@@ -21,12 +21,16 @@ namespace Replicate
         /// <param name="prefer">
         /// Example: wait=5
         /// </param>
+        /// <param name="replicateMaxLifetime">
+        /// Example: 5m
+        /// </param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Replicate.SchemasPredictionResponse> PredictionsCreateAsync(
             global::Replicate.SchemasVersionPredictionRequest request,
             string? prefer = default,
+            string? replicateMaxLifetime = default,
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
@@ -45,6 +49,9 @@ namespace Replicate
         /// </summary>
         /// <param name="prefer">
         /// Example: wait=5
+        /// </param>
+        /// <param name="replicateMaxLifetime">
+        /// Example: 5m
         /// </param>
         /// <param name="input">
         /// The model's input as a JSON object. The input schema depends on what model you are running. To see the available inputs, click the "API" tab on the model you are running or [get the model version](#models.versions.get) and look at its `openapi_schema` property. For example, [stability-ai/sdxl](https://replicate.com/stability-ai/sdxl) takes `prompt` as an input.<br/>
@@ -100,6 +107,7 @@ namespace Replicate
             object input,
             string version,
             string? prefer = default,
+            string? replicateMaxLifetime = default,
             bool? stream = default,
             string? webhook = default,
             global::System.Collections.Generic.IList<global::Replicate.SchemasVersionPredictionRequestWebhookEventsFilterItem>? webhookEventsFilter = default,
