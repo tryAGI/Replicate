@@ -591,6 +591,59 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/schemas_model_response'
+    patch:
+      summary: Update metadata for a model
+      description: "Update select properties of an existing model.\n\nYou can update the following properties:\n\n  - `description` - Model description\n  - `readme` - Model README content\n  - `github_url` - GitHub repository URL\n  - `paper_url` - Research paper URL\n  - `weights_url` - Model weights URL\n  - `license_url` - License URL\n\nExample cURL request:\n\n```console\ncurl -X PATCH \\\n  https://api.replicate.com/v1/models/your-username/your-model-name \\\n  -H \"Authorization: Token $REPLICATE_API_TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"description\": \"Detect hot dogs in images\",\n    \"readme\": \"# Hot Dog Detector\\n\\n🌭 Ketchup, mustard, and onions...\",\n    \"github_url\": \"https://github.com/alice/hot-dog-detector\",\n    \"paper_url\": \"https://arxiv.org/abs/2504.17639\",\n    \"weights_url\": \"https://huggingface.co/alice/hot-dog-detector\",\n    \"license_url\": \"https://choosealicense.com/licenses/mit/\"\n  }'\n```\n\nThe response will be the updated model object with all of its properties.\n"
+      operationId: models.update
+      parameters:
+        - name: model_owner
+          in: path
+          description: "The name of the user or organization that owns the model.\n"
+          required: true
+          schema:
+            type: string
+        - name: model_name
+          in: path
+          description: "The name of the model.\n"
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: A description of the model.
+                  example: Detect hot dogs in images
+                github_url:
+                  type: string
+                  description: A URL for the model's source code on GitHub.
+                  example: https://github.com/alice/hot-dog-detector
+                license_url:
+                  type: string
+                  description: A URL for the model's license.
+                paper_url:
+                  type: string
+                  description: A URL for the model's paper.
+                  example: https://arxiv.org/abs/2504.17639
+                readme:
+                  type: string
+                  description: The README content of the model.
+                  example: "# Updated README\n\nNew content here"
+                weights_url:
+                  type: string
+                  description: A URL for the model's weights.
+                  example: https://huggingface.co/alice/hot-dog-detector
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas_model_response'
   '/models/{model_owner}/{model_name}/examples':
     get:
       summary: List examples for a model
@@ -872,7 +925,7 @@ paths:
   '/predictions/{prediction_id}':
     get:
       summary: Get a prediction
-      description: "Get the current state of a prediction.\n\nExample cURL request:\n\n```console\ncurl -s \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  https://api.replicate.com/v1/predictions/gm3qorzdhgbfurvjtvhg6dckhu\n```\n\nThe response will be the prediction object:\n\n```json\n{\n  \"id\": \"gm3qorzdhgbfurvjtvhg6dckhu\",\n  \"model\": \"replicate/hello-world\",\n  \"version\": \"5c7d5dc6dd8bf75c1acaa8565735e7986bc5b66206b55cca93cb72c9bf15ccaa\",\n  \"input\": {\n    \"text\": \"Alice\"\n  },\n  \"logs\": \"\",\n  \"output\": \"hello Alice\",\n  \"error\": null,\n  \"status\": \"succeeded\",\n  \"created_at\": \"2023-09-08T16:19:34.765994Z\",\n  \"data_removed\": false,\n  \"started_at\": \"2023-09-08T16:19:34.779176Z\",\n  \"completed_at\": \"2023-09-08T16:19:34.791859Z\",\n  \"metrics\": {\n    \"predict_time\": 0.012683\n  },\n  \"urls\": {\n    \"web\": \"https://replicate.com/p/gm3qorzdhgbfurvjtvhg6dckhu\",\n    \"get\": \"https://api.replicate.com/v1/predictions/gm3qorzdhgbfurvjtvhg6dckhu\",\n    \"cancel\": \"https://api.replicate.com/v1/predictions/gm3qorzdhgbfurvjtvhg6dckhu/cancel\"\n  }\n}\n```\n\n`status` will be one of:\n\n- `starting`: the prediction is starting up. If this status lasts longer than a few seconds, then it's typically because a new worker is being started to run the prediction.\n- `processing`: the `predict()` method of the model is currently running.\n- `succeeded`: the prediction completed successfully.\n- `failed`: the prediction encountered an error during processing.\n- `canceled`: the prediction was canceled by its creator.\n\nIn the case of success, `output` will be an object containing the output of the model. Any files will be represented as HTTPS URLs. You'll need to pass the `Authorization` header to request them.\n\nIn the case of failure, `error` will contain the error encountered during the prediction.\n\nTerminated predictions (with a status of `succeeded`, `failed`, or `canceled`) will include a `metrics` object with a `predict_time` property showing the amount of CPU or GPU time, in seconds, that the prediction used while running. It won't include time waiting for the prediction to start.\n\nAll input parameters, output values, and logs are automatically removed after an hour, by default, for predictions created through the API.\n\nYou must save a copy of any data or files in the output if you'd like to continue using them. The `output` key will still be present, but it's value will be `null` after the output has been removed.\n\nOutput files are served by `replicate.delivery` and its subdomains. If you use an allow list of external domains for your assets, add `replicate.delivery` and `*.replicate.delivery` to it.\n"
+      description: "Get the current state of a prediction.\n\nExample cURL request:\n\n```console\ncurl -s \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  https://api.replicate.com/v1/predictions/gm3qorzdhgbfurvjtvhg6dckhu\n```\n\nThe response will be the prediction object:\n\n```json\n{\n  \"id\": \"gm3qorzdhgbfurvjtvhg6dckhu\",\n  \"model\": \"replicate/hello-world\",\n  \"version\": \"5c7d5dc6dd8bf75c1acaa8565735e7986bc5b66206b55cca93cb72c9bf15ccaa\",\n  \"input\": {\n    \"text\": \"Alice\"\n  },\n  \"logs\": \"\",\n  \"output\": \"hello Alice\",\n  \"error\": null,\n  \"status\": \"succeeded\",\n  \"created_at\": \"2023-09-08T16:19:34.765994Z\",\n  \"data_removed\": false,\n  \"started_at\": \"2023-09-08T16:19:34.779176Z\",\n  \"completed_at\": \"2023-09-08T16:19:34.791859Z\",\n  \"metrics\": {\n    \"predict_time\": 0.012683\n  },\n  \"urls\": {\n    \"web\": \"https://replicate.com/p/gm3qorzdhgbfurvjtvhg6dckhu\",\n    \"get\": \"https://api.replicate.com/v1/predictions/gm3qorzdhgbfurvjtvhg6dckhu\",\n    \"cancel\": \"https://api.replicate.com/v1/predictions/gm3qorzdhgbfurvjtvhg6dckhu/cancel\"\n  }\n}\n```\n\n`status` will be one of:\n\n- `starting`: the prediction is starting up. If this status lasts longer than a few seconds, then it's typically because a new worker is being started to run the prediction.\n- `processing`: the `predict()` method of the model is currently running.\n- `succeeded`: the prediction completed successfully.\n- `failed`: the prediction encountered an error during processing.\n- `canceled`: the prediction was canceled by its creator.\n\nIn the case of success, `output` will be an object containing the output of the model. Any files will be represented as HTTPS URLs. You'll need to pass the `Authorization` header to request them.\n\nIn the case of failure, `error` will contain the error encountered during the prediction.\n\nTerminated predictions (with a status of `succeeded`, `failed`, or `canceled`) will include a `metrics` object with a `predict_time` property showing the amount of CPU or GPU time, in seconds, that the prediction used while running. It won't include time waiting for the prediction to start. The `metrics` object will also include a `total_time` property showing the total time, in seconds, that the prediction took to complete.\n\nAll input parameters, output values, and logs are automatically removed after an hour, by default, for predictions created through the API.\n\nYou must save a copy of any data or files in the output if you'd like to continue using them. The `output` key will still be present, but it's value will be `null` after the output has been removed.\n\nOutput files are served by `replicate.delivery` and its subdomains. If you use an allow list of external domains for your assets, add `replicate.delivery` and `*.replicate.delivery` to it.\n"
       operationId: predictions.get
       parameters:
         - name: prediction_id
@@ -1021,7 +1074,7 @@ paths:
   '/trainings/{training_id}':
     get:
       summary: Get a training
-      description: "Get the current state of a training.\n\nExample cURL request:\n\n```console\ncurl -s \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  https://api.replicate.com/v1/trainings/zz4ibbonubfz7carwiefibzgga\n```\n\nThe response will be the training object:\n\n```json\n{\n  \"completed_at\": \"2023-09-08T16:41:19.826523Z\",\n  \"created_at\": \"2023-09-08T16:32:57.018467Z\",\n  \"error\": null,\n  \"id\": \"zz4ibbonubfz7carwiefibzgga\",\n  \"input\": {\n    \"input_images\": \"https://example.com/my-input-images.zip\"\n  },\n  \"logs\": \"...\",\n  \"metrics\": {\n    \"predict_time\": 502.713876\n  },\n  \"output\": {\n    \"version\": \"...\",\n    \"weights\": \"...\"\n  },\n  \"started_at\": \"2023-09-08T16:32:57.112647Z\",\n  \"status\": \"succeeded\",\n  \"urls\": {\n    \"web\": \"https://replicate.com/p/zz4ibbonubfz7carwiefibzgga\",\n    \"get\": \"https://api.replicate.com/v1/trainings/zz4ibbonubfz7carwiefibzgga\",\n    \"cancel\": \"https://api.replicate.com/v1/trainings/zz4ibbonubfz7carwiefibzgga/cancel\"\n  },\n  \"model\": \"stability-ai/sdxl\",\n  \"version\": \"da77bc59ee60423279fd632efb4795ab731d9e3ca9705ef3341091fb989b7eaf\",\n}\n```\n\n`status` will be one of:\n\n- `starting`: the training is starting up. If this status lasts longer than a few seconds, then it's typically because a new worker is being started to run the training.\n- `processing`: the `train()` method of the model is currently running.\n- `succeeded`: the training completed successfully.\n- `failed`: the training encountered an error during processing.\n- `canceled`: the training was canceled by its creator.\n\nIn the case of success, `output` will be an object containing the output of the model. Any files will be represented as HTTPS URLs. You'll need to pass the `Authorization` header to request them.\n\nIn the case of failure, `error` will contain the error encountered during the training.\n\nTerminated trainings (with a status of `succeeded`, `failed`, or `canceled`) will include a `metrics` object with a `predict_time` property showing the amount of CPU or GPU time, in seconds, that the training used while running. It won't include time waiting for the training to start.\n"
+      description: "Get the current state of a training.\n\nExample cURL request:\n\n```console\ncurl -s \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  https://api.replicate.com/v1/trainings/zz4ibbonubfz7carwiefibzgga\n```\n\nThe response will be the training object:\n\n```json\n{\n  \"completed_at\": \"2023-09-08T16:41:19.826523Z\",\n  \"created_at\": \"2023-09-08T16:32:57.018467Z\",\n  \"error\": null,\n  \"id\": \"zz4ibbonubfz7carwiefibzgga\",\n  \"input\": {\n    \"input_images\": \"https://example.com/my-input-images.zip\"\n  },\n  \"logs\": \"...\",\n  \"metrics\": {\n    \"predict_time\": 502.713876\n  },\n  \"output\": {\n    \"version\": \"...\",\n    \"weights\": \"...\"\n  },\n  \"started_at\": \"2023-09-08T16:32:57.112647Z\",\n  \"status\": \"succeeded\",\n  \"urls\": {\n    \"web\": \"https://replicate.com/p/zz4ibbonubfz7carwiefibzgga\",\n    \"get\": \"https://api.replicate.com/v1/trainings/zz4ibbonubfz7carwiefibzgga\",\n    \"cancel\": \"https://api.replicate.com/v1/trainings/zz4ibbonubfz7carwiefibzgga/cancel\"\n  },\n  \"model\": \"stability-ai/sdxl\",\n  \"version\": \"da77bc59ee60423279fd632efb4795ab731d9e3ca9705ef3341091fb989b7eaf\",\n}\n```\n\n`status` will be one of:\n\n- `starting`: the training is starting up. If this status lasts longer than a few seconds, then it's typically because a new worker is being started to run the training.\n- `processing`: the `train()` method of the model is currently running.\n- `succeeded`: the training completed successfully.\n- `failed`: the training encountered an error during processing.\n- `canceled`: the training was canceled by its creator.\n\nIn the case of success, `output` will be an object containing the output of the model. Any files will be represented as HTTPS URLs. You'll need to pass the `Authorization` header to request them.\n\nIn the case of failure, `error` will contain the error encountered during the training.\n\nTerminated trainings (with a status of `succeeded`, `failed`, or `canceled`) will include a `metrics` object with a `predict_time` property showing the amount of CPU or GPU time, in seconds, that the training used while running. It won't include time waiting for the training to start. The `metrics` object will also include a `total_time` property showing the total time, in seconds, that the training took to complete.\n"
       operationId: trainings.get
       parameters:
         - name: training_id
@@ -1438,6 +1491,10 @@ components:
           description: The log output from the model
         metrics:
           type: object
+          properties:
+            total_time:
+              type: number
+              description: 'The total time, in seconds, that the prediction took to complete'
           description: Additional metrics associated with the prediction
         model:
           type: string
@@ -1616,6 +1673,9 @@ components:
             predict_time:
               type: number
               description: 'The amount of CPU or GPU time, in seconds, that the training used while running'
+            total_time:
+              type: number
+              description: 'The total time, in seconds, that the training took to complete'
           description: Metrics about the training process
         model:
           type: string
