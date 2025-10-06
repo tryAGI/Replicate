@@ -259,6 +259,7 @@ paths:
           schema:
             type: string
         - $ref: '#/components/parameters/parameters_prefer_header'
+        - $ref: '#/components/parameters/parameters_max_lifetime_header'
       requestBody:
         content:
           application/json:
@@ -688,6 +689,7 @@ paths:
           schema:
             type: string
         - $ref: '#/components/parameters/parameters_prefer_header'
+        - $ref: '#/components/parameters/parameters_max_lifetime_header'
       requestBody:
         content:
           application/json:
@@ -904,6 +906,7 @@ paths:
       operationId: predictions.create
       parameters:
         - $ref: '#/components/parameters/parameters_prefer_header'
+        - $ref: '#/components/parameters/parameters_max_lifetime_header'
       requestBody:
         content:
           application/json:
@@ -1474,6 +1477,10 @@ components:
         data_removed:
           type: boolean
           description: Whether the prediction output has been deleted
+        deadline:
+          type: string
+          description: The absolute time at which the prediction will be automatically canceled if it has not completed
+          format: date-time
         deployment:
           type: string
           description: The name of the deployment that created the prediction
@@ -1779,6 +1786,13 @@ components:
           description: The OpenAPI schema for the model's inputs and outputs
           nullable: true
   parameters:
+    parameters_max_lifetime_header:
+      name: Replicate-Max-Lifetime
+      in: header
+      description: "The maximum time the prediction can run before it is automatically canceled. The lifetime is measured from when the prediction is created.\n\nThe lifetime can be specified as a duration string with a unit suffix:\n- `s` for seconds (e.g., `30s`, `90s`)\n- `m` for minutes (e.g., `5m`, `15m`)\n- `h` for hours (e.g., `1h`, `2h30m`)\n\nYou can combine units for more precision (e.g., `1h30m45s`). For convenience, you can also provide a bare number which will be interpreted as seconds (e.g., `30` is the same as `30s`).\n\nThe minimum allowed lifetime is 5 seconds. If a prediction does not complete within the specified lifetime, it will be canceled automatically and its status will be set to `canceled`.\n"
+      schema:
+        type: string
+        example: 5m
     parameters_prefer_header:
       name: Prefer
       in: header

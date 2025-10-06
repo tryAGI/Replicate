@@ -10,6 +10,7 @@ namespace Replicate
             ref string deploymentOwner,
             ref string deploymentName,
             ref string? prefer,
+            ref string? replicateMaxLifetime,
             global::Replicate.SchemasPredictionRequest request);
         partial void PrepareDeploymentsPredictionsCreateRequest(
             global::System.Net.Http.HttpClient httpClient,
@@ -17,6 +18,7 @@ namespace Replicate
             string deploymentOwner,
             string deploymentName,
             string? prefer,
+            string? replicateMaxLifetime,
             global::Replicate.SchemasPredictionRequest request);
         partial void ProcessDeploymentsPredictionsCreateResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -46,6 +48,9 @@ namespace Replicate
         /// <param name="prefer">
         /// Example: wait=5
         /// </param>
+        /// <param name="replicateMaxLifetime">
+        /// Example: 5m
+        /// </param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
@@ -54,6 +59,7 @@ namespace Replicate
             string deploymentName,
             global::Replicate.SchemasPredictionRequest request,
             string? prefer = default,
+            string? replicateMaxLifetime = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -65,6 +71,7 @@ namespace Replicate
                 deploymentOwner: ref deploymentOwner,
                 deploymentName: ref deploymentName,
                 prefer: ref prefer,
+                replicateMaxLifetime: ref replicateMaxLifetime,
                 request: request);
 
             var __pathBuilder = new global::Replicate.PathBuilder(
@@ -99,6 +106,10 @@ namespace Replicate
             {
                 __httpRequest.Headers.TryAddWithoutValidation("Prefer", prefer.ToString());
             }
+            if (replicateMaxLifetime != default)
+            {
+                __httpRequest.Headers.TryAddWithoutValidation("Replicate-Max-Lifetime", replicateMaxLifetime.ToString());
+            }
 
             var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
             var __httpRequestContent = new global::System.Net.Http.StringContent(
@@ -116,6 +127,7 @@ namespace Replicate
                 deploymentOwner: deploymentOwner,
                 deploymentName: deploymentName,
                 prefer: prefer,
+                replicateMaxLifetime: replicateMaxLifetime,
                 request: request);
 
             using var __response = await HttpClient.SendAsync(
@@ -221,6 +233,9 @@ namespace Replicate
         /// <param name="prefer">
         /// Example: wait=5
         /// </param>
+        /// <param name="replicateMaxLifetime">
+        /// Example: 5m
+        /// </param>
         /// <param name="input">
         /// The model's input as a JSON object. The input schema depends on what model you are running. To see the available inputs, click the "API" tab on the model you are running or [get the model version](#models.versions.get) and look at its `openapi_schema` property. For example, [stability-ai/sdxl](https://replicate.com/stability-ai/sdxl) takes `prompt` as an input.<br/>
         /// Files should be passed as HTTP URLs or data URLs.<br/>
@@ -268,6 +283,7 @@ namespace Replicate
             string deploymentName,
             object input,
             string? prefer = default,
+            string? replicateMaxLifetime = default,
             bool? stream = default,
             string? webhook = default,
             global::System.Collections.Generic.IList<global::Replicate.SchemasPredictionRequestWebhookEventsFilterItem>? webhookEventsFilter = default,
@@ -285,6 +301,7 @@ namespace Replicate
                 deploymentOwner: deploymentOwner,
                 deploymentName: deploymentName,
                 prefer: prefer,
+                replicateMaxLifetime: replicateMaxLifetime,
                 request: __request,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
         }

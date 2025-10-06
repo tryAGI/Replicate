@@ -31,6 +31,12 @@ namespace Replicate
         public required bool DataRemoved { get; set; }
 
         /// <summary>
+        /// The absolute time at which the prediction will be automatically canceled if it has not completed
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("deadline")]
+        public global::System.DateTime? Deadline { get; set; }
+
+        /// <summary>
         /// The name of the deployment that created the prediction
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("deployment")]
@@ -130,6 +136,9 @@ namespace Replicate
         /// <param name="dataRemoved">
         /// Whether the prediction output has been deleted
         /// </param>
+        /// <param name="deadline">
+        /// The absolute time at which the prediction will be automatically canceled if it has not completed
+        /// </param>
         /// <param name="deployment">
         /// The name of the deployment that created the prediction
         /// </param>
@@ -175,6 +184,7 @@ namespace Replicate
             global::Replicate.SchemasPredictionResponseUrls urls,
             global::Replicate.OneOf<string, global::Replicate.SchemasPredictionResponseVersion?> version,
             global::System.DateTime? completedAt,
+            global::System.DateTime? deadline,
             string? deployment,
             string? logs,
             global::Replicate.SchemasPredictionResponseMetrics? metrics,
@@ -191,6 +201,7 @@ namespace Replicate
             this.Urls = urls ?? throw new global::System.ArgumentNullException(nameof(urls));
             this.Version = version;
             this.CompletedAt = completedAt;
+            this.Deadline = deadline;
             this.Deployment = deployment;
             this.Logs = logs;
             this.Metrics = metrics;
