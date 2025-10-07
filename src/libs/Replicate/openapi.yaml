@@ -60,7 +60,7 @@ paths:
   '/collections/{collection_slug}':
     get:
       summary: Get a collection of models
-      description: "Example cURL request:\n\n```console\ncurl -s \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  https://api.replicate.com/v1/collections/super-resolution\n```\n\nThe response will be a collection object with a nested list of the models in that collection:\n\n```json\n{\n  \"name\": \"Super resolution\",\n  \"slug\": \"super-resolution\",\n  \"description\": \"Upscaling models that create high-quality images from low-quality images.\",\n  \"models\": [...]\n}\n```\n"
+      description: "Example cURL request:\n\n```console\ncurl -s \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  https://api.replicate.com/v1/collections/super-resolution\n```\n\nThe response will be a collection object with a nested list of the models in that collection:\n\n```json\n{\n  \"name\": \"Super resolution\",\n  \"slug\": \"super-resolution\",\n  \"description\": \"Upscaling models that create high-quality images from low-quality images.\",\n  \"full_description\": \"## Overview\\n\\nThese models generate high-quality images from low-quality images. Many of these models are based on **advanced upscaling techniques**.\\n\\n### Key Features\\n\\n- Enhance image resolution\\n- Restore fine details\\n- Improve overall image quality\",\n  \"models\": [...]\n}\n```\n"
       operationId: collections.get
       parameters:
         - name: collection_slug
@@ -1156,6 +1156,10 @@ components:
         description:
           type: string
           description: A description of the collection
+        full_description:
+          type: string
+          description: The full description of the collection in markdown format
+          nullable: true
         models:
           type: array
           items:
