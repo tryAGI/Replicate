@@ -18,6 +18,7 @@ namespace Replicate
         ///   "name": "Super resolution",<br/>
         ///   "slug": "super-resolution",<br/>
         ///   "description": "Upscaling models that create high-quality images from low-quality images.",<br/>
+        ///   "full_description": "## Overview\n\nThese models generate high-quality images from low-quality images. Many of these models are based on **advanced upscaling techniques**.\n\n### Key Features\n\n- Enhance image resolution\n- Restore fine details\n- Improve overall image quality",<br/>
         ///   "models": [...]<br/>
         /// }<br/>
         /// ```

@@ -16,6 +16,12 @@ namespace Replicate
         public required string Description { get; set; }
 
         /// <summary>
+        /// The full description of the collection in markdown format
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("full_description")]
+        public string? FullDescription { get; set; }
+
+        /// <summary>
         /// The models in this collection
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("models")]
@@ -48,6 +54,9 @@ namespace Replicate
         /// <param name="description">
         /// A description of the collection
         /// </param>
+        /// <param name="fullDescription">
+        /// The full description of the collection in markdown format
+        /// </param>
         /// <param name="models">
         /// The models in this collection
         /// </param>
@@ -64,12 +73,14 @@ namespace Replicate
             string description,
             global::System.Collections.Generic.IList<global::Replicate.SchemasModelResponse> models,
             string name,
-            string slug)
+            string slug,
+            string? fullDescription)
         {
             this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
             this.Models = models ?? throw new global::System.ArgumentNullException(nameof(models));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Slug = slug ?? throw new global::System.ArgumentNullException(nameof(slug));
+            this.FullDescription = fullDescription;
         }
 
         /// <summary>
