@@ -10,7 +10,7 @@ namespace Replicate
             ref string deploymentOwner,
             ref string deploymentName,
             ref string? prefer,
-            ref string? replicateMaxLifetime,
+            ref string? cancelAfter,
             global::Replicate.SchemasPredictionRequest request);
         partial void PrepareDeploymentsPredictionsCreateRequest(
             global::System.Net.Http.HttpClient httpClient,
@@ -18,7 +18,7 @@ namespace Replicate
             string deploymentOwner,
             string deploymentName,
             string? prefer,
-            string? replicateMaxLifetime,
+            string? cancelAfter,
             global::Replicate.SchemasPredictionRequest request);
         partial void ProcessDeploymentsPredictionsCreateResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -48,7 +48,7 @@ namespace Replicate
         /// <param name="prefer">
         /// Example: wait=5
         /// </param>
-        /// <param name="replicateMaxLifetime">
+        /// <param name="cancelAfter">
         /// Example: 5m
         /// </param>
         /// <param name="request"></param>
@@ -59,7 +59,7 @@ namespace Replicate
             string deploymentName,
             global::Replicate.SchemasPredictionRequest request,
             string? prefer = default,
-            string? replicateMaxLifetime = default,
+            string? cancelAfter = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -71,7 +71,7 @@ namespace Replicate
                 deploymentOwner: ref deploymentOwner,
                 deploymentName: ref deploymentName,
                 prefer: ref prefer,
-                replicateMaxLifetime: ref replicateMaxLifetime,
+                cancelAfter: ref cancelAfter,
                 request: request);
 
             var __pathBuilder = new global::Replicate.PathBuilder(
@@ -106,9 +106,9 @@ namespace Replicate
             {
                 __httpRequest.Headers.TryAddWithoutValidation("Prefer", prefer.ToString());
             }
-            if (replicateMaxLifetime != default)
+            if (cancelAfter != default)
             {
-                __httpRequest.Headers.TryAddWithoutValidation("Replicate-Max-Lifetime", replicateMaxLifetime.ToString());
+                __httpRequest.Headers.TryAddWithoutValidation("Cancel-After", cancelAfter.ToString());
             }
 
             var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
@@ -127,7 +127,7 @@ namespace Replicate
                 deploymentOwner: deploymentOwner,
                 deploymentName: deploymentName,
                 prefer: prefer,
-                replicateMaxLifetime: replicateMaxLifetime,
+                cancelAfter: cancelAfter,
                 request: request);
 
             using var __response = await HttpClient.SendAsync(
@@ -233,7 +233,7 @@ namespace Replicate
         /// <param name="prefer">
         /// Example: wait=5
         /// </param>
-        /// <param name="replicateMaxLifetime">
+        /// <param name="cancelAfter">
         /// Example: 5m
         /// </param>
         /// <param name="input">
@@ -283,7 +283,7 @@ namespace Replicate
             string deploymentName,
             object input,
             string? prefer = default,
-            string? replicateMaxLifetime = default,
+            string? cancelAfter = default,
             bool? stream = default,
             string? webhook = default,
             global::System.Collections.Generic.IList<global::Replicate.SchemasPredictionRequestWebhookEventsFilterItem>? webhookEventsFilter = default,
@@ -301,7 +301,7 @@ namespace Replicate
                 deploymentOwner: deploymentOwner,
                 deploymentName: deploymentName,
                 prefer: prefer,
-                replicateMaxLifetime: replicateMaxLifetime,
+                cancelAfter: cancelAfter,
                 request: __request,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
         }

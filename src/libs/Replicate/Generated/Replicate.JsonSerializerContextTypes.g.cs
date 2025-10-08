@@ -286,74 +286,82 @@ namespace Replicate
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.AccountGetResponse? Type65 { get; set; }
+        public global::Replicate.ModelsListSortBy? Type65 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.AccountGetResponseType? Type66 { get; set; }
+        public global::Replicate.ModelsListSortDirection? Type66 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.DeploymentsListResponse? Type67 { get; set; }
+        public global::Replicate.AccountGetResponse? Type67 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Replicate.SchemasDeploymentResponse>? Type68 { get; set; }
+        public global::Replicate.AccountGetResponseType? Type68 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.FilesListResponse? Type69 { get; set; }
+        public global::Replicate.DeploymentsListResponse? Type69 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Replicate.SchemasFileResponse>? Type70 { get; set; }
+        public global::System.Collections.Generic.IList<global::Replicate.SchemasDeploymentResponse>? Type70 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.FilesCreateResponse? Type71 { get; set; }
+        public global::Replicate.FilesListResponse? Type71 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.FilesDeleteResponse? Type72 { get; set; }
+        public global::System.Collections.Generic.IList<global::Replicate.SchemasFileResponse>? Type72 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.FilesGetResponse? Type73 { get; set; }
+        public global::Replicate.FilesCreateResponse? Type73 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.FilesDownloadResponse? Type74 { get; set; }
+        public global::Replicate.FilesDeleteResponse? Type74 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Replicate.HardwareListResponseItem>? Type75 { get; set; }
+        public global::Replicate.FilesGetResponse? Type75 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.HardwareListResponseItem? Type76 { get; set; }
+        public global::Replicate.FilesDownloadResponse? Type76 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.PredictionsListResponse? Type77 { get; set; }
+        public global::System.Collections.Generic.IList<global::Replicate.HardwareListResponseItem>? Type77 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.SearchResponse? Type78 { get; set; }
+        public global::Replicate.HardwareListResponseItem? Type78 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.SearchResponse2? Type79 { get; set; }
+        public global::Replicate.PredictionsListResponse? Type79 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.TrainingsListResponse? Type80 { get; set; }
+        public global::Replicate.SearchResponse? Type80 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Replicate.SchemasTrainingResponse>? Type81 { get; set; }
+        public global::Replicate.SearchResponse2? Type81 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.WebhooksDefaultSecretGetResponse? Type82 { get; set; }
+        public global::Replicate.TrainingsListResponse? Type82 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Replicate.SchemasTrainingResponse>? Type83 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Replicate.WebhooksDefaultSecretGetResponse? Type84 { get; set; }
     }
 }
