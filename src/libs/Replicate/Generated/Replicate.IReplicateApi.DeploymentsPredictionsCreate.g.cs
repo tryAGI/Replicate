@@ -23,7 +23,7 @@ namespace Replicate
         /// <param name="prefer">
         /// Example: wait=5
         /// </param>
-        /// <param name="replicateMaxLifetime">
+        /// <param name="cancelAfter">
         /// Example: 5m
         /// </param>
         /// <param name="request"></param>
@@ -34,7 +34,7 @@ namespace Replicate
             string deploymentName,
             global::Replicate.SchemasPredictionRequest request,
             string? prefer = default,
-            string? replicateMaxLifetime = default,
+            string? cancelAfter = default,
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Replicate
         /// <param name="prefer">
         /// Example: wait=5
         /// </param>
-        /// <param name="replicateMaxLifetime">
+        /// <param name="cancelAfter">
         /// Example: 5m
         /// </param>
         /// <param name="input">
@@ -106,7 +106,7 @@ namespace Replicate
             string deploymentName,
             object input,
             string? prefer = default,
-            string? replicateMaxLifetime = default,
+            string? cancelAfter = default,
             bool? stream = default,
             string? webhook = default,
             global::System.Collections.Generic.IList<global::Replicate.SchemasPredictionRequestWebhookEventsFilterItem>? webhookEventsFilter = default,

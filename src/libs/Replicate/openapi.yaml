@@ -259,7 +259,7 @@ paths:
           schema:
             type: string
         - $ref: '#/components/parameters/parameters_prefer_header'
-        - $ref: '#/components/parameters/parameters_max_lifetime_header'
+        - $ref: '#/components/parameters/parameters_cancel_after_header'
       requestBody:
         content:
           application/json:
@@ -478,8 +478,27 @@ paths:
   /models:
     get:
       summary: List public models
-      description: "Get a paginated list of public models.\n\nExample cURL request:\n\n```console\ncurl -s \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  https://api.replicate.com/v1/models\n```\n\nThe response will be a pagination object containing a list of model objects.\n\nSee the [`models.get`](#models.get) docs for more details about the model object.\n"
+      description: "Get a paginated list of public models.\n\nExample cURL request:\n\n```console\ncurl -s \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  https://api.replicate.com/v1/models\n```\n\nThe response will be a pagination object containing a list of model objects.\n\nSee the [`models.get`](#models.get) docs for more details about the model object.\n\n## Sorting\n\nYou can sort the results using the `sort_by` and `sort_direction` query parameters.\n\nFor example, to get the most recently created models:\n\n```console\ncurl -s \\\n  -H \"Authorization: Bearer $REPLICATE_API_TOKEN\" \\\n  \"https://api.replicate.com/v1/models?sort_by=model_created_at&sort_direction=desc\"\n```\n\nAvailable sorting options:\n- `model_created_at`: Sort by when the model was first created\n- `latest_version_created_at`: Sort by when the model's latest version was created (default)\n\nSort direction can be `asc` (ascending) or `desc` (descending, default).\n"
       operationId: models.list
+      parameters:
+        - name: sort_by
+          in: query
+          description: "Field to sort models by. Defaults to `latest_version_created_at`.\n"
+          schema:
+            enum:
+              - model_created_at
+              - latest_version_created_at
+            type: string
+            default: latest_version_created_at
+        - name: sort_direction
+          in: query
+          description: "Sort direction. Defaults to `desc` (descending, newest first).\n"
+          schema:
+            enum:
+              - asc
+              - desc
+            type: string
+            default: desc
       responses:
         '200':
           description: Success
@@ -689,7 +708,7 @@ paths:
           schema:
             type: string
         - $ref: '#/components/parameters/parameters_prefer_header'
-        - $ref: '#/components/parameters/parameters_max_lifetime_header'
+        - $ref: '#/components/parameters/parameters_cancel_after_header'
       requestBody:
         content:
           application/json:
@@ -906,7 +925,7 @@ paths:
       operationId: predictions.create
       parameters:
         - $ref: '#/components/parameters/parameters_prefer_header'
-        - $ref: '#/components/parameters/parameters_max_lifetime_header'
+        - $ref: '#/components/parameters/parameters_cancel_after_header'
       requestBody:
         content:
           application/json:
@@ -1790,10 +1809,10 @@ components:
           description: The OpenAPI schema for the model's inputs and outputs
           nullable: true
   parameters:
-    parameters_max_lifetime_header:
-      name: Replicate-Max-Lifetime
+    parameters_cancel_after_header:
+      name: Cancel-After
       in: header
-      description: "The maximum time the prediction can run before it is automatically canceled. The lifetime is measured from when the prediction is created.\n\nThe lifetime can be specified as a duration string with a unit suffix:\n- `s` for seconds (e.g., `30s`, `90s`)\n- `m` for minutes (e.g., `5m`, `15m`)\n- `h` for hours (e.g., `1h`, `2h30m`)\n\nYou can combine units for more precision (e.g., `1h30m45s`). For convenience, you can also provide a bare number which will be interpreted as seconds (e.g., `30` is the same as `30s`).\n\nThe minimum allowed lifetime is 5 seconds. If a prediction does not complete within the specified lifetime, it will be canceled automatically and its status will be set to `canceled`.\n"
+      description: "The maximum time the prediction can run before it is automatically canceled. The lifetime is measured from when the prediction is created.\n\nThe duration can be specified as string with an optional unit suffix:\n- `s` for seconds (e.g., `30s`, `90s`)\n- `m` for minutes (e.g., `5m`, `15m`)\n- `h` for hours (e.g., `1h`, `2h30m`)\n- defaults to seconds if no unit suffix is provided (e.g. `30` is the same as `30s`)\n\nYou can combine units for more precision (e.g., `1h30m45s`).\n\nThe minimum allowed duration is 5 seconds.\n"
       schema:
         type: string
         example: 5m
