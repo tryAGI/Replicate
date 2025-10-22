@@ -90,6 +90,13 @@ namespace Replicate
         public required object Output { get; set; }
 
         /// <summary>
+        /// Indicates how the prediction was created
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("source")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Replicate.JsonConverters.SchemasPredictionResponseSourceJsonConverter))]
+        public global::Replicate.SchemasPredictionResponseSource? Source { get; set; }
+
+        /// <summary>
         /// The time that the model began the prediction
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("started_at")]
@@ -161,6 +168,9 @@ namespace Replicate
         /// <param name="output">
         /// The prediction output, which can be any JSON-serializable value, depending on the model
         /// </param>
+        /// <param name="source">
+        /// Indicates how the prediction was created
+        /// </param>
         /// <param name="startedAt">
         /// The time that the model began the prediction
         /// </param>
@@ -188,6 +198,7 @@ namespace Replicate
             string? deployment,
             string? logs,
             global::Replicate.SchemasPredictionResponseMetrics? metrics,
+            global::Replicate.SchemasPredictionResponseSource? source,
             global::System.DateTime? startedAt)
         {
             this.CreatedAt = createdAt;
@@ -205,6 +216,7 @@ namespace Replicate
             this.Deployment = deployment;
             this.Logs = logs;
             this.Metrics = metrics;
+            this.Source = source;
             this.StartedAt = startedAt;
         }
 

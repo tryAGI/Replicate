@@ -27,6 +27,7 @@ namespace Replicate
         ///   "error": null,<br/>
         ///   "status": "succeeded",<br/>
         ///   "created_at": "2023-09-08T16:19:34.765994Z",<br/>
+        ///   "source": "api",<br/>
         ///   "data_removed": false,<br/>
         ///   "started_at": "2023-09-08T16:19:34.779176Z",<br/>
         ///   "completed_at": "2023-09-08T16:19:34.791859Z",<br/>
@@ -40,6 +41,7 @@ namespace Replicate
         ///   }<br/>
         /// }<br/>
         /// ```<br/>
+        /// `source` will indicate how the prediction was created. Possible values are `web` or `api`.<br/>
         /// `status` will be one of:<br/>
         /// - `starting`: the prediction is starting up. If this status lasts longer than a few seconds, then it's typically because a new worker is being started to run the prediction.<br/>
         /// - `processing`: the `predict()` method of the model is currently running.<br/>
