@@ -17,6 +17,8 @@ namespace Replicate
             typeof(global::Replicate.JsonConverters.SchemasModelResponseVisibilityNullableJsonConverter),
             typeof(global::Replicate.JsonConverters.SchemasDeploymentResponseCurrentReleaseCreatedByTypeJsonConverter),
             typeof(global::Replicate.JsonConverters.SchemasDeploymentResponseCurrentReleaseCreatedByTypeNullableJsonConverter),
+            typeof(global::Replicate.JsonConverters.SchemasPredictionResponseSourceJsonConverter),
+            typeof(global::Replicate.JsonConverters.SchemasPredictionResponseSourceNullableJsonConverter),
             typeof(global::Replicate.JsonConverters.SchemasPredictionResponseStatusJsonConverter),
             typeof(global::Replicate.JsonConverters.SchemasPredictionResponseStatusNullableJsonConverter),
             typeof(global::Replicate.JsonConverters.SchemasPredictionResponseVersionJsonConverter),
