@@ -103,7 +103,7 @@ namespace Replicate
         public global::System.DateTime? StartedAt { get; set; }
 
         /// <summary>
-        /// 
+        /// The prediction status. `canceled` means the prediction was canceled (either by the user or because it reached its deadline while running). `aborted` means the prediction was terminated before it started running (for example, when a deadline is reached before the prediction starts).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Replicate.JsonConverters.SchemasPredictionResponseStatusJsonConverter))]
@@ -174,7 +174,9 @@ namespace Replicate
         /// <param name="startedAt">
         /// The time that the model began the prediction
         /// </param>
-        /// <param name="status"></param>
+        /// <param name="status">
+        /// The prediction status. `canceled` means the prediction was canceled (either by the user or because it reached its deadline while running). `aborted` means the prediction was terminated before it started running (for example, when a deadline is reached before the prediction starts).
+        /// </param>
         /// <param name="urls">
         /// URLs for working with the prediction
         /// </param>

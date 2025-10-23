@@ -4,7 +4,7 @@
 namespace Replicate
 {
     /// <summary>
-    /// 
+    /// The prediction status. `canceled` means the prediction was canceled (either by the user or because it reached its deadline while running). `aborted` means the prediction was terminated before it started running (for example, when a deadline is reached before the prediction starts).
     /// </summary>
     public enum SchemasPredictionResponseStatus
     {
@@ -28,6 +28,10 @@ namespace Replicate
         /// 
         /// </summary>
         Canceled,
+        /// <summary>
+        /// 
+        /// </summary>
+        Aborted,
     }
 
     /// <summary>
@@ -47,6 +51,7 @@ namespace Replicate
                 SchemasPredictionResponseStatus.Succeeded => "succeeded",
                 SchemasPredictionResponseStatus.Failed => "failed",
                 SchemasPredictionResponseStatus.Canceled => "canceled",
+                SchemasPredictionResponseStatus.Aborted => "aborted",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -62,6 +67,7 @@ namespace Replicate
                 "succeeded" => SchemasPredictionResponseStatus.Succeeded,
                 "failed" => SchemasPredictionResponseStatus.Failed,
                 "canceled" => SchemasPredictionResponseStatus.Canceled,
+                "aborted" => SchemasPredictionResponseStatus.Aborted,
                 _ => null,
             };
         }
