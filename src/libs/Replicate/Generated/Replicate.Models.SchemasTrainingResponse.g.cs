@@ -76,7 +76,7 @@ namespace Replicate
         public global::System.DateTime? StartedAt { get; set; }
 
         /// <summary>
-        /// The current status of the training
+        /// The current status of the training. `canceled` means the training was canceled (either by the user or because it reached its deadline while running). `aborted` means the training was terminated before it started running (for example, when a deadline is reached before the training starts).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Replicate.JsonConverters.SchemasTrainingResponseStatusJsonConverter))]
@@ -137,7 +137,7 @@ namespace Replicate
         /// The time when the training started
         /// </param>
         /// <param name="status">
-        /// The current status of the training
+        /// The current status of the training. `canceled` means the training was canceled (either by the user or because it reached its deadline while running). `aborted` means the training was terminated before it started running (for example, when a deadline is reached before the training starts).
         /// </param>
         /// <param name="urls">
         /// URLs for interacting with the training

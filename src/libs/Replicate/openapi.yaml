@@ -1548,7 +1548,9 @@ components:
             - succeeded
             - failed
             - canceled
+            - aborted
           type: string
+          description: "The prediction status. `canceled` means the prediction was canceled (either by the user or because it reached its deadline while running). `aborted` means the prediction was terminated before it started running (for example, when a deadline is reached before the prediction starts).\n"
         urls:
           required:
             - web
@@ -1743,8 +1745,9 @@ components:
             - succeeded
             - failed
             - canceled
+            - aborted
           type: string
-          description: The current status of the training
+          description: "The current status of the training. `canceled` means the training was canceled (either by the user or because it reached its deadline while running). `aborted` means the training was terminated before it started running (for example, when a deadline is reached before the training starts).\n"
         urls:
           type: object
           properties:

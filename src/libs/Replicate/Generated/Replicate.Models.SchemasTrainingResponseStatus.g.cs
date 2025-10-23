@@ -4,7 +4,7 @@
 namespace Replicate
 {
     /// <summary>
-    /// The current status of the training
+    /// The current status of the training. `canceled` means the training was canceled (either by the user or because it reached its deadline while running). `aborted` means the training was terminated before it started running (for example, when a deadline is reached before the training starts).
     /// </summary>
     public enum SchemasTrainingResponseStatus
     {
@@ -28,6 +28,10 @@ namespace Replicate
         /// 
         /// </summary>
         Canceled,
+        /// <summary>
+        /// 
+        /// </summary>
+        Aborted,
     }
 
     /// <summary>
@@ -47,6 +51,7 @@ namespace Replicate
                 SchemasTrainingResponseStatus.Succeeded => "succeeded",
                 SchemasTrainingResponseStatus.Failed => "failed",
                 SchemasTrainingResponseStatus.Canceled => "canceled",
+                SchemasTrainingResponseStatus.Aborted => "aborted",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -62,6 +67,7 @@ namespace Replicate
                 "succeeded" => SchemasTrainingResponseStatus.Succeeded,
                 "failed" => SchemasTrainingResponseStatus.Failed,
                 "canceled" => SchemasTrainingResponseStatus.Canceled,
+                "aborted" => SchemasTrainingResponseStatus.Aborted,
                 _ => null,
             };
         }
