@@ -899,6 +899,13 @@ paths:
             type: string
             format: date-time
             example: '2025-02-01T00:00:00.0000000+00:00'
+        - name: source
+          in: query
+          description: "Filter predictions by how they were created. Currently only `web` is supported.\n\nIf no value is set, the API returns predictions from both API and web sources.\n\nWhen filtering by `source=web`, results are limited to predictions created in the last 14 days.\n"
+          schema:
+            enum:
+              - web
+            type: string
       responses:
         '200':
           description: Success
