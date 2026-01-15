@@ -39,6 +39,8 @@ namespace Replicate
             typeof(global::Replicate.JsonConverters.ModelsListSortByNullableJsonConverter),
             typeof(global::Replicate.JsonConverters.ModelsListSortDirectionJsonConverter),
             typeof(global::Replicate.JsonConverters.ModelsListSortDirectionNullableJsonConverter),
+            typeof(global::Replicate.JsonConverters.PredictionsListSourceJsonConverter),
+            typeof(global::Replicate.JsonConverters.PredictionsListSourceNullableJsonConverter),
             typeof(global::Replicate.JsonConverters.AccountGetResponseTypeJsonConverter),
             typeof(global::Replicate.JsonConverters.AccountGetResponseTypeNullableJsonConverter),
             typeof(global::Replicate.JsonConverters.OneOfJsonConverter<string, global::Replicate.SchemasPredictionResponseVersion?>),
