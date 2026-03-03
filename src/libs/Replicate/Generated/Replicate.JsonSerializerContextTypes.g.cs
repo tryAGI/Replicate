@@ -14,10 +14,12 @@ namespace Replicate
         /// 
         /// </summary>
         public global::System.Collections.Generic.Dictionary<string, string>? StringStringDictionary { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
         public global::System.Collections.Generic.Dictionary<string, object>? StringObjectDictionary { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
@@ -371,5 +373,66 @@ namespace Replicate
         /// 
         /// </summary>
         public global::Replicate.WebhooksDefaultSecretGetResponse? Type86 { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Replicate.SchemasModelResponse>? ListType0 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Replicate.SchemasCollectionListItem>? ListType1 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Replicate.SchemasPredictionResponse>? ListType2 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Replicate.SchemasVersionResponse>? ListType3 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Replicate.SchemasPredictionRequestWebhookEventsFilterItem>? ListType4 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<string>? ListType5 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Replicate.SchemasSearchCollectionResponse>? ListType6 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Replicate.SchemasSearchResponseModel>? ListType7 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Replicate.SchemasPageResponse>? ListType8 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Replicate.SchemasTrainingRequestWebhookEventsFilterItem>? ListType9 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Replicate.SchemasVersionPredictionRequestWebhookEventsFilterItem>? ListType10 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Replicate.SchemasDeploymentResponse>? ListType11 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Replicate.SchemasFileResponse>? ListType12 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Replicate.HardwareListResponseItem>? ListType13 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Replicate.SchemasTrainingResponse>? ListType14 { get; set; }
     }
 }
