@@ -18,8 +18,10 @@ namespace Replicate
         /// Use a data URL when:<br/>
         /// - you have a small file &lt;= 256kb<br/>
         /// - you don't want to upload and host the file somewhere<br/>
-        /// - you don't need to use the file again (Replicate will not store it)
+        /// - you don't need to use the file again (Replicate will not store it)<br/>
+        /// Example: {"prompt":"Tell me a joke","system_prompt":"You are a helpful assistant"}
         /// </summary>
+        /// <example>{"prompt":"Tell me a joke","system_prompt":"You are a helpful assistant"}</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("input")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required object Input { get; set; }
@@ -82,7 +84,8 @@ namespace Replicate
         /// Use a data URL when:<br/>
         /// - you have a small file &lt;= 256kb<br/>
         /// - you don't want to upload and host the file somewhere<br/>
-        /// - you don't need to use the file again (Replicate will not store it)
+        /// - you don't need to use the file again (Replicate will not store it)<br/>
+        /// Example: {"prompt":"Tell me a joke","system_prompt":"You are a helpful assistant"}
         /// </param>
         /// <param name="stream">
         /// **This field is deprecated.**<br/>

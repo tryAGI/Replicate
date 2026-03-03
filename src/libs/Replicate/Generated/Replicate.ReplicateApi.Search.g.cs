@@ -62,8 +62,8 @@ namespace Replicate
             var __pathBuilder = new global::Replicate.PathBuilder(
                 path: "/search",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
-                .AddRequiredParameter("query", query) 
+            __pathBuilder
+                .AddRequiredParameter("query", query)
                 .AddOptionalParameter("limit", limit?.ToString()) 
                 ; 
             var __path = __pathBuilder.ToString();

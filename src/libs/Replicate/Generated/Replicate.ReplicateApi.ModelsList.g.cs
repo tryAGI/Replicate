@@ -70,8 +70,8 @@ namespace Replicate
             var __pathBuilder = new global::Replicate.PathBuilder(
                 path: "/models",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
-                .AddOptionalParameter("sort_by", sortBy?.ToValueString()) 
+            __pathBuilder
+                .AddOptionalParameter("sort_by", sortBy?.ToValueString())
                 .AddOptionalParameter("sort_direction", sortDirection?.ToValueString()) 
                 ; 
             var __path = __pathBuilder.ToString();
