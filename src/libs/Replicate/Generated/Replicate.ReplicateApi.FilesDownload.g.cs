@@ -60,9 +60,9 @@ namespace Replicate
             var __pathBuilder = new global::Replicate.PathBuilder(
                 path: $"/files/{fileId}/download",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
-                .AddRequiredParameter("owner", owner) 
-                .AddRequiredParameter("expiry", expiry.ToString()) 
+            __pathBuilder
+                .AddRequiredParameter("owner", owner)
+                .AddRequiredParameter("expiry", expiry.ToString())
                 .AddRequiredParameter("signature", signature) 
                 ; 
             var __path = __pathBuilder.ToString();

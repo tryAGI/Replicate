@@ -25,15 +25,19 @@ namespace Replicate
         public required string ContentType { get; set; }
 
         /// <summary>
-        /// When the file was created
+        /// When the file was created<br/>
+        /// Example: 2024-02-21T12:54:18.5787610+00:00
         /// </summary>
+        /// <example>2024-02-21T12:54:18.5787610+00:00</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// When the file expires
+        /// When the file expires<br/>
+        /// Example: 2024-02-21T13:54:18.5787610+00:00
         /// </summary>
+        /// <example>2024-02-21T13:54:18.5787610+00:00</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("expires_at")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.DateTime ExpiresAt { get; set; }
@@ -48,8 +52,10 @@ namespace Replicate
         public required string Id { get; set; }
 
         /// <summary>
-        /// Metadata provided by user when the file was created
+        /// Metadata provided by user when the file was created<br/>
+        /// Example: {"customer_reference_id":123}
         /// </summary>
+        /// <example>{"customer_reference_id":123}</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required object Metadata { get; set; }
@@ -87,17 +93,20 @@ namespace Replicate
         /// Example: application/zip
         /// </param>
         /// <param name="createdAt">
-        /// When the file was created
+        /// When the file was created<br/>
+        /// Example: 2024-02-21T12:54:18.5787610+00:00
         /// </param>
         /// <param name="expiresAt">
-        /// When the file expires
+        /// When the file expires<br/>
+        /// Example: 2024-02-21T13:54:18.5787610+00:00
         /// </param>
         /// <param name="id">
         /// A unique, randomly-generated identifier for the file resource<br/>
         /// Example: cneqzikepnug6xezperrr4z55o
         /// </param>
         /// <param name="metadata">
-        /// Metadata provided by user when the file was created
+        /// Metadata provided by user when the file was created<br/>
+        /// Example: {"customer_reference_id":123}
         /// </param>
         /// <param name="size">
         /// The length of the file in bytes<br/>

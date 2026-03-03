@@ -63,7 +63,8 @@ namespace Replicate
         /// Use a data URL when:<br/>
         /// - you have a small file &lt;= 256kb<br/>
         /// - you don't want to upload and host the file somewhere<br/>
-        /// - you don't need to use the file again (Replicate will not store it)
+        /// - you don't need to use the file again (Replicate will not store it)<br/>
+        /// Example: {"text":"Alice"}
         /// </param>
         /// <param name="stream">
         /// **This field is deprecated.**<br/>

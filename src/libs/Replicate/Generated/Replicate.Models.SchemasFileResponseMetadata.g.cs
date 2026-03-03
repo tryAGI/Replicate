@@ -4,7 +4,8 @@
 namespace Replicate
 {
     /// <summary>
-    /// Metadata provided by user when the file was created
+    /// Metadata provided by user when the file was created<br/>
+    /// Example: {"customer_reference_id":123}
     /// </summary>
     public sealed partial class SchemasFileResponseMetadata
     {
