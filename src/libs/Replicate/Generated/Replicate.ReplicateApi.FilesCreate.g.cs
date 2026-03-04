@@ -81,27 +81,35 @@ namespace Replicate
                 }
             }
             using var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
+            var __contentContent = new global::System.Net.Http.ByteArrayContent(request.Content ?? global::System.Array.Empty<byte>());
             __httpRequestContent.Add(
-                content: new global::System.Net.Http.ByteArrayContent(request.Content ?? global::System.Array.Empty<byte>()),
-                name: "content",
-                fileName: request.Contentname ?? string.Empty);
+                content: __contentContent,
+                name: "\"content\"",
+                fileName: request.Contentname != null ? $"\"{request.Contentname}\"" : string.Empty);
+            if (__contentContent.Headers.ContentDisposition != null)
+            {
+                __contentContent.Headers.ContentDisposition.FileNameStar = null;
+            }
             if (request.Filename != default)
             {
+
                 __httpRequestContent.Add(
                     content: new global::System.Net.Http.StringContent($"{request.Filename}"),
-                    name: "filename");
+                    name: "\"filename\"");
             } 
             if (request.Metadata != default)
             {
+
                 __httpRequestContent.Add(
                     content: new global::System.Net.Http.StringContent($"{request.Metadata}"),
-                    name: "metadata");
+                    name: "\"metadata\"");
             } 
             if (request.Type != default)
             {
+
                 __httpRequestContent.Add(
                     content: new global::System.Net.Http.StringContent($"{request.Type}"),
-                    name: "type");
+                    name: "\"type\"");
             }
             __httpRequest.Content = __httpRequestContent;
 

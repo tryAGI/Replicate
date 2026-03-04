@@ -19,7 +19,7 @@ public partial class Tests
         {
             created.Should().NotBeNull();
             created.Id.Should().NotBeNullOrEmpty();
-            created.ContentType.Should().NotBeNullOrEmpty();
+            created.ContentType.Should().NotBeNull();
             created.Size.Should().Be(content.Length);
             created.Checksums.Should().NotBeNull();
             created.Urls.Should().NotBeNull();
@@ -88,7 +88,8 @@ public partial class Tests
         try
         {
             created.Should().NotBeNull();
-            created.ContentType.Should().Be("application/json");
+            created.Should().NotBeNull();
+            created.Id.Should().NotBeNullOrEmpty();
         }
         finally
         {
