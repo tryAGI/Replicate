@@ -33,6 +33,7 @@ namespace Replicate
         global::System.Threading.Tasks.Task<global::Replicate.SchemasPredictionResponse> ModelsPredictionsCreateAsync(
             string modelOwner,
             string modelName,
+
             global::Replicate.SchemasPredictionRequest request,
             string? prefer = default,
             string? cancelAfter = default,

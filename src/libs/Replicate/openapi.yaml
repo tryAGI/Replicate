@@ -1835,7 +1835,7 @@ components:
     parameters_prefer_header:
       name: Prefer
       in: header
-      description: "Leave the request open and wait for the model to finish generating output. Set to `wait=n` where n is a number of seconds between 1 and 60.\n\nSee https://replicate.com/docs/topics/predictions/create-a-prediction#sync-mode for more information."
+      description: "Leave the request open and wait for the model to finish generating output. Set to `wait=n` where n is a number of seconds between 1 and 60.\n\nSee [sync mode](https://replicate.com/docs/topics/predictions/create-a-prediction#sync-mode) for more information.\n"
       schema:
         pattern: '^wait(=([1-9]|[1-9][0-9]|60))?$'
         type: string
