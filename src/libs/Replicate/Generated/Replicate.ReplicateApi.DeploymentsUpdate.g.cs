@@ -72,6 +72,7 @@ namespace Replicate
         public async global::System.Threading.Tasks.Task<global::Replicate.SchemasDeploymentResponse> DeploymentsUpdateAsync(
             string deploymentOwner,
             string deploymentName,
+
             global::Replicate.DeploymentsUpdateRequest request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {

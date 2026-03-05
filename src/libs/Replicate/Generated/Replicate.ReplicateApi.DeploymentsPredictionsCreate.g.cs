@@ -57,6 +57,7 @@ namespace Replicate
         public async global::System.Threading.Tasks.Task<global::Replicate.SchemasPredictionResponse> DeploymentsPredictionsCreateAsync(
             string deploymentOwner,
             string deploymentName,
+
             global::Replicate.SchemasPredictionRequest request,
             string? prefer = default,
             string? cancelAfter = default,

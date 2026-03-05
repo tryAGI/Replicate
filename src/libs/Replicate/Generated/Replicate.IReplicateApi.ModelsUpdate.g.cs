@@ -39,6 +39,7 @@ namespace Replicate
         global::System.Threading.Tasks.Task<global::Replicate.SchemasModelResponse> ModelsUpdateAsync(
             string modelOwner,
             string modelName,
+
             global::Replicate.ModelsUpdateRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
 

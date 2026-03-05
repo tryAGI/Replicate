@@ -59,6 +59,7 @@ namespace Replicate
             string modelOwner,
             string modelName,
             string versionId,
+
             global::Replicate.SchemasTrainingRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
 
