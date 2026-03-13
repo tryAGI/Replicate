@@ -10,7 +10,7 @@ C# .NET SDK for the [Replicate API](https://replicate.com) — an AI model hosti
 
 ```bash
 # Build
-dotnet build Replicate.sln
+dotnet build Replicate.slnx
 
 # Run all tests (integration tests — requires live API key)
 dotnet test src/tests/Replicate.IntegrationTests/Replicate.IntegrationTests.csproj
