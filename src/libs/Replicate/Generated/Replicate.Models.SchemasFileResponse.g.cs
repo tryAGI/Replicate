@@ -67,7 +67,7 @@ namespace Replicate
         /// <example>69420</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("size")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required int Size { get; set; }
+        public required long Size { get; set; }
 
         /// <summary>
         /// A dictionary of URLs associated with the file resource
@@ -125,7 +125,7 @@ namespace Replicate
             global::System.DateTime expiresAt,
             string id,
             object metadata,
-            int size,
+            long size,
             global::Replicate.SchemasFileResponseUrls urls)
         {
             this.Checksums = checksums ?? throw new global::System.ArgumentNullException(nameof(checksums));
