@@ -26,9 +26,8 @@ Tests require the `REPLICATE_API_KEY` environment variable. If unset, tests are 
 **Never edit files in `src/libs/Replicate/Generated/`** — all `*.g.cs` files are completely regenerated from the OpenAPI spec and any manual changes will be overwritten.
 
 The generation pipeline:
-1. Fetch the latest spec: `curl -o openapi.yaml https://api.replicate.com/openapi.json`
-2. `FixOpenApiSpec` helper (`src/helpers/FixOpenApiSpec/`) patches missing response schemas in the spec
-3. `generate.sh` in `src/libs/Replicate/` runs the `autosdk.cli` tool to produce all generated code
+1. `generate.sh` in `src/libs/Replicate/` fetches Replicate's latest published OpenAPI spec as `openapi.json`
+2. `generate.sh` runs the `autosdk.cli` tool to produce all generated code directly from that spec
 
 To regenerate:
 ```bash

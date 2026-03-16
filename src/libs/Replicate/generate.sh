@@ -1,12 +1,7 @@
 dotnet tool install --global autosdk.cli --prerelease
-curl -o openapi.yaml https://api.replicate.com/openapi.json
-dotnet run --project ../../helpers/FixOpenApiSpec openapi.yaml
-if [ $? -ne 0 ]; then
-  echo "Failed, exiting..."
-  exit 1
-fi
+curl -o openapi.json https://api.replicate.com/openapi.json
 rm -rf Generated
-autosdk generate openapi.yaml \
+autosdk generate openapi.json \
   --namespace Replicate \
   --clientClassName ReplicateApi \
   --targetFramework net8.0 \
