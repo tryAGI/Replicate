@@ -46,8 +46,7 @@ namespace Replicate
         /// An error string if the model status is `"failed"`
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string? Error { get; set; }
+        public string? Error { get; set; }
 
         /// <summary>
         /// 
@@ -187,7 +186,6 @@ namespace Replicate
         public SchemasPredictionResponse(
             global::System.DateTime createdAt,
             bool dataRemoved,
-            string? error,
             string id,
             object input,
             string model,
@@ -198,6 +196,7 @@ namespace Replicate
             global::System.DateTime? completedAt,
             global::System.DateTime? deadline,
             string? deployment,
+            string? error,
             string? logs,
             global::Replicate.SchemasPredictionResponseMetrics? metrics,
             global::Replicate.SchemasPredictionResponseSource? source,
@@ -205,7 +204,6 @@ namespace Replicate
         {
             this.CreatedAt = createdAt;
             this.DataRemoved = dataRemoved;
-            this.Error = error ?? throw new global::System.ArgumentNullException(nameof(error));
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Input = input ?? throw new global::System.ArgumentNullException(nameof(input));
             this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
@@ -216,6 +214,7 @@ namespace Replicate
             this.CompletedAt = completedAt;
             this.Deadline = deadline;
             this.Deployment = deployment;
+            this.Error = error;
             this.Logs = logs;
             this.Metrics = metrics;
             this.Source = source;
