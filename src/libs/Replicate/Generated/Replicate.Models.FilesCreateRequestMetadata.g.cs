@@ -4,7 +4,8 @@
 namespace Replicate
 {
     /// <summary>
-    /// User-provided metadata associated with the file
+    /// User-provided metadata associated with the file<br/>
+    /// Default Value: {}
     /// </summary>
     public sealed partial class FilesCreateRequestMetadata
     {

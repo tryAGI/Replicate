@@ -270,7 +270,8 @@ namespace Replicate
         /// The filename
         /// </param>
         /// <param name="metadata">
-        /// User-provided metadata associated with the file
+        /// User-provided metadata associated with the file<br/>
+        /// Default Value: {}
         /// </param>
         /// <param name="type">
         /// The content / MIME type for the file<br/>

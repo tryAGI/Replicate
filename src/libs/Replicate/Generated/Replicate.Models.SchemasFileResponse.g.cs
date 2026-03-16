@@ -26,18 +26,18 @@ namespace Replicate
 
         /// <summary>
         /// When the file was created<br/>
-        /// Example: 2024-02-21T12:54:18.5787610+00:00
+        /// Example: 2024-02-21T12:54:18.578761Z
         /// </summary>
-        /// <example>2024-02-21T12:54:18.5787610+00:00</example>
+        /// <example>2024-02-21T12:54:18.578761Z</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.DateTime CreatedAt { get; set; }
 
         /// <summary>
         /// When the file expires<br/>
-        /// Example: 2024-02-21T13:54:18.5787610+00:00
+        /// Example: 2024-02-21T13:54:18.578761Z
         /// </summary>
-        /// <example>2024-02-21T13:54:18.5787610+00:00</example>
+        /// <example>2024-02-21T13:54:18.578761Z</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("expires_at")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.DateTime ExpiresAt { get; set; }
@@ -94,11 +94,11 @@ namespace Replicate
         /// </param>
         /// <param name="createdAt">
         /// When the file was created<br/>
-        /// Example: 2024-02-21T12:54:18.5787610+00:00
+        /// Example: 2024-02-21T12:54:18.578761Z
         /// </param>
         /// <param name="expiresAt">
         /// When the file expires<br/>
-        /// Example: 2024-02-21T13:54:18.5787610+00:00
+        /// Example: 2024-02-21T13:54:18.578761Z
         /// </param>
         /// <param name="id">
         /// A unique, randomly-generated identifier for the file resource<br/>

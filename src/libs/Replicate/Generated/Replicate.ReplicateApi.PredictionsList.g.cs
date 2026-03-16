@@ -77,10 +77,10 @@ namespace Replicate
         /// `data_removed` will be `true` if the input and output data has been deleted.
         /// </summary>
         /// <param name="createdAfter">
-        /// Example: 2025-01-01T00:00:00.0000000+00:00
+        /// Example: 2025-01-01T00:00:00Z
         /// </param>
         /// <param name="createdBefore">
-        /// Example: 2025-02-01T00:00:00.0000000+00:00
+        /// Example: 2025-02-01T00:00:00Z
         /// </param>
         /// <param name="source"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
