@@ -5,7 +5,7 @@ public partial class Tests
     [TestMethod]
     public async Task Account()
     {
-        using var api = GetAuthorizedApi();
+        using var api = GetAuthorizedClient();
         
         var response = await api.AccountGetAsync();
         

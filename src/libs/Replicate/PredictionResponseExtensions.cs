@@ -32,7 +32,7 @@ public static class PredictionResponseExtensions
     /// <exception cref="ArgumentException"></exception>
     public static async Task<SchemasPredictionResponse?> WaitUntilSuccessfulAsync(
         this SchemasPredictionResponse response,
-        ReplicateApi api,
+        ReplicateClient api,
         CancellationToken cancellationToken = default)
     {
         response = response ?? throw new ArgumentNullException(nameof(response));

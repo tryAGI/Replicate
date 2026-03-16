@@ -5,7 +5,7 @@ public partial class Tests
     [TestMethod]
     public async Task CreatePredictionForFluxPro()
     {
-        using var api = GetAuthorizedApi();
+        using var api = GetAuthorizedClient();
 
         var seed = Random.Shared.Next(0, 1000000);
         var endResponse = await api.ModelsPredictionsCreateAsync(

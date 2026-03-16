@@ -12,8 +12,8 @@ File.Copy(
 
 await ConvertTestsToMarkdown(sampleDirectory, newDir, formatOutput: x => x
     .Replace(
-        "using var api = GetAuthorizedApi();",
-        "using var api = new ReplicateApi(apiKey);"));
+        "using var api = GetAuthorizedClient();",
+        "using var api = new ReplicateClient(apiKey);"));
 
 var mkDocs = await File.ReadAllTextAsync(mkDocsPath);
 var newMkDocs = mkDocs.Replace(

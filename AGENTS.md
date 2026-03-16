@@ -40,7 +40,7 @@ An automated CI workflow (`auto-update.yml`) runs every 3 hours to fetch the lat
 
 ## Architecture
 
-- **`IReplicateApi`** / **`ReplicateApi`** — generated interface and implementation for all API operations. Constructor takes an API key string for simple usage.
+- **`IReplicateClient`** / **`ReplicateClient`** — generated interface and implementation for all API operations. Constructor takes an API key string for simple usage.
 - **Generated models** follow OpenAPI naming: `SchemasPredictionResponse`, `SchemasDeploymentResponse`, etc.
 - **Each API operation** gets its own `.g.cs` file with partial method hooks: `PrepareArguments`, `PrepareRequest`, `ProcessResponse`, `ProcessResponseContent`.
 - **Manual code** extends generated types via partial classes. Currently: `PredictionResponseExtensions.cs` (adds `IsCompleted()` and `WaitUntilSuccessfulAsync()`).
@@ -50,7 +50,7 @@ An automated CI workflow (`auto-update.yml`) runs every 3 hours to fetch the lat
 
 - Framework: MSTest with AwesomeAssertions
 - All tests are in a single `partial class Tests` split across files named `Tests.{Feature}.cs`
-- `GetAuthorizedApi()` in `Tests.cs` creates an authenticated client from the env var
+- `GetAuthorizedClient()` in `Tests.cs` creates an authenticated client from the env var
 - Comments prefixed with `////` in test files become prose in auto-generated documentation
 
 ## Versioning

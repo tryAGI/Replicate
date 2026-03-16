@@ -19,7 +19,7 @@ Examples and documentation can be found here: https://tryagi.github.io/Replicate
 ```csharp
 using Replicate;
 
-using var api = new ReplicateApi(apiKey);
+using var api = new ReplicateClient(apiKey);
 var response = await api.ModelsPredictionsCreateAsync(
     input: new PredictionRequestInput
     {

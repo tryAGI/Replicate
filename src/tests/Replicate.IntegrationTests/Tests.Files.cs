@@ -5,7 +5,7 @@ public partial class Tests
     [TestMethod]
     public async Task FilesCreateAndDelete()
     {
-        using var api = GetAuthorizedApi();
+        using var api = GetAuthorizedClient();
 
         var content = System.Text.Encoding.UTF8.GetBytes("Hello, Replicate!");
         var fileName = "test-file.txt";
@@ -37,7 +37,7 @@ public partial class Tests
     [TestMethod]
     public async Task FilesList()
     {
-        using var api = GetAuthorizedApi();
+        using var api = GetAuthorizedClient();
 
         var response = await api.FilesListAsync();
 
@@ -48,7 +48,7 @@ public partial class Tests
     [TestMethod]
     public async Task FilesCreateWithMetadata()
     {
-        using var api = GetAuthorizedApi();
+        using var api = GetAuthorizedClient();
 
         var content = System.Text.Encoding.UTF8.GetBytes("metadata test");
         var fileName = "test-metadata.txt";
@@ -74,7 +74,7 @@ public partial class Tests
     [TestMethod]
     public async Task FilesCreateWithContentType()
     {
-        using var api = GetAuthorizedApi();
+        using var api = GetAuthorizedClient();
 
         var content = System.Text.Encoding.UTF8.GetBytes("{\"key\": \"value\"}");
         var fileName = "test-file.json";
