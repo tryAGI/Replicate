@@ -126,8 +126,9 @@ namespace Replicate
                     }
                     else
                     {
-                        var __contentStream_400 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                        __value_400 = await global::Replicate.SearchResponse.FromJsonStreamAsync(__contentStream_400, JsonSerializerContext).ConfigureAwait(false);
+                        __content_400 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+
+                        __value_400 = global::Replicate.SearchResponse.FromJson(__content_400, JsonSerializerContext);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -163,8 +164,9 @@ namespace Replicate
                     }
                     else
                     {
-                        var __contentStream_500 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                        __value_500 = await global::Replicate.SearchResponse2.FromJsonStreamAsync(__contentStream_500, JsonSerializerContext).ConfigureAwait(false);
+                        __content_500 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+
+                        __value_500 = global::Replicate.SearchResponse2.FromJson(__content_500, JsonSerializerContext);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -244,11 +246,25 @@ namespace Replicate
                 }
                 catch (global::System.Exception __ex)
                 {
+                    string? __content = null;
+                    try
+                    {
+                        __content = await __response.Content.ReadAsStringAsync(
+#if NET5_0_OR_GREATER
+                            cancellationToken
+#endif
+                        ).ConfigureAwait(false);
+                    }
+                    catch (global::System.Exception)
+                    {
+                    }
+
                     throw new global::Replicate.ApiException(
-                        message: __response.ReasonPhrase ?? string.Empty,
+                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
                         innerException: __ex,
                         statusCode: __response.StatusCode)
                     {
+                        ResponseBody = __content,
                         ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
                             __response.Headers,
                             h => h.Key,
