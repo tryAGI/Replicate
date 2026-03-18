@@ -148,8 +148,9 @@ namespace Replicate
                     }
                     else
                     {
-                        var __contentStream_413 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                        __value_413 = await global::Replicate.FilesCreateResponse.FromJsonStreamAsync(__contentStream_413, JsonSerializerContext).ConfigureAwait(false);
+                        __content_413 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+
+                        __value_413 = global::Replicate.FilesCreateResponse.FromJson(__content_413, JsonSerializerContext);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -229,11 +230,25 @@ namespace Replicate
                 }
                 catch (global::System.Exception __ex)
                 {
+                    string? __content = null;
+                    try
+                    {
+                        __content = await __response.Content.ReadAsStringAsync(
+#if NET5_0_OR_GREATER
+                            cancellationToken
+#endif
+                        ).ConfigureAwait(false);
+                    }
+                    catch (global::System.Exception)
+                    {
+                    }
+
                     throw new global::Replicate.ApiException(
-                        message: __response.ReasonPhrase ?? string.Empty,
+                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
                         innerException: __ex,
                         statusCode: __response.StatusCode)
                     {
+                        ResponseBody = __content,
                         ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
                             __response.Headers,
                             h => h.Key,
