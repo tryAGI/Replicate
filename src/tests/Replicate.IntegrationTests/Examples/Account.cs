@@ -1,3 +1,9 @@
+/*
+order: 10
+title: Account
+slug: account
+*/
+
 namespace Replicate.IntegrationTests;
 
 public partial class Tests

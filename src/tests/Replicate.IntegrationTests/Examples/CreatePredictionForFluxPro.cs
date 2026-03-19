@@ -1,3 +1,9 @@
+/*
+order: 20
+title: Create Prediction For Flux Pro
+slug: create-prediction-for-flux-pro
+*/
+
 namespace Replicate.IntegrationTests;
 
 public partial class Tests
