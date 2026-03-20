@@ -25,7 +25,6 @@ namespace Replicate
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// Get a model version<br/>
         /// Example cURL request:<br/>

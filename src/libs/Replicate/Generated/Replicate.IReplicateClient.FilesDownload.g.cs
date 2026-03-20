@@ -4,7 +4,6 @@ namespace Replicate
 {
     public partial interface IReplicateClient
     {
-
         /// <summary>
         /// Download a file<br/>
         /// Download a file by providing the file owner, access expiry, and a valid signature.<br/>

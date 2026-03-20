@@ -4,7 +4,6 @@ namespace Replicate
 {
     public partial interface IReplicateClient
     {
-
         /// <summary>
         /// List trainings<br/>
         /// Get a paginated list of all trainings created by the user or organization associated with the provided API token.<br/>

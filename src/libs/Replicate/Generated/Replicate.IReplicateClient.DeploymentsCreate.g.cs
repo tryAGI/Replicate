@@ -4,7 +4,6 @@ namespace Replicate
 {
     public partial interface IReplicateClient
     {
-
         /// <summary>
         /// Create a deployment<br/>
         /// Create a new deployment:<br/>
@@ -50,7 +49,6 @@ namespace Replicate
         /// }<br/>
         /// ```
         /// </summary>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
@@ -58,7 +56,6 @@ namespace Replicate
 
             global::Replicate.DeploymentsCreateRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Create a deployment<br/>
         /// Create a new deployment:<br/>

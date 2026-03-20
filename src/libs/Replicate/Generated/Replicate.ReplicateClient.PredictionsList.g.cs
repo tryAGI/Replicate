@@ -25,7 +25,6 @@ namespace Replicate
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// List predictions<br/>
         /// Get a paginated list of all predictions created by the user or organization associated with the provided API token.<br/>

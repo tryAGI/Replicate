@@ -23,7 +23,6 @@ namespace Replicate
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// List examples for a model<br/>
         /// List [example predictions](https://replicate.com/docs/topics/models/publish-a-model#what-are-examples) made using the model.<br/>

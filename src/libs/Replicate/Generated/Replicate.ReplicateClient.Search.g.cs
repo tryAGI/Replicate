@@ -23,7 +23,6 @@ namespace Replicate
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// Search models, collections, and docs (beta)<br/>
         /// Search for public models, collections, and docs using a text query.<br/>

@@ -4,7 +4,6 @@ namespace Replicate
 {
     public partial interface IReplicateClient
     {
-
         /// <summary>
         /// List predictions<br/>
         /// Get a paginated list of all predictions created by the user or organization associated with the provided API token.<br/>

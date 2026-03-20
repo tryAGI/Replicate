@@ -4,7 +4,6 @@ namespace Replicate
 {
     public partial interface IReplicateClient
     {
-
         /// <summary>
         /// List public models<br/>
         /// Get a paginated list of public models.<br/>

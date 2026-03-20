@@ -21,7 +21,6 @@ namespace Replicate
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// Create a file<br/>
         /// Create a file by uploading its content and optional metadata.<br/>
@@ -39,7 +38,6 @@ namespace Replicate
         /// - `filename`: The filename (required, ≤ 255 bytes, valid UTF-8)<br/>
         /// - `metadata`: User-provided metadata associated with the file (defaults to `{}`, must be valid JSON)
         /// </summary>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
@@ -259,7 +257,6 @@ namespace Replicate
                 }
             }
         }
-
         /// <summary>
         /// Create a file<br/>
         /// Create a file by uploading its content and optional metadata.<br/>
