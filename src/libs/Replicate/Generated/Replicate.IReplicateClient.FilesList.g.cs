@@ -4,7 +4,6 @@ namespace Replicate
 {
     public partial interface IReplicateClient
     {
-
         /// <summary>
         /// List files<br/>
         /// Get a paginated list of all files created by the user or organization associated with the provided API token.<br/>

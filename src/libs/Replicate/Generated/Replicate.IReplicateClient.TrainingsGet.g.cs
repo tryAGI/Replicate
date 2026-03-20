@@ -4,7 +4,6 @@ namespace Replicate
 {
     public partial interface IReplicateClient
     {
-
         /// <summary>
         /// Get a training<br/>
         /// Get the current state of a training.<br/>

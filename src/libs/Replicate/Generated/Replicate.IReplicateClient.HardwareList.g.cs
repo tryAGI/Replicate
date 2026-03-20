@@ -4,7 +4,6 @@ namespace Replicate
 {
     public partial interface IReplicateClient
     {
-
         /// <summary>
         /// List available hardware for models<br/>
         /// Example cURL request:<br/>

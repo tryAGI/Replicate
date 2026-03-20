@@ -4,7 +4,6 @@ namespace Replicate
 {
     public partial interface IReplicateClient
     {
-
         /// <summary>
         /// Get a model version<br/>
         /// Example cURL request:<br/>

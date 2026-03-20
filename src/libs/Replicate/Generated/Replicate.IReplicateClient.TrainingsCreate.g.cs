@@ -4,7 +4,6 @@ namespace Replicate
 {
     public partial interface IReplicateClient
     {
-
         /// <summary>
         /// Create a training<br/>
         /// Start a new training of the model version you specify.<br/>
@@ -53,7 +52,6 @@ namespace Replicate
         /// <param name="modelOwner"></param>
         /// <param name="modelName"></param>
         /// <param name="versionId"></param>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
@@ -64,7 +62,6 @@ namespace Replicate
 
             global::Replicate.SchemasTrainingRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Create a training<br/>
         /// Start a new training of the model version you specify.<br/>

@@ -23,7 +23,6 @@ namespace Replicate
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// List public models<br/>
         /// Get a paginated list of public models.<br/>

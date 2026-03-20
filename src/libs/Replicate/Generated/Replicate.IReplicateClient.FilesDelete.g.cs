@@ -4,7 +4,6 @@ namespace Replicate
 {
     public partial interface IReplicateClient
     {
-
         /// <summary>
         /// Delete a file<br/>
         /// Delete a file. Once a file has been deleted, subsequent requests to the file resource return 404 Not found.<br/>

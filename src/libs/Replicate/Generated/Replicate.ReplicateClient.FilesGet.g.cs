@@ -21,7 +21,6 @@ namespace Replicate
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// Get a file<br/>
         /// Get the details of a file.<br/>

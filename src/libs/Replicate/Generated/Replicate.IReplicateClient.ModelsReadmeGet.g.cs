@@ -4,7 +4,6 @@ namespace Replicate
 {
     public partial interface IReplicateClient
     {
-
         /// <summary>
         /// Get a model's README<br/>
         /// Get the README content for a model.<br/>

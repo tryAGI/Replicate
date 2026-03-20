@@ -4,7 +4,6 @@ namespace Replicate
 {
     public partial interface IReplicateClient
     {
-
         /// <summary>
         /// Search models, collections, and docs (beta)<br/>
         /// Search for public models, collections, and docs using a text query.<br/>
