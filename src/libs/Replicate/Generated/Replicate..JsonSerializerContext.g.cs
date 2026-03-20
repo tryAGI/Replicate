@@ -13,13 +13,17 @@ namespace Replicate
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
         Converters = new global::System.Type[]
         {
+            typeof(global::Replicate.JsonConverters.SchemasDeploymentResponseCurrentReleaseCreatedByTypeJsonConverter),
+
+            typeof(global::Replicate.JsonConverters.SchemasDeploymentResponseCurrentReleaseCreatedByTypeNullableJsonConverter),
+
             typeof(global::Replicate.JsonConverters.SchemasModelResponseVisibilityJsonConverter),
 
             typeof(global::Replicate.JsonConverters.SchemasModelResponseVisibilityNullableJsonConverter),
 
-            typeof(global::Replicate.JsonConverters.SchemasDeploymentResponseCurrentReleaseCreatedByTypeJsonConverter),
+            typeof(global::Replicate.JsonConverters.SchemasPredictionRequestWebhookEventsFilterItemJsonConverter),
 
-            typeof(global::Replicate.JsonConverters.SchemasDeploymentResponseCurrentReleaseCreatedByTypeNullableJsonConverter),
+            typeof(global::Replicate.JsonConverters.SchemasPredictionRequestWebhookEventsFilterItemNullableJsonConverter),
 
             typeof(global::Replicate.JsonConverters.SchemasPredictionResponseSourceJsonConverter),
 
@@ -32,10 +36,6 @@ namespace Replicate
             typeof(global::Replicate.JsonConverters.SchemasPredictionResponseVersionJsonConverter),
 
             typeof(global::Replicate.JsonConverters.SchemasPredictionResponseVersionNullableJsonConverter),
-
-            typeof(global::Replicate.JsonConverters.SchemasPredictionRequestWebhookEventsFilterItemJsonConverter),
-
-            typeof(global::Replicate.JsonConverters.SchemasPredictionRequestWebhookEventsFilterItemNullableJsonConverter),
 
             typeof(global::Replicate.JsonConverters.SchemasTrainingRequestWebhookEventsFilterItemJsonConverter),
 
@@ -83,20 +83,20 @@ namespace Replicate
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasCollectionResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Replicate.SchemasModelResponse>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasModelResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(object))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(int))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasModelResponseVisibility))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasDeploymentResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasDeploymentResponseCurrentRelease))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasDeploymentResponseCurrentReleaseConfiguration))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(int))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasDeploymentResponseCurrentReleaseCreatedBy))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasDeploymentResponseCurrentReleaseCreatedByType))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasFileResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasFileResponseChecksums))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(object))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(long))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasFileResponseUrls))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasModelResponseVisibility))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasPageResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasPaginatedCollectionResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Replicate.SchemasCollectionListItem>))]
@@ -104,6 +104,12 @@ namespace Replicate
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasPaginatedPredictionResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Replicate.SchemasPredictionResponse>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasPredictionResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasPaginatedVersionResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Replicate.SchemasVersionResponse>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasVersionResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasPredictionRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Replicate.SchemasPredictionRequestWebhookEventsFilterItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasPredictionRequestWebhookEventsFilterItem))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasPredictionResponseMetrics))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasPredictionResponseSource))]
@@ -111,12 +117,6 @@ namespace Replicate
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasPredictionResponseUrls))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.OneOf<string, global::Replicate.SchemasPredictionResponseVersion?>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasPredictionResponseVersion))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasPaginatedVersionResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Replicate.SchemasVersionResponse>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasVersionResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasPredictionRequest))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Replicate.SchemasPredictionRequestWebhookEventsFilterItem>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasPredictionRequestWebhookEventsFilterItem))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasSearchCollectionResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SchemasSearchModelMetadataResponse))]
