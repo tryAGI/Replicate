@@ -21,6 +21,21 @@ dotnet test src/tests/Replicate.IntegrationTests/Replicate.IntegrationTests.cspr
 
 Tests require the `REPLICATE_API_KEY` environment variable. If unset, tests are skipped (AssertInconclusiveException), not failed.
 
+### Project Layout
+
+| Project | Purpose |
+|---------|---------|
+| `src/libs/Replicate/` | Main SDK library (`ReplicateClient`) |
+| `src/tests/Replicate.IntegrationTests/` | Integration tests against real Replicate API |
+
+### Documentation Generation
+
+Tests in `src/tests/Replicate.IntegrationTests/Examples` are the single source of truth for both test coverage and documentation:
+- Each file has a JSDoc header (`order`, `title`, `slug`) consumed by `autosdk docs sync .`
+- Comments prefixed with `////` become prose paragraphs in generated docs
+- CI workflow (`.github/workflows/mkdocs.yml`) auto-generates `docs/examples/` and populates `EXAMPLES:START/END` markers in README.md, docs/index.md, and mkdocs.yml
+- Config: `autosdk.docs.json` points to `src/tests/Replicate.IntegrationTests/Examples`
+
 ## Code Generation — Critical Rules
 
 **Never edit files in `src/libs/Replicate/Generated/`** — all `*.g.cs` files are completely regenerated from the OpenAPI spec and any manual changes will be overwritten.
