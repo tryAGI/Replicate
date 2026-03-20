@@ -48,59 +48,59 @@ namespace Replicate
         /// <summary>
         /// 
         /// </summary>
-        public object? Type5 { get; set; }
+        public global::Replicate.SchemasDeploymentResponse? Type5 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public bool? Type6 { get; set; }
+        public global::Replicate.SchemasDeploymentResponseCurrentRelease? Type6 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public int? Type7 { get; set; }
+        public global::Replicate.SchemasDeploymentResponseCurrentReleaseConfiguration? Type7 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.SchemasModelResponseVisibility? Type8 { get; set; }
+        public int? Type8 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.SchemasDeploymentResponse? Type9 { get; set; }
+        public global::System.DateTime? Type9 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.SchemasDeploymentResponseCurrentRelease? Type10 { get; set; }
+        public global::Replicate.SchemasDeploymentResponseCurrentReleaseCreatedBy? Type10 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.SchemasDeploymentResponseCurrentReleaseConfiguration? Type11 { get; set; }
+        public global::Replicate.SchemasDeploymentResponseCurrentReleaseCreatedByType? Type11 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.DateTime? Type12 { get; set; }
+        public global::Replicate.SchemasFileResponse? Type12 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.SchemasDeploymentResponseCurrentReleaseCreatedBy? Type13 { get; set; }
+        public global::Replicate.SchemasFileResponseChecksums? Type13 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.SchemasDeploymentResponseCurrentReleaseCreatedByType? Type14 { get; set; }
+        public object? Type14 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.SchemasFileResponse? Type15 { get; set; }
+        public long? Type15 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.SchemasFileResponseChecksums? Type16 { get; set; }
+        public global::Replicate.SchemasFileResponseUrls? Type16 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public long? Type17 { get; set; }
+        public bool? Type17 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.SchemasFileResponseUrls? Type18 { get; set; }
+        public global::Replicate.SchemasModelResponseVisibility? Type18 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -132,55 +132,55 @@ namespace Replicate
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.SchemasPredictionResponseMetrics? Type26 { get; set; }
+        public global::Replicate.SchemasPaginatedVersionResponse? Type26 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? Type27 { get; set; }
+        public global::System.Collections.Generic.IList<global::Replicate.SchemasVersionResponse>? Type27 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.SchemasPredictionResponseSource? Type28 { get; set; }
+        public global::Replicate.SchemasVersionResponse? Type28 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.SchemasPredictionResponseStatus? Type29 { get; set; }
+        public global::Replicate.SchemasPredictionRequest? Type29 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.SchemasPredictionResponseUrls? Type30 { get; set; }
+        public global::System.Collections.Generic.IList<global::Replicate.SchemasPredictionRequestWebhookEventsFilterItem>? Type30 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.OneOf<string, global::Replicate.SchemasPredictionResponseVersion?>? Type31 { get; set; }
+        public global::Replicate.SchemasPredictionRequestWebhookEventsFilterItem? Type31 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.SchemasPredictionResponseVersion? Type32 { get; set; }
+        public global::Replicate.SchemasPredictionResponseMetrics? Type32 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.SchemasPaginatedVersionResponse? Type33 { get; set; }
+        public double? Type33 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Replicate.SchemasVersionResponse>? Type34 { get; set; }
+        public global::Replicate.SchemasPredictionResponseSource? Type34 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.SchemasVersionResponse? Type35 { get; set; }
+        public global::Replicate.SchemasPredictionResponseStatus? Type35 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.SchemasPredictionRequest? Type36 { get; set; }
+        public global::Replicate.SchemasPredictionResponseUrls? Type36 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Replicate.SchemasPredictionRequestWebhookEventsFilterItem>? Type37 { get; set; }
+        public global::Replicate.OneOf<string, global::Replicate.SchemasPredictionResponseVersion?>? Type37 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Replicate.SchemasPredictionRequestWebhookEventsFilterItem? Type38 { get; set; }
+        public global::Replicate.SchemasPredictionResponseVersion? Type38 { get; set; }
         /// <summary>
         /// 
         /// </summary>
