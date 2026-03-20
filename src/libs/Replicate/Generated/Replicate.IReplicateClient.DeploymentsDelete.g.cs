@@ -4,6 +4,7 @@ namespace Replicate
 {
     public partial interface IReplicateClient
     {
+
         /// <summary>
         /// Delete a deployment<br/>
         /// Delete a deployment<br/>

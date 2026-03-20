@@ -21,6 +21,7 @@ namespace Replicate
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
+
         /// <summary>
         /// Get a training<br/>
         /// Get the current state of a training.<br/>

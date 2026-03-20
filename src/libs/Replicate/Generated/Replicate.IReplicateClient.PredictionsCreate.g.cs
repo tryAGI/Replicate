@@ -4,6 +4,7 @@ namespace Replicate
 {
     public partial interface IReplicateClient
     {
+
         /// <summary>
         /// Create a prediction<br/>
         /// Create a prediction for the model version and inputs you provide.<br/>
@@ -24,6 +25,7 @@ namespace Replicate
         /// <param name="cancelAfter">
         /// Example: 5m
         /// </param>
+
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>

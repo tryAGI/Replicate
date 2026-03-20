@@ -21,6 +21,7 @@ namespace Replicate
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
+
         /// <summary>
         /// Cancel a prediction<br/>
         /// Cancel a prediction that is currently running.<br/>
