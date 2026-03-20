@@ -38,7 +38,11 @@ var response = await api.ModelsPredictionsCreateAsync(
     modelOwner: "black-forest-labs",
     modelName: "flux-pro");
         
-var endResponse = await response.WaitUntilSuccessfulAsync(api);
+var endResponse = await response.WaitUntilSuccessfulAsync(
+    api,
+    pollingInterval: TimeSpan.FromSeconds(2),
+    progress: new Progress<SchemasPredictionResponse>(p =>
+        Console.WriteLine($"Status: {p.Status}")));
 
 Console.WriteLine($@"Seed: {endResponse.Input?.Seed}.
 Image available at:\n{endResponse.Output}");

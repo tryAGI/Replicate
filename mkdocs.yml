@@ -2,7 +2,13 @@ site_name: OpenAI .NET Documentation
 nav:
 - Overview: index.md
 # EXAMPLES:START
-
+- Examples:
+  - Account: examples/account.md
+  - Create Prediction For Flux Pro: examples/create-prediction-for-flux-pro.md
+  - Files Create And Delete: examples/files-create-and-delete.md
+  - Files Create With Content Type: examples/files-create-with-content-type.md
+  - Files Create With Metadata: examples/files-create-with-metadata.md
+  - Files List: examples/files-list.md
 # EXAMPLES:END
 
 #  - Quick Start: QuickStart.md
