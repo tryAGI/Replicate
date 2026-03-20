@@ -4,6 +4,7 @@ namespace Replicate
 {
     public partial interface IReplicateClient
     {
+
         /// <summary>
         /// Cancel a prediction<br/>
         /// Cancel a prediction that is currently running.<br/>

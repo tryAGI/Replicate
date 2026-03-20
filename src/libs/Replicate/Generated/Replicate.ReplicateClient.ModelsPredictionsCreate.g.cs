@@ -29,6 +29,7 @@ namespace Replicate
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
+
         /// <summary>
         /// Create a prediction using an official model<br/>
         /// Create a prediction using an [official model](https://replicate.com/changelog/2025-01-29-official-models).<br/>
@@ -52,6 +53,7 @@ namespace Replicate
         /// <param name="cancelAfter">
         /// Example: 5m
         /// </param>
+
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>

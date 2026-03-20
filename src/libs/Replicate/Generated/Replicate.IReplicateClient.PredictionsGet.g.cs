@@ -4,6 +4,7 @@ namespace Replicate
 {
     public partial interface IReplicateClient
     {
+
         /// <summary>
         /// Get a prediction<br/>
         /// Get the current state of a prediction.<br/>

@@ -27,6 +27,7 @@ namespace Replicate
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref byte[] content);
 
+
         /// <summary>
         /// Download a file<br/>
         /// Download a file by providing the file owner, access expiry, and a valid signature.<br/>

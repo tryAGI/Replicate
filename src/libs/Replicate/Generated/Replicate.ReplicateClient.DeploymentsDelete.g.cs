@@ -18,6 +18,7 @@ namespace Replicate
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
+
         /// <summary>
         /// Delete a deployment<br/>
         /// Delete a deployment<br/>

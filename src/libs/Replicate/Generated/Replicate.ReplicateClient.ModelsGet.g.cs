@@ -23,6 +23,7 @@ namespace Replicate
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
+
         /// <summary>
         /// Get a model<br/>
         /// Example cURL request:<br/>

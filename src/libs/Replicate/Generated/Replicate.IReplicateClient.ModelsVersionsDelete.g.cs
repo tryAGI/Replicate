@@ -4,6 +4,7 @@ namespace Replicate
 {
     public partial interface IReplicateClient
     {
+
         /// <summary>
         /// Delete a model version<br/>
         /// Delete a model version and all associated predictions, including all output files.<br/>

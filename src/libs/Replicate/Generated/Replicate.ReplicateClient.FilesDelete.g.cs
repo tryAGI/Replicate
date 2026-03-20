@@ -16,6 +16,7 @@ namespace Replicate
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
+
         /// <summary>
         /// Delete a file<br/>
         /// Delete a file. Once a file has been deleted, subsequent requests to the file resource return 404 Not found.<br/>
