@@ -11,11 +11,7 @@ namespace Replicate
         /// <summary>
         /// 
         /// </summary>
-        Start,
-        /// <summary>
-        /// 
-        /// </summary>
-        Output,
+        Completed,
         /// <summary>
         /// 
         /// </summary>
@@ -23,7 +19,11 @@ namespace Replicate
         /// <summary>
         /// 
         /// </summary>
-        Completed,
+        Output,
+        /// <summary>
+        /// 
+        /// </summary>
+        Start,
     }
 
     /// <summary>
@@ -38,10 +38,10 @@ namespace Replicate
         {
             return value switch
             {
-                SchemasVersionPredictionRequestWebhookEventsFilterItem.Start => "start",
-                SchemasVersionPredictionRequestWebhookEventsFilterItem.Output => "output",
-                SchemasVersionPredictionRequestWebhookEventsFilterItem.Logs => "logs",
                 SchemasVersionPredictionRequestWebhookEventsFilterItem.Completed => "completed",
+                SchemasVersionPredictionRequestWebhookEventsFilterItem.Logs => "logs",
+                SchemasVersionPredictionRequestWebhookEventsFilterItem.Output => "output",
+                SchemasVersionPredictionRequestWebhookEventsFilterItem.Start => "start",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -52,10 +52,10 @@ namespace Replicate
         {
             return value switch
             {
-                "start" => SchemasVersionPredictionRequestWebhookEventsFilterItem.Start,
-                "output" => SchemasVersionPredictionRequestWebhookEventsFilterItem.Output,
-                "logs" => SchemasVersionPredictionRequestWebhookEventsFilterItem.Logs,
                 "completed" => SchemasVersionPredictionRequestWebhookEventsFilterItem.Completed,
+                "logs" => SchemasVersionPredictionRequestWebhookEventsFilterItem.Logs,
+                "output" => SchemasVersionPredictionRequestWebhookEventsFilterItem.Output,
+                "start" => SchemasVersionPredictionRequestWebhookEventsFilterItem.Start,
                 _ => null,
             };
         }
