@@ -11,11 +11,7 @@ namespace Replicate
         /// <summary>
         /// 
         /// </summary>
-        Start,
-        /// <summary>
-        /// 
-        /// </summary>
-        Output,
+        Completed,
         /// <summary>
         /// 
         /// </summary>
@@ -23,7 +19,11 @@ namespace Replicate
         /// <summary>
         /// 
         /// </summary>
-        Completed,
+        Output,
+        /// <summary>
+        /// 
+        /// </summary>
+        Start,
     }
 
     /// <summary>
@@ -38,10 +38,10 @@ namespace Replicate
         {
             return value switch
             {
-                SchemasTrainingRequestWebhookEventsFilterItem.Start => "start",
-                SchemasTrainingRequestWebhookEventsFilterItem.Output => "output",
-                SchemasTrainingRequestWebhookEventsFilterItem.Logs => "logs",
                 SchemasTrainingRequestWebhookEventsFilterItem.Completed => "completed",
+                SchemasTrainingRequestWebhookEventsFilterItem.Logs => "logs",
+                SchemasTrainingRequestWebhookEventsFilterItem.Output => "output",
+                SchemasTrainingRequestWebhookEventsFilterItem.Start => "start",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -52,10 +52,10 @@ namespace Replicate
         {
             return value switch
             {
-                "start" => SchemasTrainingRequestWebhookEventsFilterItem.Start,
-                "output" => SchemasTrainingRequestWebhookEventsFilterItem.Output,
-                "logs" => SchemasTrainingRequestWebhookEventsFilterItem.Logs,
                 "completed" => SchemasTrainingRequestWebhookEventsFilterItem.Completed,
+                "logs" => SchemasTrainingRequestWebhookEventsFilterItem.Logs,
+                "output" => SchemasTrainingRequestWebhookEventsFilterItem.Output,
+                "start" => SchemasTrainingRequestWebhookEventsFilterItem.Start,
                 _ => null,
             };
         }

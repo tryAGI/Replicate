@@ -11,11 +11,11 @@ namespace Replicate
         /// <summary>
         /// 
         /// </summary>
-        Public,
+        Private,
         /// <summary>
         /// 
         /// </summary>
-        Private,
+        Public,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace Replicate
         {
             return value switch
             {
-                SchemasModelResponseVisibility.Public => "public",
                 SchemasModelResponseVisibility.Private => "private",
+                SchemasModelResponseVisibility.Public => "public",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace Replicate
         {
             return value switch
             {
-                "public" => SchemasModelResponseVisibility.Public,
                 "private" => SchemasModelResponseVisibility.Private,
+                "public" => SchemasModelResponseVisibility.Public,
                 _ => null,
             };
         }

@@ -11,19 +11,7 @@ namespace Replicate
         /// <summary>
         /// 
         /// </summary>
-        Starting,
-        /// <summary>
-        /// 
-        /// </summary>
-        Processing,
-        /// <summary>
-        /// 
-        /// </summary>
-        Succeeded,
-        /// <summary>
-        /// 
-        /// </summary>
-        Failed,
+        Aborted,
         /// <summary>
         /// 
         /// </summary>
@@ -31,7 +19,19 @@ namespace Replicate
         /// <summary>
         /// 
         /// </summary>
-        Aborted,
+        Failed,
+        /// <summary>
+        /// 
+        /// </summary>
+        Processing,
+        /// <summary>
+        /// 
+        /// </summary>
+        Starting,
+        /// <summary>
+        /// 
+        /// </summary>
+        Succeeded,
     }
 
     /// <summary>
@@ -46,12 +46,12 @@ namespace Replicate
         {
             return value switch
             {
-                SchemasTrainingResponseStatus.Starting => "starting",
-                SchemasTrainingResponseStatus.Processing => "processing",
-                SchemasTrainingResponseStatus.Succeeded => "succeeded",
-                SchemasTrainingResponseStatus.Failed => "failed",
-                SchemasTrainingResponseStatus.Canceled => "canceled",
                 SchemasTrainingResponseStatus.Aborted => "aborted",
+                SchemasTrainingResponseStatus.Canceled => "canceled",
+                SchemasTrainingResponseStatus.Failed => "failed",
+                SchemasTrainingResponseStatus.Processing => "processing",
+                SchemasTrainingResponseStatus.Starting => "starting",
+                SchemasTrainingResponseStatus.Succeeded => "succeeded",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -62,12 +62,12 @@ namespace Replicate
         {
             return value switch
             {
-                "starting" => SchemasTrainingResponseStatus.Starting,
-                "processing" => SchemasTrainingResponseStatus.Processing,
-                "succeeded" => SchemasTrainingResponseStatus.Succeeded,
-                "failed" => SchemasTrainingResponseStatus.Failed,
-                "canceled" => SchemasTrainingResponseStatus.Canceled,
                 "aborted" => SchemasTrainingResponseStatus.Aborted,
+                "canceled" => SchemasTrainingResponseStatus.Canceled,
+                "failed" => SchemasTrainingResponseStatus.Failed,
+                "processing" => SchemasTrainingResponseStatus.Processing,
+                "starting" => SchemasTrainingResponseStatus.Starting,
+                "succeeded" => SchemasTrainingResponseStatus.Succeeded,
                 _ => null,
             };
         }

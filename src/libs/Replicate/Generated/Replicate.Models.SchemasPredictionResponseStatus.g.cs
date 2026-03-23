@@ -11,19 +11,7 @@ namespace Replicate
         /// <summary>
         /// 
         /// </summary>
-        Starting,
-        /// <summary>
-        /// 
-        /// </summary>
-        Processing,
-        /// <summary>
-        /// 
-        /// </summary>
-        Succeeded,
-        /// <summary>
-        /// 
-        /// </summary>
-        Failed,
+        Aborted,
         /// <summary>
         /// 
         /// </summary>
@@ -31,7 +19,19 @@ namespace Replicate
         /// <summary>
         /// 
         /// </summary>
-        Aborted,
+        Failed,
+        /// <summary>
+        /// 
+        /// </summary>
+        Processing,
+        /// <summary>
+        /// 
+        /// </summary>
+        Starting,
+        /// <summary>
+        /// 
+        /// </summary>
+        Succeeded,
     }
 
     /// <summary>
@@ -46,12 +46,12 @@ namespace Replicate
         {
             return value switch
             {
-                SchemasPredictionResponseStatus.Starting => "starting",
-                SchemasPredictionResponseStatus.Processing => "processing",
-                SchemasPredictionResponseStatus.Succeeded => "succeeded",
-                SchemasPredictionResponseStatus.Failed => "failed",
-                SchemasPredictionResponseStatus.Canceled => "canceled",
                 SchemasPredictionResponseStatus.Aborted => "aborted",
+                SchemasPredictionResponseStatus.Canceled => "canceled",
+                SchemasPredictionResponseStatus.Failed => "failed",
+                SchemasPredictionResponseStatus.Processing => "processing",
+                SchemasPredictionResponseStatus.Starting => "starting",
+                SchemasPredictionResponseStatus.Succeeded => "succeeded",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -62,12 +62,12 @@ namespace Replicate
         {
             return value switch
             {
-                "starting" => SchemasPredictionResponseStatus.Starting,
-                "processing" => SchemasPredictionResponseStatus.Processing,
-                "succeeded" => SchemasPredictionResponseStatus.Succeeded,
-                "failed" => SchemasPredictionResponseStatus.Failed,
-                "canceled" => SchemasPredictionResponseStatus.Canceled,
                 "aborted" => SchemasPredictionResponseStatus.Aborted,
+                "canceled" => SchemasPredictionResponseStatus.Canceled,
+                "failed" => SchemasPredictionResponseStatus.Failed,
+                "processing" => SchemasPredictionResponseStatus.Processing,
+                "starting" => SchemasPredictionResponseStatus.Starting,
+                "succeeded" => SchemasPredictionResponseStatus.Succeeded,
                 _ => null,
             };
         }

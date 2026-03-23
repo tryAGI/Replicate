@@ -11,11 +11,11 @@ namespace Replicate
         /// <summary>
         /// 
         /// </summary>
-        Web,
+        Api,
         /// <summary>
         /// 
         /// </summary>
-        Api,
+        Web,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace Replicate
         {
             return value switch
             {
-                SchemasTrainingResponseSource.Web => "web",
                 SchemasTrainingResponseSource.Api => "api",
+                SchemasTrainingResponseSource.Web => "web",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace Replicate
         {
             return value switch
             {
-                "web" => SchemasTrainingResponseSource.Web,
                 "api" => SchemasTrainingResponseSource.Api,
+                "web" => SchemasTrainingResponseSource.Web,
                 _ => null,
             };
         }

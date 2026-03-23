@@ -11,11 +11,7 @@ namespace Replicate
         /// <summary>
         /// 
         /// </summary>
-        Start,
-        /// <summary>
-        /// 
-        /// </summary>
-        Output,
+        Completed,
         /// <summary>
         /// 
         /// </summary>
@@ -23,7 +19,11 @@ namespace Replicate
         /// <summary>
         /// 
         /// </summary>
-        Completed,
+        Output,
+        /// <summary>
+        /// 
+        /// </summary>
+        Start,
     }
 
     /// <summary>
@@ -38,10 +38,10 @@ namespace Replicate
         {
             return value switch
             {
-                SchemasPredictionRequestWebhookEventsFilterItem.Start => "start",
-                SchemasPredictionRequestWebhookEventsFilterItem.Output => "output",
-                SchemasPredictionRequestWebhookEventsFilterItem.Logs => "logs",
                 SchemasPredictionRequestWebhookEventsFilterItem.Completed => "completed",
+                SchemasPredictionRequestWebhookEventsFilterItem.Logs => "logs",
+                SchemasPredictionRequestWebhookEventsFilterItem.Output => "output",
+                SchemasPredictionRequestWebhookEventsFilterItem.Start => "start",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -52,10 +52,10 @@ namespace Replicate
         {
             return value switch
             {
-                "start" => SchemasPredictionRequestWebhookEventsFilterItem.Start,
-                "output" => SchemasPredictionRequestWebhookEventsFilterItem.Output,
-                "logs" => SchemasPredictionRequestWebhookEventsFilterItem.Logs,
                 "completed" => SchemasPredictionRequestWebhookEventsFilterItem.Completed,
+                "logs" => SchemasPredictionRequestWebhookEventsFilterItem.Logs,
+                "output" => SchemasPredictionRequestWebhookEventsFilterItem.Output,
+                "start" => SchemasPredictionRequestWebhookEventsFilterItem.Start,
                 _ => null,
             };
         }

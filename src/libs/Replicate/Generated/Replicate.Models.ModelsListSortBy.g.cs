@@ -11,11 +11,11 @@ namespace Replicate
         /// <summary>
         /// 
         /// </summary>
-        ModelCreatedAt,
+        LatestVersionCreatedAt,
         /// <summary>
         /// 
         /// </summary>
-        LatestVersionCreatedAt,
+        ModelCreatedAt,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace Replicate
         {
             return value switch
             {
-                ModelsListSortBy.ModelCreatedAt => "model_created_at",
                 ModelsListSortBy.LatestVersionCreatedAt => "latest_version_created_at",
+                ModelsListSortBy.ModelCreatedAt => "model_created_at",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace Replicate
         {
             return value switch
             {
-                "model_created_at" => ModelsListSortBy.ModelCreatedAt,
                 "latest_version_created_at" => ModelsListSortBy.LatestVersionCreatedAt,
+                "model_created_at" => ModelsListSortBy.ModelCreatedAt,
                 _ => null,
             };
         }
