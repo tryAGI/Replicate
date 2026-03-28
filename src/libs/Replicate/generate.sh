@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 set -e
 dotnet tool install --global autosdk.cli --prerelease
 curl --fail --silent --show-error -o openapi.json https://api.replicate.com/openapi.json
