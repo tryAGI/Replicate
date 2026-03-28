@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+set -euo pipefail
 dotnet tool install --global autosdk.cli --prerelease
 curl --fail --silent --show-error -o openapi.json https://api.replicate.com/openapi.json
 rm -rf Generated
