@@ -62,7 +62,7 @@ namespace Replicate
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
                 .AddRequiredParameter("owner", owner)
-                .AddRequiredParameter("expiry", expiry.ToString())
+                .AddRequiredParameter("expiry", expiry.ToString()!)
                 .AddRequiredParameter("signature", signature) 
                 ; 
             var __path = __pathBuilder.ToString();
