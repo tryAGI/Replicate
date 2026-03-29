@@ -132,20 +132,11 @@ namespace Replicate
         /// <summary>
         /// Initializes a new instance of the <see cref="SchemasPredictionResponse" /> class.
         /// </summary>
-        /// <param name="completedAt">
-        /// The time that the model completed the prediction and all outputs were uploaded
-        /// </param>
         /// <param name="createdAt">
         /// The time that the prediction was created
         /// </param>
         /// <param name="dataRemoved">
         /// Whether the prediction output has been deleted
-        /// </param>
-        /// <param name="deadline">
-        /// The absolute time at which the prediction will be automatically canceled if it has not completed
-        /// </param>
-        /// <param name="deployment">
-        /// The name of the deployment that created the prediction
         /// </param>
         /// <param name="error">
         /// An error string if the model status is `"failed"`
@@ -154,23 +145,11 @@ namespace Replicate
         /// <param name="input">
         /// The prediction input
         /// </param>
-        /// <param name="logs">
-        /// The log output from the model
-        /// </param>
-        /// <param name="metrics">
-        /// Additional metrics associated with the prediction
-        /// </param>
         /// <param name="model">
         /// The name of the model that created the prediction
         /// </param>
         /// <param name="output">
         /// The prediction output, which can be any JSON-serializable value, depending on the model
-        /// </param>
-        /// <param name="source">
-        /// Indicates how the prediction was created
-        /// </param>
-        /// <param name="startedAt">
-        /// The time that the model began the prediction
         /// </param>
         /// <param name="status">
         /// The prediction status. `canceled` means the prediction was canceled (either by the user or because it reached its deadline while running). `aborted` means the prediction was terminated before it started running (for example, when a deadline is reached before the prediction starts).
@@ -179,6 +158,27 @@ namespace Replicate
         /// URLs for working with the prediction
         /// </param>
         /// <param name="version"></param>
+        /// <param name="completedAt">
+        /// The time that the model completed the prediction and all outputs were uploaded
+        /// </param>
+        /// <param name="deadline">
+        /// The absolute time at which the prediction will be automatically canceled if it has not completed
+        /// </param>
+        /// <param name="deployment">
+        /// The name of the deployment that created the prediction
+        /// </param>
+        /// <param name="logs">
+        /// The log output from the model
+        /// </param>
+        /// <param name="metrics">
+        /// Additional metrics associated with the prediction
+        /// </param>
+        /// <param name="source">
+        /// Indicates how the prediction was created
+        /// </param>
+        /// <param name="startedAt">
+        /// The time that the model began the prediction
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -201,23 +201,23 @@ namespace Replicate
             global::Replicate.SchemasPredictionResponseSource? source,
             global::System.DateTime? startedAt)
         {
+            this.CompletedAt = completedAt;
             this.CreatedAt = createdAt;
             this.DataRemoved = dataRemoved;
+            this.Deadline = deadline;
+            this.Deployment = deployment;
             this.Error = error ?? throw new global::System.ArgumentNullException(nameof(error));
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Input = input ?? throw new global::System.ArgumentNullException(nameof(input));
+            this.Logs = logs;
+            this.Metrics = metrics;
             this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
             this.Output = output ?? throw new global::System.ArgumentNullException(nameof(output));
+            this.Source = source;
+            this.StartedAt = startedAt;
             this.Status = status;
             this.Urls = urls ?? throw new global::System.ArgumentNullException(nameof(urls));
             this.Version = version;
-            this.CompletedAt = completedAt;
-            this.Deadline = deadline;
-            this.Deployment = deployment;
-            this.Logs = logs;
-            this.Metrics = metrics;
-            this.Source = source;
-            this.StartedAt = startedAt;
         }
 
         /// <summary>

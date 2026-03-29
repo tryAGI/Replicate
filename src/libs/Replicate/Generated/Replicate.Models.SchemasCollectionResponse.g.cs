@@ -54,9 +54,6 @@ namespace Replicate
         /// <param name="description">
         /// A description of the collection
         /// </param>
-        /// <param name="fullDescription">
-        /// The full description of the collection in markdown format
-        /// </param>
         /// <param name="models">
         /// The models in this collection
         /// </param>
@@ -65,6 +62,9 @@ namespace Replicate
         /// </param>
         /// <param name="slug">
         /// The slug of the collection (lowercase with dashes)
+        /// </param>
+        /// <param name="fullDescription">
+        /// The full description of the collection in markdown format
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -77,10 +77,10 @@ namespace Replicate
             string? fullDescription)
         {
             this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
+            this.FullDescription = fullDescription;
             this.Models = models ?? throw new global::System.ArgumentNullException(nameof(models));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Slug = slug ?? throw new global::System.ArgumentNullException(nameof(slug));
-            this.FullDescription = fullDescription;
         }
 
         /// <summary>
