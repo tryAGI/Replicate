@@ -50,6 +50,12 @@ namespace Replicate
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountGetResponse" /> class.
         /// </summary>
+        /// <param name="type">
+        /// The account type. Can be a user or an organization.
+        /// </param>
+        /// <param name="username">
+        /// The username of the account.
+        /// </param>
         /// <param name="avatarUrl">
         /// The avatar URL for the account.
         /// </param>
@@ -58,12 +64,6 @@ namespace Replicate
         /// </param>
         /// <param name="name">
         /// The name of the account.
-        /// </param>
-        /// <param name="type">
-        /// The account type. Can be a user or an organization.
-        /// </param>
-        /// <param name="username">
-        /// The username of the account.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -75,11 +75,11 @@ namespace Replicate
             string? githubUrl,
             string? name)
         {
-            this.Type = type;
-            this.Username = username ?? throw new global::System.ArgumentNullException(nameof(username));
             this.AvatarUrl = avatarUrl;
             this.GithubUrl = githubUrl;
             this.Name = name;
+            this.Type = type;
+            this.Username = username ?? throw new global::System.ArgumentNullException(nameof(username));
         }
 
         /// <summary>

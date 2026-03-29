@@ -50,11 +50,11 @@ namespace Replicate
         /// <param name="get">
         /// Retrieve the latest state of the prediction via API
         /// </param>
-        /// <param name="stream">
-        /// An event source to stream the output of the prediction via API
-        /// </param>
         /// <param name="web">
         /// View the prediction in a browser
+        /// </param>
+        /// <param name="stream">
+        /// An event source to stream the output of the prediction via API
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -67,8 +67,8 @@ namespace Replicate
         {
             this.Cancel = cancel ?? throw new global::System.ArgumentNullException(nameof(cancel));
             this.Get = get ?? throw new global::System.ArgumentNullException(nameof(get));
-            this.Web = web ?? throw new global::System.ArgumentNullException(nameof(web));
             this.Stream = stream;
+            this.Web = web ?? throw new global::System.ArgumentNullException(nameof(web));
         }
 
         /// <summary>

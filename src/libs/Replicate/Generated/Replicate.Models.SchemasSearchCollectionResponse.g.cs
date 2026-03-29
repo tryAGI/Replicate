@@ -47,14 +47,14 @@ namespace Replicate
         /// <param name="description">
         /// A description of the collection
         /// </param>
-        /// <param name="models">
-        /// Array of model names in the collection
-        /// </param>
         /// <param name="name">
         /// The name of the collection
         /// </param>
         /// <param name="slug">
         /// The slug of the collection (lowercase with dashes)
+        /// </param>
+        /// <param name="models">
+        /// Array of model names in the collection
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -66,9 +66,9 @@ namespace Replicate
             global::System.Collections.Generic.IList<string>? models)
         {
             this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
+            this.Models = models;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Slug = slug ?? throw new global::System.ArgumentNullException(nameof(slug));
-            this.Models = models;
         }
 
         /// <summary>
