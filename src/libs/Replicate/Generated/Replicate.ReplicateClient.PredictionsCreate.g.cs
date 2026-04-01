@@ -297,6 +297,7 @@ namespace Replicate
             global::System.Collections.Generic.IList<global::Replicate.SchemasVersionPredictionRequestWebhookEventsFilterItem>? webhookEventsFilter = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+
             var __request = new global::Replicate.SchemasVersionPredictionRequest
             {
                 Input = input,
