@@ -5,6 +5,25 @@ namespace Replicate
 {
     public partial class ReplicateClient
     {
+
+
+        private static readonly global::Replicate.EndPointSecurityRequirement s_DeploymentsUpdateSecurityRequirement0 =
+            new global::Replicate.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Replicate.EndPointAuthorizationRequirement[]
+                {                    new global::Replicate.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Replicate.EndPointSecurityRequirement[] s_DeploymentsUpdateSecurityRequirements =
+            new global::Replicate.EndPointSecurityRequirement[]
+            {                s_DeploymentsUpdateSecurityRequirement0,
+            };
         partial void PrepareDeploymentsUpdateArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string deploymentOwner,
@@ -86,9 +105,15 @@ namespace Replicate
                 deploymentName: ref deploymentName,
                 request: request);
 
+
+            var __authorizations = global::Replicate.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_DeploymentsUpdateSecurityRequirements,
+                operationName: "DeploymentsUpdateAsync");
+
             var __pathBuilder = new global::Replicate.PathBuilder(
                 path: $"/deployments/{deploymentOwner}/{deploymentName}",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: new global::System.Net.Http.HttpMethod("PATCH"),
@@ -98,7 +123,7 @@ namespace Replicate
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

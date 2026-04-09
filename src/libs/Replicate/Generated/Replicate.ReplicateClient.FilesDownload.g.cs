@@ -5,6 +5,25 @@ namespace Replicate
 {
     public partial class ReplicateClient
     {
+
+
+        private static readonly global::Replicate.EndPointSecurityRequirement s_FilesDownloadSecurityRequirement0 =
+            new global::Replicate.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Replicate.EndPointAuthorizationRequirement[]
+                {                    new global::Replicate.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Replicate.EndPointSecurityRequirement[] s_FilesDownloadSecurityRequirements =
+            new global::Replicate.EndPointSecurityRequirement[]
+            {                s_FilesDownloadSecurityRequirement0,
+            };
         partial void PrepareFilesDownloadArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string fileId,
@@ -57,6 +76,12 @@ namespace Replicate
                 expiry: ref expiry,
                 signature: ref signature);
 
+
+            var __authorizations = global::Replicate.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_FilesDownloadSecurityRequirements,
+                operationName: "FilesDownloadAsync");
+
             var __pathBuilder = new global::Replicate.PathBuilder(
                 path: $"/files/{fileId}/download",
                 baseUri: HttpClient.BaseAddress); 
@@ -64,7 +89,7 @@ namespace Replicate
                 .AddRequiredParameter("owner", owner)
                 .AddRequiredParameter("expiry", expiry.ToString()!)
                 .AddRequiredParameter("signature", signature) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -74,7 +99,7 @@ namespace Replicate
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")
