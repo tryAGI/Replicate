@@ -5,6 +5,25 @@ namespace Replicate
 {
     public partial class ReplicateClient
     {
+
+
+        private static readonly global::Replicate.EndPointSecurityRequirement s_ModelsVersionsDeleteSecurityRequirement0 =
+            new global::Replicate.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Replicate.EndPointAuthorizationRequirement[]
+                {                    new global::Replicate.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Replicate.EndPointSecurityRequirement[] s_ModelsVersionsDeleteSecurityRequirements =
+            new global::Replicate.EndPointSecurityRequirement[]
+            {                s_ModelsVersionsDeleteSecurityRequirement0,
+            };
         partial void PrepareModelsVersionsDeleteArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string modelOwner,
@@ -57,9 +76,15 @@ namespace Replicate
                 modelName: ref modelName,
                 versionId: ref versionId);
 
+
+            var __authorizations = global::Replicate.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_ModelsVersionsDeleteSecurityRequirements,
+                operationName: "ModelsVersionsDeleteAsync");
+
             var __pathBuilder = new global::Replicate.PathBuilder(
                 path: $"/models/{modelOwner}/{modelName}/versions/{versionId}",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Delete,
@@ -69,7 +94,7 @@ namespace Replicate
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

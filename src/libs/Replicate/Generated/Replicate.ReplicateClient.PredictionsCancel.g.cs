@@ -5,6 +5,25 @@ namespace Replicate
 {
     public partial class ReplicateClient
     {
+
+
+        private static readonly global::Replicate.EndPointSecurityRequirement s_PredictionsCancelSecurityRequirement0 =
+            new global::Replicate.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Replicate.EndPointAuthorizationRequirement[]
+                {                    new global::Replicate.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Replicate.EndPointSecurityRequirement[] s_PredictionsCancelSecurityRequirements =
+            new global::Replicate.EndPointSecurityRequirement[]
+            {                s_PredictionsCancelSecurityRequirement0,
+            };
         partial void PreparePredictionsCancelArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string predictionId);
@@ -57,9 +76,15 @@ namespace Replicate
                 httpClient: HttpClient,
                 predictionId: ref predictionId);
 
+
+            var __authorizations = global::Replicate.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_PredictionsCancelSecurityRequirements,
+                operationName: "PredictionsCancelAsync");
+
             var __pathBuilder = new global::Replicate.PathBuilder(
                 path: $"/predictions/{predictionId}/cancel",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -69,7 +94,7 @@ namespace Replicate
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

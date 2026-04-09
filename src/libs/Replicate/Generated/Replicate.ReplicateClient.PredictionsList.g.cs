@@ -5,6 +5,25 @@ namespace Replicate
 {
     public partial class ReplicateClient
     {
+
+
+        private static readonly global::Replicate.EndPointSecurityRequirement s_PredictionsListSecurityRequirement0 =
+            new global::Replicate.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Replicate.EndPointAuthorizationRequirement[]
+                {                    new global::Replicate.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Replicate.EndPointSecurityRequirement[] s_PredictionsListSecurityRequirements =
+            new global::Replicate.EndPointSecurityRequirement[]
+            {                s_PredictionsListSecurityRequirement0,
+            };
         partial void PreparePredictionsListArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::System.DateTime? createdAfter,
@@ -99,6 +118,12 @@ namespace Replicate
                 createdBefore: ref createdBefore,
                 source: ref source);
 
+
+            var __authorizations = global::Replicate.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_PredictionsListSecurityRequirements,
+                operationName: "PredictionsListAsync");
+
             var __pathBuilder = new global::Replicate.PathBuilder(
                 path: "/predictions",
                 baseUri: HttpClient.BaseAddress); 
@@ -106,7 +131,7 @@ namespace Replicate
                 .AddOptionalParameter("created_after", createdAfter?.ToString("yyyy-MM-ddTHH:mm:ssZ"))
                 .AddOptionalParameter("created_before", createdBefore?.ToString("yyyy-MM-ddTHH:mm:ssZ"))
                 .AddOptionalParameter("source", source?.ToValueString()) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -116,7 +141,7 @@ namespace Replicate
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

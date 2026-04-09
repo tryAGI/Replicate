@@ -5,6 +5,25 @@ namespace Replicate
 {
     public partial class ReplicateClient
     {
+
+
+        private static readonly global::Replicate.EndPointSecurityRequirement s_FilesGetSecurityRequirement0 =
+            new global::Replicate.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Replicate.EndPointAuthorizationRequirement[]
+                {                    new global::Replicate.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Replicate.EndPointSecurityRequirement[] s_FilesGetSecurityRequirements =
+            new global::Replicate.EndPointSecurityRequirement[]
+            {                s_FilesGetSecurityRequirement0,
+            };
         partial void PrepareFilesGetArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string fileId);
@@ -44,9 +63,15 @@ namespace Replicate
                 httpClient: HttpClient,
                 fileId: ref fileId);
 
+
+            var __authorizations = global::Replicate.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_FilesGetSecurityRequirements,
+                operationName: "FilesGetAsync");
+
             var __pathBuilder = new global::Replicate.PathBuilder(
                 path: $"/files/{fileId}",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -56,7 +81,7 @@ namespace Replicate
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

@@ -5,6 +5,25 @@ namespace Replicate
 {
     public partial class ReplicateClient
     {
+
+
+        private static readonly global::Replicate.EndPointSecurityRequirement s_ModelsListSecurityRequirement0 =
+            new global::Replicate.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Replicate.EndPointAuthorizationRequirement[]
+                {                    new global::Replicate.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Replicate.EndPointSecurityRequirement[] s_ModelsListSecurityRequirements =
+            new global::Replicate.EndPointSecurityRequirement[]
+            {                s_ModelsListSecurityRequirement0,
+            };
         partial void PrepareModelsListArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::Replicate.ModelsListSortBy? sortBy,
@@ -67,13 +86,19 @@ namespace Replicate
                 sortBy: ref sortBy,
                 sortDirection: ref sortDirection);
 
+
+            var __authorizations = global::Replicate.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_ModelsListSecurityRequirements,
+                operationName: "ModelsListAsync");
+
             var __pathBuilder = new global::Replicate.PathBuilder(
                 path: "/models",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
                 .AddOptionalParameter("sort_by", sortBy?.ToValueString())
                 .AddOptionalParameter("sort_direction", sortDirection?.ToValueString()) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -83,7 +108,7 @@ namespace Replicate
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")
