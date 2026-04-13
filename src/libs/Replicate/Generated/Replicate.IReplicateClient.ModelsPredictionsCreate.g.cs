@@ -28,6 +28,7 @@ namespace Replicate
         /// Example: 5m
         /// </param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Replicate.SchemasPredictionResponse> ModelsPredictionsCreateAsync(
@@ -37,6 +38,7 @@ namespace Replicate
             global::Replicate.SchemasPredictionRequest request,
             string? prefer = default,
             string? cancelAfter = default,
+            global::Replicate.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create a prediction using an official model<br/>
@@ -102,6 +104,7 @@ namespace Replicate
         /// Requests for event types `output` and `logs` will be sent at most once every 500ms. If you request `start` and `completed` webhooks, then they'll always be sent regardless of throttling.<br/>
         /// Example: [start, completed]
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Replicate.SchemasPredictionResponse> ModelsPredictionsCreateAsync(
@@ -113,6 +116,7 @@ namespace Replicate
             bool? stream = default,
             string? webhook = default,
             global::System.Collections.Generic.IList<global::Replicate.SchemasPredictionRequestWebhookEventsFilterItem>? webhookEventsFilter = default,
+            global::Replicate.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

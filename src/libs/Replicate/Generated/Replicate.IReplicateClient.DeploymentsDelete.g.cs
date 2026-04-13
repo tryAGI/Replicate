@@ -19,11 +19,13 @@ namespace Replicate
         /// </summary>
         /// <param name="deploymentOwner"></param>
         /// <param name="deploymentName"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
         global::System.Threading.Tasks.Task DeploymentsDeleteAsync(
             string deploymentOwner,
             string deploymentName,
+            global::Replicate.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
