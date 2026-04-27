@@ -55,9 +55,11 @@ namespace Replicate
         /// `urls` will be a convenience object that can be used to construct new API requests for the given training.<br/>
         /// `version` will be the unique ID of model version used to create the training.
         /// </summary>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Replicate.TrainingsListResponse> TrainingsListAsync(
+            global::Replicate.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
