@@ -34,6 +34,7 @@ namespace Replicate
         /// <param name="modelOwner"></param>
         /// <param name="modelName"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Replicate.SchemasModelResponse> ModelsUpdateAsync(
@@ -41,6 +42,47 @@ namespace Replicate
             string modelName,
 
             global::Replicate.ModelsUpdateRequest request,
+            global::Replicate.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Update metadata for a model<br/>
+        /// Update select properties of an existing model.<br/>
+        /// You can update the following properties:<br/>
+        ///   - `description` - Model description<br/>
+        ///   - `readme` - Model README content<br/>
+        ///   - `github_url` - GitHub repository URL<br/>
+        ///   - `paper_url` - Research paper URL<br/>
+        ///   - `weights_url` - Model weights URL<br/>
+        ///   - `license_url` - License URL<br/>
+        /// Example cURL request:<br/>
+        /// ```console<br/>
+        /// curl -X PATCH \<br/>
+        ///   https://api.replicate.com/v1/models/your-username/your-model-name \<br/>
+        ///   -H "Authorization: Token $REPLICATE_API_TOKEN" \<br/>
+        ///   -H "Content-Type: application/json" \<br/>
+        ///   -d '{<br/>
+        ///     "description": "Detect hot dogs in images",<br/>
+        ///     "readme": "# Hot Dog Detector\n\n🌭 Ketchup, mustard, and onions...",<br/>
+        ///     "github_url": "https://github.com/alice/hot-dog-detector",<br/>
+        ///     "paper_url": "https://arxiv.org/abs/2504.17639",<br/>
+        ///     "weights_url": "https://huggingface.co/alice/hot-dog-detector",<br/>
+        ///     "license_url": "https://choosealicense.com/licenses/mit/"<br/>
+        ///   }'<br/>
+        /// ```<br/>
+        /// The response will be the updated model object with all of its properties.
+        /// </summary>
+        /// <param name="modelOwner"></param>
+        /// <param name="modelName"></param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Replicate.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Replicate.AutoSDKHttpResponse<global::Replicate.SchemasModelResponse>> ModelsUpdateAsResponseAsync(
+            string modelOwner,
+            string modelName,
+
+            global::Replicate.ModelsUpdateRequest request,
+            global::Replicate.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update metadata for a model<br/>
@@ -95,6 +137,7 @@ namespace Replicate
         /// A URL for the model's weights.<br/>
         /// Example: https://huggingface.co/alice/hot-dog-detector
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Replicate.SchemasModelResponse> ModelsUpdateAsync(
@@ -106,6 +149,7 @@ namespace Replicate
             string? paperUrl = default,
             string? readme = default,
             string? weightsUrl = default,
+            global::Replicate.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

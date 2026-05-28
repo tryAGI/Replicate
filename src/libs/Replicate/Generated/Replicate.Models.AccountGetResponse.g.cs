@@ -88,5 +88,6 @@ namespace Replicate
         public AccountGetResponse()
         {
         }
+
     }
 }

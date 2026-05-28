@@ -61,5 +61,6 @@ namespace Replicate
         public TrainingsListResponse()
         {
         }
+
     }
 }

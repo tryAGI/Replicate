@@ -186,5 +186,6 @@ namespace Replicate
         public SchemasTrainingResponse()
         {
         }
+
     }
 }

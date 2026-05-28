@@ -63,5 +63,6 @@ namespace Replicate
         public SchemasDeploymentResponseCurrentReleaseConfiguration()
         {
         }
+
     }
 }

@@ -22,9 +22,35 @@ namespace Replicate
         /// ]<br/>
         /// ```
         /// </summary>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::System.Collections.Generic.IList<global::Replicate.HardwareListResponseItem>> HardwareListAsync(
+            global::Replicate.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// List available hardware for models<br/>
+        /// Example cURL request:<br/>
+        /// ```console<br/>
+        /// curl -s \<br/>
+        ///   -H "Authorization: Bearer $REPLICATE_API_TOKEN" \<br/>
+        ///   https://api.replicate.com/v1/hardware<br/>
+        /// ```<br/>
+        /// The response will be a JSON array of hardware objects:<br/>
+        /// ```json<br/>
+        /// [<br/>
+        ///     {"name": "CPU", "sku": "cpu"},<br/>
+        ///     {"name": "Nvidia T4 GPU", "sku": "gpu-t4"},<br/>
+        ///     {"name": "Nvidia A40 GPU", "sku": "gpu-a40-small"},<br/>
+        ///     {"name": "Nvidia A40 (Large) GPU", "sku": "gpu-a40-large"},<br/>
+        /// ]<br/>
+        /// ```
+        /// </summary>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Replicate.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Replicate.AutoSDKHttpResponse<global::System.Collections.Generic.IList<global::Replicate.HardwareListResponseItem>>> HardwareListAsResponseAsync(
+            global::Replicate.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

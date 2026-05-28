@@ -42,5 +42,6 @@ namespace Replicate
         public SearchResponse2()
         {
         }
+
     }
 }

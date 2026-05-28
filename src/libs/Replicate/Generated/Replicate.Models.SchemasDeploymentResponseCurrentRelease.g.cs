@@ -92,5 +92,6 @@ namespace Replicate
         public SchemasDeploymentResponseCurrentRelease()
         {
         }
+
     }
 }

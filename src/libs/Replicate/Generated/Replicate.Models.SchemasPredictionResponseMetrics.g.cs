@@ -41,5 +41,6 @@ namespace Replicate
         public SchemasPredictionResponseMetrics()
         {
         }
+
     }
 }
