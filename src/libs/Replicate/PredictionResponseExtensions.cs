@@ -65,7 +65,7 @@ public static class PredictionResponseExtensions
             {
                 await Task.Delay(delay, token).ConfigureAwait(false);
 
-                response = await api.PredictionsGetAsync(id, token).ConfigureAwait(false);
+                response = await api.PredictionsGetAsync(id, cancellationToken: token).ConfigureAwait(false);
 
                 progress?.Report(response);
             }

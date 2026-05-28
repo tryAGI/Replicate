@@ -11,4 +11,5 @@ autosdk generate openapi.json \
   --clientClassName ReplicateClient \
   --targetFramework net10.0 \
   --output Generated \
+  --auth-env-var REPLICATE_API_KEY \
   --exclude-deprecated-operations

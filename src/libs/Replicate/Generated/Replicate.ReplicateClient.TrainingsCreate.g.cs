@@ -14,6 +14,7 @@ namespace Replicate
                 {                    new global::Replicate.EndPointAuthorizationRequirement
                     {
                         Type = "Http",
+                        SchemeId = "BearerAuth",
                         Location = "Header",
                         Name = "Bearer",
                         FriendlyName = "Bearer",
@@ -95,6 +96,7 @@ namespace Replicate
         /// <param name="modelName"></param>
         /// <param name="versionId"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Replicate.SchemasTrainingResponse> TrainingsCreateAsync(
@@ -103,6 +105,80 @@ namespace Replicate
             string versionId,
 
             global::Replicate.SchemasTrainingRequest request,
+            global::Replicate.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __response = await TrainingsCreateAsResponseAsync(
+                modelOwner: modelOwner,
+                modelName: modelName,
+                versionId: versionId,
+
+                request: request,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// Create a training<br/>
+        /// Start a new training of the model version you specify.<br/>
+        /// Example request body:<br/>
+        /// ```json<br/>
+        /// {<br/>
+        ///   "destination": "{new_owner}/{new_name}",<br/>
+        ///   "input": {<br/>
+        ///     "train_data": "https://example.com/my-input-images.zip",<br/>
+        ///   },<br/>
+        ///   "webhook": "https://example.com/my-webhook",<br/>
+        /// }<br/>
+        /// ```<br/>
+        /// Example cURL request:<br/>
+        /// ```console<br/>
+        /// curl -s -X POST \<br/>
+        ///   -d '{"destination": "{new_owner}/{new_name}", "input": {"input_images": "https://example.com/my-input-images.zip"}}' \<br/>
+        ///   -H "Authorization: Bearer $REPLICATE_API_TOKEN" \<br/>
+        ///   -H 'Content-Type: application/json' \<br/>
+        ///   https://api.replicate.com/v1/models/stability-ai/sdxl/versions/da77bc59ee60423279fd632efb4795ab731d9e3ca9705ef3341091fb989b7eaf/trainings<br/>
+        /// ```<br/>
+        /// The response will be the training object:<br/>
+        /// ```json<br/>
+        /// {<br/>
+        ///   "id": "zz4ibbonubfz7carwiefibzgga",<br/>
+        ///   "model": "stability-ai/sdxl",<br/>
+        ///   "version": "da77bc59ee60423279fd632efb4795ab731d9e3ca9705ef3341091fb989b7eaf",<br/>
+        ///   "input": {<br/>
+        ///     "input_images": "https://example.com/my-input-images.zip"<br/>
+        ///   },<br/>
+        ///   "logs": "",<br/>
+        ///   "error": null,<br/>
+        ///   "status": "starting",<br/>
+        ///   "created_at": "2023-09-08T16:32:56.990893084Z",<br/>
+        ///   "urls": {<br/>
+        ///     "web": "https://replicate.com/p/zz4ibbonubfz7carwiefibzgga",<br/>
+        ///      "get": "https://api.replicate.com/v1/predictions/zz4ibbonubfz7carwiefibzgga",<br/>
+        ///      "cancel": "https://api.replicate.com/v1/predictions/zz4ibbonubfz7carwiefibzgga/cancel"<br/>
+        ///   }<br/>
+        /// }<br/>
+        /// ```<br/>
+        /// As models can take several minutes or more to train, the result will not be available immediately. To get the final result of the training you should either provide a `webhook` HTTPS URL for us to call when the results are ready, or poll the [get a training](#trainings.get) endpoint until it has finished.<br/>
+        /// When a training completes, it creates a new [version](https://replicate.com/docs/how-does-replicate-work#terminology) of the model at the specified destination.<br/>
+        /// To find some models to train on, check out the [trainable language models collection](https://replicate.com/collections/trainable-language-models).
+        /// </summary>
+        /// <param name="modelOwner"></param>
+        /// <param name="modelName"></param>
+        /// <param name="versionId"></param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Replicate.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Replicate.AutoSDKHttpResponse<global::Replicate.SchemasTrainingResponse>> TrainingsCreateAsResponseAsync(
+            string modelOwner,
+            string modelName,
+            string versionId,
+
+            global::Replicate.SchemasTrainingRequest request,
+            global::Replicate.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -122,22 +198,44 @@ namespace Replicate
                 securityRequirements: s_TrainingsCreateSecurityRequirements,
                 operationName: "TrainingsCreateAsync");
 
-            var __pathBuilder = new global::Replicate.PathBuilder(
-                path: $"/models/{modelOwner}/{modelName}/versions/{versionId}/trainings",
-                baseUri: HttpClient.BaseAddress);
-            var __path = __pathBuilder.ToString();
-            using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                method: global::System.Net.Http.HttpMethod.Post,
-                requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
+            using var __timeoutCancellationTokenSource = global::Replicate.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
+                clientOptions: Options,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken);
+            var __effectiveCancellationToken = __timeoutCancellationTokenSource?.Token ?? cancellationToken;
+            var __effectiveReadResponseAsString = global::Replicate.AutoSDKRequestOptionsSupport.GetReadResponseAsString(
+                clientOptions: Options,
+                requestOptions: requestOptions,
+                fallbackValue: ReadResponseAsString);
+            var __maxAttempts = global::Replicate.AutoSDKRequestOptionsSupport.GetMaxAttempts(
+                clientOptions: Options,
+                requestOptions: requestOptions,
+                supportsRetry: true);
+
+            global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
+            {
+
+                            var __pathBuilder = new global::Replicate.PathBuilder(
+                                path: $"/models/{modelOwner}/{modelName}/versions/{versionId}/trainings",
+                                baseUri: HttpClient.BaseAddress);
+                            var __path = __pathBuilder.ToString();
+                __path = global::Replicate.AutoSDKRequestOptionsSupport.AppendQueryParameters(
+                    path: __path,
+                    clientParameters: Options.QueryParameters,
+                    requestParameters: requestOptions?.QueryParameters);
+                var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
+                    method: global::System.Net.Http.HttpMethod.Post,
+                    requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
-            __httpRequest.Version = global::System.Net.HttpVersion.Version11;
-            __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
+                __httpRequest.Version = global::System.Net.HttpVersion.Version11;
+                __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
             foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
-                    __authorization.Type == "OAuth2")
+                    __authorization.Type == "OAuth2" ||
+                    __authorization.Type == "OpenIdConnect")
                 {
                     __httpRequest.Headers.Authorization = new global::System.Net.Http.Headers.AuthenticationHeaderValue(
                         scheme: __authorization.Name,
@@ -147,120 +245,305 @@ namespace Replicate
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                }
+                } 
             }
-            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
-            var __httpRequestContent = new global::System.Net.Http.StringContent(
-                content: __httpRequestContentBody,
-                encoding: global::System.Text.Encoding.UTF8,
-                mediaType: "application/json");
-            __httpRequest.Content = __httpRequestContent;
+                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
+                            var __httpRequestContent = new global::System.Net.Http.StringContent(
+                                content: __httpRequestContentBody,
+                                encoding: global::System.Text.Encoding.UTF8,
+                                mediaType: "application/json");
+                            __httpRequest.Content = __httpRequestContent;
+                global::Replicate.AutoSDKRequestOptionsSupport.ApplyHeaders(
+                    request: __httpRequest,
+                    clientHeaders: Options.Headers,
+                    requestHeaders: requestOptions?.Headers);
 
-            PrepareRequest(
-                client: HttpClient,
-                request: __httpRequest);
-            PrepareTrainingsCreateRequest(
-                httpClient: HttpClient,
-                httpRequestMessage: __httpRequest,
-                modelOwner: modelOwner,
-                modelName: modelName,
-                versionId: versionId,
-                request: request);
-
-            using var __response = await HttpClient.SendAsync(
-                request: __httpRequest,
-                completionOption: global::System.Net.Http.HttpCompletionOption.ResponseContentRead,
-                cancellationToken: cancellationToken).ConfigureAwait(false);
-
-            ProcessResponse(
-                client: HttpClient,
-                response: __response);
-            ProcessTrainingsCreateResponse(
-                httpClient: HttpClient,
-                httpResponseMessage: __response);
-
-            if (ReadResponseAsString)
-            {
-                var __content = await __response.Content.ReadAsStringAsync(
-#if NET5_0_OR_GREATER
-                    cancellationToken
-#endif
-                ).ConfigureAwait(false);
-
-                ProcessResponseContent(
+                PrepareRequest(
                     client: HttpClient,
-                    response: __response,
-                    content: ref __content);
-                ProcessTrainingsCreateResponseContent(
+                    request: __httpRequest);
+                PrepareTrainingsCreateRequest(
                     httpClient: HttpClient,
-                    httpResponseMessage: __response,
-                    content: ref __content);
+                    httpRequestMessage: __httpRequest,
+                    modelOwner: modelOwner!,
+                    modelName: modelName!,
+                    versionId: versionId!,
+                    request: request);
 
-                try
-                {
-                    __response.EnsureSuccessStatusCode();
-
-                    return
-                        global::Replicate.SchemasTrainingResponse.FromJson(__content, JsonSerializerContext) ??
-                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                }
-                catch (global::System.Exception __ex)
-                {
-                    throw new global::Replicate.ApiException(
-                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
-                        innerException: __ex,
-                        statusCode: __response.StatusCode)
-                    {
-                        ResponseBody = __content,
-                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
-                            __response.Headers,
-                            h => h.Key,
-                            h => h.Value),
-                    };
-                }
+                return __httpRequest;
             }
-            else
-            {
-                try
-                {
-                    __response.EnsureSuccessStatusCode();
-                    using var __content = await __response.Content.ReadAsStreamAsync(
-#if NET5_0_OR_GREATER
-                        cancellationToken
-#endif
-                    ).ConfigureAwait(false);
 
-                    return
-                        await global::Replicate.SchemasTrainingResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
-                        throw new global::System.InvalidOperationException("Response deserialization failed.");
-                }
-                catch (global::System.Exception __ex)
+            global::System.Net.Http.HttpRequestMessage? __httpRequest = null;
+            global::System.Net.Http.HttpResponseMessage? __response = null;
+            var __attemptNumber = 0;
+            try
+            {
+                for (var __attempt = 1; __attempt <= __maxAttempts; __attempt++)
                 {
-                    string? __content = null;
+                    __attemptNumber = __attempt;
+                    __httpRequest = __CreateHttpRequest();
+                    await global::Replicate.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
+                            clientOptions: Options,
+                            context: global::Replicate.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "TrainingsCreate",
+                                methodName: "TrainingsCreateAsync",
+                                pathTemplate: "$\"/models/{modelOwner}/{modelName}/versions/{versionId}/trainings\"",
+                                httpMethod: "POST",
+                                baseUri: BaseUri,
+                                request: __httpRequest!,
+                                response: null,
+                                exception: null,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attempt,
+                                maxAttempts: __maxAttempts,
+                                willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                     try
                     {
-                        __content = await __response.Content.ReadAsStringAsync(
-#if NET5_0_OR_GREATER
-                            cancellationToken
-#endif
-                        ).ConfigureAwait(false);
+                        __response = await HttpClient.SendAsync(
+                request: __httpRequest,
+                completionOption: global::System.Net.Http.HttpCompletionOption.ResponseContentRead,
+                cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                     }
-                    catch (global::System.Exception)
+                    catch (global::System.Net.Http.HttpRequestException __exception)
                     {
+                        var __retryDelay = global::Replicate.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
+                        var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
+                        await global::Replicate.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
+                            clientOptions: Options,
+                            context: global::Replicate.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "TrainingsCreate",
+                                methodName: "TrainingsCreateAsync",
+                                pathTemplate: "$\"/models/{modelOwner}/{modelName}/versions/{versionId}/trainings\"",
+                                httpMethod: "POST",
+                                baseUri: BaseUri,
+                                request: __httpRequest!,
+                                response: null,
+                                exception: __exception,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attempt,
+                                maxAttempts: __maxAttempts,
+                                willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                        if (!__willRetry)
+                        {
+                            throw;
+                        }
+
+                        __httpRequest.Dispose();
+                        __httpRequest = null;
+                        await global::Replicate.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
+                            retryDelay: __retryDelay,
+                            cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
+                        continue;
                     }
 
-                    throw new global::Replicate.ApiException(
-                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
-                        innerException: __ex,
-                        statusCode: __response.StatusCode)
+                    if (__response != null &&
+                        __attempt < __maxAttempts &&
+                        global::Replicate.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
                     {
-                        ResponseBody = __content,
-                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
-                            __response.Headers,
-                            h => h.Key,
-                            h => h.Value),
-                    };
+                        var __retryDelay = global::Replicate.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
+                        await global::Replicate.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
+                            clientOptions: Options,
+                            context: global::Replicate.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "TrainingsCreate",
+                                methodName: "TrainingsCreateAsync",
+                                pathTemplate: "$\"/models/{modelOwner}/{modelName}/versions/{versionId}/trainings\"",
+                                httpMethod: "POST",
+                                baseUri: BaseUri,
+                                request: __httpRequest!,
+                                response: __response,
+                                exception: null,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attempt,
+                                maxAttempts: __maxAttempts,
+                                willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                        __response.Dispose();
+                        __response = null;
+                        __httpRequest.Dispose();
+                        __httpRequest = null;
+                        await global::Replicate.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
+                            retryDelay: __retryDelay,
+                            cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
+                        continue;
+                    }
+
+                    break;
                 }
+
+                if (__response == null)
+                {
+                    throw new global::System.InvalidOperationException("No response received.");
+                }
+
+                using (__response)
+                {
+
+                ProcessResponse(
+                    client: HttpClient,
+                    response: __response);
+                ProcessTrainingsCreateResponse(
+                    httpClient: HttpClient,
+                    httpResponseMessage: __response);
+                if (__response.IsSuccessStatusCode)
+                {
+                    await global::Replicate.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
+                            clientOptions: Options,
+                            context: global::Replicate.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "TrainingsCreate",
+                                methodName: "TrainingsCreateAsync",
+                                pathTemplate: "$\"/models/{modelOwner}/{modelName}/versions/{versionId}/trainings\"",
+                                httpMethod: "POST",
+                                baseUri: BaseUri,
+                                request: __httpRequest!,
+                                response: __response,
+                                exception: null,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attemptNumber,
+                                maxAttempts: __maxAttempts,
+                                willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                }
+                else
+                {
+                    await global::Replicate.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
+                            clientOptions: Options,
+                            context: global::Replicate.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "TrainingsCreate",
+                                methodName: "TrainingsCreateAsync",
+                                pathTemplate: "$\"/models/{modelOwner}/{modelName}/versions/{versionId}/trainings\"",
+                                httpMethod: "POST",
+                                baseUri: BaseUri,
+                                request: __httpRequest!,
+                                response: __response,
+                                exception: null,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attemptNumber,
+                                maxAttempts: __maxAttempts,
+                                willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                }
+
+                            if (__effectiveReadResponseAsString)
+                            {
+                                var __content = await __response.Content.ReadAsStringAsync(
+                #if NET5_0_OR_GREATER
+                                    __effectiveCancellationToken
+                #endif
+                                ).ConfigureAwait(false);
+
+                                ProcessResponseContent(
+                                    client: HttpClient,
+                                    response: __response,
+                                    content: ref __content);
+                                ProcessTrainingsCreateResponseContent(
+                                    httpClient: HttpClient,
+                                    httpResponseMessage: __response,
+                                    content: ref __content);
+
+                                try
+                                {
+                                    __response.EnsureSuccessStatusCode();
+
+                                    var __value = global::Replicate.SchemasTrainingResponse.FromJson(__content, JsonSerializerContext) ??
+                                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::Replicate.AutoSDKHttpResponse<global::Replicate.SchemasTrainingResponse>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Replicate.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    throw new global::Replicate.ApiException(
+                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        innerException: __ex,
+                                        statusCode: __response.StatusCode)
+                                    {
+                                        ResponseBody = __content,
+                                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                            __response.Headers,
+                                            h => h.Key,
+                                            h => h.Value),
+                                    };
+                                }
+                            }
+                            else
+                            {
+                                try
+                                {
+                                    __response.EnsureSuccessStatusCode();
+                                    using var __content = await __response.Content.ReadAsStreamAsync(
+                #if NET5_0_OR_GREATER
+                                        __effectiveCancellationToken
+                #endif
+                                    ).ConfigureAwait(false);
+
+                                    var __value = await global::Replicate.SchemasTrainingResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                        throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::Replicate.AutoSDKHttpResponse<global::Replicate.SchemasTrainingResponse>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Replicate.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    string? __content = null;
+                                    try
+                                    {
+                                        __content = await __response.Content.ReadAsStringAsync(
+                #if NET5_0_OR_GREATER
+                                            __effectiveCancellationToken
+                #endif
+                                        ).ConfigureAwait(false);
+                                    }
+                                    catch (global::System.Exception)
+                                    {
+                                    }
+
+                                    throw new global::Replicate.ApiException(
+                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        innerException: __ex,
+                                        statusCode: __response.StatusCode)
+                                    {
+                                        ResponseBody = __content,
+                                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                            __response.Headers,
+                                            h => h.Key,
+                                            h => h.Value),
+                                    };
+                                }
+                            }
+
+                }
+            }
+            finally
+            {
+                __httpRequest?.Dispose();
             }
         }
         /// <summary>
@@ -339,6 +622,7 @@ namespace Replicate
         /// ```<br/>
         /// Requests for event types `output` and `logs` will be sent at most once every 500ms. If you request `start` and `completed` webhooks, then they'll always be sent regardless of throttling.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Replicate.SchemasTrainingResponse> TrainingsCreateAsync(
@@ -349,6 +633,7 @@ namespace Replicate
             object input,
             string? webhook = default,
             global::System.Collections.Generic.IList<global::Replicate.SchemasTrainingRequestWebhookEventsFilterItem>? webhookEventsFilter = default,
+            global::Replicate.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Replicate.SchemasTrainingRequest
@@ -364,6 +649,7 @@ namespace Replicate
                 modelName: modelName,
                 versionId: versionId,
                 request: __request,
+                requestOptions: requestOptions,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }

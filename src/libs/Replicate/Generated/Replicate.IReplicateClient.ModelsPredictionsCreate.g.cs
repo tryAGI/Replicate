@@ -28,6 +28,7 @@ namespace Replicate
         /// Example: 5m
         /// </param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Replicate.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Replicate.SchemasPredictionResponse> ModelsPredictionsCreateAsync(
@@ -37,6 +38,43 @@ namespace Replicate
             global::Replicate.SchemasPredictionRequest request,
             string? prefer = default,
             string? cancelAfter = default,
+            global::Replicate.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Create a prediction using an official model<br/>
+        /// Create a prediction using an [official model](https://replicate.com/changelog/2025-01-29-official-models).<br/>
+        /// If you're _not_ running an official model, use the [`predictions.create`](#predictions.create) operation instead.<br/>
+        /// Example cURL request:<br/>
+        /// ```console<br/>
+        /// curl -s -X POST -H 'Prefer: wait' \<br/>
+        ///   -d '{"input": {"prompt": "Write a short poem about the weather."}}' \<br/>
+        ///   -H "Authorization: Bearer $REPLICATE_API_TOKEN" \<br/>
+        ///   -H 'Content-Type: application/json' \<br/>
+        ///   https://api.replicate.com/v1/models/meta/meta-llama-3-70b-instruct/predictions<br/>
+        /// ```<br/>
+        /// The request will wait up to 60 seconds for the model to run. If this time is exceeded the prediction will be returned in a `"starting"` state and need to be retrieved using the `predictions.get` endpoint.<br/>
+        /// For a complete overview of the `deployments.predictions.create` API check out our documentation on [creating a prediction](https://replicate.com/docs/topics/predictions/create-a-prediction) which covers a variety of use cases.
+        /// </summary>
+        /// <param name="modelOwner"></param>
+        /// <param name="modelName"></param>
+        /// <param name="prefer">
+        /// Example: wait=5
+        /// </param>
+        /// <param name="cancelAfter">
+        /// Example: 5m
+        /// </param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Replicate.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Replicate.AutoSDKHttpResponse<global::Replicate.SchemasPredictionResponse>> ModelsPredictionsCreateAsResponseAsync(
+            string modelOwner,
+            string modelName,
+
+            global::Replicate.SchemasPredictionRequest request,
+            string? prefer = default,
+            string? cancelAfter = default,
+            global::Replicate.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create a prediction using an official model<br/>
@@ -102,6 +140,7 @@ namespace Replicate
         /// Requests for event types `output` and `logs` will be sent at most once every 500ms. If you request `start` and `completed` webhooks, then they'll always be sent regardless of throttling.<br/>
         /// Example: [start, completed]
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Replicate.SchemasPredictionResponse> ModelsPredictionsCreateAsync(
@@ -113,6 +152,7 @@ namespace Replicate
             bool? stream = default,
             string? webhook = default,
             global::System.Collections.Generic.IList<global::Replicate.SchemasPredictionRequestWebhookEventsFilterItem>? webhookEventsFilter = default,
+            global::Replicate.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

@@ -1,0 +1,15 @@
+{
+  "Examples": [
+    {
+      "Order": 1,
+      "Title": "Search models, collections, and docs (beta)",
+      "Slug": "search",
+      "Description": "Search for public models, collections, and docs using a text query.\n\nFor models, the response includes all model data, plus a new \u0060metadata\u0060 object with the following fields:\n\n- \u0060generated_description\u0060: A longer and more detailed AI-generated description of the model\n- \u0060tags\u0060: An array of tags for the model\n- \u0060score\u0060: A score for the model\u0027s relevance to the search query\n\nExample cURL request:\n\n\u0060\u0060\u0060console\ncurl -s \\\n  -H \u0022Authorization: Bearer $REPLICATE_API_TOKEN\u0022 \\\n  \u0022https://api.replicate.com/v1/search?query=nano\u002Bbanana\u0022\n\u0060\u0060\u0060\n\nNote: This search API is currently in beta and may change in future versions.",
+      "Language": "http",
+      "Code": "### Search models, collections, and docs (beta)\n# @name search\nGET {{host}}/search?query={{query}}\u0026limit=20\nAccept: application/json\n\n## Responses\n# 200\n# Description: Success\n# Content-Type: application/json\n# 400\n# Description: Bad Request - Missing or invalid query parameter\n# Content-Type: application/json\n# 500\n# Description: Internal Server Error - Search service error\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "search",
+      "Setup": null
+    }
+  ]
+}
