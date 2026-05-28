@@ -74,5 +74,6 @@ namespace Replicate
         public DeploymentsUpdateRequest()
         {
         }
+
     }
 }

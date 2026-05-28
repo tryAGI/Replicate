@@ -77,5 +77,6 @@ namespace Replicate
         public SchemasPredictionResponseUrls()
         {
         }
+
     }
 }

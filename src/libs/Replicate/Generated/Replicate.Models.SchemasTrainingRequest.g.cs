@@ -108,5 +108,6 @@ namespace Replicate
         public SchemasTrainingRequest()
         {
         }
+
     }
 }

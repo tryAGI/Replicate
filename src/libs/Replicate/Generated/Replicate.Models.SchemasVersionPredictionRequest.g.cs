@@ -159,5 +159,6 @@ namespace Replicate
         public SchemasVersionPredictionRequest()
         {
         }
+
     }
 }

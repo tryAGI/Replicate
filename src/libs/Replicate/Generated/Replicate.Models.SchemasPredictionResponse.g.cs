@@ -226,5 +226,6 @@ namespace Replicate
         public SchemasPredictionResponse()
         {
         }
+
     }
 }

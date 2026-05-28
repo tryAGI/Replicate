@@ -57,5 +57,6 @@ namespace Replicate
         public PredictionsListResponse()
         {
         }
+
     }
 }

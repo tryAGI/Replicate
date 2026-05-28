@@ -52,5 +52,6 @@ namespace Replicate
         public SchemasTrainingResponseUrls()
         {
         }
+
     }
 }
