@@ -4,24 +4,24 @@
 namespace Replicate
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum SchemasVersionPredictionRequestWebhookEventsFilterItem
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Completed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Logs,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Output,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Start,
     }

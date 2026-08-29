@@ -4,12 +4,12 @@
 namespace Replicate
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class SchemasDeploymentResponseCurrentRelease
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("configuration")]
         public global::Replicate.SchemasDeploymentResponseCurrentReleaseConfiguration? Configuration { get; set; }
@@ -21,7 +21,7 @@ namespace Replicate
         public global::System.DateTime? CreatedAt { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_by")]
         public global::Replicate.SchemasDeploymentResponseCurrentReleaseCreatedBy? CreatedBy { get; set; }

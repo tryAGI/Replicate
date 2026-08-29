@@ -4,7 +4,7 @@
 namespace Replicate
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class SchemasDeploymentResponseCurrentReleaseConfiguration
     {

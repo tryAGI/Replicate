@@ -9,11 +9,11 @@ namespace Replicate
     public enum AccountGetResponseType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Organization,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         User,
     }

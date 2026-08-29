@@ -232,7 +232,7 @@ namespace Replicate
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                } 
+                }
             }
                 global::Replicate.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,

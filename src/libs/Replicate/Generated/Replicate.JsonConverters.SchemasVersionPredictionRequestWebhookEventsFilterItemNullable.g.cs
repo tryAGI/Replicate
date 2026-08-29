@@ -20,7 +20,7 @@ namespace Replicate.JsonConverters
                     {
                         return global::Replicate.SchemasVersionPredictionRequestWebhookEventsFilterItemExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

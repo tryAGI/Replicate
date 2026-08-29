@@ -9,27 +9,27 @@ namespace Replicate
     public enum SchemasPredictionResponseStatus
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Aborted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Canceled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Failed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Processing,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Starting,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Succeeded,
     }

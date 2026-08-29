@@ -4,12 +4,12 @@
 namespace Replicate
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class SchemasDeploymentResponse
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("current_release")]
         public global::Replicate.SchemasDeploymentResponseCurrentRelease? CurrentRelease { get; set; }

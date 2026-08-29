@@ -9,11 +9,11 @@ namespace Replicate
     public enum ModelsListSortBy
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         LatestVersionCreatedAt,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ModelCreatedAt,
     }

@@ -4,12 +4,12 @@
 namespace Replicate
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum PredictionsListSource
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Web,
     }

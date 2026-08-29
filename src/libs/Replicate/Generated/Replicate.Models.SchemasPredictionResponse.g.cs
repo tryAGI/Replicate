@@ -4,7 +4,7 @@
 namespace Replicate
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class SchemasPredictionResponse
     {
@@ -44,11 +44,10 @@ namespace Replicate
         /// An error string if the model status is `"failed"`
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Error { get; set; }
+        public string? Error { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -116,7 +115,7 @@ namespace Replicate
         public required global::Replicate.SchemasPredictionResponseUrls Urls { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("version")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Replicate.JsonConverters.OneOfJsonConverter<string, global::Replicate.SchemasPredictionResponseVersion?>))]
@@ -137,9 +136,6 @@ namespace Replicate
         /// </param>
         /// <param name="dataRemoved">
         /// Whether the prediction output has been deleted
-        /// </param>
-        /// <param name="error">
-        /// An error string if the model status is `"failed"`
         /// </param>
         /// <param name="id"></param>
         /// <param name="input">
@@ -167,6 +163,9 @@ namespace Replicate
         /// <param name="deployment">
         /// The name of the deployment that created the prediction
         /// </param>
+        /// <param name="error">
+        /// An error string if the model status is `"failed"`
+        /// </param>
         /// <param name="logs">
         /// The log output from the model
         /// </param>
@@ -185,7 +184,6 @@ namespace Replicate
         public SchemasPredictionResponse(
             global::System.DateTime createdAt,
             bool dataRemoved,
-            string error,
             string id,
             object input,
             string model,
@@ -196,6 +194,7 @@ namespace Replicate
             global::System.DateTime? completedAt,
             global::System.DateTime? deadline,
             string? deployment,
+            string? error,
             string? logs,
             global::Replicate.SchemasPredictionResponseMetrics? metrics,
             global::Replicate.SchemasPredictionResponseSource? source,
@@ -206,7 +205,7 @@ namespace Replicate
             this.DataRemoved = dataRemoved;
             this.Deadline = deadline;
             this.Deployment = deployment;
-            this.Error = error ?? throw new global::System.ArgumentNullException(nameof(error));
+            this.Error = error;
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Input = input ?? throw new global::System.ArgumentNullException(nameof(input));
             this.Logs = logs;

@@ -9,11 +9,11 @@ namespace Replicate
     public enum SchemasTrainingResponseSource
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Api,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Web,
     }
