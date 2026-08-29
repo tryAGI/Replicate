@@ -4,24 +4,24 @@
 namespace Replicate
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class FilesListResponse
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("next")]
         public string? Next { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("previous")]
         public string? Previous { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("results")]
         public global::System.Collections.Generic.IList<global::Replicate.SchemasFileResponse>? Results { get; set; }

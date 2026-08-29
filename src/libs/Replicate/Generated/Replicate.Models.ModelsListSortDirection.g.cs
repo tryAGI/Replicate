@@ -9,11 +9,11 @@ namespace Replicate
     public enum ModelsListSortDirection
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Asc,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Desc,
     }

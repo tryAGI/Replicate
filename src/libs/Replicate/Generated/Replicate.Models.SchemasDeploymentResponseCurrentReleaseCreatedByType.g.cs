@@ -9,11 +9,11 @@ namespace Replicate
     public enum SchemasDeploymentResponseCurrentReleaseCreatedByType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Organization,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         User,
     }

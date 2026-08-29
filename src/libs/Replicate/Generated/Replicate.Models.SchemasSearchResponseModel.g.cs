@@ -4,19 +4,19 @@
 namespace Replicate
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class SchemasSearchResponseModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Replicate.SchemasSearchModelMetadataResponse Metadata { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonRequired]

@@ -9,11 +9,11 @@ namespace Replicate
     public enum SchemasModelResponseVisibility
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Private,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Public,
     }

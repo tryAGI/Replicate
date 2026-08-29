@@ -9,11 +9,11 @@ namespace Replicate
     public enum SchemasPredictionResponseSource
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Api,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Web,
     }

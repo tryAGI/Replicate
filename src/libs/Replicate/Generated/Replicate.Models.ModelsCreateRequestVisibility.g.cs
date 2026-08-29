@@ -10,11 +10,11 @@ namespace Replicate
     public enum ModelsCreateRequestVisibility
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Private,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Public,
     }

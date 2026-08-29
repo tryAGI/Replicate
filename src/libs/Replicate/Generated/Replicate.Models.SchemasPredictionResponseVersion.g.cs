@@ -9,7 +9,7 @@ namespace Replicate
     public enum SchemasPredictionResponseVersion
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Hidden,
     }
