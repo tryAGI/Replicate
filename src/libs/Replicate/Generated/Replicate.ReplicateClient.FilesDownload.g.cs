@@ -141,7 +141,7 @@ namespace Replicate
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddRequiredParameter("owner", owner)
-                                .AddRequiredParameter("expiry", expiry.ToString()!)
+                                .AddRequiredParameter("expiry", expiry.ToString() ?? throw new global::System.InvalidOperationException("A required query parameter returned null from ToString()."))
                                 .AddRequiredParameter("signature", signature)
                                 ;
                             var __path = __pathBuilder.ToString();
@@ -184,10 +184,10 @@ namespace Replicate
                 PrepareFilesDownloadRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    fileId: fileId!,
-                    owner: owner!,
-                    expiry: expiry!,
-                    signature: signature!);
+                    fileId: fileId,
+                    owner: owner,
+                    expiry: expiry,
+                    signature: signature);
 
                 return __httpRequest;
             }
@@ -209,7 +209,7 @@ namespace Replicate
                                 pathTemplate: "$\"/files/{fileId}/download\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -243,7 +243,7 @@ namespace Replicate
                                 pathTemplate: "$\"/files/{fileId}/download\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -284,7 +284,7 @@ namespace Replicate
                                 pathTemplate: "$\"/files/{fileId}/download\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -332,7 +332,7 @@ namespace Replicate
                                 pathTemplate: "$\"/files/{fileId}/download\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -354,7 +354,7 @@ namespace Replicate
                                 pathTemplate: "$\"/files/{fileId}/download\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -514,7 +514,7 @@ namespace Replicate
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddRequiredParameter("owner", owner)
-                                .AddRequiredParameter("expiry", expiry.ToString()!)
+                                .AddRequiredParameter("expiry", expiry.ToString() ?? throw new global::System.InvalidOperationException("A required query parameter returned null from ToString()."))
                                 .AddRequiredParameter("signature", signature)
                                 ;
                             var __path = __pathBuilder.ToString();
@@ -557,10 +557,10 @@ namespace Replicate
                 PrepareFilesDownloadRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    fileId: fileId!,
-                    owner: owner!,
-                    expiry: expiry!,
-                    signature: signature!);
+                    fileId: fileId,
+                    owner: owner,
+                    expiry: expiry,
+                    signature: signature);
 
                 return __httpRequest;
             }
@@ -582,7 +582,7 @@ namespace Replicate
                                 pathTemplate: "$\"/files/{fileId}/download\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -616,7 +616,7 @@ namespace Replicate
                                 pathTemplate: "$\"/files/{fileId}/download\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -657,7 +657,7 @@ namespace Replicate
                                 pathTemplate: "$\"/files/{fileId}/download\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -705,7 +705,7 @@ namespace Replicate
                                 pathTemplate: "$\"/files/{fileId}/download\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -727,7 +727,7 @@ namespace Replicate
                                 pathTemplate: "$\"/files/{fileId}/download\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
