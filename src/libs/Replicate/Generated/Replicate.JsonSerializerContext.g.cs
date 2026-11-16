@@ -162,7 +162,6 @@ namespace Replicate
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.HardwareListResponseItem))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.PredictionsListResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SearchResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.SearchResponse2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.TrainingsListResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Replicate.SchemasTrainingResponse>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Replicate.WebhooksDefaultSecretGetResponse))]
