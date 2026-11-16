@@ -370,19 +370,15 @@ namespace Replicate
         /// <summary>
         ///
         /// </summary>
-        public global::Replicate.SearchResponse2? Type83 { get; set; }
+        public global::Replicate.TrainingsListResponse? Type83 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Replicate.TrainingsListResponse? Type84 { get; set; }
+        public global::System.Collections.Generic.IList<global::Replicate.SchemasTrainingResponse>? Type84 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Replicate.SchemasTrainingResponse>? Type85 { get; set; }
-        /// <summary>
-        ///
-        /// </summary>
-        public global::Replicate.WebhooksDefaultSecretGetResponse? Type86 { get; set; }
+        public global::Replicate.WebhooksDefaultSecretGetResponse? Type85 { get; set; }
 
         /// <summary>
         ///
