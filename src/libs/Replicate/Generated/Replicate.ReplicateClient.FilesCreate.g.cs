@@ -435,13 +435,13 @@ namespace Replicate
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_413 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_413 = global::Replicate.FilesCreateResponse.FromJson(__content_413, JsonSerializerContext);
+                                        __value_413 = __content_413 is not { Length: > 0 } ? null : global::Replicate.FilesCreateResponse.FromJson(__content_413, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_413 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_413 = global::Replicate.FilesCreateResponse.FromJson(__content_413, JsonSerializerContext);
+                                        __value_413 = __content_413 is not { Length: > 0 } ? null : global::Replicate.FilesCreateResponse.FromJson(__content_413, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -452,7 +452,7 @@ namespace Replicate
 
                                 throw global::Replicate.ApiException<global::Replicate.FilesCreateResponse>.Create(
                                     statusCode: __response.StatusCode,
-                                    message: __content_413 ?? __response.ReasonPhrase ?? string.Empty,
+                                    message: __content_413 is { Length: > 0 } ? __content_413 : __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_413,
                                     responseBody: __content_413,
                                     responseObject: __value_413,
@@ -495,7 +495,7 @@ namespace Replicate
                                 {
                                     throw global::Replicate.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -540,7 +540,7 @@ namespace Replicate
 
                                     throw global::Replicate.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -1003,13 +1003,13 @@ namespace Replicate
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_413 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_413 = global::Replicate.FilesCreateResponse.FromJson(__content_413, JsonSerializerContext);
+                                        __value_413 = __content_413 is not { Length: > 0 } ? null : global::Replicate.FilesCreateResponse.FromJson(__content_413, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_413 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_413 = global::Replicate.FilesCreateResponse.FromJson(__content_413, JsonSerializerContext);
+                                        __value_413 = __content_413 is not { Length: > 0 } ? null : global::Replicate.FilesCreateResponse.FromJson(__content_413, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -1020,7 +1020,7 @@ namespace Replicate
 
                                 throw global::Replicate.ApiException<global::Replicate.FilesCreateResponse>.Create(
                                     statusCode: __response.StatusCode,
-                                    message: __content_413 ?? __response.ReasonPhrase ?? string.Empty,
+                                    message: __content_413 is { Length: > 0 } ? __content_413 : __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_413,
                                     responseBody: __content_413,
                                     responseObject: __value_413,
@@ -1059,7 +1059,7 @@ namespace Replicate
                                 {
                                     throw global::Replicate.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -1100,7 +1100,7 @@ namespace Replicate
 
                                     throw global::Replicate.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -1502,13 +1502,13 @@ namespace Replicate
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_413 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_413 = global::Replicate.FilesCreateResponse.FromJson(__content_413, JsonSerializerContext);
+                                        __value_413 = __content_413 is not { Length: > 0 } ? null : global::Replicate.FilesCreateResponse.FromJson(__content_413, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_413 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_413 = global::Replicate.FilesCreateResponse.FromJson(__content_413, JsonSerializerContext);
+                                        __value_413 = __content_413 is not { Length: > 0 } ? null : global::Replicate.FilesCreateResponse.FromJson(__content_413, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -1519,7 +1519,7 @@ namespace Replicate
 
                                 throw global::Replicate.ApiException<global::Replicate.FilesCreateResponse>.Create(
                                     statusCode: __response.StatusCode,
-                                    message: __content_413 ?? __response.ReasonPhrase ?? string.Empty,
+                                    message: __content_413 is { Length: > 0 } ? __content_413 : __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_413,
                                     responseBody: __content_413,
                                     responseObject: __value_413,
@@ -1562,7 +1562,7 @@ namespace Replicate
                                 {
                                     throw global::Replicate.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -1607,7 +1607,7 @@ namespace Replicate
 
                                     throw global::Replicate.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
